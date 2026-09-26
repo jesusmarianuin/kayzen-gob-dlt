@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}Ayuda{% endblock %}
+
+{% block content %}
+<article class="card wide help">
+  <h1 class="question">Cómo estudiar con esta app</h1>
+
+  <section>
+    <h2>1. Se estudia repartido en días</h2>
+    <p>
+      La app te pregunta cada tarjeta justo cuando empiezas a olvidarla. Recordarla en ese momento es lo que
+      la fija en la memoria. Repetirla muchas veces el mismo día no sirve: la aciertas porque la acabas de ver
+      y se olvida igual de rápido.
+    </p>
+    <p>
+      Por eso una tarjeta acertada no vuelve a salir el mismo día, y aprender un mazo lleva días o semanas.
+      Lo ideal es abrir la app un rato cada día.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Cómo es un repaso</h2>
+    <p><strong>Tarjetas de pensar la respuesta.</strong> Ves la pregunta, piensas la respuesta, pulsas
+      «Mostrar respuesta» y dices cómo te ha ido:</p>
+    <ul>
+      <li><strong>Fallé:</strong> no la recordabas. Vuelve en unos {{ config.RELEARN_MINUTES }} minutos.</li>
+      <li><strong>Me costó:</strong> la recordaste con esfuerzo. Vuelve pronto.</li>
+      <li><strong>Bien:</strong> la recordaste sin problema.</li>
+      <li><strong>Fácil:</strong> la sabías de sobra. Tarda más en volver.</li>
+    </ul>
+    <p>
+      Cada una de estas tarjetas se pregunta en las dos direcciones (por ejemplo, «Dog» → «Perro» y
+      «Perro» → «Dog»), en días distintos.
+    </p>
+    <p><strong>Tarjetas de escribir la respuesta.</strong> Escribes la respuesta y la app la compara. Da igual
+      usar mayúsculas o no, dejar espacios de más, poner un punto final o no escribir las tildes, pero la ñ sí
+      cuenta. Si no coincide, cuenta como «Fallé». Si coincide, eliges entre «Me costó», «Bien» y «Fácil».</p>
+  </section>
+
+  <section>
+    <h2>3. Cuándo vuelve una tarjeta</h2>
+    <p>Cada vez que aciertas una tarjeta, tarda más en volver. Por ejemplo, si respondes «Bien» a «Dog»:</p>
+    <ul>
+      <li>1.ª vez: vuelve al día siguiente.</li>
+      <li>2.ª vez: vuelve a los 3 días.</li>
+      <li>3.ª vez: vuelve a los 8 días.</li>
+      <li>4.ª vez: vuelve a los 20 días.</li>
+      <li>Después: cada {{ config.MAX_INTERVAL_DAYS }} días como máximo. Ninguna tarjeta pasa más de
+        {{ config.MAX_INTERVAL_DAYS }} días sin salir.</li>
+    </ul>
+    <p>Si en algún momento la fallas, empieza otra vez desde el principio.</p>
+  </section>
+
+  <section>
+    <h2>4. Si no abres la app varios días</h2>
+    <p>
+      No se pierde nada. Las tarjetas que te tocaban esos días salen con retraso la próxima vez, las más
+      atrasadas primero. Si alguna se te ha olvidado, pulsa «Fallé» y volverá a empezar.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Cuándo parar</h2>
+    <p>
+      Si la app te muestra una tarjeta, te toca responderla. Si te muestra «Has terminado por hoy», puedes
+      parar. Cada día hay como mucho {{ config.NEW_CARDS_PER_DAY }} tarjetas nuevas, para que los repasos de los
+      días siguientes no se acumulen.
+    </p>
+    <p>
+      «Ya vale por hoy» cierra la app cuando quieras. Tu progreso se guarda con cada respuesta, así que puedes
+      dejarlo a medias sin perder nada.
+    </p>
+  </section>
+
+  <section id="progreso">
+    <h2>6. Cómo leer el progreso</h2>
+    <ul>
+      <li><strong>No las sé:</strong> no las has estudiado todavía, o vuelven en menos de
+        {{ config.MEDIUM_FROM_DAYS }} días.</li>
+      <li><strong>Medio:</strong> vuelven en {{ config.MEDIUM_FROM_DAYS }} a {{ config.MAX_INTERVAL_DAYS - 1 }} días.</li>
+      <li><strong>Buen progreso:</strong> vuelven cada {{ config.MAX_INTERVAL_DAYS }} días. Ya las recuerdas a
+        largo plazo.</li>
+    </ul>
+    <p>
+      También verás cuántas respuestas y cuántos días te faltan como mínimo para que todas tengan buen
+      progreso, si aciertas siempre. Cada fallo lo alarga un poco.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Estudio libre</h2>
+    <p>
+      Sirve para repasar todas las tarjetas cuando quieras, por ejemplo antes de un examen. Salen todas, en
+      orden aleatorio, y no cuentan para el calendario ni para el progreso. No sustituye al estudio diario.
+    </p>
+  </section>
+
+  <div class="actions">
+    <a href="{{ url_for('study') }}" class="btn primary">Empezar</a>
+  </div>
+</article>
+{% endblock %}

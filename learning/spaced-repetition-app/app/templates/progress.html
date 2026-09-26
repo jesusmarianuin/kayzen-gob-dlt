@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Progreso{% endblock %}
+
+{% block content %}
+<article class="card wide">
+  <h1 class="question">Progreso: {{ summary.total }} tarjeta{{ '' if summary.total == 1 else 's' }}</h1>
+
+  {% if summary.total %}
+    <div class="stack" role="img"
+         aria-label="{{ summary.good }} con buen progreso, {{ summary.medium }} a medias, {{ summary.unknown }} sin saber">
+      {% for count, name in [(summary.good, 'good'), (summary.medium, 'medium'), (summary.unknown, 'unknown')] %}
+        {% if count %}<span class="seg seg-{{ name }}" style="flex: {{ count }}"></span>{% endif %}
+      {% endfor %}
+    </div>
+
+    <ul class="groups">
+      <li><span class="dot seg-good"></span>Buen progreso <strong>{{ summary.good }}</strong></li>
+      <li><span class="dot seg-medium"></span>Medio <strong>{{ summary.medium }}</strong></li>
+      <li><span class="dot seg-unknown"></span>No las sé <strong>{{ summary.unknown }}</strong></li>
+    </ul>
+
+    {% if summary.answers_left %}
+      <p class="lead">
+        Para acabar las {{ summary.total }} te faltan <strong>al menos {{ summary.answers_left }}
+        respuesta{{ '' if summary.answers_left == 1 else 's' }}</strong>, repartidas en
+        <strong>unos {{ summary.days_left }} día{{ '' if summary.days_left == 1 else 's' }}</strong>.
+        Si fallas alguna, serán más.
+      </p>
+    {% else %}
+      <p class="lead">Todas tienen buen progreso. Solo quedan repasos como mucho cada 21 días para no olvidarlas.</p>
+    {% endif %}
+  {% else %}
+    <p class="lead">No hay tarjetas. Añade filas a <code>data/cards.tsv</code>.</p>
+  {% endif %}
+
+  <div class="actions">
+    <a href="{{ url_for('study') }}" class="btn primary">Estudiar</a>
+    <a href="{{ url_for('help_page') }}#progreso" class="btn">¿Cómo se lee?</a>
+  </div>
+</article>
+{% endblock %}

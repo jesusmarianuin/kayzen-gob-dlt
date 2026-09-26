@@ -1,0 +1,15 @@
+# datos.gob.es
+
+Noticia: <https://administracionelectronica.gob.es/pae_Home/pae_Actualidad/pae_Noticias/2026/Mayo/noticia-2026-05-20-Proyectos-que-reutilizan-datos-abiertos-e-IA-para-solucionar-desafios-medioambientales.html>
+
+El blog de datos.gob.es presenta ocho proyectos seleccionados en el [Open Data and AI Innovation Challenge (Data2AIChallenge)](https://data2aichallenge.org/), una convocatoria regional impulsada por [Open Data Charter](https://opendatacharter.org/) con apoyo de la Fundación Patrick J. McGovern y los gobiernos de Colombia y Uruguay, que combina [datos abiertos e inteligencia artificial](https://datos.gob.es/es/blog/datos-abiertos-inteligencia-artificial-y-medio-ambiente) para dar respuesta a desafíos medioambientales concretos. Los equipos ganadores, elegidos entre estudiantes, desarrolladores, periodistas, activistas e investigadores por un jurado multidisciplinar, recibirán seis meses de mentoría para desarrollar sus propuestas.
+
+Entre los proyectos destacan Alerta Yí, un sistema participativo de alerta temprana de inundaciones en la cuenca del río Yí (Uruguay) que combina datos abiertos, IA y ciencia ciudadana; [Minga Abierta](https://pluriversonarrativo.com/), que anticipa riesgos de deslizamientos en las laderas de Medellín mediante cartografía comunitaria y modelos predictivos; y [AgroClima Platform](https://agroclima-platform.vercel.app/), que usa datos satelitales abiertos para generar prescripciones de riego adaptadas a pequeños productores del Magdalena colombiano.
+
+Otras iniciativas seleccionadas son [Amenaza Roboto](http://amenazaroboto.com/), que aplica IA generativa para convertir expedientes de evaluación ambiental en datos abiertos comprensibles y auditables; Luz Urbana, que cruza imágenes satelitales con datos urbanos para mapear la contaminación lumínica en Uruguay; el [Observatorio de Reciclables](https://cempre.org.uy/publicaciones/) de CEMPRE Uruguay, que mide con metodología IPCC el impacto climático de las políticas de reciclaje; [Guardianes de la Ladera](https://github.com/DannyLuna17/GuardianesDeLaLadera), que transforma datos geoespaciales abiertos en alertas locales de deslizamientos en Colombia; y BIO-AI, que combina IA y periodismo de datos para narrar la conservación de especies amenazadas en el piedemonte amazónico de Caquetá.
+
+El artículo concluye que los ocho proyectos comparten rasgos comunes: los datos abiertos actúan como infraestructura imprescindible para la acción climática, la IA es una herramienta al servicio de problemas concretos y no un fin en sí misma, y la participación ciudadana —mediante ciencia ciudadana y cartografía comunitaria— amplifica el impacto y reduce brechas entre quienes disponen de recursos tecnológicos y quienes más necesitan estas soluciones.
+
+En una frase: ocho proyectos latinoamericanos del Data2AIChallenge demuestran cómo la combinación de datos abiertos, inteligencia artificial y participación ciudadana permite anticipar inundaciones, deslizamientos, estrés hídrico y otros riesgos climáticos en Colombia y Uruguay.
+
+---

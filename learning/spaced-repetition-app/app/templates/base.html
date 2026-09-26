@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Repaso{% endblock %} · Repetición espaciada</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+{% set background = image_url(card) if card is defined else None %}
+<body class="{{ 'has-image' if background else 'no-image' }}"
+      {% if background %}style="--bg-image: url('{{ background }}')"{% endif %}>
+  {% block nav %}
+  <nav class="topbar">
+    <a href="{{ url_for('study') }}" class="{{ 'active' if request.endpoint == 'study' }}">Estudiar</a>
+    <a href="{{ url_for('progress_page') }}" class="{{ 'active' if request.endpoint == 'progress_page' }}">Progreso</a>
+    <a href="{{ url_for('help_page') }}" class="{{ 'active' if request.endpoint == 'help_page' }}">Ayuda</a>
+    <a href="{{ url_for('free_start') }}" class="{{ 'active' if request.endpoint and request.endpoint.startswith('free') }}">Estudio libre</a>
+    <form method="post" action="{{ url_for('quit_app') }}" class="quit">
+      <button type="submit">Ya vale por hoy</button>
+    </form>
+  </nav>
+  {% endblock %}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <script src="{{ url_for('static', filename='js/review.js') }}"></script>
+</body>
+</html>

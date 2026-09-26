@@ -1,0 +1,13 @@
+# interoperable-europe.ec.europa.eu
+
+Noticia: <https://administracionelectronica.gob.es/pae_Home/pae_Actualidad/pae_Noticias/2026/Febrero/noticia-2026-02-20-nuevo-validador--SEMIC.html>
+
+Los validadores SEMIC, desarrollados bajo Interoperable Europe, son herramientas en línea que comprueban si los datos con especificaciones semánticas europeas comunes —como [DCAT-AP](https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe) o [CPSV-AP](https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/solution/core-public-service-vocabulary-application-profile)— o los modelos de datos cumplen los principios de la [Guía de estilo SEMIC](https://semiceu.github.io/style-guide/1.0.0/index.html). La novedad es que estos validadores se han unificado en una ventanilla única que cubre también [DCAT-AP HVD](https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/solution/dcat-ap-hvd), [MLDCAT-AP](https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/solution/mldcat-ap) y [BRegDCAT-AP](https://interoperable-europe.ec.europa.eu/collection/access-base-registries/solution/bregdcat-ap), simplificando la evaluación de calidad y cumplimiento que antes requería herramientas separadas.
+
+El artículo aporta datos de uso: en 2025, antes del lanzamiento de la herramienta unificada, se registraron 7.945 intentos de validación, con una media de unas 769 validaciones mensuales y un pico de 990 en febrero de 2025, coincidiendo con el periodo de reporte de Conjuntos de Datos de Alto Valor (HVD) bajo DCAT-AP. La mayoría de intentos no supera la validación a la primera y las advertencias son frecuentes, algo que el texto interpreta no como un fracaso sino como señal de una comunidad activa que usa la herramienta para mejorar progresivamente sus datos.
+
+España aparece como el país más activo, con algo más de 1.500 intentos de validación en 2025, por delante de Italia (unos 1.000) y Bélgica (más de 700), lo que sitúa a estos tres países como referentes en la promoción de la interoperabilidad semántica europea. Para validar los datos frente a las distintas especificaciones se dispone ahora del [validador SEMIC SHACL](https://www.itb.ec.europa.eu/shacl/semic-shacl/upload) unificado, mientras que la conformidad de los modelos de datos con la Guía de Estilo se comprueba con el [validador XML SEMIC](https://www.itb.ec.europa.eu/model2owl/upload) dedicado.
+
+En una frase: la Comisión Europea unifica los validadores SEMIC de datos y modelos de datos (DCAT-AP, CPSV-AP y afines) en una única herramienta, con España como país más activo en su uso durante 2025.
+
+---

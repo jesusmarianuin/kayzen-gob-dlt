@@ -1,0 +1,15 @@
+# aesia.digital.gob.es
+
+Noticia: <https://administracionelectronica.gob.es/pae_Home/pae_Actualidad/pae_Noticias/2026/Septiembre/noticia-2026-09-07-Transparencia-era-IA.html>
+
+El artículo, publicado por la Agencia Española de Supervisión de Inteligencia Artificial (AESIA), repasa cómo el [artículo 50 del Reglamento de Inteligencia Artificial (RIA)](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50) convierte la transparencia en un pilar central de la norma europea, obligando a proveedores y responsables del despliegue de determinados sistemas de IA —incluidos los generativos, los interactivos y los que producen deepfakes— a garantizar que las personas sepan cuándo están interactuando con una IA o consumiendo contenido generado o manipulado por ella.
+
+El artículo 50 se desglosa en cuatro obligaciones: informar cuando se interactúa directamente con un sistema de IA como un chatbot, salvo que sea obvio; marcar en formato legible por máquina los contenidos de imagen, vídeo, audio o texto generados por IA; informar a las personas expuestas a sistemas de reconocimiento de emociones o de categorización biométrica; y etiquetar claramente los deepfakes y los textos de interés público generados por IA que no hayan pasado por revisión humana. Estas obligaciones son exigibles desde el 2 de agosto de 2026 —con un plazo ampliado hasta el 2 de diciembre para el marcado técnico— y su incumplimiento puede acarrear sanciones de hasta 15 millones de euros o el 3% de la facturación anual mundial.
+
+Para facilitar su aplicación, la Comisión Europea ha publicado dos documentos complementarios: [las Directrices sobre los requisitos de transparencia](http://digital-strategy.ec.europa.eu/en/policies/guidelines-transparency-ai-generated-content), que aclaran conceptos como quién es proveedor o responsable del despliegue, qué se entiende por deepfake o texto de interés público, y qué excepciones existen (edición estándar, ámbito artístico y satírico, o textos con control editorial); y [el Código de buenas prácticas sobre el contenido generado por IA](https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content), de adhesión voluntaria, que detalla compromisos técnicos de marcado y etiquetado para simplificar la acreditación del cumplimiento.
+
+El artículo destaca el papel de la propia [Agencia Española de Supervisión de Inteligencia Artificial (AESIA)](https://aesia.digital.gob.es/es/divulgacion/un-faro-para-una-ia-al-servicio-de-la-ciudadania) como acompañante de empresas y ciudadanía en la aplicación de este nuevo marco, en el que la transparencia deja de ser una opción de responsabilidad social para convertirse en un mandato legal que condiciona la confianza pública en la inteligencia artificial.
+
+En una frase: AESIA explica cómo el artículo 50 del Reglamento de IA, apoyado en las nuevas directrices y en el Código de buenas prácticas de la Comisión, obliga desde agosto de 2026 a identificar con claridad el contenido generado o manipulado por IA y a informar cuando se interactúa con sistemas de inteligencia artificial.
+
+---

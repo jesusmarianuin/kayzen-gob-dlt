@@ -1,0 +1,13 @@
+# digital-strategy.ec.europa.eu
+
+Noticia: <https://administracionelectronica.gob.es/pae_Home/pae_Actualidad/pae_Noticias/2026/Febrero/noticia-2026-02-03-signatarios-GPAI-grupo-trabajo-.html>
+
+Los signatarios del [Código de Prácticas de IA de Propósito General](https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai) —una herramienta voluntaria que ayuda a la industria a cumplir con las normas de la Ley de IA para modelos de IA de propósito general (GPAI)— han creado un Grupo de Trabajo de Signatarios, presidido por la Oficina de IA, para facilitar la aplicación coherente del Código. Las [normas de la Ley de IA para proveedores de modelos GPAI](http://digital-strategy.ec.europa.eu/en/news/eu-rules-general-purpose-ai-models-start-apply-bringing-more-transparency-safety-and-accountability) entraron en vigor el 2 de agosto de 2025, y antes de que las obligaciones plenas se apliquen en agosto de 2026, la Oficina de IA está preparando sus evaluaciones de cumplimiento y colaborando activamente con los proveedores.
+
+El Código de Prácticas fue elaborado por expertos independientes en un proceso con participación de múltiples partes interesadas y aprobado por la Comisión y el Comité de IA de los Estados miembros; hasta la fecha, la mayoría de sus signatarios se han sumado ya al nuevo [Grupo de Trabajo](https://ec.europa.eu/newsroom/dae/redirection/document/124170). Su función es facilitar el intercambio entre signatarios, aportar información sobre documentos de orientación sin sustituir las consultas públicas obligatorias de la Oficina de IA, servir de canal para debatir avances tecnológicos, investigaciones y evidencia relevante, y trasladar actualizaciones a terceros interesados.
+
+El Grupo se reunirá al menos una vez al año, convocado por la Oficina de IA por iniciativa propia o a petición de sus miembros, que actuará también como moderadora de los debates. Para garantizar la transparencia, la Oficina ha publicado el [Vademécum del Grupo de Trabajo](https://ec.europa.eu/newsroom/dae/redirection/document/124170), con la lista de participantes, y registrará todas las reuniones y un resumen general, reconociendo que parte de la información compartida puede ser comercialmente confidencial. La iniciativa tiene un precedente en el [Grupo de Trabajo Permanente del Código de Conducta sobre Desinformación](https://disinfocode.eu/the-code), vinculado a la Ley de Servicios Digitales.
+
+En una frase: los signatarios del Código de Prácticas de IA de Propósito General crean, bajo presidencia de la Oficina de IA, un Grupo de Trabajo permanente para coordinar su aplicación coherente antes de que las obligaciones plenas de la Ley de IA para modelos GPAI entren en vigor en agosto de 2026.
+
+---

@@ -1,0 +1,15 @@
+# lamoncloa.gob.es
+
+Noticia: <https://administracionelectronica.gob.es/pae_Home/pae_Actualidad/pae_Noticias/2026/Febrero/noticia-2026-02-02-Convocatoria-de-subvenciones-Kit-Espacios-de-Datos.html>
+
+El artículo anuncia la apertura de la convocatoria del Programa Kit Espacios de Datos, enmarcado en el Plan de Recuperación, Transformación y Resiliencia y gestionado a través de Red.es. [La convocatoria está abierta en la sede electrónica](https://sede.red.gob.es/es/procedimientos/convocatoria-de-ayudas-para-la-transformacion-digital-de-los-sectores-productivos) de este organismo hasta las 11:00 horas del 31 de marzo de 2026, con un presupuesto inicial de 60 millones de euros.
+
+El programa forma parte del [Plan de Impulso de los Espacios de Datos](https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/transformacion-digital-y-funcion-publica/paginas/2024/211124-gobierno-plan-impulso-espacio-de-datos.aspx), la hoja de ruta del Gobierno de España para que los distintos sectores económicos puedan intercambiar información sobre producción, logística e interoperabilidad. El Kit Espacios de Datos busca facilitar la incorporación de las entidades a un entorno seguro y estandarizado de intercambio de información, siguiendo el modelo del Kit Digital, que ya ha superado las [860.000 ayudas para la digitalización de pymes y autónomos](https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/transformacion-digital-y-funcion-publica/paginas/2025/171125-lopez-kit-digital.aspx).
+
+Pueden acceder a las ayudas tanto entidades públicas y privadas con actividad económica y domicilio fiscal en la Unión Europea como las Administraciones Públicas españolas. La cuantía depende del perfil del solicitante y del rol que desempeñe en el espacio de datos: las entidades públicas y privadas pueden recibir hasta 15.000 euros si participan como usuarios y hasta 30.000 euros como proveedores de datos, mientras que para las Administraciones Públicas esos máximos ascienden a 25.000 y 50.000 euros respectivamente. Las ayudas se conceden por concurrencia no competitiva, según el orden de presentación de solicitudes, hasta agotar el crédito presupuestario.
+
+Las entidades beneficiarias pueden elegir entre los espacios de datos sectoriales desplegados en el Plan de Impulso, el [Espacio Nacional de Datos de Salud](https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/transformacion-digital-y-funcion-publica/paginas/2026/290126-espacio-nacional-datos-salud.aspx) y la [Lista de Confianza de los Espacios de Datos](https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/transformacion-digital-y-funcion-publica/Paginas/2026/090126-lista-confianza-espacios-datos.aspx), cuya relación actualizada puede consultarse en el [documento del Centro de Referencia de Espacios de Datos](https://cred.digital.gob.es/content/dam/cred/img/docs/Espacios_de_Datos_Elegibles_KTED.pdf).
+
+En una frase: el Kit Espacios de Datos abre hasta el 31 de marzo de 2026 subvenciones de entre 15.000 y 50.000 euros para que entidades públicas y privadas se incorporen a los espacios de datos sectoriales impulsados por el Gobierno de España.
+
+---
