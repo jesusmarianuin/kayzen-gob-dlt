@@ -1,0 +1,14 @@
+#separator:tab
+#html:false
+#guid column:1
+#notetype column:2
+#columns:id	model	front	back	alternatives	image
+dog	Basic (and reversed card)	Dog	Perro		dog.jpg
+boe	Basic (type in the answer)	¿Qué significa BOE?	Boletín Oficial del Estado	Boletín Oficial	boe.jpg
+cat	Basic (and reversed card)	Cat	Gato		cat.jpg
+onu	Basic (type in the answer)	¿Qué significa ONU?	Organización de las Naciones Unidas	Naciones Unidas|Organización Naciones Unidas	onu.jpg
+house	Basic (and reversed card)	House	Casa		house.jpg
+paris	Basic (type in the answer)	¿Capital de Francia?	París		paris.jpg
+tree	Basic (and reversed card)	Tree	Árbol		tree.jpg
+spain	Basic (type in the answer)	¿Qué país tiene por capital Madrid?	España		spain.jpg
+book	Basic (and reversed card)	Book	Libro		

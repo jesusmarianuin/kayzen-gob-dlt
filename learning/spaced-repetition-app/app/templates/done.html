@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Fin{% endblock %}
+
+{% block content %}
+<article class="card">
+  {% if mode == 'free' %}
+    <h1 class="question">Has repasado {{ reviewed }} tarjeta{{ '' if reviewed == 1 else 's' }}</h1>
+    <p class="lead">El estudio libre no cambia tu calendario ni tu progreso.</p>
+    <div class="actions">
+      <a href="{{ url_for('study') }}" class="btn primary">Volver a Estudiar</a>
+    </div>
+  {% else %}
+    <p class="verdict right">✔ Has terminado por hoy</p>
+    <h1 class="question">Puedes parar</h1>
+    {% if next_due %}
+      <p class="lead">Próximo repaso: <strong>{{ next_due }}</strong>.</p>
+    {% endif %}
+    <div class="actions">
+      <a href="{{ url_for('progress_page') }}" class="btn">Ver progreso</a>
+    </div>
+  {% endif %}
+</article>
+{% endblock %}

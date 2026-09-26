@@ -1,0 +1,15 @@
+# datos.gob.es
+
+Noticia: <https://administracionelectronica.gob.es/pae_Home/pae_Actualidad/pae_Noticias/2026/Julio/noticia-2026-07-24-El-valor-escondido-de-los-datos-no-estructurados-en-las-AAPP.html>
+
+El artículo compara la información de una administración pública con un iceberg: la parte visible son los datos estructurados en bases de datos, hojas de cálculo o indicadores, sobre los que tradicionalmente se ha centrado la gestión del dato; bajo la superficie, mucho más extensa, se encuentra el conocimiento contenido en expedientes, informes, actas, correos electrónicos y contenidos multimedia. Según estimaciones de firmas como IDG o Gartner, este tipo de contenido no estructurado supone alrededor del 80% de la información que maneja una organización.
+
+La irrupción de la inteligencia artificial ha convertido ese patrimonio documental en una oportunidad, al permitir resumir, clasificar y relacionar automáticamente contenidos que antes solo podían explotarse mediante técnicas más limitadas como el OCR, los procesos ETL o el [procesamiento del lenguaje natural](https://datos.gob.es/es/blog/procesamiento-del-lenguaje-natural) clásico. Poner en valor esta información conecta además con una obligación legal concreta: el principio de "una sola vez" del artículo 28.2 de la [Ley 39/2015](https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565), que exige que los datos que ya obran en poder de una administración puedan localizarse e intercambiarse entre organismos.
+
+El texto advierte, no obstante, de un error frecuente: creer que disponer de modelos de IA basta para aprovechar ese conocimiento. Sin metadatos, catalogación, criterios de calidad y responsabilidades claras, el dato no estructurado se convierte en un pasivo organizativo antes que en un activo, y aplicar IA sobre documentación mal gobernada genera respuestas plausibles pero poco fiables. El artículo conecta esta idea con el riesgo del "data swamp" ya tratado en el post [De la ciénaga al lago](https://datos.gob.es/es/blog/de-la-cienaga-al-lago-como-evitar-que-tus-datos-se-conviertan-en-un-pantano), y señala que el gobierno del dato también debe servir para decidir cuándo una información que nació como no estructurada conviene transformarla en dato estructurado.
+
+Como marco de referencia, el artículo remite al [ecosistema de normas UNE sobre gobierno, gestión y calidad del dato](https://datos.gob.es/es/blog/las-claves-de-las-especificaciones-une-sobre-el-dato) (UNE 0077 a UNE 0081), aplicable tanto a datos estructurados como no estructurados. La conclusión es que el reto de los próximos años no está en digitalizar o almacenar más documentos, sino en gobernar ese patrimonio documental para convertirlo en un activo fiable, reutilizable y preparado para generar valor público.
+
+En una frase: la mayor parte del conocimiento de las administraciones públicas está "sumergido" en datos no estructurados (expedientes, actas, correos, documentos), y solo un gobierno del dato sólido —metadatos, catalogación, calidad— permite que la inteligencia artificial lo convierta en un activo fiable en lugar de en un pasivo organizativo.
+
+---

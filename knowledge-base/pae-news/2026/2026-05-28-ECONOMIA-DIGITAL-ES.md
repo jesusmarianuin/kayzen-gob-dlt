@@ -1,0 +1,17 @@
+# digital.gob.es
+
+Noticia: <https://administracionelectronica.gob.es/pae_Home/pae_Actualidad/pae_Noticias/2026/Mayo/noticia-2026-05-28-sexta-edicion-informe-Econom-a-Digital-Espana-.html>
+
+El ministro para la Transformación Digital y de la Función Pública intervino en la presentación de la [sexta edición del informe Economía Digital en España](https://www.adigital.org/economia-digital-en-espana-2026/), elaborado por ADigital (Asociación Española de la Economía Digital). El dato central del informe es que la economía digital representó en 2025 el 27% del PIB español, un 1,01% más que en 2024 y 8,3 puntos más que en 2019, con un impacto total de 455.300 millones de euros, un 10% más que los 414.000 millones registrados el año anterior. Según los autores, este crecimiento se produce a un ritmo superior al del conjunto de la economía y en todos los sectores.
+
+El informe desglosa el impacto en tres componentes: el impacto directo, que mide la actividad económica digitalizada dentro de cada sector, alcanzó el 13,42% del PIB (un 9,8% más en valores absolutos); el impacto indirecto, vinculado al efecto de la digitalización en la cadena de suministro, se situó en el 12,49% del PIB, reflejo del "efecto tractor" de la digitalización sobre otros ámbitos económicos; y el impacto inducido, ligado al aumento del consumo de los trabajadores de sectores digitalizados, fue el que más creció en términos relativos (un 45%), hasta representar el 1,10% del PIB.
+
+Por sectores, el comercio minorista se encuentra en fase de maduración digital, con uno de cada tres euros vendidos fruto de un proceso digital, mientras que la automoción, todavía en plena integración, ha invertido más de 1.300 millones de euros en su modernización entre 2023 y 2025. El ecosistema fintech e insurtech ha entrado en una fase de madurez acelerada, con modelos de negocio casi totalmente digitales, y el sector audiovisual y de radiodifusión facturó 34.000 millones de euros y generó unos 72.000 empleos directos en 2025.
+
+El ministro subrayó que "la España digital se abre paso produciendo más y mejores bienes y servicios que nunca", y atribuyó estos resultados a la inversión pública en conectividad, al programa de ayudas Kit Digital (que ha beneficiado a más de 937.000 pymes y autónomos), a las Estrategias Nacionales de IA y de Tecnologías Cuánticas, a inversiones en empresas como Multiverse, Aurora Media o Nu Quantum, y a los fondos europeos, que tendrán continuidad a través del fondo soberano España Crece.
+
+El informe identifica tres palancas para sostener este crecimiento: la simplificación regulatoria (que "no equivale a desregular"), la gobernanza de la IA agéntica y el desarrollo de sandboxes regulatorios. El ministro destacó que el Gobierno apoya los esfuerzos de simplificación de la UE, como el Ómnibus de IA, lidera iniciativas de gobernanza multilateral como el Panel Científico de la ONU o el Laboratorio de Gobernanza de la IA para la Humanidad con sede en Valencia, y ha incluido un sandbox de IA en la Ley Orgánica para el buen uso y gobernanza de la IA aprobada esa semana por el Consejo de Ministros. "La regulación no sólo no va contra nuestra competitividad, sino que acabará yendo a favor", afirmó.
+
+En una frase: la sexta edición del informe Economía Digital en España, presentado por ADigital, sitúa la economía digital en el 27% del PIB en 2025 y atribuye su crecimiento tanto a la inversión pública y la digitalización sectorial como a un entorno regulatorio que combina simplificación, gobernanza de la IA y sandboxes.
+
+---

@@ -1,0 +1,15 @@
+# digital-strategy.ec.europa.eu
+
+Noticia: <https://administracionelectronica.gob.es/pae_Home/pae_Actualidad/pae_Noticias/2026/Febrero/noticia-2026-02-16-UE-herramientas-seguridad-cadena-suministro-TIC.html>
+
+El [Grupo de Cooperación NIS](https://digital-strategy.ec.europa.eu/en/policies/nis-cooperation-group) ha adoptado la [Caja de Herramientas de Seguridad de la Cadena de Suministro de TIC](https://ec.europa.eu/newsroom/dae/redirection/document/124123) de la UE, elaborada por los Estados miembros con el apoyo de la Comisión Europea y de ENISA. El documento ofrece un enfoque horizontal, común y de carácter no vinculante para identificar, evaluar y mitigar los riesgos de ciberseguridad en las cadenas de suministro de TIC, y desarrolla el mandato derivado de las Conclusiones del Consejo de la UE de 2022 sobre esta materia.
+
+El conjunto de herramientas define conceptos clave y describe escenarios de riesgo que afectan al ecosistema digital europeo, recomendando medidas como la evaluación de proveedores críticos, la promoción de estrategias multiproveedor y la reducción de la dependencia de proveedores de alto riesgo. Se enmarca en el artículo 22 de la [Directiva NIS2](https://digital-strategy.ec.europa.eu/en/policies/nis2-directive), que exige evaluaciones coordinadas de riesgo a nivel de la Unión para las cadenas de suministro críticas de TIC, y está pensado tanto para orientar a los Estados miembros como para apoyar a actores públicos y privados. El propio Grupo de Cooperación NIS revisará su aplicación al cabo de un año para compartir buenas prácticas y proponer ajustes.
+
+Junto a la caja de herramientas se han publicado dos evaluaciones coordinadas de riesgo. La primera analiza los vehículos conectados y automatizados, que pese a sus beneficios en seguridad vial y eficiencia energética procesan grandes volúmenes de datos personales y sensibles y podrían, en escenarios extremos, ser utilizados como arma; el informe recomienda reforzar la seguridad de los sistemas de conducción, comunicación y actualización remota. La segunda se centra en los equipos de detección usados en fronteras y aduanas por policía y seguridad, un mercado dominado por pocos fabricantes no europeos, y propone medidas de contratación más exigentes y mejores prácticas de mantenimiento y control de acceso.
+
+El paquete se presenta como parte de un esfuerzo más amplio: la [Ley de Ciberseguridad revisada](https://ec.europa.eu/commission/presscorner/detail/en/ip_26_105), presentada por la Comisión el 20 de enero de 2026, ya proponía un marco de confianza para la cadena de suministro de TIC centrado en riesgos no técnicos, como las interferencias externas, para lograr un enfoque armonizado en las cadenas más críticas.
+
+En una frase: el Grupo de Cooperación NIS de la UE adopta una caja de herramientas común, no vinculante, para gestionar los riesgos de ciberseguridad en la cadena de suministro de TIC, acompañada de sendas evaluaciones de riesgo sobre vehículos conectados y equipos de detección fronteriza.
+
+---

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Estudio libre' if mode == 'free' else 'Repaso' }}{% endblock %}
+
+{% macro next_or_rate(ratings) %}
+  {% if mode == 'free' %}
+    <form method="post" action="{{ url_for('free_next') }}" class="actions">
+      <button type="submit" class="btn primary" autofocus>Siguiente</button>
+    </form>
+  {% else %}
+    <form method="post" action="{{ url_for('rate', card_id=card.id) }}" class="actions ratings">
+      <input type="hidden" name="version" value="{{ version }}">
+      {% for value, label in ratings %}
+        <button type="submit" name="rating" value="{{ value }}" class="btn rate-{{ value }}">{{ label }}</button>
+      {% endfor %}
+    </form>
+  {% endif %}
+{% endmacro %}
+
+{% block content %}
+{% if mode == 'free' %}
+  <p class="banner">Estudio libre: no cuenta para tu progreso · {{ position }} de {{ total }}</p>
+{% endif %}
+
+<article class="card">
+  <p class="kind">{{ 'Escribe la respuesta' if card.is_typed else 'Piensa la respuesta' }}</p>
+  <h1 class="question">{{ card.question }}</h1>
+
+  {% if not card.is_typed %}
+    <div id="answer" class="answer" hidden>
+      <p class="answer-text">{{ card.answer }}</p>
+      {{ next_or_rate([('again', 'Fallé'), ('hard', 'Me costó'), ('good', 'Bien'), ('easy', 'Fácil')]) }}
+    </div>
+    <div class="actions" id="reveal-box">
+      <button type="button" class="btn primary" id="reveal" autofocus>Mostrar respuesta</button>
+    </div>
+
+  {% elif stage == 'question' %}
+    <form method="post" class="typed-form"
+          action="{{ url_for('free_answer' if mode == 'free' else 'answer', card_id=card.id) }}">
+      {% if mode != 'free' %}<input type="hidden" name="version" value="{{ version }}">{% endif %}
+      <input type="text" name="typed" autocomplete="off" autocapitalize="off" spellcheck="false"
+             aria-label="Tu respuesta" placeholder="Tu respuesta" autofocus required>
+      <button type="submit" class="btn primary">Comprobar</button>
+    </form>
+
+  {% elif stage == 'right' %}
+    <p class="verdict right">✔ Correcto</p>
+    <p class="answer-text">{{ card.answer }}</p>
+    {% if typed.strip() != card.answer %}<p class="typed">Escribiste: {{ typed }}</p>{% endif %}
+    {{ next_or_rate([('hard', 'Me costó'), ('good', 'Bien'), ('easy', 'Fácil')]) }}
+
+  {% else %}
+    <p class="verdict wrong">✘ No coincide</p>
+    <dl class="compare">
+      <dt>Escribiste</dt><dd class="typed-wrong">{{ typed or '(nada)' }}</dd>
+      <dt>Respuesta</dt><dd class="answer-text">{{ card.answer }}</dd>
+      {% if card.alternatives %}<dt>También vale</dt><dd>{{ card.alternatives | join(' · ') }}</dd>{% endif %}
+    </dl>
+    {% if mode == 'free' %}
+      {{ next_or_rate([]) }}
+    {% else %}
+      <p class="hint">Cuenta como «Fallé»: volverá dentro de unos minutos.</p>
+      <div class="actions">
+        <a href="{{ url_for('study') }}" class="btn primary" autofocus>Continuar</a>
+      </div>
+    {% endif %}
+  {% endif %}
+</article>
+{% endblock %}

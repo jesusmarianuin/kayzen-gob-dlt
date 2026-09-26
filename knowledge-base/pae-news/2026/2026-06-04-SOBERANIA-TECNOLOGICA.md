@@ -1,0 +1,15 @@
+# digital-strategy.ec.europa.eu
+
+Noticia: <https://administracionelectronica.gob.es/pae_Home/pae_Actualidad/pae_Noticias/2026/Junio/noticia-2026-06-04-Paquete-Europeo-Soberania-Tecnologica.html>
+
+La Comisión Europea ha presentado el Paquete de Soberanía Tecnológica, un conjunto de medidas destinado a reducir las dependencias estructurales de Europa frente a proveedores externos y reforzar su autonomía digital ante el crecimiento de la demanda de capacidad informática ligada a la IA. El paquete persigue tres objetivos: transformar la economía impulsando la adopción de nuevas tecnologías e IA, reforzar la resiliencia de las cadenas de suministro y promover el modelo europeo de soberanía tecnológica.
+
+El paquete se articula en torno a cuatro elementos. La [Ley de Chips 2.0](http://digital-strategy.ec.europa.eu/en/news-redirect/940653) amplía la Ley de Chips de 2023 para desarrollar capacidad en tecnologías de semiconductores de vanguardia, agilizar permisos y acercar a los fabricantes europeos a sectores en crecimiento como los centros de datos y las gigafábricas de IA. La Ley de Desarrollo de la Nube y la IA, enmarcada en el [Plan de Acción para el Continente de la IA](https://ec.europa.eu/commission/presscorner/detail/en/ip_25_1013), busca triplicar la capacidad de los centros de datos europeos en cinco a siete años, simplificar su despliegue y crear un marco único de la UE para evaluar la soberanía en la nube y la IA.
+
+La Estrategia de Código Abierto de la UE se apoya en los más de tres millones de colaboradores europeos de código abierto para impulsar alternativas soberanas en nube, IA, ciberseguridad y semiconductores, fomentar un mayor uso del software abierto en las administraciones públicas mediante directrices de contratación, y apoyar la estandarización e interoperabilidad a través de iniciativas como Open Internet Stack. Por último, la Hoja de Ruta Estratégica para la Digitalización y la IA en el Sector Energético busca integrar de forma sostenible los centros de datos en el sistema energético, acelerar el despliegue de contadores inteligentes y facilitar el intercambio transfronterizo de datos energéticos.
+
+Las propuestas legislativas deberán negociarse ahora entre el Parlamento Europeo y el Consejo. El paquete se apoya en iniciativas previas como la [Brújula de la Competitividad](https://commission.europa.eu/topics/competitiveness/competitiveness-compass_en) y la [Estrategia de Seguridad Económica](https://ec.europa.eu/commission/presscorner/detail/en/ip_23_3358), y se complementa con una futura convocatoria para gigafábricas de IA y una consulta con los Estados miembros y el Banco Europeo de Inversiones para financiar las ambiciones de soberanía tecnológica europeas.
+
+En una frase: la Comisión Europea presenta un Paquete de Soberanía Tecnológica —con la Ley de Chips 2.0, la Ley de Desarrollo de la Nube y la IA, una Estrategia de Código Abierto y una hoja de ruta para la digitalización del sector energético— para reducir la dependencia de Europa de proveedores externos en tecnologías digitales clave.
+
+---
