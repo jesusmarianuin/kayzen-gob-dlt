@@ -81,11 +81,7 @@ Con **Squash and Merge**, los mensajes de los commits de tu rama no llegan a `ma
 
 3. **Subir la rama** al remoto cuando esté lista.
 
-4. **Crear la PR** y usar el botón ✨ para que Copilot sugiera el título. Ese título será el mensaje del único commit que llegue a `main`.
-
-5. **Fusionar con Squash and Merge**: revisa y edita el mensaje del commit si hace falta y confirma.
-
-El nombre de la rama y los commits intermedios desaparecen tras la fusión. En `main` solo queda el commit resultante, con el título de la PR.
+4. **Realizar el pull request** como es explicado en la parte 3, 4 y 5.
 
 ## Parte 3 — Autor: abrir la pull request
 
@@ -103,7 +99,7 @@ Estos pasos los realiza la persona que ha hecho los cambios y quiere que se revi
    >
    > El campo de descripción se rellenará con la plantilla del proyecto, `.github/pull_request_template.md`, una vez que esté fusionada en `main`.
 
-## Parte 3 — Revisor: revisar la pull request
+## Parte 4 — Revisor: revisar la pull request
 
 Estos pasos los realiza la persona responsable de aprobar los cambios.
 
@@ -119,7 +115,7 @@ Estos pasos los realiza la persona responsable de aprobar los cambios.
    - **Request Changes**: pide correcciones antes de fusionar. El autor sube nuevos commits a la misma rama y la PR se actualiza sola.
    - **Comment**: deja observaciones sin aprobar ni bloquear.
 
-## Parte 4 — Autor: fusionar y limpiar
+## Parte 5 — Autor: fusionar y limpiar
 
 Una vez aprobada la PR, el autor la fusiona.
 
