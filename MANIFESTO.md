@@ -112,7 +112,7 @@ Después de clasificar, debo crear una matriz de prioridades con esta escala:
 - ❤️🤍🤍🤍🤍 **1 · Radar:** solo novedades relevantes
 - 🤍🤍🤍🤍🤍 **0 · Ruido:** se descarta
 
-En la que pueda etiquetar:
+En la que pueda etiquetar en base a lo que más puedo aportar en:
 
 - `#INFRA` Infraestructura y operación; ejemplos Nodos Besu, consenso QBFT/IBFT, despliegue, monitorización, telemetría, alta disponibilidad. Nivel ❤️❤️❤️❤️❤️, porque es donde aportas valor directo. Se basaría sobre todo, aunque con matices en documentación clasificada como @DOC-REF, @TUTORIAL, @CODIGO, cuando hay dudas buscando en @ESPEC o @ESTANDAR.
 - `#SEGOPS` Seguridad operativa; ejemplos gestión de claves, HSM, ENS aplicado, NIS2, ciberseguridad de nodos. Nivel ❤️❤️❤️❤️🤍, porque en la administración un nodo inseguro no se despliega; va pegado a infra. Se basaría sobre todo, aunque con matices en documentación clasificada como @GUIA-OFICIAL, @DOC-REF, @TUTORIAL, cuando hay dudas buscando en @NORMA o @ESTANDAR.
@@ -120,11 +120,13 @@ En la que pueda etiquetar:
 - `#GOB` Gobernanza de red; ejemplos quién opera nodos, votación de validadores, consorcios (Alastria, EBP), acuerdos de operación. Nivel ❤️❤️❤️🤍🤍, porque tu experiencia en la administración aquí vale oro. Se basaría sobre todo, aunque con matices en documentación clasificada como @ESPEC, @ADHESION, @ESTRATEGIA, cuando hay dudas buscando en @ANALISIS o @DIVULGACION.
 - `#INTEROP` Interoperabilidad y estándares; ejemplos ENI, W3C, OpenID4VC, ETSI, ISO/TC 307, conformidad EBSI. Nivel ❤️❤️❤️🤍🤍, porque es el idioma común entre redes y administraciones. Se basaría sobre todo, aunque con matices en documentación clasificada como @ESTANDAR, @ESPEC, cuando hay dudas buscando en @NORMA o @GUIA-OFICIAL.
 - `#DEV` Desarrollo; ejemplos Solidity, despliegue de contratos, APIs JSON-RPC, SDKs. Nivel ❤️❤️❤️🤍🤍, porque es lo justo para probar, leer contratos y hablar con desarrolladores. Se basaría sobre todo, aunque con matices en documentación clasificada como @DOC-REF, @TUTORIAL, @CODIGO, cuando hay dudas buscando en @ESPEC o @ESTANDAR.
-- `#NORMA` Marco regulatorio; ejemplos eIDAS 2, RGPD, DLT Pilot Regime, Data Act, Leyes 39/40. Nivel ❤️❤️🤍🤍🤍, porque sirve de mapa: qué pregunta responde cada ley. Se basaría sobre todo, aunque con matices en documentación clasificada como @NORMA, @GUIA-OFICIAL, cuando hay dudas buscando en @ANALISIS o @INVESTIGACION.
+- `#REGULACION` Marco regulatorio; ejemplos eIDAS 2, RGPD, DLT Pilot Regime, Data Act, Leyes 39/40. Nivel ❤️❤️🤍🤍🤍, porque sirve de mapa: qué pregunta responde cada ley. Se basaría sobre todo, aunque con matices en documentación clasificada como @NORMA, @GUIA-OFICIAL, cuando hay dudas buscando en @ANALISIS o @INVESTIGACION.
 - `#FIN` Financiación y contratación pública; ejemplos NextGenEU, Digital Europe, modelos de contratación, programas de ayudas. Nivel ❤️❤️🤍🤍🤍, porque en lo público, sin financiación no hay proyecto. Se basaría sobre todo, aunque con matices en documentación clasificada como @CONVOCATORIA, @ESTRATEGIA, cuando hay dudas buscando en @NOTICIA o @GUIA-OFICIAL.
 - `#CASOS` Casos de uso y adopción; ejemplos trazabilidad, diplomas, notarización, pilotos sectoriales. Nivel ❤️❤️🤍🤍🤍, porque sirve para entender qué se despliega y por qué. Se basaría sobre todo, aunque con matices en documentación clasificada como @INVESTIGACION, @DIVULGACION, @NOTICIA, cuando hay dudas buscando en @ANALISIS o @ESPEC.
 - `#ECO` Ecosistema y actores; ejemplos empresas, proveedores, consorcios, quién hace qué. Nivel ❤️🤍🤍🤍🤍, porque sirve de radar: saber quién es quién, sin seguirlo todo. Se basaría sobre todo, aunque con matices en documentación clasificada como @NOTICIA, @ANALISIS, cuando hay dudas buscando con cautela en @PROMO, por su autoría interesada.
 - `#CRIPTO` Cripto, DeFi y mercados; ejemplos tokens financieros, MiCA, trading, stablecoins. Nivel 🤍🤍🤍🤍🤍, porque está fuera de tu ámbito salvo excepción puntual. Se descarta salvo excepción; si aparece, se filtra desde @NOTICIA o @ANALISIS, evitando @PROMO.
+
+Aplicar esta clasificación a mano sería inabordable. Por eso las reglas están definidas en [AGENTS.md](AGENTS.md): una IA clasifica los documentos de carpetas como `knowledge-base/` o `topics/` y, después, evalúo la información generada para medir el progreso y ver cuánto me desvío de las prioridades. Sin IA no me lo plantearía, pero es justo aquí donde los agentes brillan.
 
 ## Consolidar lo aprendido
 
@@ -142,5 +144,22 @@ Para aplicarla uso [una aplicación de repaso local](learning/spaced-repetition-
 - Tarjeta de teclear la respuesta, para términos y vocabulario: siglas, nombres propios o referencias concretas en las que la idea aproximada no basta y hace falta precisión.
 
 La repetición espaciada no sustituye a la práctica: levantar un nodo o desplegar un contrato sigue siendo la mejor forma de aprender. Pero asegura un mínimo que antes no tenía: que lo que ya he aprendido no se pierda.
+
+## Un mapa sin rumbo
+
+En mi experiencia, estudiando Web3 pero también en el ámbito laboral y en general, se aprende que una cosa es estar dentro y otra estar fuera. Quien está dentro, para bien o para mal (alguna vez para mal), marca una línea y una hoja de ruta que otros siguen, y así acaba creando el marco cognitivo común. Esa hoja de ruta, ese marco cognitivo, lo que se suele llamar "estar en onda", fue lo que más me costó en Web3.
+
+No creo que exista una fórmula para entender el marco cognitivo de una DLT en la administración. A estas alturas, y tras tantos años, nadie tiene que explicarme el de la administración: ese lo aprendí a fuego. Tampoco el de blockchain. Siendo realistas, por lo que conozco de la administración, allí está menos claro de lo que parece, a excepción de las empresa punteras sector, en general, lo que se conoce es la idea de "cadena de bloques", seguida de un "qué guay". Sin ánimo de ofender a nadie, es así en muchos más ámbitos de lo que nos gusta reconocer. En ese sentido creo que después 2 años de estudio, tengo suficiente contexto, aunque seguro que hay cosas que no comprendo de la administración, de la Comisión Europea y de muchas hojas de ruta regulatorias o de necesidades de sandbox. Pero en general, no creo que pueda diseñar una estrategia para eso; simplemente espero que el aprendizaje y el tiempo construyan en mí ese marco cognitivo común.
+
+Lo que sí necesito es una hoja de ruta personal para avanzar con sentido. Ya conté el desastre que fue todo: repasar varias veces sin llegar a aprender lo que yo mismo había escrito, muchas veces con IA. Y la IA no hace que aprendas, hace que creas que aprendes. Te da un resumen perfecto, pero eso no significa que lo sepas: significa que tienes un capítulo perfecto para estudiar y que aún te falta estudiarlo. Ahí es donde funciona el aprendizaje espaciado, y también debatir con un agente. Clasificar el interés y definir desde el principio dónde pongo el foco, olvidando el "lo quiero saber todo", ataca otro de los problemas. Pero queda uno más: definir mi hoja de ruta de aprendizaje kaizen, recogida en [ROADMAP.md](ROADMAP.md), que crecerá con cada iteración.
+
+Así que haré iteraciones kaizen de 15 días, y todo irá en el [proyecto de GitHub](https://github.com/users/jesusmarianuin/projects/5). Cada iteración sigue el ciclo PDCA:
+
+- `Plan`: en el proyecto defino el objetivo de la iteración, sus tareas y el entregable con el que debe acabar dentro de este repositorio
+- `Do`: ejecuto las tareas y genero el entregable
+- `Check`: al terminar, escribo una retrospectiva kaizen en un comentario del issue
+- `Act`: reviso ROADMAP.md, el mapa general, y arranco la siguiente iteración con un plan nuevo.
+
+Ahora vuelo a algo que ya digo en [la filosofía de trabajo](README.md#nuestra-filosofía) sobre tener claros los referentes. Y aquí, quiero aclarar algo importante que además afecta a las rutas de trabajo: confiar más en los `paths` formativos de los referentes e instituciones frente al `IA slop`. Es fácil pedir a la IA que haga un resumen, pero el proceso, aprender, seguir las guías de personas humanas, cada día tienen más valor y las debo seguir así, frente a los atajos.
 
 ---

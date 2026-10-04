@@ -81,9 +81,9 @@ Con **Squash and Merge**, los mensajes de los commits de tu rama no llegan a `ma
 
 3. **Subir la rama** al remoto cuando esté lista.
 
-4. **Realizar el pull request** como es explicado en la parte 3, 4 y 5.
+4. **Realizar el pull request** como se explica en las partes 2, 3 y 4.
 
-## Parte 3 — Autor: abrir la pull request
+## Parte 2 — Autor: abrir la pull request
 
 Estos pasos los realiza la persona que ha hecho los cambios y quiere que se revisen.
 
@@ -99,32 +99,40 @@ Estos pasos los realiza la persona que ha hecho los cambios y quiere que se revi
    >
    > El campo de descripción se rellenará con la plantilla del proyecto, `.github/pull_request_template.md`, una vez que esté fusionada en `main`.
 
-## Parte 4 — Revisor: revisar la pull request
+## Parte 3 — Revisor: revisar la pull request
 
 Estos pasos los realiza la persona responsable de aprobar los cambios.
 
 5. **Abrir la PR**: en el panel **GitHub Pull Requests**, localiza la PR y haz clic en ella. La vista de la PR se abre en el editor.
 
+   El panel REVIEW PULL REQUEST (a la izquierda) solo aparece cuando VS Code está en la rama de la PR. El autor ya está en ella porque la creó. Otro revisor tiene que pulsar Checkout en la vista de la PR, lo que ejecuta `git checkout` a esa rama en su ordenador.
+
 6. **Revisar los cambios**: en el panel **CHANGES IN PULL REQUEST**, haz clic en cualquier fichero para abrir su diff e inspeccionar los cambios. Marcarlos como vistos (**Viewed**) es opcional y solo sirve para llevar la cuenta de lo revisado.
 
    Si quieres comentar una línea concreta, pasa el ratón sobre el margen del diff y pulsa el icono **+** que aparece.
 
-7. **Enviar la revisión**: en el panel **REVIEW PULL REQUEST** (a la izquierda, debajo de la lista de ficheros), escribe un comentario si lo necesitas y elige el resultado de la revisión:
+7. **Enviar la revisión**: en el panel REVIEW PULL REQUEST (a la izquierda, debajo de la lista de ficheros) aparece una caja de texto para escribir un comentario. Los botones que la acompañan dependen de quién revise:
 
-   - **Approve**: aprueba los cambios. Es lo que habilita al autor para fusionar la PR.
-   - **Request Changes**: pide correcciones antes de fusionar. El autor sube nuevos commits a la misma rama y la PR se actualiza sola.
-   - **Comment**: deja observaciones sin aprobar ni bloquear.
+   - Si revisas tu propia PR, solo aparece Comment. GitHub no permite al autor aprobar ni pedir cambios en su propia PR. Debajo aparecen ya los controles de fusión (Create Merge Commit y su desplegable), descritos en la parte 4.
+   - Si la revisa otra persona con permisos en el repositorio, puede elegir Approve (aprueba los cambios), Request Changes (pide correcciones; el autor sube nuevos commits a la misma rama y la PR se actualiza sola) o Comment (deja observaciones sin aprobar ni bloquear).
 
-## Parte 5 — Autor: fusionar y limpiar
+   La aprobación solo es obligatoria para fusionar si la rama `main` tiene una regla de protección que exige revisiones. Sin esa regla, la PR se puede fusionar sin aprobación.
 
-Una vez aprobada la PR, el autor la fusiona.
+## Parte 4 — Mantenedor: fusionar y limpiar
 
-8. **Fusionar la pull request**: se puede hacer desde dos sitios:
+La fusiona una persona con permiso de escritura en el repositorio, normalmente quien la ha revisado. Si el autor también tiene ese permiso, puede fusionarla él mismo una vez aprobada.
 
-   - **Panel izquierdo** (REVIEW PULL REQUEST): pulsa la flecha del desplegable junto a **Create Merge Commit**, selecciona **Squash and Merge** y pulsa **Merge Pull Request**.
-   - **Panel derecho** (desplazándote hacia abajo): localiza la sección **Merge Pull Request**, cambia el método a **Squash and Merge** y pulsa **Merge Pull Request**.
+8. **Fusionar la pull request**: antes de fusionar hay que elegir el método:
 
-   En ambos casos aparece un paso de confirmación en el que puedes revisar y editar el mensaje y la descripción del commit. Cuando esté listo, pulsa **Squash and Merge** para confirmar. El resultado es un único commit en `main`.
+   - Create Merge Commit: los commits de la rama pasan a `main` tal cual, más un commit adicional que une ambas ramas. Los mensajes provisionales de la rama quedan en el historial de `main`.
+   - Squash and Merge: los commits de la rama se combinan en un único commit nuevo en `main`, cuyo mensaje por defecto es el título de la PR. Es el método de este proyecto.
+
+   La fusión se puede hacer desde dos sitios:
+
+   - Panel izquierdo (REVIEW PULL REQUEST): pulsa la flecha del desplegable junto a `Create Merge Commit` y `selecciona Squash and Merge`. El botón pasa a llamarse `Squash and Merge`; al pulsarlo, la PR se fusiona directamente, sin opción de editar el mensaje del commit, que será el título de la PR.
+   - Vista de la PR en el editor (desplazándote hacia abajo): localiza la sección `Merge Pull Request`, cambia el método a `Squash and Merge` y pulsa el botón. Aparece un paso de confirmación en el que puedes editar el título y la descripción del commit antes de confirmar.
+
+   Usa el panel izquierdo si el título de la PR ya es un mensaje de commit válido, y la vista de la PR si quieres retocarlo.
 
 9. **Limpiar**: tras la fusión, pulsa **Delete Branch...** en la parte inferior del panel izquierdo de la vista **GitHub Pull Requests**. Ofrecerá borrar tanto la rama local como la remota: confirma ambas. Después, actualiza tu `main` local:
 
@@ -132,5 +140,16 @@ Una vez aprobada la PR, el autor la fusiona.
    git checkout main
    git pull origin main
    ```
+
+   El botón Checkout: `main` del panel izquierdo ejecuta `git checkout main`: saca a VS Code de la rama de la PR y lo lleva a `main`. No fusiona la PR; eso solo lo hace Squash and Merge. Tampoco trae la fusión desde GitHub a tu ordenador, por eso después hace falta `git pull origin main`.
+
+## Resolución de problemas
+
+### Aviso "You have uncommitted changes on this pull request branch" al fusionar
+
+Aparece al pulsar Squash and Merge si en tu copia local de la rama de la PR hay cambios sin commit. La fusión se hace en GitHub con lo que ya está subido, así que esos cambios no entran en la PR.
+
+- Si deben formar parte de la PR: cancela, haz commit de los cambios, súbelos con `git push`, espera a que la PR muestre el nuevo commit y vuelve a pulsar Squash and Merge.
+- Si van a ir en otra PR: continúa con la fusión. Los cambios locales se conservan.
 
 ---

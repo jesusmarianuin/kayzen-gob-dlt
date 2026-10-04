@@ -26,6 +26,93 @@ Normas para cualquier fichero `.md` de documentación del proyecto.
 - Buenas prácticas: explica el porqué de cada recomendación, céntrate en sus implicaciones de seguridad, acompáñala de código concreto y cita los estándares oficiales (ERC-20, ERC-721...) cuando apliquen
 - Añade una sección de resolución de problemas cuando haya fallos habituales
 
+### Metadatos (front matter)
+
+Clasificar un documento es añadirle un bloque de metadatos en YAML entre dos líneas `---`, antes del primer encabezado.
+
+Alcance:
+
+- Solo se clasifican documentos dentro de estas carpetas: `knowledge-base/` y `topics/`
+- Quedan fuera las carpetas privadas, cuyo nombre empieza por `_` (por ejemplo, `_skills`), y todo lo que contienen, en cualquier nivel
+- Quedan fuera los documentos de la raíz (README.md, AGENTS.md...) y cualquier otra carpeta, salvo que se añada a la lista anterior
+- No se clasifica por defecto: solo cuando el usuario lo pida para un documento concreto
+- Si un documento ya está clasificado y cambia su contenido, se actualizan sus metadatos en la misma tarea
+
+Formato:
+
+```yaml
+---
+summary: "Cómo desplegar un nodo Besu con consenso QBFT y verificar que sincroniza."
+source-type: [DOC-REF, TUTORIAL]
+areas: [INFRA, SEGOPS]
+depth: 5
+study: true
+card-model: mixed
+tags: [besu, qbft]
+---
+```
+
+Campos:
+
+- `summary` (obligatorio): resumen para saber de qué trata el documento sin leerlo entero
+  - Una o dos frases, en español
+  - Siempre entre comillas, para que los dos puntos u otros caracteres no rompan el YAML
+- `source-type` (obligatorio): tipos de fuente que aplican, uno o varios, de la tabla "Tipos de fuente"
+- `areas` (obligatorio): áreas de prioridad que aplican, una o varias, de la tabla "Áreas de prioridad"
+- `depth` (obligatorio): entero de 0 a 5, el nivel más alto entre las `areas` del documento
+- `study` (obligatorio): `true` si el contenido debe convertirse en tarjetas de repaso, `false` si no
+- `card-model` (obligatorio si `study: true`): modelo de las tarjetas del documento. Valores:
+  - `reversed`: básico con tarjeta invertida, para conceptos que basta con entender
+  - `typed`: teclear la respuesta, para términos, siglas y nombres que hay que saber con exactitud
+  - `mixed`: el documento combina ambos casos, y el modelo se elige en cada tarjeta con el criterio de los dos anteriores
+- `tags` (opcional): temas concretos en kebab-case (producto, protocolo, red...), fuera de las dos tablas
+
+Reglas:
+
+- Las claves van en kebab-case
+- Los códigos de `source-type` y `areas` se escriben sin `@` ni `#`, porque en YAML esos caracteres rompen el valor o lo convierten en comentario
+- Si `depth` es 0, avisa antes de clasificar: el documento es ruido y se descarta salvo excepción
+- No añadas campos nuevos sin añadirlos antes a esta sección
+- Si no está claro el valor de un campo, pregunta antes de escribirlo
+- El criterio de los modelos de tarjeta está en la [especificación de la app de repetición espaciada](learning/spaced-repetition-app/SPEC.md)
+- Las tablas resumen la sección "Eligiendo lo que me toca" del [manifiesto](MANIFESTO.md), que manda en caso de duda; si cambia, se actualizan en la misma tarea
+
+Tipos de fuente (`source-type`):
+
+| Código | Qué es |
+| --- | --- |
+| NORMA | Norma vinculante: leyes, reglamentos, directivas, actos de ejecución |
+| GUIA-OFICIAL | Soft law: guías y criterios de autoridades, no vinculantes pero de facto obligatorios |
+| ESTANDAR | Estándar de organismo de normalización: W3C, ETSI, ISO, IETF, EIP |
+| ESPEC | Especificación de una plataforma concreta: arquitectura, APIs, requisitos |
+| DOC-REF | Manual oficial de un software o producto |
+| CODIGO | Código fuente, repositorios, configuraciones, changelogs |
+| ADHESION | Cómo unirse u operar: requisitos, altas, sandbox, conformidad |
+| TUTORIAL | Paso a paso, quickstarts, how-tos |
+| ESTRATEGIA | Política pública: planes, hojas de ruta, programas |
+| CONVOCATORIA | Contratación y ayudas: licitaciones, pliegos, bases |
+| INVESTIGACION | Papers, tesis, informes técnicos, observatorios |
+| DIVULGACION | Cursos, webinars, charlas, artículos explicativos |
+| ANALISIS | Opinión e interpretación; autoridad secundaria, vigencia efímera |
+| NOTICIA | Actualidad, anuncios, eventos; autoridad secundaria, vigencia efímera |
+| PROMO | Busca vender o captar; autoridad interesada, vigencia efímera |
+
+Áreas de prioridad (`areas`), con su nivel para `depth` y las fuentes de referencia (entre paréntesis, las de consulta en caso de duda):
+
+| Código | Ámbito | Nivel | Fuentes |
+| --- | --- | --- | --- |
+| INFRA | Nodos, consenso, despliegue, monitorización | 5 | DOC-REF, TUTORIAL, CODIGO (ESPEC, ESTANDAR) |
+| SEGOPS | Claves, HSM, ENS, NIS2, seguridad de nodos | 4 | GUIA-OFICIAL, DOC-REF, TUTORIAL (NORMA, ESTANDAR) |
+| ID | DIDs, credenciales verificables, cartera EUDI, confianza EBSI | 4 | ESPEC, ESTANDAR, DOC-REF (NORMA, GUIA-OFICIAL) |
+| GOB | Operación de nodos, validadores, consorcios | 3 | ESPEC, ADHESION, ESTRATEGIA (ANALISIS, DIVULGACION) |
+| INTEROP | ENI, W3C, OpenID4VC, ETSI, conformidad EBSI | 3 | ESTANDAR, ESPEC (NORMA, GUIA-OFICIAL) |
+| DEV | Solidity, contratos, JSON-RPC, SDKs | 3 | DOC-REF, TUTORIAL, CODIGO (ESPEC, ESTANDAR) |
+| REGULACION | eIDAS 2, RGPD, DLT Pilot Regime, Data Act, Leyes 39/40 | 2 | NORMA, GUIA-OFICIAL (ANALISIS, INVESTIGACION) |
+| FIN | Financiación y contratación pública | 2 | CONVOCATORIA, ESTRATEGIA (NOTICIA, GUIA-OFICIAL) |
+| CASOS | Casos de uso, pilotos, adopción | 2 | INVESTIGACION, DIVULGACION, NOTICIA (ANALISIS, ESPEC) |
+| ECO | Actores, proveedores, consorcios: quién hace qué | 1 | NOTICIA, ANALISIS (PROMO con cautela) |
+| CRIPTO | Tokens financieros, MiCA, trading, stablecoins | 0 | Se descarta; si aparece, NOTICIA o ANALISIS, nunca PROMO |
+
 ### Ejemplos de código
 
 - Indica dónde se ejecuta cada comando o fragmento
