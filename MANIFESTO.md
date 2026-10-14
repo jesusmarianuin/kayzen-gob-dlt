@@ -25,6 +25,8 @@ Y todo esto parece adopción, aparece actividad, liquidez, transacciones... pero
 
 Pero todo esto no significa que la tesis de Web3 sea equivocada, para mí el problema es que Web3 no existe al margen del mundo real y por lo tanto, también muchas cosas deberán cambiar —Otra vez, el cómo se convierte un uno de los factores más importantes—.
 
+Y aquí me viene a la cabeza Gabe Newell, cofundador de Valve, la empresa detrás de Steam. Steam arrinconó el formato físico en el PC y no lo consiguió con una ideología ni prometiendo una revolución, sino con algo tan banal como que funcionaba bien. Comprar, descargar, actualizar y tener tu biblioteca en cualquier ordenador era más cómodo que ir a la tienda... e incluso que piratear. Él mismo lo resumió diciendo que la piratería es un problema de servicio, no de precio. Y ojo, porque lo hizo siendo centralizado y con DRM, convenciendo a la gente de renunciar a algo tan simbólico como tener el juego en la estantería. Esa es, para mí, la lección incómoda para Web3: la descentralización no gana por tener razón, gana si funciona mejor que lo que viene a sustituir. Cuando hay que elegir entre la idea y la comodidad, la gente elige la comodidad —otra vez, el cómo—.
+
 Al final, comprendí que coordinar actores que son predecibles como ordenadores, o una organización con procesos concretos, es complejo pero posible. Coordinar una sociedad —otra vez volvemos al cómo— es mucho más complicado. Los humanos cambiamos de opinión. Interpretamos las reglas. Tenemos intereses contradictorios. Mentimos. Cooperamos. Nos enfadamos. Abandonamos proyectos. Creamos alianzas. Cambiamos nuestros incentivos y, en ocasiones, hacemos cosas que económicamente no tienen ningún sentido.
 
 Y es en el proceso de descentralización, ese en el que queremos evitar el punto único de fallo, que sea más autónomo, resiliente, participativo, soberano, etc., etc., donde, de partida, tuvimos el primer error: no permitir un consenso. Sin embargo, se ha iniciado Web3 con un «o lo tomas o lo dejas»… y claro…
@@ -42,6 +44,32 @@ Conozco sus procesos, sus limitaciones, sus sistemas heredados, sus problemas de
 Quizá tenga más sentido llevar ahí lo que he aprendido sobre sistemas descentralizados, blockchain e identidad digital. Pero no porque la administración necesite «Web3», esa sería una forma equivocada de plantearlo. Lo primero sería demostrar que necesita una arquitectura descentralizada para problemas concretos, no porque hay una subvención, no porque es lo que toca, sino porque es la forma más optima de abordar el problema.
 
 Al final, tras un largo rodeo, he comprendido que la verdadera innovación no está en crear comunidades desde cero a base de incentivos artificiales, está en dar mejores herramientas a las comunidades que nos sostienen y sobre todo a las que ya conocemos. Vuelvo a mí terreno, pero con una nueva visión técnica. Este es mí nuevo punto de partida.
+
+## Procrastinación
+
+Dentro del análisis de lo que hize bien o mal hay otro factor que sufri mucho, se que es el sindrome del impostor, tambien deficit de atención y procrastinación, en parte por no ir de la mano de un plan, cuando vas por libre es facil perderse sin saber hacía donde ir.
+
+Recuerdo 3 meses para estudiar sobre redes P2P, que oye perfecto, un documento brillante, pero... ok. ¿para que sirve esto?
+
+Recuerdo 3-4 meses para montar un servidor ubuntu con IPFS, docker, ngnixex, con primeras medidas hardering de minimo permiso, donde aprendí limux, aprendi cosas que incluso en el trabajo me vino bien... y ok, ya se IPFS pero ¿era esto lo que quería?
+
+Sí tube paralisis por analisis, pero es que no es facil saber a quien pregntar y esta sí es un critica a la comunidad, más tarde ethereum se puso las pilas y publico material concreto, que a mi ya me daba agotamiento empezar, porque ya estaba siguiendo un curso de Alchemy Univertity que estaba abandonado me di luego, no se volio a tocar en meses, por las fechas de los repos en años..
+En ese curso aprednes cosas internas de ethereum, que es ok.. de la misma forma que aprendes como funciona el motor de base de datos, está bien, pero como contexto general saber un insert y select para el 90% de aplicaciones sencillas te vale..¿no?
+Claro que aprendi del master, pero master muy pubre, con mas dudas qe soluciones, y es verdad construi mi token, mi contrato, mi dapp simple, mucho con IA, llamadas al contrato, pero con la sensacion de cuando te dan un curso en el trabajo, no diría hoy que sé o recuerde todos los pasos.. es verdad sé que mejor usar Foundry, los faucets para probar, la libreria para proba, que han cambiado de cuando estudie, no puedo decir que ahora si empeizoe de cero no sepa nada, porque no es cierto, pero siempre esta todo lo aprendido como una nube que no consigo concretar.
+
+## Procrastinación, parálisis y el camino sin mapa
+
+Dentro del análisis de lo que hice bien o mal, hay un factor determinante con el que luché constantemente: una mezcla de síndrome del impostor, déficit de atención y procrastinación. Todo ello alimentado, en gran parte, por no contar con un plan claro. Cuando avanzas por libre, es extremadamente fácil perder el rumbo y quedarte sin saber hacia dónde ir.
+
+Recuerdo, por ejemplo, haber dedicado tres meses enteros a estudiar a fondo sobre redes P2P. ¿El resultado? Un documento brillante, perfecto... pero la pregunta inevitable al terminar fue: «Vale, ¿y esto para qué sirve exactamente?».
+
+Lo mismo me ocurrió cuando le dediqué otros tres o cuatro meses a montar un servidor Ubuntu con IPFS, Docker, Nginx y las primeras medidas de hardening bajo el principio de mínimo privilegio. Aprendí muchísimo de Linux —conocimientos que, de hecho, me vinieron genial para el trabajo—, pero al final del proceso me volvió a asaltar la misma duda: «De acuerdo, ya sé manejar IPFS, ¿pero era realmente esto lo que quería lograr?».
+
+Sufrí una clara parálisis por análisis, pero también hay que reconocer que no era fácil saber a quién acudir ni qué preguntar. Y esto sí es una crítica directa a la comunidad: solo más tarde Ethereum «se puso las pilas» y empezó a publicar material concreto y estructurado, pero para cuando eso llegó, yo ya arrastraba un agotamiento considerable. Había estado siguiendo un curso de Alchemy University para darme cuenta, más tarde, de que estaba abandonado; los repositorios llevaban años sin tocarse. En ese tipo de formaciones aprendes las entrañas de Ethereum, lo cual está bien a modo de contexto, pero ocurre algo similar a las bases de datos: entender el motor interno ayuda, pero para el 90% de las aplicaciones reales lo que necesitas en el día a día es saber hacer un INSERT y un SELECT.
+
+¿Y del master no aprendí? Sí, claro. Pero fue una experiencia deficiente, que me dejó con más dudas que certezas. Al final construí mi token, mi contrato inteligente y una dApp sencilla. Sin embargo, la sensación resultante es muy parecida a cuando te dan una formación rápida en el trabajo: no sabría detallar de memoria cada paso exacto.
+
+Es cierto que hoy no parto de cero. Sé que ahora es mejor usar Foundry, sé cómo funcionan los faucets para pruebas y entiendo la evolución de las librerías respecto a cuando empecé. Decir que no sé nada no sería verdad; pero todo lo aprendido sigue ahí, flotando como una nube que aún no logro concretar del todo.
 
 ## De donde partimos
 
@@ -67,7 +95,7 @@ Nada de esto llega a la isla. No porque no sea relevante, sino porque la adminis
 
 ## Método de trabajo
 
-Seré honesto: nadie puede abarcarlo todo leyendo. Me he pasado 2 años abrumado con artículos, opiniones, forks de ideas, discusiones que se contradicen entre sí. Y aquí está la ironía: la descentralización también se aplica a la documentación. Olvídate del modelo de libro —lees, aprendes, aplicas—, eso no existe en este mundo. Lo que hay es una nube de fuentes dispersas, cada una con su sesgo, su versión, su fork de la verdad. Y eso produce un desgaste que ninguna mente humana está preparada para sostener.
+Seré honesto: nadie puede abarcarlo todo leyendo. Me he pasado 2 años abrumado con artículos, opiniones, forks de ideas, discusiones que se contradicen entre sí. Y no es que falten referentes sólidos: los EIP, la documentación de ethereum.org o las librerías de OpenZeppelin son estándares de facto que cualquiera puede seguir. El problema está alrededor. Y aquí está la ironía: la descentralización también se aplica a la documentación. Cada cadena, cada L2 y cada protocolo nuevo trae su propia versión de cómo hacer las cosas, y el modelo de libro —lees, aprendes, aplicas— solo funciona en ese núcleo. Fuera de él, lo que hay es una nube de fuentes dispersas, cada una con su sesgo, su versión, su fork de la verdad. Y eso produce un desgaste que ninguna mente humana está preparada para sostener.
 
 Y si no lo sostiene una mente humana, tampoco lo resuelve simplemente delegarlo a una IA sin más. Le pasa lo mismo cuando le pides que lea el caos sin acotar: alucina, varía la respuesta según el día, se contradice de una pasada a otra, y corregir esas imprecisiones a base de revisiones interminables es agotador. Imagina leer lo mismo tres veces desde tres fuentes distintas con tres opiniones distintas, no saber cuál es la correcta, cuál está simplemente equivocada y cuál es solo una visión más.
 

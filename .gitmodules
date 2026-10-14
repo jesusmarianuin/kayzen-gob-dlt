@@ -1,0 +1,36 @@
+[submodule "knowledge-base/isbe/isbe-contracts"]
+	path = knowledge-base/isbe/isbe-contracts
+	url = https://github.com/red-isbe/isbe-contracts.git
+[submodule "knowledge-base/isbe/isbe-clients-template"]
+	path = knowledge-base/isbe/isbe-clients-template
+	url = https://github.com/red-isbe/isbe-clients-template.git
+[submodule "knowledge-base/isbe/isbe-besu-local-deployer"]
+	path = knowledge-base/isbe/isbe-besu-local-deployer
+	url = https://github.com/red-isbe/isbe-besu-local-deployer.git
+[submodule "knowledge-base/isbe/red-isbe.github.io"]
+	path = knowledge-base/isbe/red-isbe.github.io
+	url = https://github.com/red-isbe/red-isbe.github.io.git
+[submodule "knowledge-base/isbe/legal"]
+	path = knowledge-base/isbe/legal
+	url = https://github.com/red-isbe/legal.git
+[submodule "knowledge-base/isbe/start-here"]
+	path = knowledge-base/isbe/start-here
+	url = https://github.com/red-isbe/start-here.git
+[submodule "knowledge-base/besu-eth/besu"]
+	path = knowledge-base/besu-eth/besu
+	url = https://github.com/besu-eth/besu.git
+[submodule "knowledge-base/besu-eth/besu-docs"]
+	path = knowledge-base/besu-eth/besu-docs
+	url = https://github.com/besu-eth/besu-docs.git
+[submodule "knowledge-base/besu-eth/besu-native"]
+	path = knowledge-base/besu-eth/besu-native
+	url = https://github.com/besu-eth/besu-native.git
+[submodule "knowledge-base/besu-eth/besu-hsm-plugin"]
+	path = knowledge-base/besu-eth/besu-hsm-plugin
+	url = https://github.com/besu-eth/besu-hsm-plugin.git
+[submodule "knowledge-base/besu-eth/homebrew-besu"]
+	path = knowledge-base/besu-eth/homebrew-besu
+	url = https://github.com/besu-eth/homebrew-besu.git
+[submodule "knowledge-base/besu-eth/wiki"]
+	path = knowledge-base/besu-eth/wiki
+	url = https://github.com/besu-eth/wiki.git
