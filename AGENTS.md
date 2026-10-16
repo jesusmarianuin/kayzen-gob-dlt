@@ -34,6 +34,7 @@ Alcance:
 
 - Solo se clasifican documentos dentro de estas carpetas: `knowledge-base/` y `topics/`
 - Quedan fuera las carpetas privadas, cuyo nombre empieza por `_` (por ejemplo, `_skills`), y todo lo que contienen, en cualquier nivel
+- Si existe un archivo con nombre `.ignore.md` en una carpeta, se indica las sub-carpetas o archivos a ignorar, lee dicho archivo, le la lista de carpetas e ignora todos los archivos contenidos.
 - Quedan fuera los documentos de la raíz (README.md, AGENTS.md...) y cualquier otra carpeta, salvo que se añada a la lista anterior
 - No se clasifica por defecto: solo cuando el usuario lo pida para un documento concreto
 - Si un documento ya está clasificado y cambia su contenido, se actualizan sus metadatos en la misma tarea
