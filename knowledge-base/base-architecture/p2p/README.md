@@ -36,11 +36,11 @@ El contenido se reparte en estos documentos, pensados para leerse en orden:
 - [Mecanismos de las redes p2p: enrutamiento, difusión y propagación](05-routing-and-diffusion.md)
 - [Mecanismos de las redes p2p: conectividad y transferencia de datos](06-connection-and-data-transfer.md)
 - [Mecanismos de las redes p2p: replicación y consistencia](07-replication-and-consistency.md)
-- [Clasificación y roles de los nodos](08-node-roles.md)
-- [Dominios funcionales y subredes lógicas](09-functional-domains-and-subnets.md)
-- [Algunos ejemplos de redes p2p](10-network-examples.md)
+- [Sincronización de nodos](08-node-synchronization.md)
+- [Clasificación y roles de los nodos](09-node-roles.md)
+- [Dominios funcionales y subredes lógicas](10-functional-domains-and-subnets.md)
 - [Libp2p: Framework modular para redes P2P](11-libp2p.md)
-- [Sincronización de nodos](12-node-synchronization.md)
+- [Algunos ejemplos de redes p2p](12-network-examples.md)
 
 ## Referencias
 

@@ -53,7 +53,7 @@ def next_card(cards: list[Card], progress: dict, now: datetime) -> Card | None:
     # 1. Repasos vencidos, del más atrasado al más reciente (incluye falladas de otros días)
     if reviews:
         return min(reviews, key=lambda c: _due(states[c.id]))
-    # 2. Nuevas en orden de cards.tsv, con límite diario
+    # 2. Nuevas en orden de cards.csv, con límite diario
     if new and new_cards_left_today(cards, progress, today) > 0:
         return new[0]
     # 3. Si solo quedan falladas esperando, la que venza antes, sin esperar

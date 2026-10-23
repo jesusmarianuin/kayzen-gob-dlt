@@ -4,19 +4,19 @@ Casos de prueba de acuerdo: describen con ejemplos cómo debe comportarse la apl
 
 ## Datos de ejemplo
 
-Notas de `data/cards.tsv`, en este orden:
+Notas de `data/cards.csv`, en este orden, todas activas (`enabled` a `true`):
 
-| id | Modelo | Pregunta | Respuesta | Alternativas | Imagen |
-| --- | --- | --- | --- | --- | --- |
-| `dog` | 1 invertida | Dog | Perro | | sí |
-| `boe` | 2 teclear | ¿Qué significa BOE? | Boletín Oficial del Estado | Boletín Oficial | sí |
-| `cat` | 1 invertida | Cat | Gato | | sí |
-| `onu` | 2 teclear | ¿Qué significa ONU? | Organización de las Naciones Unidas | Naciones Unidas, Organización Naciones Unidas | sí |
-| `house` | 1 invertida | House | Casa | | sí |
-| `paris` | 2 teclear | ¿Capital de Francia? | París | | sí |
-| `tree` | 1 invertida | Tree | Árbol | | sí |
-| `spain` | 2 teclear | ¿Qué país tiene por capital Madrid? | España | | sí |
-| `book` | 1 invertida | Book | Libro | | no |
+| id | Modelo | Pregunta | Respuesta (`back`) | Imagen |
+| --- | --- | --- | --- | --- |
+| `dog` | 1 invertida | Dog | Perro | sí |
+| `boe` | 2 teclear | ¿Qué significa BOE? | `Boletín Oficial del Estado\|Boletín Oficial` | sí |
+| `cat` | 1 invertida | Cat | Gato | sí |
+| `onu` | 2 teclear | ¿Qué significa ONU? | `Organización de las Naciones Unidas\|Naciones Unidas\|Organización Naciones Unidas` | sí |
+| `house` | 1 invertida | House | Casa | sí |
+| `paris` | 2 teclear | ¿Capital de Francia? | París | sí |
+| `tree` | 1 invertida | Tree | Árbol | sí |
+| `spain` | 2 teclear | ¿Qué país tiene por capital Madrid? | España | sí |
+| `book` | 1 invertida | Book | Libro | no |
 
 Salvo que se indique lo contrario, cada caso parte de estos datos y **sin** `data/progress.json`.
 
@@ -28,8 +28,10 @@ Salvo que se indique lo contrario, cada caso parte de estos datos y **sin** `dat
 | TC-02 | Primera puntuación | En "Dog", revelar y pulsar "Bien" | Se crea `progress.json` con `dog:forward` y el siguiente repaso para mañana. Aparece "¿Qué significa BOE?" |
 | TC-03 | Continuar otro día | Día 1: puntuar "Dog" y "BOE" con "Bien" y cerrar. Día 2: ejecutar de nuevo | Salen primero "Dog" y "BOE" (vencen hoy) y después las nuevas, empezando por "Cat". No se empieza de cero |
 | TC-04 | Continuar el mismo día | Puntuar "Dog" con "Bien", cerrar y volver a ejecutar | "Dog" no aparece. La primera tarjeta es "¿Qué significa BOE?" |
-| TC-31 | Id duplicado | Añadir al final de `cards.tsv` otra nota con id `dog` y ejecutar | La app no arranca y muestra: `cards.tsv línea 15: id duplicado "dog" (ya usado en la línea 6)`. Con id `dog-verb` arranca con normalidad |
+| TC-31 | Id duplicado | Añadir al final de `cards.csv` otra nota con id `dog` y ejecutar | La app no arranca y muestra: `cards.csv línea 11: id duplicado "dog" (ya usado en la línea 2)`. Con id `dog-verb` arranca con normalidad |
 | TC-32 | Id con formato inválido | Añadir una nota con id `tengo una casa` y ejecutar | La app no arranca e indica la línea y que el id no cumple el formato. Lo mismo con `Dog`, `árbol` o `dog_verb` |
+| TC-45 | Nota desactivada | Con "Dog" estudiada, cambiar su `enabled` a `false` y ejecutar. Después, volver a `true` | Desactivada: no salen "Dog" ni "Perro" en el repaso ni en el estudio libre, y Progreso cuenta 12 tarjetas. Reactivada: "Dog" vuelve con el calendario que tenía |
+| TC-46 | Texto con comas | Añadir `bank,true,typed,"Banco, entidad",Banco,` y ejecutar | Arranca y la pregunta es "Banco, entidad". Sin las comillas, la app no arranca e indica que hay más de 6 columnas |
 
 ## Modelo 1: tarjeta invertida
 
@@ -44,16 +46,19 @@ Salvo que se indique lo contrario, cada caso parte de estos datos y **sin** `dat
 | --- | --- | --- | --- |
 | TC-07 | Acierto exacto | En "¿Qué significa BOE?" escribir `Boletín Oficial del Estado` | Se marca como acierto y aparecen solo tres botones: Me costó, Bien, Fácil |
 | TC-08 | Tolerancia general | Escribir `boletin oficial  del estado.` con espacios al principio | Acierto: se ignoran mayúsculas, espacios sobrantes, punto final y tildes |
-| TC-09 | Alternativa de la nota | Escribir `Boletin oficial` | Acierto por la alternativa `Boletín Oficial` |
+| TC-09 | Otra forma válida | Escribir `Boletin oficial` | Acierto por la forma `Boletín Oficial` (separada con `\|` en `back`) |
 | TC-10 | Letras erróneas | Escribir `Boletín Oficial del Estdo` | Fallo: se muestra lo escrito junto a `Boletín Oficial del Estado`, se registra "Fallé" sin preguntar y aparece "Continuar" |
 | TC-11 | La ñ cuenta | En "¿Qué país tiene por capital Madrid?" escribir `Espana` | Fallo. `españa` sería acierto |
+| TC-48 | Lista en cualquier orden | Añadir `poderes,true,typed,¿Cuáles son los tres poderes del Estado?,Legislativo;Ejecutivo;Judicial,` y escribir `Judicial, Legislativo y Ejecutivo` | Acierto. La respuesta se muestra como `Legislativo, Ejecutivo, Judicial` |
+| TC-50 | Lista con formas válidas | Cambiar el `back` de `poderes` a `Legislativo\|Parlamento;Ejecutivo;Judicial` y escribir `Parlamento, Judicial y Ejecutivo`. Otro día, `Parlamento, Legislativo, Judicial` | El primero es acierto. El segundo es fallo: son dos formas del mismo elemento y falta Ejecutivo |
+| TC-49 | Lista incompleta o con sobrantes | En la misma tarjeta, escribir `Legislativo, Ejecutivo` y después, otro día, `Legislativo, Ejecutivo, Judicial, Electoral` | Fallo en los dos casos: se registra "Fallé" sin preguntar |
 | TC-12 | Una sola dirección | Puntuar "¿Capital de Francia?" y volver días después | Nunca sale una tarjeta que pregunte "París" |
 
 ## Orden de la sesión
 
 | ID | Situación | Pasos | Resultado esperado |
 | --- | --- | --- | --- |
-| TC-13 | Modelos mezclados | Primer día, puntuar todo con "Bien" | Orden: Dog, BOE, Cat, ONU, House, París, Tree, España, Book. Los dos modelos se alternan según `cards.tsv` y ninguna tarjeta inversa sale ese día |
+| TC-13 | Modelos mezclados | Primer día, puntuar todo con "Bien" | Orden: Dog, BOE, Cat, ONU, House, París, Tree, España, Book. Los dos modelos se alternan según `cards.csv` y ninguna tarjeta inversa sale ese día |
 | TC-14 | Límite de nuevas | Con 15 notas del modelo 2 sin estudiar, estudiar un día completo | Salen 10 nuevas y después "Has terminado por hoy". Las otras 5 salen al día siguiente |
 | TC-15 | Vencidas primero | `progress.json` con "Cat" vencida hace 3 días y "Dog" vencida hoy | Sale "Cat", después "Dog" y después las nuevas |
 | TC-16 | Fallo en sesión | Pulsar "Fallé" en "Dog" y seguir con las demás | "Dog" vuelve unos 10 minutos después, intercalada. Si antes no queda nada más, sale en ese momento |
@@ -165,5 +170,6 @@ El progreso se cuenta por tarjetas: los datos de ejemplo tienen 9 notas y 14 tar
 
 | ID | Situación | Pasos | Resultado esperado |
 | --- | --- | --- | --- |
-| TC-29 | Importar en Anki | En Anki, *Archivo → Importar* `data/cards.tsv` | Se crean 9 notas: 5 del tipo "Basic (and reversed card)" (10 tarjetas) y 4 del tipo "Basic (type in the answer)" |
-| TC-30 | Reimportar | Cambiar "Perro" por "Perro (animal)" e importar otra vez | Se actualiza la nota `dog`. No se duplica |
+| TC-29 | Importar en Anki | En Progreso, pulsar "Exportar para Anki". En Anki, *Archivo → Importar* el `cards-anki.txt` descargado | Se crean 9 notas: 5 del tipo "Basic (and reversed card)" (10 tarjetas) y 4 del tipo "Basic (type in the answer)" |
+| TC-30 | Reimportar | Cambiar "Perro" por "Perro (animal)" en `cards.csv`, exportar e importar otra vez | Se actualiza la nota `dog`. No se duplica |
+| TC-47 | Exportar sin desactivadas | Poner `enabled` a `false` en `book` y exportar | `cards-anki.txt` tiene 8 notas y no incluye `book` |

@@ -4,21 +4,21 @@ Temas abiertos para próximas sesiones. Cuando uno se resuelva, se marca y, si c
 
 ## Por comprobar
 
-- [ ] **Importación en Anki (TC-29, TC-30).** No se ha probado. Es la parte del diseño con más incertidumbre: si Anki no acepta las columnas `alternatives` e `image`, hay que ajustar la cabecera o el formato de `cards.tsv`.
+- [ ] **Importación en Anki (TC-29, TC-30, TC-47).** No se ha probado. Es la parte del diseño con más incertidumbre: si Anki no acepta la columna `image`, hay que ajustar la exportación (`storage.export_anki`).
 - [ ] **Paso de días real.** Los casos que dependen del calendario (TC-03, TC-06, TC-16, TC-17, TC-19 a TC-22, TC-33, TC-34) solo se han comprobado con fechas simuladas. Falta confirmarlos con el uso diario.
 - [ ] **Revisión manual en el navegador** de todos los casos de TEST-PLAN.md. Las pruebas automáticas cubren la lógica y las respuestas del servidor, pero no los clics.
 
 ## Limitaciones conocidas
 
-- [ ] **Error en `cards.tsv` con la app abierta.** Si se deja un error en el fichero con la app en marcha, aparece una página de error genérica. El mensaje con la línea solo sale al volver a arrancar. Poco probable; no se arregla por ahora.
+- [ ] **Error en `cards.csv` con la app abierta.** Si se deja un error en el fichero con la app en marcha, aparece una página de error genérica. El mensaje con la línea solo sale al volver a arrancar. Poco probable; no se arregla por ahora.
 - [ ] **Estimación de "días que faltan".** No tiene en cuenta que las dos direcciones de una tarjeta invertida no salen el mismo día, así que el número real puede ser algo mayor.
 - [ ] **Manual de ayuda automático.** Se abre mientras no exista `progress.json`. Si se cierra la app sin puntuar ninguna tarjeta, vuelve a abrirse en el siguiente arranque.
-- [ ] **Anki no recibe todo.** Al importar, se pierden las respuestas alternativas, las imágenes y el progreso.
+- [ ] **Anki no recibe todo.** Al importar, se pierden las imágenes y el progreso, y Anki compara la respuesta entera: no acepta formas sueltas (`|`) ni otro orden en las listas (`;`).
 
 ## Evoluciones de diseño
 
 - [ ] **FSRS en lugar de SM-2.** Motivos del descarte y alcance del cambio en DESIGN.md, "Alternativa descartada: FSRS".
-- [ ] **Ignorar palabras de enlace** (`de`, `del`, `la`, `las`, `el`, `los`, `y`) al comparar la respuesta tecleada. Ahora esas variantes se escriben como alternativas en cada nota (por ejemplo, `Organización Naciones Unidas`).
+- [ ] **Ignorar palabras de enlace** (`de`, `del`, `la`, `las`, `el`, `los`, `y`) al comparar la respuesta tecleada. Ahora esas variantes se escriben con `|` en `back` (por ejemplo, `Organización Naciones Unidas`).
 - [ ] **Campo `strict` por nota**, para que las tildes cuenten cuando cambian el significado (`papa` / `papá`).
 
 ## Ideas sin decidir

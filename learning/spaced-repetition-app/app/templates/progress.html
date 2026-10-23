@@ -30,12 +30,13 @@
       <p class="lead">Todas tienen buen progreso. Solo quedan repasos como mucho cada 21 días para no olvidarlas.</p>
     {% endif %}
   {% else %}
-    <p class="lead">No hay tarjetas. Añade filas a <code>data/cards.tsv</code>.</p>
+    <p class="lead">No hay tarjetas. Añade filas a <code>data/cards.csv</code>.</p>
   {% endif %}
 
   <div class="actions">
     <a href="{{ url_for('study') }}" class="btn primary">Estudiar</a>
     <a href="{{ url_for('help_page') }}#progreso" class="btn">¿Cómo se lee?</a>
+    <a href="{{ url_for('export_anki') }}" class="btn">Exportar para Anki</a>
   </div>
 </article>
 {% endblock %}

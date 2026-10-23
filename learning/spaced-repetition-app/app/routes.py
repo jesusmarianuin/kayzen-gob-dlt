@@ -3,7 +3,7 @@
 import threading
 from datetime import datetime
 
-from flask import Flask, abort, current_app, redirect, render_template, request, session, url_for
+from flask import Flask, Response, abort, current_app, redirect, render_template, request, session, url_for
 
 from app import checker, config, planner, scheduler, stats, storage
 
@@ -77,7 +77,7 @@ def register(app: Flask) -> None:
         card = _find_card(card_id)
         typed = request.form.get("typed", "")
         version = request.form.get("version", "")
-        correct = checker.is_correct(typed, card.answer, card.alternatives)
+        correct = checker.is_correct(typed, card.answer)
         if not correct:
             # Fallo al teclear: cuenta como "fallé" sin preguntar
             _rate(card.id, scheduler.AGAIN, version)
@@ -97,6 +97,12 @@ def register(app: Flask) -> None:
         summary = stats.summary(storage.load_cards(), storage.load_progress(), datetime.now().date())
         return render_template("progress.html", summary=summary)
 
+    @app.get("/export/anki")
+    def export_anki():
+        # Descarga para Anki: Archivo → Importar. Solo notas activas, sin progreso
+        return Response(storage.export_anki(storage.load_notes()), mimetype="text/tab-separated-values",
+                        headers={"Content-Disposition": "attachment; filename=cards-anki.txt"})
+
     @app.get("/help")
     def help_page():
         return render_template("help.html", config=config)
@@ -114,7 +120,7 @@ def register(app: Flask) -> None:
             return redirect(url_for("free_start"))
         position = session.get("free_position", 0)
         cards = {card.id: card for card in storage.load_cards()}
-        # Tarjetas borradas de cards.tsv durante el estudio libre se saltan
+        # Tarjetas borradas o desactivadas en cards.csv durante el estudio libre se saltan
         while position < len(order) and order[position] not in cards:
             position += 1
         session["free_position"] = position
@@ -127,7 +133,7 @@ def register(app: Flask) -> None:
     def free_answer(card_id: str):
         card = _find_card(card_id)
         typed = request.form.get("typed", "")
-        correct = checker.is_correct(typed, card.answer, card.alternatives)
+        correct = checker.is_correct(typed, card.answer)
         return render_template("review.html", card=card, mode="free", stage="right" if correct else "wrong",
                                typed=typed, position=session.get("free_position", 0) + 1,
                                total=len(session.get("free_order", [])))

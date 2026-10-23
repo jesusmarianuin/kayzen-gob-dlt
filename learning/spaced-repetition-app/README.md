@@ -27,16 +27,50 @@ Se abre el navegador en `http://127.0.0.1:5000`. La primera vez aparece el manua
 
 ## Añadir tarjetas
 
-Añade una fila a `data/cards.tsv` (formato e id en [DESIGN.md](DESIGN.md#contenido-datacardstsv)). Para asociarle una imagen de Wikimedia Commons:
+Añade una fila a `data/cards.csv`. Se puede editar con cualquier editor de texto o con una hoja de cálculo. [data/cards-demo.csv](data/cards-demo.csv) es una plantilla comentada con un ejemplo de cada caso, y el formato completo está en [DESIGN.md](DESIGN.md#contenido-datacardscsv).
+
+```csv
+id,enabled,model,front,back,image
+dog,true,reversed,Dog,Perro,
+boe,true,typed,¿Qué significa BOE?,Boletín Oficial del Estado|Boletín Oficial,
+poderes,true,typed,¿Cuáles son los tres poderes del Estado?,Legislativo|Parlamento;Ejecutivo;Judicial,
+```
+
+- `model`: `reversed` (piensas la respuesta, sale en las dos direcciones) o `typed` (tecleas la respuesta exacta).
+- `back` en `typed`: `|` separa formas válidas (vale cualquiera) y `;` separa elementos de una lista (valen todos, en cualquier orden). En `reversed` se muestra tal cual.
+- `enabled`: `false` oculta la nota sin borrarla ni perder su progreso.
+
+Para asociarle una imagen de licencia libre, desde la raíz del repositorio:
 
 ```bash
 python learning/spaced-repetition-app/scripts/fetch_images.py boe "Boletín Oficial del Estado"
 ```
 
-- `boe`: id de la nota en `cards.tsv` (primera columna).
-- `"Boletín Oficial del Estado"`: qué buscar en Wikimedia Commons. Entre comillas si tiene espacios.
+- `boe`: id de la nota en `cards.csv` (primera columna).
+- `"Boletín Oficial del Estado"`: qué buscar. Entre comillas si tiene espacios.
 
-`data/cards.tsv` se puede importar en Anki (*Archivo → Importar*).
+Por defecto busca en [Pixabay](https://pixabay.com/), cuyas fotos se pueden usar sin atribución, si hay clave de API. Sin clave, busca en [Openverse](https://openverse.org/), que reúne imágenes con licencia libre de Flickr, Wikimedia Commons y otras colecciones abiertas. En los dos casos descarga el primer resultado.
+
+La clave de Pixabay es gratuita: se obtiene en la [documentación de su API](https://pixabay.com/api/docs/) y se guarda en `learning/spaced-repetition-app/.env`, que git ignora:
+
+```bash
+echo 'PIXABAY_API_KEY=tu-clave' > learning/spaced-repetition-app/.env
+```
+ Para elegir entre varios candidatos antes de descargar:
+
+```bash
+python learning/spaced-repetition-app/scripts/fetch_images.py boe "Boletín Oficial del Estado" --list 8 --preview-dir /tmp/previews
+python learning/spaced-repetition-app/scripts/fetch_images.py boe "Boletín Oficial del Estado" --pick 3
+```
+
+- `--list 8`: muestra los 8 primeros candidatos (título, autor, licencia y origen) sin descargar nada.
+- `--preview-dir`: con `--list`, guarda la miniatura de cada candidato para revisarla.
+- `--pick 3`: descarga el candidato número 3 de la lista.
+- `--source pixabay|openverse|wikimedia`: elige la fuente en lugar de la de por defecto.
+
+Si el servidor responde que hay demasiadas peticiones, el script espera y lo reintenta.
+
+Para pasar las tarjetas a Anki, en la pantalla Progreso pulsa Exportar para Anki y abre el fichero descargado en Anki (*Archivo → Importar*).
 
 ## Progreso local
 
@@ -45,4 +79,4 @@ python learning/spaced-repetition-app/scripts/fetch_images.py boe "Boletín Ofic
 
 ## Licencia
 
-[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/), como el resto del repositorio, salvo las imágenes de `app/static/images/`. Proceden de Wikimedia Commons y mantienen su licencia original (por ejemplo, CC BY-SA). El autor y la licencia de cada una están en [data/image-credits.md](data/image-credits.md).
+[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/), como el resto del repositorio, salvo las imágenes de `app/static/images/`. Proceden de Pixabay ([licencia de contenido de Pixabay](https://pixabay.com/service/license-summary/)), de Wikimedia Commons y de otras colecciones abiertas que indexa Openverse, y mantienen su licencia original (por ejemplo, CC BY-SA). El autor y la licencia de cada una están en [data/image-credits.md](data/image-credits.md).

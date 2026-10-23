@@ -9,9 +9,9 @@ Blockchain es el diseño para un registro contable cronológicamente ordenada qu
 
 Cada bloque contiene un conjunto de transacciones validadas y está enlazado criptográficamente al bloque anterior mediante funciones hash, formando una estructura de datos que garantiza la integridad histórica de la información registrada.
 
-El concepto fue introducido por primera vez en el [whitepaper de Bitcoin](https://bitcoin.org/bitcoin.pdf) de Satoshi Nakamoto en 2008, donde se propuso como la estructura de datos fundamental para mantener un registro de transacciones sin necesidad de una autoridad central. Desde entonces, la tecnología ha evolucionado más allá de las criptomonedas, encontrando aplicaciones en contratos inteligentes, trazabilidad de activos, gestión de identidad digital y sistemas de gobernanza descentralizada.
+El concepto fue introducido por primera vez en el [whitepaper de Bitcoin](https://bitcoin.org/bitcoin.pdf) de Satoshi Nakamoto en 2008, donde se propuso como la estructura de datos fundamental para mantener un registro de transacciones sin necesidad de una autoridad central. Desde entonces, la tecnología ha evolucionado más allá de las criptomonedas, encontrando aplicaciones en contratos inteligentes, tokenización, trazabilidad de activos (cadena de suministro), gestión de identidad digital y sistemas de gobernanza descentralizada (DAO).
 
-Esta tecnología representa un modelo de base de datos descentralizada donde la seguridad se logra mediante protocolos de consenso que permiten a múltiples participantes acordar el estado del sistema sin confiar en una entidad central. Las características fundamentales que proporciona son privacidad, transparencia verificable y auditabilidad completa del histórico de transacciones.
+Esta tecnología representa un modelo de base de datos descentralizada donde la seguridad se logra mediante protocolos de consenso que permiten a múltiples participantes acordar el estado del sistema sin confiar en una entidad central. Las características fundamentales que proporciona son resilencia, transparencia verificable y auditabilidad completa del histórico de transacciones.
 
 Si analizamos las decisiones de diseño de esta estructura de datos, podemos concluir que:
 
@@ -25,13 +25,13 @@ Si analizamos las decisiones de diseño de esta estructura de datos, podemos con
 
 * Como existe un coste para llegar al consenso, las transacciones se agrupan en bloques. Imagina lo inviable que sería que cientos o miles de nodos tengan que llegar a un acuerdo por cada transacción individual que reciben.
 * Agrupar las transacciones en bloques y, además, incluir el hash del bloque anterior —que resume y valida todas las transacciones previas— facilita la validación de nuevos bloques por parte de los nodos. Sin este mecanismo, los nodos tendrían que validar millones de transacciones previas, lo que sería inviable.
-* Según el modelo de confianza, una red puede ser trustless (sin confianza previa entre participantes) o trusted (con participantes identificados y autorizados). En ambos casos, los nodos necesitan generar unas evidencias criptográficas mínimas, incluso en redes permisionadas como Hyperledger Besu con protocolos de consenso como QBFT o IBFT 2.0, donde cada bloque lleva las firmas de los validadores que lo aprueban. Ejemplos de estas evidencias son los árboles de Merkle, que permiten validar grandes volúmenes de datos de forma eficiente, y las zero-knowledge proofs (pruebas de conocimiento cero), que se usan en redes y soluciones más recientes, como los ZK-Rollups, para mejorar la privacidad y la escalabilidad.
+* Según el modelo de confianza, una red puede ser trustless (sin confianza previa entre participantes) o trusted (con participantes identificados y autorizados). En ambos casos, los nodos necesitan generar unas evidencias criptográficas mínimas, incluso en redes permisionadas como Hyperledger Besu con protocolos de consenso como QBFT o BFT 2.0, donde cada bloque lleva las firmas de los validadores que lo aprueban. Ejemplos de estas evidencias son los árboles de Merkle, que permiten validar grandes volúmenes de datos de forma eficiente, y las zero-knowledge proofs (pruebas de conocimiento cero), que se usan en redes y soluciones más recientes, como los ZK-Rollups, para mejorar la privacidad y la escalabilidad.
 
-En las redes blockchain, las decisiones por consenso suelen seguir tres enfoques principales que equilibran de forma progresiva la seguridad, la descentralización y la escalabilidad. Dependiendo del contexto, puede ser necesario realizar un trabajo (Proof of Work), demostrar la participación (Proof of Stake) o, si el participante se identifica correctamente y tiene suficiente autoridad en un ámbito concreto, basta con considerar su participación como confiable (Proof of Authority). QBFT e IBFT 2.0, los protocolos de consenso de Hyperledger Besu para redes permisionadas, son de este último tipo: un conjunto de validadores autorizados propone y firma los bloques por turnos.
+En las redes blockchain, las decisiones por consenso suelen seguir tres enfoques principales que equilibran de forma progresiva la seguridad, la descentralización y la escalabilidad. Dependiendo del contexto, puede ser necesario realizar un trabajo (Proof of Work), demostrar la participación (Proof of Stake) o, si el participante se identifica correctamente y tiene suficiente autoridad en un ámbito concreto, basta con considerar su participación como confiable (Proof of Authority). QBFT e IBFT 2.0, los protocolos de consenso de Hyperledger Besu para redes permisionadas o consorcio, son de este último tipo: un conjunto de validadores autorizados propone y firma los bloques por turnos.
 
-Es decir, se generan evidencias (proof, en inglés) que demuestran el trabajo realizado ([PoW, Proof of Work](https://academy.bit2me.com/que-es-proof-of-work-pow/)), o la participación ([PoS, Proof of Stake](https://academy.bit2me.com/que-es-proof-of-stake-pos/)) o la autoridad ([PoA, Proof of Authority](https://academy.bit2me.com/que-es-proof-of-authority-poa/)).
+> Es decir, se generan evidencias (proof, en inglés) que demuestran el trabajo realizado ([PoW, Proof of Work](https://academy.bit2me.com/que-es-proof-of-work-pow/)), o la participación ([PoS, Proof of Stake](https://academy.bit2me.com/que-es-proof-of-stake-pos/)) o la autoridad ([PoA, Proof of Authority](https://academy.bit2me.com/que-es-proof-of-authority-poa/)).
 
-Cada enfoque es relevante para cada necesidad, bitcoin como sistema resiliente necesita PoW, el trabajo realizado es lo que realmente asegura la red, pero otras redes con mucha participación, PoS es suficiente como demuestra Ethereum, pero incluso hay redes, muchas veces privadas, donde demostrar la pertenencia a la red con PoA es suficiente, porque los validadores están identificados y responden de su comportamiento. Aun así, protocolos PoA como QBFT o IBFT 2.0 siguen siendo tolerantes a [fallas bizantinas](https://academy.bit2me.com/que-es-falla-bizantina/) (BFT, Byzantine Fault Tolerant): la red funciona correctamente mientras los validadores caídos o maliciosos sean menos de un tercio del total (n ≥ 3f + 1), y cada bloque es definitivo en cuanto se añade, sin forks.
+Cada enfoque es relevante para cada necesidad, bitcoin como sistema resiliente necesita PoW, el trabajo realizado es lo que realmente asegura la red, pero otras redes con PoS es suficiente como demuestra Ethereum, donde cualquiera que deposite el stake mínimo puede ser validador. Una variante es DPoS (Delegated Proof of Stake), usada por IOTA, donde los poseedores de tokens no validan, sino que votan con su stake a un grupo reducido y fijo de delegados, que son los únicos que producen bloques (Se gana velocidad a cambio de concentrar el consenso en pocos actores). Por último, hay redes, muchas veces privadas, consorcio o permisionadas, donde demostrar la pertenencia a la red con PoA es suficiente, porque los validadores están identificados y responden de su comportamiento. Aun así, protocolos PoA como QBFT o IBFT 2.0 siguen siendo tolerantes a [fallas bizantinas](https://academy.bit2me.com/que-es-falla-bizantina/) (BFT, Byzantine Fault Tolerant): la red funciona correctamente mientras los validadores caídos o maliciosos sean menos de un tercio del total (n ≥ 3f + 1), y cada bloque es definitivo en cuanto se añade, sin forks.
 
 ## Distributed Ledger Technology (DLT)
 
@@ -49,7 +49,7 @@ El protocolo [Tangle](https://www.iota.org/) utiliza un grafo acíclico dirigido
 
 **Holochain:**
 
-[Holochain](https://www.holochain.org/) adopta un enfoque radicalmente diferente: no utiliza bloques ni busca consenso global. Cada agente mantiene su propia cadena de datos y las interacciones se gestionan de forma descentralizada mediante validación por pares. Este diseño se enfoca en la autonomía de los nodos y la escalabilidad horizontal.
+[Holochain](https://www.Holochain.org/) adopta un enfoque radicalmente diferente: no utiliza bloques ni busca consenso global. Cada agente mantiene su propia cadena de datos y las interacciones se gestionan de forma descentralizada mediante validación por pares. Este diseño se enfoca en la autonomía de los nodos y la escalabilidad horizontal.
 
 ## Distribución versus descentralización
 
@@ -89,9 +89,7 @@ Combina una parte privada y una parte pública. Parte de los datos se mantiene e
 
 **Blockchain permisionada:**
 
-La participación está permitida a nodos verificados y aprobados; es una red privada que se abre a más participantes bajo unas condiciones. Además define roles o permisos específicos, por ejemplo, unos nodos pueden leer solamente y otros escribir.
-
-> Una red se considera permisionada, y no verdaderamente pública, cuando existen restricciones que impiden a cualquier usuario operar su propio nodo local, incluso si dichas restricciones no son explícitas o requieren superar barreras adicionales para acceder a la red. En algunos casos, este carácter permisionado puede no ser evidente y puede ser presentado como una red pública por motivos de imagen o marketing.
+La participación está permitida a nodos verificados y aprobados; es una red que puede ser pública o privada que se abre a más participantes bajo unas condiciones. Además define roles o permisos específicos, por ejemplo, unos nodos pueden leer solamente y otros escribir o mas típicamente es pública porque cualquiera puede consultar pero permisionada para participar como nodo.
 
 ## Forks y evolución de la blockchain
 
@@ -99,11 +97,7 @@ Durante la operación de una blockchain, pueden surgir situaciones donde la cade
 
 **Fork nativo:**
 
-Ocurre temporalmente cuando dos mineros encuentran bloques válidos casi simultáneamente, creando dos versiones competidoras de la cadena. La mayoría de los nodos eventualmente convergen hacia una de las cadenas siguiendo las reglas del protocolo de consenso, típicamente la cadena más larga o la que representa más trabajo acumulado.
-
-**Cadena huérfana (orphaned chain):**
-
-Es la cadena alternativa que termina siendo abandonada cuando la red alcanza consenso sobre cuál es la cadena válida. Los bloques en la cadena huérfana, aunque válidos, no forman parte del histórico principal y sus transacciones deben ser reincluidas en bloques posteriores de la cadena principal.
+Ocurre temporalmente cuando dos nodos encuentran bloques válidos casi simultáneamente (como en PoW), creando dos versiones competidoras de la cadena. La mayoría de los nodos eventualmente convergen hacia una de las cadenas siguiendo las reglas del protocolo de consenso, típicamente la cadena más larga o la que representa más trabajo acumulado, quedando la cadena del **fork huérfano**.  (orphaned chain) abandonada.
 
 **Soft fork:**
 
@@ -123,6 +117,8 @@ En Ethereum post-merge, el peso viene determinado por el stake acumulado respald
 
 Este mecanismo de selección de cadena es crucial para la seguridad y funcionalidad de la red, proporcionando una forma objetiva de resolver disputas sobre el estado del sistema sin requerir coordinación centralizada.
 
+Algunos protocolos de consenso, como QBFT o IBFT 2.0, no necesitan esta regla porque tienen finalidad inmediata: un bloque solo se añade a la cadena cuando lo aprueban más de dos tercios de los validadores, y a partir de ese momento ya no puede revertirse.
+
 ## Escalabilidad y sidechains
 
 A medida que las blockchains principales enfrentan limitaciones de escalabilidad, han surgido diversas soluciones para procesar más transacciones sin comprometer la descentralización o seguridad.
@@ -133,7 +129,7 @@ Son blockchains independientes que se conectan a la blockchain principal mediant
 
 **Layer 2:**
 
-Son protocolos construidos sobre la blockchain principal que procesan transacciones fuera de la cadena principal (off-chain) pero heredan sus garantías de seguridad. Tecnologías como [Lightning Network](https://lightning.network/) para Bitcoin y [Optimistic Rollups](https://ethereum.org/en/developers/docs/scaling/optimistic-rollups/) o [ZK-Rollups](https://ethereum.org/en/developers/docs/scaling/zk-rollups/) para Ethereum permiten throughput significativamente mayor mientras mantienen la finalidad en la blockchain base.
+Son protocolos construidos sobre la blockchain principal que procesan transacciones fuera de la cadena principal pero heredan sus garantías de seguridad. Tecnologías como [Lightning Network](https://lightning.network/) para Bitcoin y [Optimistic Rollups](https://ethereum.org/en/developers/docs/scaling/optimistic-rollups/) o [ZK-Rollups](https://ethereum.org/en/developers/docs/scaling/zk-rollups/) para Ethereum permiten throughput significativamente mayor mientras mantienen la finalidad en la blockchain base.
 
 **Sharding:**
 
@@ -153,11 +149,31 @@ Predecesor de QBFT, también basado en PoA y con propiedades de tolerancia a fal
 
 Referencia: [EIP-650: Istanbul Byzantine Fault Tolerance](https://github.com/ethereum/EIPs/issues/650)
 
-## Modelo gobernanza federado
+## Gobernanza de la red
 
-Modelo de gobernanza que combina supervisión centralizada con ejecución descentralizada. Un órgano común (comité o consejo) fija las normas compartidas de seguridad, cumplimiento e interoperabilidad, y cada organización participante gestiona su parte con autonomía, adaptándola a sus necesidades siempre que respete esas normas. Frente a un modelo centralizado, en el que un único equipo u operador lo gestiona todo.
+La gobernanza define las reglas que permiten coordinar a los participantes de una red, gestionar su evolución y resolver los conflictos que puedan surgir. Es uno de los aspectos fundamentales de cualquier sistema distribuido, especialmente en redes blockchain donde diferentes organizaciones deben colaborar sin depender necesariamente de una autoridad central.
 
-En redes blockchain permisionadas entre administraciones, cada organización opera sus propios nodos y todas se someten a reglas comunes acordadas (requisitos de adhesión, políticas de seguridad, toma de decisiones). Es el modelo de EBSI: cada Estado miembro aporta y opera nodos, y la gobernanza se ejerce de forma conjunta.
+La gobernanza abarca aspectos como la admisión y expulsión de participantes, la gestión de identidades y permisos, las políticas de seguridad, las actualizaciones del protocolo, la resolución de conflictos y los mecanismos de toma de decisiones. También determina cómo se distribuye el poder entre los participantes y qué procedimientos deben seguirse para modificar las reglas que rigen el funcionamiento de la red.
+
+Como vemos en [características de las redes P2P](base-architecture/p2p/01-characteristics.md), los principales modelos de gobernanza son la gobernanza centralizada, en la que una entidad controla las decisiones y la evolución del sistema; la gobernanza federada, en la que varias organizaciones comparten la responsabilidad de gestionar la red mediante acuerdos y procedimientos comunes; la gobernanza descentralizada, en la que los participantes intervienen en las decisiones mediante mecanismos distribuidos; la gobernanza mediante organizaciones autónomas descentralizadas (DAO), que puede utilizar contratos inteligentes y mecanismos de votación para gestionar propuestas y recursos; y la gobernanza híbrida, que combina elementos de distintos modelos para adaptarse a las necesidades de la red.
+
+La criptoeconomía constituye una dimensión complementaria de la gobernanza, especialmente en las redes públicas que utilizan tokens nativos. Con ella es posible el diseño de incentivos y penalizaciones económicas destinados a alinear el comportamiento de los participantes con los objetivos de la red. Las recompensas por validar transacciones, los mecanismos de staking y las penalizaciones económicas, como el slashing, pueden contribuir a la seguridad del protocolo y desincentivar comportamientos maliciosos. La criptoeconomía también puede influir en la gobernanza cuando los tokens incorporan derechos de voto o cuando los incentivos económicos condicionan la participación en las decisiones colectivas.
+
+Es importante distinguir la gobernanza del mecanismo de consenso. El consenso permite que los nodos acuerden el estado válido de la blockchain y el orden de las transacciones, mientras que la gobernanza determina cómo se establecen, interpretan y modifican las reglas que rigen la red. Ambos mecanismos están relacionados, pero cumplen funciones diferentes: el consenso proporciona coordinación técnica y la gobernanza establece los procedimientos de decisión y evolución del sistema.
+
+En las redes permisionadas, utilizadas habitualmente en entornos empresariales e institucionales, la gobernanza suele basarse en acuerdos entre las organizaciones participantes, políticas de acceso, responsabilidades definidas y procedimientos formales para aprobar cambios. En estos entornos, la confianza puede sustentarse en mecanismos jurídicos, organizativos y técnicos, sin necesidad de utilizar tokens ni incentivos económicos integrados en el protocolo.
+
+En conclusión, el modelo de gobernanza determina quién puede modificar el protocolo, cómo se aprueban esos cambios y qué ocurre cuando los participantes no están de acuerdo. En las redes públicas que utilizan tokens, también importa quién los posee y qué derechos confieren, ya que la concentración de tokens puede permitir que unos pocos participantes controlen las votaciones. En las redes permisionadas, estas decisiones suelen depender de los acuerdos entre las organizaciones que forman parte de la red, sin necesidad de utilizar tokens ni mecanismos de votación basados en ellos.
+
+### Modelo de gobernanza federado
+
+La gobernanza federada resulta especialmente adecuada cuando varias entidades independientes necesitan compartir una infraestructura y mantener una distribución acordada de responsabilidades y autoridad.
+
+Es un modelo de gobernanza que combina supervisión centralizada con ejecución descentralizada. Un órgano común (comité o consejo) fija las normas compartidas de seguridad, cumplimiento e interoperabilidad, y cada organización participante gestiona su parte con autonomía, adaptándola a sus necesidades siempre que respete esas normas. Frente a un modelo centralizado, en el que un único equipo u operador lo gestiona todo.
+
+En redes blockchain permisionadas entre administraciones, cada organización opera sus propios nodos y todas se someten a reglas comunes acordadas: requisitos de adhesión, alta de validadores, gestión de claves, resolución de conflictos y mayorías para cambiar el protocolo. Es el modelo de EBSI: cada Estado miembro aporta y opera nodos, y la gobernanza se ejerce de forma conjunta.
+
+Para que el modelo funcione, las responsabilidades de cada organización deben estar claramente definidas, los mecanismos de decisión deben ser transparentes y debe existir un procedimiento acordado para resolver conflictos y evolucionar la red.
 
 Referencia: [gobernanza federada de datos (Actian)](https://www.actian.com/es/blog/data-governance/federated-data-governance-explained/)
 

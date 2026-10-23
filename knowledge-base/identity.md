@@ -35,6 +35,8 @@ Una **identidad** es la representación reconocible y significativa de quién er
 
 Una **Credencial Verificable** (VC) surge cuando W3C necesita definir un estándar para una credencial más descentralizada, autoverificable y con la mínima información posible. Aunque mantiene los mismos participantes estáticos de una credencial tradicional (*issuer*, *holder* y *verifier*), estos actúan de forma desacoplada: el *holder* custodia la credencial en su billetera sin depender del *issuer* para gestionar su identidad. Como proceso dinámico de uso sobre esa credencial tenemos la **Verifiable Presentation** (VP). Adicionalmente las **OpenID4VC** como el puente entre OpenID y las credenciales verificables.
 
+//TODO no se aclara relacion o diferencia con atestación
+
 Una **Verifiable Presentation** (VP) es el paquete que el *holder* construye para mostrar una o varias credenciales verificables a un *verifier*. No reenvía la credencial tal cual: la envuelve, incluye solo los atributos que le piden cuando el formato lo permite (divulgación selectiva) y, normalmente, firma el conjunto con su propia clave junto a un valor de un solo uso (*nonce*) que fija el *verifier*, para que esa presentación no pueda reutilizarse. Así, en una misma operación se resuelven los dos procesos dinámicos vistos antes: el *verifier* comprueba la firma del *issuer* sobre la credencial (verificación) y la firma del *holder* sobre la presentación (autenticación, porque demuestra que controla la clave a la que se emitió la credencial). El intercambio se hace habitualmente con [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html), la parte de OpenID4VC dedicada a las presentaciones.
 
 La relación con la atestación es de capas: la atestación es lo que el emisor afirma sobre ti (que tienes un grado, que eres mayor de edad), la VC es una forma técnica de representar esa afirmación de manera firmada y verificable, y la VP es el acto de mostrarla a quien la pide. Por ejemplo, la universidad emite la atestación de tu grado como VC a tu wallet y, cuando una empresa la solicita, tu wallet genera una VP con solo el título y la fecha, firmada por ti. En eIDAS 2.0 ocurre lo mismo con las atestaciones electrónicas de atributos que guarda la EUDI Wallet, aunque allí no se usa solo el modelo W3C: también se emplean los formatos SD-JWT VC y mdoc (ISO/IEC 18013-5).
@@ -94,7 +96,24 @@ Un ejemplo completo: una universidad emite un título digital a una alumna, que 
 
 El VDR nunca guarda las credenciales ni datos personales del titular, solo la información pública necesaria para verificarlas. Por eso puede ser compartido y consultable por cualquiera.
 
-El W3C define qué función cumple el VDR, pero no cómo se implementa: puede ser una base de datos, una infraestructura de clave pública (PKI) o una blockchain. La blockchain aporta que ningún actor puede alterar el registro por su cuenta y que queda constancia de cada cambio. En el ecosistema europeo, la blockchain de EBSI cumple este rol.
+El W3C define qué función cumple el VDR, pero no cómo se implementa: puede ser una base de datos, una infraestructura de clave pública (PKI) o una blockchain. La blockchain aporta que ningún actor puede alterar el registro por su cuenta y que queda constancia de cada cambio. En el ecosistema europeo, la blockchain de [EBSI](eIDAS.md#ebsi-european-blockchain-services-infrastructure) cumple este rol.
+
+### TIR (Trusted Issuers Registry)
+
+La firma de una credencial dice quién la emitió, pero no si ese emisor es de confianza. Para eso el verificador necesita un registro de emisores autorizados, la segunda de las preguntas que resuelve el VDR.
+
+Como concepto, un registro de emisores de confianza no depende de la tecnología: puede ser una base de datos, un servicio web o una blockchain. El TIR (Trusted Issuers Registry) es el de EBSI, que lo implementa sobre su blockchain. No guarda credenciales, sino quién puede emitirlas: por cada emisor anota su DID y los tipos de credencial que está autorizado a emitir.
+
+EBSI reparte el rol de VDR en varios registros, y el TIR es solo uno de ellos. El DID del emisor y sus claves públicas están en el registro de DIDs (DID Registry), y los esquemas de las credenciales, en el registro de esquemas (Trusted Schemas Registry). El DID es el nexo entre registros: el verificador lo lee en la credencial, obtiene la clave en el registro de DIDs para comprobar la firma y busca ese mismo DID en el TIR para saber si el emisor estaba acreditado.
+
+La acreditación la da otra entidad ya acreditada (por ejemplo, un ministerio a una universidad), y así sucesivamente hasta una raíz reconocida por la gobernanza de EBSI. El resultado es una cadena de confianza que el verificador puede recorrer.
+
+El TIR no es un término de eIDAS. En eIDAS el papel legal de decir qué emisores son de confianza lo cumplen las [listas de confianza](eIDAS.md#listas-de-confianza-tl-y-lotl), basadas en certificados X.509 y no en DIDs. Que un emisor esté en el TIR de EBSI no da a sus credenciales el valor legal de una atestación cualificada de eIDAS.
+
+Referencias:
+
+- [modelo de confianza de EBSI (EBSI Hub)](https://hub.ebsi.eu/vc-framework/trust-model)
+- [API del registro de emisores de confianza (EBSI Hub)](https://hub.ebsi.eu/api/core/issuers-registry)
 
 ## Contexto actual del ecosistema de identidad
 
@@ -151,5 +170,162 @@ La primera suelen ser las rampas de salida o entrada o salida donde la identidad
 De manera más marginal existe un modelo de identificación Web3 mas institucional, siendo descentralizado, basada en DID con Verifiable Credentials (VCs) custodiadas por el propio usuario fuera de la cadena, que se presentan selectivamente mediante Zero-Knowledge Proofs. Proyectos como Privado ID (antes Polygon ID) son el mejor ejemplo, mientras que emisores VC como Fractal ID o Civic actúan como puente pragmático entre identidad legal y ecosistema descentralizado, mejorando la experiencia de usuario, pero sin eliminar la centralización de fondo.
 
 La identificación más habitual en Web3 y usada en mayor parte para DeFi, que son las financias abiertas y sin pedir permiso, son mediante la [wallet Web3](https://ethereum.org/wallets/find-wallet/), donde la identidad no la emite nadie. La identidad se basa también en la reputación que se acumula como un rastro verificable on-chain en las DAOs a las que se pertenece, los eventos a los que se asiste, las votaciones de gobernanza o los protocolos que se usan. Es la idea que Vitalik Buterin, E. Glen Weyl y Puja Ohlhaver plantearon en el paper [DeSoc (Decentralized Society)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763) de 2022, con tokens intransferibles (Soulbound Tokens) para representarla. A esa idea se suman piezas como los [POAPs](https://poap.xyz/) (NFTs, transferibles, que acreditan la asistencia a un evento), las [atestaciones EAS](https://attest.org/) o protocolos sociales como [Lens](https://www.lens.xyz/) y [Farcaster](https://www.farcaster.xyz/). La capa de nombres la aporta [ENS (Ethereum Name Service)](https://docs.ens.domains/), que asocia a la dirección un nombre legible (ejemplo alice.eth). Toda esa identidad queda atada a una dirección y perderla era perderlo todo, motivo que surgen las smart contract wallets, donde la identidad vive on-chain facilitando la experiencia de usuario y permitiendo el on-boarding, es decir, acceso mediante Wallets non-custodial donde incluso el login puede ser mediante tú cuenta de Google o Apple y donde tienes recuperación social de claves.
+
+## Seudónimos y seudonimato
+
+La identidad digital no consiste siempre en revelar quién eres. Muchas operaciones solo necesitan saber que eres la misma persona que la última vez, o que cumples un requisito, como ser mayor de edad. Para eso existen los seudónimos, y eIDAS 2.0 los incorpora de forma expresa.
+
+### Anonimato, seudonimato e identificación
+
+Son tres grados distintos de vinculación entre una acción y una persona:
+
+- Identificación: la acción queda ligada a tu identidad real (nombre, DNI). Es lo que ocurre al firmar con certificado electrónico o al iniciar un trámite administrativo
+- Seudonimato: la acción queda ligada a un identificador estable que no revela quién eres, pero que permite reconocerte como el mismo usuario en distintas ocasiones. Alguien puede tener la información para volver a vincular el seudónimo con la persona (reidentificación)
+- Anonimato: la acción no queda ligada a ningún identificador; nadie puede saber que dos acciones las hizo la misma persona, ni quién es
+
+El seudonimato es el punto intermedio útil: permite mantener una cuenta, una reputación o un historial sin exponer la identidad real. Pero no es anonimato, y confundirlos lleva a errores tanto técnicos como legales.
+
+### Tipos de seudónimo
+
+No todos los seudónimos protegen igual. La diferencia está en cuántos servicios ven el mismo:
+
+- Seudónimo global: el mismo identificador en todos los servicios. Cualquiera que lo vea en dos sitios puede cruzar la información y construir un perfil. Una dirección de wallet Web3 es el ejemplo típico
+- Seudónimo por relación (*pairwise*): un identificador distinto para cada servicio. Dos servicios no pueden saber que tratan con la misma persona comparando identificadores. OpenID Connect ya lo contempla con los [identificadores de sujeto por pares (pairwise subject identifiers)](https://openid.net/specs/openid-connect-core-1_0.html#PairwiseAlg), y es el modelo de las [passkeys](https://fidoalliance.org/passkeys/), que generan una clave distinta para cada sitio
+- Seudónimo de un solo uso: un identificador nuevo en cada operación. El servicio no puede enlazar tus operaciones entre sí por el identificador, lo que lo acerca al anonimato; a cambio, tampoco puede reconocerte la siguiente vez, así que no sirve para mantener una cuenta. Sigue siendo un seudónimo y no anonimato porque alguien, por ejemplo quien lo genera, puede conservar la relación entre cada seudónimo y la persona
+
+### Seudónimos en eIDAS 2.0
+
+[eIDAS 2.0 (Reglamento (UE) 2024/1183)](https://eur-lex.europa.eu/eli/reg/2024/1183/oj) trata los seudónimos en tres niveles: como derecho del usuario, como función obligatoria de la EUDI Wallet y como obligación para quien recibe los datos.
+
+Derecho del usuario (artículo 5): no se prohíbe el uso de seudónimos elegidos por el usuario, salvo que una ley europea o nacional obligue a identificarse. Cada Estado decide además qué validez legal tiene un seudónimo. El seudónimo es la regla general y la identificación, la excepción que debe tener base legal.
+
+Función de la wallet (artículo 5 bis): la EUDI Wallet debe permitir al usuario generar seudónimos y guardarlos cifrados y en local, en la propia wallet. El reglamento exige además que el marco técnico de la wallet no permita a los emisores ni a terceros rastrear, vincular o correlacionar las operaciones del usuario, y que aplique técnicas que garanticen la no vinculabilidad (*unlinkability*) cuando la atestación no requiera identificar al usuario.
+
+Obligación de las partes usuarias (artículo 5 ter): las partes usuarias (*relying parties*), es decir, los servicios que piden datos a la wallet, no pueden rechazar el uso de seudónimos cuando el Derecho de la Unión o el nacional no exija identificar al usuario. Además deben registrarse en su Estado miembro declarando qué datos van a pedir y para qué, y la wallet muestra esa información al usuario antes de compartir nada.
+
+En la práctica, el [Architecture and Reference Framework (ARF)](https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/) plantea implementar los seudónimos de la wallet sobre WebAuthn, el mismo estándar en el que se basan las passkeys: un seudónimo por servicio, generado por la wallet y sin intervención de ningún emisor. Así el usuario puede registrarse y volver a entrar en un servicio sin darle su identidad.
+
+Un caso concreto es la verificación de edad. La Comisión Europea publicó en 2025 una solución de referencia (*blueprint*) para demostrar que se es mayor de edad sin revelar nombre ni fecha de nacimiento, compatible con la futura EUDI Wallet, y España participa en su fase piloto. Es la aplicación directa del principio de minimización de datos que se vio en la definición de [atestación](#desambiguación-de-términos): se acredita el atributo, no la identidad.
+
+### Seudonimización en el RGPD
+
+El [RGPD (Reglamento (UE) 2016/679)](https://eur-lex.europa.eu/eli/reg/2016/679/oj) no habla de seudónimos elegidos por el usuario, sino de seudonimización como técnica de tratamiento de datos. Conviene no confundir los dos usos.
+
+El artículo 4.5 define la seudonimización como el tratamiento de datos personales de forma que ya no puedan atribuirse a una persona sin usar información adicional, siempre que esa información se guarde por separado y con medidas que impidan la atribución. Las consecuencias principales son:
+
+- Los datos seudonimizados siguen siendo datos personales (considerando 26). Solo los datos anónimos, que no permiten identificar a nadie por medios razonables, quedan fuera del RGPD
+- La seudonimización es una medida recomendada de protección de datos desde el diseño (artículo 25) y de seguridad del tratamiento (artículo 32), que reduce el riesgo pero no exime de cumplir el reglamento
+
+El criterio se ha matizado recientemente. El Comité Europeo de Protección de Datos (CEPD) publicó en enero de 2025 sus directrices 01/2025 sobre seudonimización, y el Tribunal de Justicia de la UE, en la sentencia del asunto C-413/23 P (SEPD contra SRB, septiembre de 2025), consideró que unos datos seudonimizados pueden no ser datos personales para un destinatario que no tiene medios razonables para reidentificar a las personas. Que algo sea dato personal depende, por tanto, también de quién lo tiene y de qué medios dispone.
+
+### Cuándo la ley exige identificarse
+
+El derecho a usar seudónimos de eIDAS cede siempre que una norma exija identificar al usuario. Los casos más relevantes para la Administración y para DLT son:
+
+- Procedimiento administrativo: la [Ley 39/2015](https://www.boe.es/eli/es/l/2015/10/01/39/con) regula en su artículo 9 los sistemas de identificación de los interesados. Un trámite con efectos jurídicos para una persona requiere saber quién es
+- Prevención del blanqueo de capitales: las entidades obligadas deben identificar a sus clientes (KYC), y los proveedores de criptoactivos deben identificar a ordenante y beneficiario por la Travel Rule del [Reglamento (UE) 2023/1113](https://eur-lex.europa.eu/eli/reg/2023/1113/oj), como se vio en el apartado de Web3
+- Firma electrónica cualificada: vincula el documento con una persona identificada, que es justo lo que le da su valor legal
+
+Fuera de estos casos, pedir la identidad completa cuando basta un seudónimo o un atributo choca con el artículo 5 ter de eIDAS y con el principio de minimización del RGPD (artículo 5.1.c).
+
+### El contraste con Web3
+
+En Web3 el seudonimato es el modelo por defecto: la dirección de la wallet no contiene tu nombre. Pero es un seudónimo global y todo su historial es público y permanente. Basta con vincular la dirección a una persona una sola vez, por ejemplo al pasar por un exchange con KYC, para que todo su historial pasado y futuro quede asociado a ella. Existen empresas especializadas en ese análisis de cadena (*chain analysis*).
+
+Por eso el CEPD considera que las direcciones de blockchain pueden ser datos personales, como recoge en sus directrices 02/2025 sobre el tratamiento de datos personales mediante tecnologías blockchain (abril de 2025). Esto choca con la inmutabilidad de la cadena y con derechos como el de supresión, y lleva a recomendar que no se registren datos personales on-chain, ni siquiera seudonimizados, cuando pueda evitarse.
+
+Frente a esto, eIDAS hace lo contrario: identidad fuerte disponible cuando la ley la exige, y seudónimos por servicio, sin rastro público, para todo lo demás.
+
+### Retos
+
+- Formatos de credencial y vinculabilidad: SD-JWT VC y mdoc permiten la divulgación selectiva, pero si se presenta varias veces la misma credencial, su firma y sus valores se repiten, y varios verificadores que se pongan de acuerdo pueden correlacionar al usuario. El ARF lo mitiga con la emisión de credenciales en lotes, de un solo uso, mientras se estudian firmas compatibles con Zero-Knowledge Proofs (como BBS+) que eviten el problema de raíz
+- Reidentificación por combinación de atributos: aunque ningún dato identifique por sí solo, varios juntos (código postal, edad, profesión) pueden hacerlo. Minimizar no es solo ocultar el nombre
+- Partes usuarias que piden de más: el registro obligatorio de las partes usuarias y la información que muestra la wallet buscan frenarlo, pero su eficacia depende de la supervisión de cada Estado miembro
+- Responsabilidad y abuso: un seudónimo protege la privacidad, pero también puede amparar fraudes o acoso. El equilibrio entre privacidad y la posibilidad de que una autoridad reidentifique a un usuario con orden legal es un debate abierto
+- DLT en la Administración: una red pública o de consorcio que registre operaciones de ciudadanos debe decidir qué va on-chain. Un hash o un identificador seudonimizado sigue siendo dato personal si alguien puede reidentificarlo, y no se podrá borrar
+
+Referencias:
+
+- [eIDAS 2.0, Reglamento (UE) 2024/1183 (EUR-Lex)](https://eur-lex.europa.eu/eli/reg/2024/1183/oj)
+- [RGPD, Reglamento (UE) 2016/679 (EUR-Lex)](https://eur-lex.europa.eu/eli/reg/2016/679/oj)
+- [marco de arquitectura y referencia de la EUDI Wallet (ARF)](https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/)
+- [directrices del CEPD (EDPB)](https://www.edpb.europa.eu/our-work-tools/general-guidance/guidelines-recommendations-best-practices_en)
+
+## Identidad de los agentes de IA
+
+Un agente de IA es software que usa un modelo de lenguaje para decidir y ejecutar acciones con cierta autonomía: llama a APIs, usa herramientas, lee y escribe datos o se comunica con otros agentes, normalmente en nombre de una persona u organización. Plantea las mismas preguntas que el resto de este documento, pero sin una persona física detrás de cada acción: quién actúa, en nombre de quién, con qué permisos y quién responde.
+
+Es un área en evolución rápida. Lo que sigue refleja el estado hasta mediados de 2026 y distingue lo que ya es estándar de lo que todavía es propuesta.
+
+### Tres identidades que no conviene mezclar
+
+Cuando se habla de la identidad de un agente se suelen confundir tres cosas distintas:
+
+- Identidad del modelo: qué modelo es y quién lo desarrolla (por ejemplo, Claude, desarrollado por Anthropic). Es una identidad de producto, no criptográfica: el modelo no tiene claves ni credenciales propias, ni memoria entre sesiones salvo que el despliegue se la proporcione
+- Identidad de la instancia o despliegue: el software concreto que ejecuta el modelo en un entorno, con su configuración, sus herramientas y sus permisos. Es la que se autentica ante otros servicios, igual que cualquier otra aplicación o servicio
+- Identidad del principal: la persona física o jurídica en cuyo nombre actúa el agente. Es quien delega los permisos y quien, jurídicamente, responde de lo que el agente hace
+
+Un ejemplo del mundo físico ayuda a verlo. Con un poder notarial, una persona (el titular) autoriza a otra (el apoderado) a actuar en su nombre, por ejemplo para firmar la venta de un piso. El apoderado no se convierte en el titular: solo puede hacer lo que el poder le permite, y el titular puede retirarle el poder cuando quiera. Con un agente de IA pasa lo mismo: el agente es el apoderado y la persona u organización es el titular. Por eso quien recibe una petición de un agente necesita comprobar dos cosas: qué agente la hace y en nombre de quién.
+
+### Delegación frente a suplantación
+
+La forma más sencilla, y la más peligrosa, de dar acceso a un agente es entregarle las credenciales del usuario: su contraseña, su API key o su clave privada. El agente pasa entonces a suplantar al usuario: el servicio no puede distinguir quién actúa, los permisos no se pueden acotar y revocar al agente obliga a cambiar la credencial del usuario.
+
+La alternativa es la delegación: el agente recibe una credencial propia, limitada a lo que necesita (mínimo privilegio), con caducidad corta y revocable sin afectar al usuario. En OAuth ya existe una pieza para expresarlo: [OAuth 2.0 Token Exchange (RFC 8693)](https://www.rfc-editor.org/rfc/rfc8693) define la claim `act` (actor), con la que un token indica a la vez el sujeto en cuyo nombre se actúa y el actor que realmente hace la petición.
+
+La delegación también limita el daño de un riesgo propio de los agentes, la inyección de instrucciones (*prompt injection*): un agente que lee contenido de terceros puede ser manipulado por instrucciones escondidas en ese contenido. Si el agente tiene credenciales amplias, el atacante hereda esos permisos; si están acotadas, el daño se limita a ellas.
+
+### Estándares y propuestas en marcha
+
+Protocolos de agentes:
+
+- [Model Context Protocol (MCP)](https://modelcontextprotocol.io/): protocolo abierto publicado por Anthropic en noviembre de 2024 para conectar agentes con herramientas y fuentes de datos. Su [especificación de autorización](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization) se apoya en OAuth 2.1: el servidor MCP actúa como servidor de recursos y el cliente obtiene tokens de un servidor de autorización. En diciembre de 2025 se transfirió a la Agentic AI Foundation, bajo la Linux Foundation
+- [Agent2Agent (A2A)](https://github.com/a2aproject/A2A): protocolo presentado por Google en abril de 2025 para que agentes de distintos proveedores se comuniquen entre sí, transferido a la Linux Foundation en junio de 2025. Cada agente publica una Agent Card, un documento JSON que describe sus capacidades, su punto de acceso y los esquemas de autenticación que exige
+
+Identidad de cargas de trabajo y tráfico web:
+
+- [SPIFFE](https://spiffe.io/): estándar de la CNCF (Cloud Native Computing Foundation, la fundación que mantiene Kubernetes) que da una identidad criptográfica a cada programa en ejecución dentro de una infraestructura, lo que en el sector se llama carga de trabajo (*workload*): un servicio, un contenedor o un proceso. Cada programa recibe un identificador y un certificado de corta duración que se renueva automáticamente, en lugar de una contraseña o API key fija guardada en su configuración. Aplicado a agentes, permite identificar cada instancia sin entregarle secretos que puedan filtrarse
+- Web Bot Auth: propuesta de Cloudflare, presentada en el IETF en 2025, para que bots y agentes firmen sus peticiones HTTP con [HTTP Message Signatures (RFC 9421)](https://www.rfc-editor.org/rfc/rfc9421), de modo que un sitio web pueda verificar qué agente le visita en lugar de deducirlo de la IP o del user agent
+
+Proveedores de identidad:
+
+- Los IdPs empresariales empiezan a tratar a los agentes como un tipo de identidad propio, distinto de usuarios y aplicaciones. Un ejemplo es Microsoft Entra Agent ID, anunciado en 2025
+- La OpenID Foundation, la organización que mantiene OpenID Connect, publicó en octubre de 2025 el informe "Identity Management for Agentic AI". Su conclusión es que los protocolos actuales, OAuth y OpenID Connect, ya sirven para buena parte de los usos de agentes, pero no resuelven tres problemas: seguir el rastro de los permisos cuando un agente delega en otro, pedir el consentimiento del usuario sin preguntarle por cada acción, y retirar los permisos a un agente en todos los servicios a la vez. Se desarrollan en [problemas abiertos](#problemas-abiertos)
+
+### Agentes en Web3
+
+En Web3 un agente puede controlar una wallet igual que una persona, y su identidad es la de la dirección: la cadena no distingue si firma un humano o un agente. Las smart contract wallets permiten aplicar delegación en lugar de suplantación mediante claves de sesión: claves secundarias con permisos, importes y caducidad limitados por el propio contrato, que se entregan al agente sin darle la clave principal.
+
+[ERC-8004 (Trustless Agents)](https://eips.ethereum.org/EIPS/eip-8004) es una propuesta de estándar en Ethereum, publicada en agosto de 2025 y todavía en borrador, que complementa protocolos como A2A con tres registros on-chain:
+
+- Registro de identidad: da a cada agente un identificador on-chain que apunta a su descripción
+- Registro de reputación: recoge valoraciones de quienes han interactuado con el agente
+- Registro de validación: permite que terceros verifiquen de forma independiente el trabajo del agente
+
+El planteamiento recuerda al [TIR de EBSI](#tir-trusted-issuers-registry) aplicado a agentes, pero en un entorno permissionless: cualquiera puede registrarse y la confianza se apoya en la reputación y la validación, no en una cadena de acreditación institucional.
+
+Las credenciales verificables también encajan en este problema: el principal puede emitir al agente una credencial que acredite qué puede hacer en su nombre. Agent Payments Protocol (AP2), presentado por Google en septiembre de 2025, sigue esta idea para pagos: la instrucción del usuario se firma como un mandato verificable que el agente presenta al comercio.
+
+### Marco regulatorio europeo
+
+El [Reglamento de Inteligencia Artificial (Reglamento (UE) 2024/1689)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) obliga en su artículo 50 a que los sistemas de IA destinados a interactuar con personas físicas se diseñen de forma que esas personas sepan que están interactuando con una IA, salvo que resulte evidente. Es una obligación de transparencia sobre la naturaleza del interlocutor, no un sistema de identificación: no define identificadores ni credenciales para agentes.
+
+[eIDAS 2.0](eIDAS.md) tampoco recoge una figura de identidad para agentes de IA: la EUDI Wallet y los certificados cualificados se emiten a personas físicas y jurídicas. Un agente que opere en este marco solo puede apoyarse en credenciales de la persona u organización a la que representa, y la responsabilidad recae en ella.
+
+### Problemas abiertos
+
+- Cadenas de delegación: cuando un agente delega en otro, el último de la cadena debe conservar la referencia al principal original y no puede tener más permisos que quien le delegó
+- Revocación: retirar los permisos de un agente en todos los servicios en los que actúa, de forma inmediata
+- Consentimiento: el usuario no puede aprobar cada acción, pero tampoco debería firmar permisos en blanco
+- Distinguir humano y agente: los servicios necesitan saberlo para aplicar límites, cumplir obligaciones de transparencia y atribuir responsabilidades
+- Responsabilidad: quién responde cuando un agente con permisos legítimos causa un daño, si el principal, el desarrollador del modelo o quien lo despliega
+
+Referencias:
+
+- [principios con los que Anthropic entrena a Claude (Anthropic)](https://www.anthropic.com/news/claudes-constitution)
+- [autorización en MCP (especificación)](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization)
+- [ERC-8004: Trustless Agents (EIPs de Ethereum)](https://eips.ethereum.org/EIPS/eip-8004)
+
+
 
 ---

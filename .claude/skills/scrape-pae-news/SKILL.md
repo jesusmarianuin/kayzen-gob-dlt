@@ -5,7 +5,9 @@ description: Scrapear y triar noticias del PAe (administracionelectronica.gob.es
 
 # scrape-pae-news
 
-Herramientas de meta-trabajo para `pae-news/`.
+Herramientas de meta-trabajo para `knowledge-base/pae-news/`.
+
+Invocar esta skill autoriza a leer `knowledge-base/pae-news/` y la carpeta de la propia skill.
 
 Noticias desde 2010 hasta el año actual. El sitio no usa siempre la
 misma URL para años antiguos (`pae_Noticias/2026/...`,
@@ -14,12 +16,12 @@ prueba las variantes solo; no hace falta indicar cuál usar.
 
 ## Lanzar el script
 
-Entorno: el mismo `.venv` de [CONTRIBUTING.md](../../../../CONTRIBUTING.md). Los comandos se lanzan desde la raíz del repositorio.
+Entorno: el mismo `.venv` de [CONTRIBUTING.md](../../../CONTRIBUTING.md). Los comandos se lanzan desde la raíz del repositorio.
 
 ```bash
-python knowledge-base/pae-news/_skills/scrape-pae-news/scripts/scrape_pae_news.py home
-python knowledge-base/pae-news/_skills/scrape-pae-news/scripts/scrape_pae_news.py year 2026
-python knowledge-base/pae-news/_skills/scrape-pae-news/scripts/scrape_pae_news.py month 2026 Enero
+python .claude/skills/scrape-pae-news/scripts/scrape_pae_news.py home
+python .claude/skills/scrape-pae-news/scripts/scrape_pae_news.py year 2026
+python .claude/skills/scrape-pae-news/scripts/scrape_pae_news.py month 2026 Enero
 ```
 
 Salida: una línea por noticia. Cada línea un JSON con `url`, `title` y
@@ -43,7 +45,7 @@ pero esas noticias de más allá de la página 1 se quedan sin recoger.
 Si ves ese aviso, conviene revisar luego esa página a mano.
 
 El script solo busca enlaces — no decide relevancia ni escribe fichas.
-Eso es cosa de quien lo ejecute, usando [INTEREST.md](../scrape-pae-news/assets/INTEREST.md).
+Eso es cosa de quien lo ejecute, usando [INTEREST.md](assets/INTEREST.md).
 
 ## Prompts de ejemplo
 
@@ -61,7 +63,7 @@ Claro está en nuestro diálogo, si ves que [INTEREST.md](assets/INTEREST.md) se
 
 ## Formato del informe
 
-Cualquier ejemplo como [2026-03-13-CRED-MITOS.md](../../2026/2026-03-13-CRED-MITOS.md) indica cómo debe ser el informe. A destacar:
+Cualquier ejemplo como [2026-03-13-CRED-MITOS.md](../../../knowledge-base/pae-news/2026/2026-03-13-CRED-MITOS.md) indica cómo debe ser el informe. A destacar:
 
 - Nombre del archivo como se ve es la fecha y una palabra clave en mayúsculas.
 - Debe tener titulo relevante, típicamente la URL que inicia la noticia como "cred.digital.gob.es".
@@ -73,7 +75,7 @@ Cualquier ejemplo como [2026-03-13-CRED-MITOS.md](../../2026/2026-03-13-CRED-MIT
 Ejecutar el script (sobre todo `year`) y triar cada noticia contra
 INTEREST.md es trabajo costoso — no lo tires al terminar la sesión.
 
-Al acabar una pasada, guarda en `knowledge-base/pae-news/_skills/scrape-pae-news/log/AAAA-MM-DD-<alcance>.jsonl`
+Al acabar una pasada, guarda en `.claude/skills/scrape-pae-news/log/AAAA-MM-DD-<alcance>.jsonl`
 (p. ej. `2026-09-15-year-2026.jsonl`) una línea JSON por noticia
 encontrada, con al menos:
 

@@ -11,6 +11,7 @@ Están organizados por **para lo que sirve**: así puedes ir directo a lo que ne
 - [eIDAS2 y la Cartera Europea de Identidad Digital (EUDI Wallet)](https://digital-strategy.ec.europa.eu/es/policies/eudi-regulation) - Página oficial de la Comisión Europea sobre el Reglamento eIDAS2 y la futura cartera de identidad digital europea, la pieza normativa central para identidad descentralizada y credenciales verificables en la UE.
 - [W3C - Decentralized Identifiers (DID) Core](https://www.w3.org/TR/did-core/) - Especificación técnica del W3C sobre identificadores descentralizados (DID), la base sobre la que se apoyan la EUDI Wallet y EBSI para representar identidad sin autoridad central.
 - [W3C - Verifiable Credentials Data Model](https://www.w3.org/TR/vc-data-model-2.0/) - Especificación técnica del W3C sobre credenciales verificables (VC), el estándar de facto para representar títulos, certificados y atributos firmados criptográficamente.
+- [Todo es electrónico (blog de Julián Inza)](https://inza.blog/) - Blog en español sobre identidad digital, firma electrónica, servicios de confianza y criptografía, con seguimiento cercano de eIDAS2 y la EUDI Wallet. Su autor está vinculado a EADTrust, prestador cualificado de servicios de confianza.
 
 ## Interoperabilidad y espacios de datos (Europa)
 

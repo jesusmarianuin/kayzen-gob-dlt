@@ -14,7 +14,7 @@ PORT = 5000
 
 APP_DIR = Path(__file__).resolve().parent
 BASE_DIR = APP_DIR.parent
-CARDS_FILE = BASE_DIR / "data" / "cards.tsv"
+CARDS_FILE = BASE_DIR / "data" / "cards.csv"
 PROGRESS_FILE = BASE_DIR / "data" / "progress.json"
 CREDITS_FILE = BASE_DIR / "data" / "image-credits.md"
 IMAGES_DIR = APP_DIR / "static" / "images"

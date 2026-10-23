@@ -22,7 +22,8 @@
 {% endif %}
 
 <article class="card">
-  <p class="kind">{{ 'Escribe la respuesta' if card.is_typed else 'Piensa la respuesta' }}</p>
+  <p class="kind">{{ 'Escribe la lista, en cualquier orden' if card.is_list
+                   else 'Escribe la respuesta' if card.is_typed else 'Piensa la respuesta' }}</p>
   <h1 class="question">{{ card.question }}</h1>
 
   {% if not card.is_typed %}
@@ -39,22 +40,22 @@
           action="{{ url_for('free_answer' if mode == 'free' else 'answer', card_id=card.id) }}">
       {% if mode != 'free' %}<input type="hidden" name="version" value="{{ version }}">{% endif %}
       <input type="text" name="typed" autocomplete="off" autocapitalize="off" spellcheck="false"
-             aria-label="Tu respuesta" placeholder="Tu respuesta" autofocus required>
+             aria-label="Tu respuesta" autofocus required
+             placeholder="{{ 'Separa con comas' if card.is_list else 'Tu respuesta' }}">
       <button type="submit" class="btn primary">Comprobar</button>
     </form>
 
   {% elif stage == 'right' %}
     <p class="verdict right">✔ Correcto</p>
-    <p class="answer-text">{{ card.answer }}</p>
-    {% if typed.strip() != card.answer %}<p class="typed">Escribiste: {{ typed }}</p>{% endif %}
+    <p class="answer-text">{{ card.display_answer }}</p>
+    {% if typed.strip() != card.display_answer %}<p class="typed">Escribiste: {{ typed }}</p>{% endif %}
     {{ next_or_rate([('hard', 'Me costó'), ('good', 'Bien'), ('easy', 'Fácil')]) }}
 
   {% else %}
     <p class="verdict wrong">✘ No coincide</p>
     <dl class="compare">
       <dt>Escribiste</dt><dd class="typed-wrong">{{ typed or '(nada)' }}</dd>
-      <dt>Respuesta</dt><dd class="answer-text">{{ card.answer }}</dd>
-      {% if card.alternatives %}<dt>También vale</dt><dd>{{ card.alternatives | join(' · ') }}</dd>{% endif %}
+      <dt>Respuesta</dt><dd class="answer-text">{{ card.display_answer }}</dd>
     </dl>
     {% if mode == 'free' %}
       {{ next_or_rate([]) }}

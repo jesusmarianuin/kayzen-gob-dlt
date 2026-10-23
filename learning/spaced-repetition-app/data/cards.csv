@@ -1,0 +1,65 @@
+﻿id,enabled,model,front,back,image
+boe,FALSE,typed,¿Qué significa BOE?,Boletín Oficial del Estado|Boletín Oficial,boe.jpg
+house,FALSE,reversed,Translate: House,Casa,house.jpg
+blockchain-design,TRUE,reversed,Características clave de diseño blockchain,"Registro contable ordenado cronológicamente, en una red de nodos distribuida, que tienen que llegar a un consenso y, por lo tanto, debe ser inmutable.",blockchain-design.jpg
+bitcoin-whitepaper-year,TRUE,typed,Año del paper de Satoshi Nakamoto,2008,bitcoin-whitepaper-year.jpg
+blockchain-use-cases,TRUE,typed,Casos de uso blockchain,tokenización;trazabilidad de activos|trazabilidad|cadena de suministro|cadena suministro;identidad digital;DAO,blockchain-use-cases.jpg
+blockchain-properties,TRUE,typed,¿Qué proporciona una blockchain?,resiliencia;transparencia verificable|transparencia;auditabilidad,blockchain-properties.jpg
+besu-consensus-protocols,TRUE,reversed,Protocolos de consenso comunes en Hyperledger Besu,QBFT Quorum Byzantine Fault Tolerance o IBFT 2.0 Istanbul Byzantine Fault Tolerance 2.0.,besu-consensus-protocols.jpg
+consensus-proof-types,TRUE,reversed,"Clave en PoW, PoS, DPoS, PoA y QBFT/IBFT2","De más a menos resiliencia, desde evidencia de trabajo, participación, participación delegada y autoridad en una red conocida",consensus-proof-types.jpg
+other-dlt,TRUE,reversed,Otras DLT,"IOTA, Hashgraph, Holochain",other-dlt.jpg
+decentralization-benefits,TRUE,reversed,La descentralización permite...,"Resistencia a la censura, reduce SPOF tanto técnicos como de gobernanza",decentralization-benefits.jpg
+blockchain-types,TRUE,typed,¿Tipos de blockchain?,pública;privada;consorcio;híbrida;permisionada,blockchain-types.jpg
+public-permissioned-blockchain,TRUE,reversed,¿Una blockchain pública puede ser permisionada?,"Claro que sí, permisionada habla de ciertos casos de uso que requieren permiso, típico permiso para participar pero público para consultar, como lo es EBSI o ISBE",public-permissioned-blockchain.jpg
+block-creation-forks,TRUE,reversed,Forks de blockchain al crear bloques,"Fork nativo: temporalmente en PoW, hasta que se elige la más larga y se descarta la huérfana",block-creation-forks.jpg
+protocol-forks,TRUE,reversed,Forks del protocolo blockchain,"Soft fork, actualización retrocompatible. Hard fork rompe las reglas del protocolo y se considera otra red",protocol-forks.jpg
+canonical-chain,TRUE,reversed,Cadena canónica,"La cadena válida cuando hay forks, algo que se evita en protocolos como QBFT o IBFT 2.0",canonical-chain.jpg
+blockchain-scaling,TRUE,typed,¿Mecanismos para escalar en blockchain?,sidechains|sidechain;layer2|layer 2|capa 2;sharding,blockchain-scaling.jpg
+governance-scope,TRUE,typed,¿Qué abarca la gobernanza en una red blockchain?,Admisión;expulsión;identidades;permisos;seguridad;actualización protocolo;resolución conflictos;toma de decisiones,governance-scope.jpg
+governance-models,TRUE,typed,¿Modelos de gobernanza?,centralizada;federada;descentralizada;híbrida;DAO,governance-models.jpg
+cryptoeconomics,TRUE,reversed,La criptoeconomía es fundamental en redes públicas porque...,Permite diseñar incentivos y penalizaciones para el correcto funcionamiento de la red,cryptoeconomics.jpg
+blocks-hash-linking,TRUE,reversed,¿Por qué las transacciones se agrupan en bloques enlazados por hash?,"Porque el consenso tiene un coste: acordar transacción a transacción sería inviable. El hash del bloque anterior resume todo el historial, así que los nodos validan el bloque nuevo sin revisar millones de transacciones previas",blocks-hash-linking.jpg
+trustless-vs-trusted,TRUE,reversed,Red trustless frente a red trusted,Trustless: sin confianza previa entre participantes. Trusted: participantes identificados y autorizados. En ambas hacen falta evidencias criptográficas mínimas,trustless-vs-trusted.jpg
+cryptographic-evidence,TRUE,typed,¿Qué dos evidencias criptográficas se usan para validar datos de forma eficiente o privada?,árboles de Merkle|árbol de Merkle|Merkle;pruebas de conocimiento cero|zero-knowledge proofs|ZK proofs|ZK,cryptographic-evidence.jpg
+dpos,TRUE,reversed,¿Cómo funciona DPoS (Delegated Proof of Stake)?,"Los poseedores de tokens no validan: votan con su stake a un grupo reducido de delegados, que son los únicos que producen bloques. Gana velocidad a cambio de concentrar el consenso. Ejemplo: IOTA",dpos.jpg
+immediate-finality,TRUE,reversed,Finalidad inmediata en QBFT e IBFT 2.0,Un bloque solo se añade cuando lo aprueban más de dos tercios de los validadores y ya no puede revertirse: no hay forks ni hace falta regla de cadena canónica,immediate-finality.jpg
+ibft2-eip,TRUE,typed,¿En qué EIP se especificó IBFT 2.0?,EIP-650|EIP 650|650,ibft2-eip.jpg
+blockchain-vs-dlt,TRUE,reversed,Relación entre blockchain y DLT,"Toda blockchain es una DLT, pero no toda DLT usa bloques encadenados (por ejemplo, Tangle, Hashgraph u Holochain)",blockchain-vs-dlt.jpg
+tangle-structure,TRUE,typed,¿Qué estructura de datos usa Tangle (IOTA) en lugar de bloques?,DAG|grafo acíclico dirigido,tangle-structure.jpg
+distributed-vs-decentralized,TRUE,reversed,Distribuido frente a descentralizado,"Distribuido: dónde están los datos (cuántos nodos guardan copia). Descentralizado: quién controla y decide. Una DLT siempre es distribuida, pero no necesariamente descentralizada",distributed-vs-decentralized.jpg
+soft-fork-example,TRUE,typed,Ejemplo de soft fork en Bitcoin,SegWit|Segregated Witness,soft-fork-example.jpg
+hard-fork-examples,TRUE,typed,Dos ejemplos de hard fork que dieron lugar a otra red,Bitcoin Cash;Ethereum Classic,hard-fork-examples.jpg
+canonical-chain-weight,TRUE,reversed,¿Qué determina el peso de la cadena canónica en Bitcoin y en Ethereum?,"Bitcoin: trabajo computacional acumulado (dificultad, no número de bloques). Ethereum post-merge: stake acumulado que respalda la cadena, según Gasper",canonical-chain-weight.jpg
+sidechain-vs-layer2,TRUE,reversed,Sidechain frente a Layer 2,"Sidechain: blockchain independiente con su propio consenso, unida por un puente bidireccional (Polygon). Layer 2: procesa fuera de la cadena principal pero hereda su seguridad y finalidad (Lightning, rollups)",sidechain-vs-layer2.jpg
+blockchain-trilemma,TRUE,typed,¿Qué tres propiedades forman el trilema blockchain?,escalabilidad;seguridad;descentralización,blockchain-trilemma.jpg
+consensus-vs-governance,TRUE,reversed,Consenso frente a gobernanza,"Consenso: los nodos acuerdan el estado válido y el orden de las transacciones (coordinación técnica). Gobernanza: cómo se establecen, interpretan y modifican las reglas de la red",consensus-vs-governance.jpg
+slashing,TRUE,typed,¿Cómo se llama la penalización económica a los validadores que actúan mal?,slashing,slashing.jpg
+permissioned-governance,TRUE,reversed,¿En qué se basa la gobernanza de una red permisionada?,"En acuerdos entre organizaciones, políticas de acceso, responsabilidades definidas y procedimientos formales de cambio. La confianza es jurídica, organizativa y técnica, sin tokens",permissioned-governance.jpg
+federated-governance,TRUE,reversed,Modelo de gobernanza federado,"Supervisión centralizada con ejecución descentralizada: un órgano común fija normas de seguridad, cumplimiento e interoperabilidad, y cada organización gestiona su parte con autonomía",federated-governance.jpg
+federated-governance-example,TRUE,typed,¿Qué red europea entre Estados miembros sigue un modelo de gobernanza federado?,EBSI|European Blockchain Services Infrastructure,federated-governance-example.jpg
+,TRUE,typed,¿Qué significa eIDAS?,Electronic Identification Authentication and trust services,
+,TRUE,reversed,Dónde aplica EIDAS,Reglamento para las transacciones electrónicas en la EU desde el 1 de Julio 2016,
+,,typed,¿Qué eID reconoce eIDAS en España?,DNIe|DNI electrónico,
+,,typed,¿Enumera algunas operaciones tipicas de un servicio de confianza de eIDAS?,firma;sello tiempo|TSA;entrega electrónica certificada|ERDS;certificado sitio web|certificado autenticación sitio web,
+,,typed,¿Qué es ERDS en eIDAS?,Qualified Electronic Registered Delivery Service,
+,,typed,¿Qué es TSP en eIDAS?,Trust Service Provider,
+,,reversed,Según eIDAS en la TL/TSL trusted list están,"Prestador cualificado de servicios de confianza (Qualified Trust Service Provider, QTSP)",
+,,typed,¿Qué es TSL en eIDAD?,Trust Service Status List,
+,,typed,¿Qué es LOTL en eIDAS?,List of Trusted Lists,
+,,reversed,Denominación en eIDAS EUTL,"EUTL (EU Trusted List  es la denominación divultativa pero LOTL, List of Trusted List es más correcto",
+,,typed,¿Que es en eIDAS QTSP?,Qualified Trust Service Provider,
+,,typed,¿En eIDAS a quien ofrece un TSP servicios?,empresas;ciudadanos;oganizaciones;administraciones públicas|administraciones,
+,,reversed,Objetivo de eIDAS 2.0,Evolucionar de un sistema nacional de eID hacia un interoperable en toda la UE,
+,,typed,En eIDAS (en inglés) enumera los nuevos servicios de confianza,EAA|Electronic Attestation of Attributes;Electronic Archiving;Electronic Ledger,
+,,typed,"El Electronic Ledger en eIDAS, ¿qué garantiza?",integridad de registros|integridad;orden cronológico;trazabilidad de operaciones|trazabilidad,
+,,reversed,¿La EUDI Wallet es un cartera de custodia por cada estado miembro?,"Claro que no, es de autocusotodia como podría ser el pasaporte, donde puedes almacenta y gestionar tu identidad y otras credenciales verificables",
+,,reversed,Actores de la EUDI Wallet,"usuarios, proveedores de identidad y credenciales, proveedores de cartera y entidades que solicitan y verifican al usuario la identidad y credenciales",
+,,typed,¿La EUDI Wallet contempla la firam cualificada como caso de uso destacado?,sí|si,
+,,reversed,en eIDAS 2.0 las credenciales pueden ser de dos tipos,Cualificadas QEAA o no cualificadas EAA,
+,,reversed,Principio relevante de la EUDI Wallet,"Minimización de datos, revelar que eres mayor de edad sin mostrar la fecha de nacimiento",
+,,typed,¿Que es la ARF relacionado con la normativa eIDAS 2.0?,European Digital Identity Wallet Architecture Framework,
+,,reversed,El ledger de eIDAS 2.0 se define como...,Secuencia de registros electrónicos de datos que garantiza la integridad de dichos registros y la exactitud de su orden cronológico. El cual puede ser cualificado o no cualificado.,
+,,typed,¿Que es EBSI?,European Blockchain Services Infrastructure,
+,,reversed,Quén impulsa EBSI,Comisión Europea y la European Blockchain Partnership (EBP),
+,,typed,¿Qué modelo de autorización tiene EBSI? Enumera las 2 principales,pública;permisionada,
+,,typed,¿Qué modelo de gobernanza sigue EBSI?,federada|federado

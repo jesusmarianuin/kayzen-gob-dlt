@@ -44,6 +44,34 @@ Ethereum introduce el [gas](https://ethereum.org/es/developers/docs/gas/) como u
 
 Esta segunda función es la que hace compatible una máquina Turing-completa con una red compartida. Sin gas, un solo contrato malicioso podría bloquear a todos los nodos. En las redes permisionadas el precio del gas puede ser cero, pero el límite de gas por transacción y por bloque se mantiene, precisamente para conservar esa protección.
 
+## Del código al despliegue
+
+Un smart contract se escribe en un lenguaje de alto nivel, normalmente [Solidity](https://docs.soliditylang.org/), y al compilarlo se obtienen dos piezas:
+
+- Bytecode: las instrucciones que ejecuta la EVM, que es lo que realmente se guarda en la blockchain
+- ABI (Application Binary Interface): la descripción en JSON de sus funciones y eventos, que necesitan las aplicaciones y las librerías para codificar las llamadas y decodificar las respuestas
+
+Desplegar es enviar una transacción especial, sin destinatario, que lleva el bytecode. La red ejecuta el código de inicialización (el constructor), asigna al contrato su dirección y, a partir de ese bloque, cualquiera puede invocarlo. Como el bytecode no es legible para una persona, lo habitual es publicar también el código fuente en un explorador de bloques para que cualquiera pueda comprobar que corresponde exactamente a lo desplegado.
+
+### Entornos de prueba
+
+Por la inmutabilidad que se verá más adelante, un contrato no debería llegar a la red principal (mainnet) sin haber pasado antes por entornos donde equivocarse no cuesta nada:
+
+- Red local: una blockchain de desarrollo en el propio equipo, como Hardhat Network o Anvil (Foundry), con cuentas precargadas de saldo y bloques instantáneos
+- Testnet: una red pública que funciona igual que mainnet pero cuya moneda no tiene valor. En Ethereum las vigentes son [Sepolia y Hoodi](https://ethereum.org/es/developers/docs/networks/): Sepolia para probar aplicaciones y contratos, y Hoodi para validadores e infraestructura
+
+### Faucet
+
+En una testnet también hay que pagar gas, así que hace falta la moneda de esa red. Un faucet ("grifo") es un servicio, normalmente una página web, que entrega gratis pequeñas cantidades de esa moneda de prueba a la dirección que se le indique. El nombre viene de que reparte "a gotas": limita la cantidad y la frecuencia por dirección, y muchos exigen además iniciar sesión, resolver un captcha o tener un saldo mínimo en mainnet, para que nadie acapare los fondos ni los use para saturar la red.
+
+Conviene tener claros algunos puntos:
+
+- Un faucet solo necesita la dirección pública. Si pide la clave privada o la frase semilla, es un fraude
+- Para pruebas se usa una cuenta dedicada, nunca una que tenga fondos reales o permisos en producción
+- La moneda de testnet no tiene valor ni se puede cambiar por la de mainnet
+- En una red local no hace falta faucet, porque las cuentas de desarrollo arrancan con saldo
+- En una red permisionada basada en Hyperledger Besu tampoco suele hacer falta: el precio del gas puede ser cero y, si no lo es, alguien debe transferir saldo.
+
 ## Un smart contract no se autoejecuta
 
 A pesar de lo que sugiere la palabra "automático", un smart contract no actúa por iniciativa propia. Permanece inactivo hasta que algo lo invoca: una transacción de un usuario, una llamada desde otro contrato o un servicio off-chain que envía la transacción cuando se cumple una condición, como un temporizador o un proceso de la organización.

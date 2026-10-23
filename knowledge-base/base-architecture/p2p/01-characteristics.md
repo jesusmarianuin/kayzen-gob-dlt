@@ -86,8 +86,7 @@ Puede ser normalmente:
 - Pública, cualquier participante puede unirse y participar sin restricciones, es abierta a nuevos participantes.
 - Privada, acceso limitado a entidades previamente autorizadas, suele tener un control centralizado dentro de una organización o grupo.
 - Consorcio, gobernada por un grupo seleccionado de entidades confiables, es un tipo de red privada, pero gestionada por un grupo de entidades (no sólo una).
-- Permisionada, participación permitida a nodos verificados y aprobados; es una red privada que se abre a más participantes bajo unas condiciones. Además define roles o permisos específicos, por ejemplo, unos nodos pueden leer solamente y otros escribir.
-  > Una red se considera permisionada, y no verdaderamente pública, cuando existen restricciones que impiden a cualquier usuario operar su propio nodo local, incluso si dichas restricciones no son explícitas o requieren superar barreras adicionales para acceder a la red. En algunos casos, este carácter permisionado puede no ser evidente y puede ser presentado como una red pública por motivos de imagen o marketing.
+- Permisionada, participación permitida a nodos verificados y aprobados; es una red privada o pública que se abre a más participantes bajo unas condiciones. Además define roles o permisos específicos, por ejemplo, unos nodos pueden leer solamente y otros escribir. Puede ser pública y permisionada, por ejemplo, participación validada pero lectura de los nodos abierta.
 - Híbrida, mezcla características de modelos públicos y privados.
 
 ## Estrategias de almacenamiento en redes p2p

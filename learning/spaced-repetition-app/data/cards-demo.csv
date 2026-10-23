@@ -1,0 +1,30 @@
+# Plantilla de ejemplo de cards.csv. Las líneas que empiezan por # son comentarios y se ignoran.
+#
+# Columnas (la cabecera es obligatoria y va tal cual):
+#   id       kebab-case, minúsculas sin tildes, único e inmutable (dog, capital-france, onu-2)
+#   enabled  true o vacío: se estudia. false: no se muestra y conserva su progreso
+#   model    reversed: piensas la respuesta y la tarjeta sale en las dos direcciones
+#            typed: tecleas la respuesta exacta, en una sola dirección
+#   front    pregunta
+#   back     respuesta. En reversed se muestra tal cual. En typed:
+#              | separa formas válidas (OR): Boletín Oficial del Estado|Boletín Oficial
+#              ; separa elementos de una lista, en cualquier orden (AND): Legislativo;Ejecutivo;Judicial
+#              juntos, | va dentro de cada elemento: Legislativo|Parlamento;Ejecutivo;Judicial
+#   image    fichero de app/static/images/ (lo rellena scripts/fetch_images.py). Puede quedar vacía
+#
+# Si un texto lleva comas, va entre comillas dobles. Una comilla dentro de un texto se escribe doble ("").
+id,enabled,model,front,back,image
+# reversed: concepto que basta con entender; genera Dog → Perro y Perro → Dog
+dog,true,reversed,Dog,Perro,dog.jpg
+# reversed sin imagen y con comas en el texto
+consensus,true,reversed,"Consenso QBFT, en una frase",Acuerdo entre validadores que tolera hasta un tercio de nodos maliciosos,
+# typed: solo vale la respuesta (se toleran mayúsculas, tildes, espacios y punto final)
+spain,,typed,¿Qué país tiene por capital Madrid?,España,spain.jpg
+# typed con varias formas válidas (OR)
+onu,true,typed,¿Qué significa ONU?,Organización de las Naciones Unidas|Naciones Unidas|Organización Naciones Unidas,onu.jpg
+# typed con lista (AND): vale "Judicial, Legislativo y Ejecutivo"; si falta o sobra un elemento, es fallo
+poderes,true,typed,¿Cuáles son los tres poderes del Estado?,Legislativo;Ejecutivo;Judicial,
+# typed con lista y formas válidas: vale "Parlamento, Judicial y Ejecutivo"
+poderes-2,true,typed,¿Qué tres poderes separa Montesquieu?,Legislativo|Parlamento;Ejecutivo|Gobierno;Judicial,
+# desactivada: no sale en el estudio, ni en el estudio libre, ni en el progreso, ni en la exportación
+paris,false,typed,¿Capital de Francia?,París,paris.jpg
