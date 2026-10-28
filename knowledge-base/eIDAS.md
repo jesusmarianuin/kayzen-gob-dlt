@@ -1,5 +1,9 @@
 # Glosario de términos relacionado con eIDAS
 
+//todo Divulgación Selectiva SD, SD-JWT
+/El DID es solo un sistema para resolver claves públicas sin depender de una Autoridad de Certificación (CA) central.
+VC es JSON-LD
+
 ## eIDAS (electronic IDentification, Authentication and trust Services)
 
 Reglamento (UE) relativo a la identificación electrónica, autenticación y los servicios de confianza para las transacciones electrónicas en el mercado interior (de los estados miembro como personas, bienes, servicios o capitales). Se aplica en toda la UE desde el 1 de julio de 2016.
