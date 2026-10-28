@@ -43,7 +43,9 @@ Cada enfoque es relevante para cada necesidad, bitcoin como sistema resiliente n
 
 Es importante distinguir que blockchain es una implementación específica dentro de un concepto más amplio conocido como [Distributed Ledger Technology (DLT)](https://research.ibm.com/projects/privacy-preserving-and-interoperable-digital-assets). Mientras que todas las blockchains son DLTs, no todas las DLTs utilizan bloques encadenados.
 
-El término ledger viene de la contabilidad, donde es el libro mayor: agrupa los movimientos por cuenta y da el saldo de cada una. El que anota los movimientos en orden cronológico, tal como se producen, es el journal (libro diario), y el mayor se obtiene a partir de él. Por estructura, una blockchain se parece más al diario, porque es un registro cronológico de transacciones. Aun así, el término asentado es ledger, y la norma [ISO 22739:2024](https://www.iso.org/standard/82208.html) lo define como un almacén de información que guarda registros de transacciones pensados para ser finales, definitivos e inmutables. Un distributed ledger es el ledger que se comparte entre los nodos de la red y se mantiene sincronizado mediante un mecanismo de consenso.
+El término ledger viene de la contabilidad, donde es el libro mayor: agrupa los movimientos por cuenta y da el saldo de cada una. El que anota los movimientos en orden cronológico, tal como se producen, es el journal (libro diario), y el mayor se obtiene a partir de él. Por estructura, una blockchain se parece más al diario, porque es un registro cronológico de transacciones. Aun así, el término asentado es ledger, y la norma [ISO 22739:2024](https://www.iso.org/standard/82208.html) lo define como un almacén de información que guarda registros de transacciones pensados para ser finales, definitivos e inmutables. Un distributed ledger es el ledger que se comparte entre los nodos de la red y se mantiene sincronizado mediante un mecanismo de consenso. Para quienes lo comparten es la fuente única de verdad (single source of truth): el registro que todos aceptan como válido.
+
+Lo que el ledger registra no tiene por qué ser un saldo. En las criptomonedas lo es, y se lleva con el modelo UTXO (salidas de transacción no gastadas, como en Bitcoin) o con el modelo de cuentas (como en Ethereum). Pero esa es una decisión de diseño concreta: el ledger puede reflejar el estado final de cualquier hecho, también jurídico o administrativo, y servir como registro incontestable de que ocurrió en un momento determinado.
 
 Existen otras implementaciones de DLT que emplean estructuras de datos alternativas:
 
@@ -103,19 +105,27 @@ Si analizamos las decisiones de diseño sobre cómo el nodo gestiona y reconstru
 
   > Permite la existencia de clientes ligeros (light nodes) que pueden verificar criptográficamente el saldo de una cuenta pidiendo a un nodo completo solo la rama específica del árbol (Merkle proof), sin necesidad de descargar ni procesar toda la blockchain.
 
+## Lógica on-chain y off-chain
+
+Sobre una red blockchain se puede definir una lógica de negocio on-chain: la que se ejecuta dentro de las transacciones, normalmente en contratos inteligentes, y que todos los nodos reproducen hasta llegar al mismo estado. Es la capa de validación, anclaje y consolidación de la información.
+
+Todo lo demás es lógica off-chain: se ejecuta fuera de la red, en los sistemas de cada participante, y solo lleva a la cadena lo que tiene que quedar registrado y verificado por todos, como un hash, una evidencia o un cambio de estado.
+
 ## Distribución versus descentralización
 
 Los términos "distributed" y "decentralized" frecuentemente se confunden, pero representan conceptos distintos que es crucial diferenciar en el contexto de blockchain y sistemas distribuidos.
 
 **Sistema distribuido:**
 
-Se refiere a que los datos o procesos están replicados en múltiples ubicaciones geográficas o lógicas. Un sistema puede ser distribuido pero mantener control centralizado, como ocurre con los servidores replicados de una empresa que operan en diferentes regiones para mejorar la disponibilidad y el rendimiento, pero donde una única organización mantiene el control total sobre la infraestructura.
+Se refiere a que los datos o procesos están replicados en múltiples ubicaciones geográficas o lógicas. Un sistema puede ser distribuido pero mantener control centralizado, como ocurre con los servidores replicados de una empresa que operan en diferentes regiones para mejorar la disponibilidad y el rendimiento, pero donde una única organización mantiene el control total sobre la infraestructura. Esa organización decide el modelo de datos, controla las actualizaciones, gestiona los permisos y determina qué versión del sistema es válida.
 
 **Sistema descentralizado:**
 
 Implica que no existe una autoridad central que controle completamente el sistema. Las decisiones, el control y la gobernanza están distribuidos entre múltiples participantes que operan de forma autónoma. La descentralización fomenta la resistencia a la censura y reduce los puntos únicos de fallo tanto técnicos como de gobernanza.
 
 Es crucial entender que el término DLT se refiere a un libro mayor distribuido, pero no implica necesariamente descentralización completa. Una DLT siempre es distribuida, pero su control puede estar centralizado, descentralizado o repartido en parte, según su diseño y su modelo de gobernanza. Dicho de otro modo, la distribución responde a dónde están los datos (cuántos nodos guardan una copia del registro), mientras que la descentralización responde a quién controla el sistema y toma las decisiones. Blockchain, en su concepción original, está diseñada principalmente para sistemas descentralizados, aunque existen implementaciones permisionadas con diferentes grados de descentralización.
+
+El grado de descentralización depende de cómo se alcanza el estado común de la red y de cuánto se subordina a una entidad central. Si lo fija un coordinador central, no hay descentralización, aunque los datos estén replicados en muchos nodos. Si los nodos lo acuerdan entre pares mediante un protocolo de consenso, hay cierto grado de descentralización, acotado a los participantes admitidos cuando la red es permisionada. Y si además cualquiera puede unirse sin permiso ni confianza previa (permissionless y trustless), la red es plenamente descentralizada.
 
 ## Tipos de blockchain según autorización
 
