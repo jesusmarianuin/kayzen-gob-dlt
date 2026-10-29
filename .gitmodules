@@ -58,3 +58,33 @@
 [submodule "knowledge-base/openzeppelin/openzeppelin-contracts-upgradeable"]
 	path = knowledge-base/openzeppelin/openzeppelin-contracts-upgradeable
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable.git
+[submodule "knowledge-base/eudi/eudi-doc-architecture-and-reference-framework"]
+	path = knowledge-base/eudi/eudi-doc-architecture-and-reference-framework
+	url = https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
+[submodule "knowledge-base/eudi/eudi-doc-standards-and-technical-specifications"]
+	path = knowledge-base/eudi/eudi-doc-standards-and-technical-specifications
+	url = https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications
+[submodule "knowledge-base/eudi/eudi-doc-attestation-rulebooks-catalog"]
+	path = knowledge-base/eudi/eudi-doc-attestation-rulebooks-catalog
+	url = https://github.com/eu-digital-identity-wallet/eudi-doc-attestation-rulebooks-catalog
+[submodule "knowledge-base/eudi/eudi-app-android-wallet-ui"]
+	path = knowledge-base/eudi/eudi-app-android-wallet-ui
+	url = https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui
+[submodule "knowledge-base/eudi/eudi-lib-android-wallet-core"]
+	path = knowledge-base/eudi/eudi-lib-android-wallet-core
+	url = https://github.com/eu-digital-identity-wallet/eudi-lib-android-wallet-core
+[submodule "knowledge-base/eudi/eudi-srv-pid-issuer"]
+	path = knowledge-base/eudi/eudi-srv-pid-issuer
+	url = https://github.com/eu-digital-identity-wallet/eudi-srv-pid-issuer
+[submodule "knowledge-base/eudi/eudi-srv-verifier-endpoint"]
+	path = knowledge-base/eudi/eudi-srv-verifier-endpoint
+	url = https://github.com/eu-digital-identity-wallet/eudi-srv-verifier-endpoint
+[submodule "knowledge-base/eudi/eudi-lib-jvm-openid4vci-kt"]
+	path = knowledge-base/eudi/eudi-lib-jvm-openid4vci-kt
+	url = https://github.com/eu-digital-identity-wallet/eudi-lib-jvm-openid4vci-kt
+[submodule "knowledge-base/eudi/eudi-lib-jvm-openid4vp-kt"]
+	path = knowledge-base/eudi/eudi-lib-jvm-openid4vp-kt
+	url = https://github.com/eu-digital-identity-wallet/eudi-lib-jvm-openid4vp-kt
+[submodule "knowledge-base/eudi/eudi-lib-jvm-sdjwt-kt"]
+	path = knowledge-base/eudi/eudi-lib-jvm-sdjwt-kt
+	url = https://github.com/eu-digital-identity-wallet/eudi-lib-jvm-sdjwt-kt

@@ -47,4 +47,4 @@ Probar sobre una DLT exige más capas que en un desarrollo tradicional:
 - Una red QBFT local con varios nodos Besu en contenedores, para reproducir caídas de validadores, latencias y particiones de red.
 - Un entorno de preproducción compartido que replique también la gobernanza: el mismo proceso de despliegue de contratos y de actualización de versión del cliente que se seguirá en producción.
 
-Las actualizaciones de Besu deben coordinarse entre todos los organismos, porque nodos con reglas de validación distintas pueden bifurcar la red (véase [gobernanza de la red](network-governance.md)). Ensayarlas en preproducción forma parte del ciclo de CI/CD tanto como las pruebas del código.
+Las actualizaciones de Besu deben coordinarse entre todos los organismos, porque nodos con reglas de validación distintas pueden bifurcar la red (véase [gobernanza de la red](network-governance.md)). Ensayarlas en preproducción forma parte del ciclo de CI/CD tanto como las pruebas del código. Los mecanismos para automatizar esa coordinación se describen en [automatización de la gobernanza y la operación](governance-automation.md).
