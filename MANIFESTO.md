@@ -45,18 +45,6 @@ Quizá tenga más sentido llevar ahí lo que he aprendido sobre sistemas descent
 
 Al final, tras un largo rodeo, he comprendido que la verdadera innovación no está en crear comunidades desde cero a base de incentivos artificiales, está en dar mejores herramientas a las comunidades que nos sostienen y sobre todo a las que ya conocemos. Vuelvo a mí terreno, pero con una nueva visión técnica. Este es mí nuevo punto de partida.
 
-## Procrastinación
-
-Dentro del análisis de lo que hize bien o mal hay otro factor que sufri mucho, se que es el sindrome del impostor, tambien deficit de atención y procrastinación, en parte por no ir de la mano de un plan, cuando vas por libre es facil perderse sin saber hacía donde ir.
-
-Recuerdo 3 meses para estudiar sobre redes P2P, que oye perfecto, un documento brillante, pero... ok. ¿para que sirve esto?
-
-Recuerdo 3-4 meses para montar un servidor ubuntu con IPFS, docker, ngnixex, con primeras medidas hardering de minimo permiso, donde aprendí limux, aprendi cosas que incluso en el trabajo me vino bien... y ok, ya se IPFS pero ¿era esto lo que quería?
-
-Sí tube paralisis por analisis, pero es que no es facil saber a quien pregntar y esta sí es un critica a la comunidad, más tarde ethereum se puso las pilas y publico material concreto, que a mi ya me daba agotamiento empezar, porque ya estaba siguiendo un curso de Alchemy Univertity que estaba abandonado me di luego, no se volio a tocar en meses, por las fechas de los repos en años..
-En ese curso aprednes cosas internas de ethereum, que es ok.. de la misma forma que aprendes como funciona el motor de base de datos, está bien, pero como contexto general saber un insert y select para el 90% de aplicaciones sencillas te vale..¿no?
-Claro que aprendi del master, pero master muy pubre, con mas dudas qe soluciones, y es verdad construi mi token, mi contrato, mi dapp simple, mucho con IA, llamadas al contrato, pero con la sensacion de cuando te dan un curso en el trabajo, no diría hoy que sé o recuerde todos los pasos.. es verdad sé que mejor usar Foundry, los faucets para probar, la libreria para proba, que han cambiado de cuando estudie, no puedo decir que ahora si empeizoe de cero no sepa nada, porque no es cierto, pero siempre esta todo lo aprendido como una nube que no consigo concretar.
-
 ## Procrastinación, parálisis y el camino sin mapa
 
 Dentro del análisis de lo que hice bien o mal, hay un factor determinante con el que luché constantemente: una mezcla de síndrome del impostor, déficit de atención y procrastinación. Todo ello alimentado, en gran parte, por no contar con un plan claro. Cuando avanzas por libre, es extremadamente fácil perder el rumbo y quedarte sin saber hacia dónde ir.
