@@ -8,6 +8,9 @@ La tecnología del *ledger* es la capa técnica; la dificultad real reside en la
 
 En este documentos veremos en diferentes partes:
 
+//todo: **ISO 23257:2022:** arquitectura de referencia para tecnologías blockchain y de registros distribuidos.
+//todo: **ISO/TS 23635:2022:** directrices de gobernanza para tecnologías blockchain y de registros distribuidos.
+
 - [Cuándo es interesante una DLT](when-to-use-dlt.md): condiciones en las que una DLT aporta valor y casos en los que basta una base de datos convencional
 - [Gobernanza de la red](network-governance.md): modelo federado, el nodo como infraestructura propia y compartida, estándares abiertos, resiliencia y economía interna
 - [Identidad y protección de datos](identity-and-data-protection.md): identificación de nodos y firmantes, custodia de claves y encaje con el RGPD

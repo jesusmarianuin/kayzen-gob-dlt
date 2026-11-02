@@ -1,7 +1,5 @@
 # Glosario de términos relacionado con eIDAS
 
-//todo ia: este articulo es oro para mejorar esto, ponlo ademas como referencia: https://inza.blog/2026/09/20/que-son-las-declaraciones-electronicas-de-atributos-eaa-qeaa-y-las-del-sector-publico-pub-eaa-en-eidas2/#comments
-
 ## ETSI (European Telecommunications Standards Institute)
 
 Instituto Europeo de Normas de Telecomunicaciones, con sede en Sophia Antipolis (Francia). Es uno de los tres organismos europeos de normalización reconocidos por el Reglamento (UE) 1025/2012, junto con CEN y CENELEC. Su comité ESI (Electronic Signatures and Infrastructures) elabora las normas técnicas que desarrollan eIDAS (firmas, certificados, prestadores de servicios de confianza, listas de confianza).
@@ -75,21 +73,24 @@ eIDAS2 amplía la lista de servicios de confianza regulados, incorporando:
 
 Permite emitir y verificar atributos electrónicos sobre una persona o entidad. Un atributo es una información asociada a una identidad como edad, titulación académica, permiso profesional, condición de estudiante, etc.
 
-La declaración electrónica de atributos permite que estos datos puedan ser utilizados de forma confiable en transacciones electrónicas.
+La declaración electrónica de atributos permite que estos datos puedan ser utilizados de forma confiable en transacciones electrónicas. Sus tipos, efectos y requisitos se explican en la [sección dedicada](#nuevo-servicio-eidas2-declaración-electrónica-de-atributos-eaa).
 
 **Archivo electrónico (*Electronic Archiving*)**:
 
 Introduce el servicio de archivo electrónico cualificado. Su finalidad es garantizar la conservación de documentos electrónicos durante largos periodos asegurando: integridad, autenticidad, origen, disponibilidad.
 
-Está orientado a conservar evidencias digitales con valor jurídico.
+Está orientado a conservar evidencias digitales con valor jurídico. Sus niveles y requisitos se resumen en la [sección dedicada](#nuevo-servicio-eidas2-archivo-electrónico-electronic-archiving).
 
 **Libros mayores electrónicos (*Electronic Ledger*)**:
 
 Introduce los libros mayores electrónicos como servicio de confianza.
 
-Un libro mayor electrónico permite registrar datos de forma distribuida o compartida garantizando: integridad de los registros, orden cronológico, trazabilidad de las operaciones.
+Un libro mayor electrónico es una secuencia de registros de datos que garantiza su integridad y la exactitud de su orden cronológico. El reglamento no exige una tecnología concreta: puede implementarse con o sin blockchain. Sus niveles, efectos y relación con las DLT se explican en la [sección dedicada](#nuevo-servicio-eidas2-libro-mayor-electrónico-electronic-ledger).
 
-> No significa que eIDAS regule blockchain como tecnología concreta, sino que establece requisitos para determinados sistemas de registro electrónico.
+### Plazos de aplicación de la cartera europea
+
+- 24 de diciembre de 2026: cada Estado miembro debe poner a disposición al menos una cartera europea, y las administraciones públicas deben aceptarla como medio de identificación. Es el plazo de emisión y aceptación por el sector público, no de adopción generalizada
+- 24 de diciembre de 2027: el sector privado regulado (banca, telecomunicaciones, energía, transporte, sanidad, seguros, educación e infraestructura digital) debe aceptarla cuando la normativa le exija autenticación reforzada
 
 ### Referencias de eIDAS2
 
@@ -112,7 +113,7 @@ Entre sus principales capacidades se encuentran:
 - **Firma electrónica**, como [firma cualificada (QES)](https://www.e-signature.eu/en/eidas-2-electronic-signature/#:~:text=*%20QES%20via%20smartphone%20(software%20QSCD)%20becomes,and%20compliant%20during%20and%20after%20the%20transition.), en los casos y condiciones previstos por el marco europeo.
 - **Control por parte del usuario sobre la información que comparte**, permitiendo proporcionar únicamente los datos necesarios para una determinada operación.
 
-Las credenciales digitales pueden ser emitidas por autoridades públicas y entidades privadas para acreditar atributos de personas físicas o jurídicas, como datos de identidad, permisos de conducción, titulaciones académicas o cualificaciones profesionales. En el marco europeo de identidad digital, pueden adoptar la forma de **atestaciones electrónicas de atributos cualificadas o no cualificadas**, sujetas a distintos requisitos y efectos jurídicos conforme al Reglamento eIDAS. Los casos de uso incluyen el acceso a servicios públicos y privados, la apertura de cuentas bancarias, los pagos, la firma de contratos, los viajes, la educación y la seguridad social, de acuerdo con la normativa aplicable.
+Las credenciales digitales pueden ser emitidas por autoridades públicas y entidades privadas para acreditar atributos de personas físicas o jurídicas, como datos de identidad, permisos de conducción, titulaciones académicas o cualificaciones profesionales. En el marco europeo de identidad digital, pueden adoptar la forma de [declaraciones electrónicas de atributos](#nuevo-servicio-eidas2-declaración-electrónica-de-atributos-eaa) cualificadas o no cualificadas, sujetas a distintos requisitos y efectos jurídicos conforme al Reglamento eIDAS. Los casos de uso incluyen el acceso a servicios públicos y privados, la apertura de cuentas bancarias, los pagos, la firma de contratos, los viajes, la educación y la seguridad social, de acuerdo con la normativa aplicable.
 
 Un principio especialmente relevante de la EUDI Wallet es la **minimización de datos**. Por ejemplo, para demostrar que una persona cumple un requisito de edad, no necesariamente tendría que revelar su fecha de nacimiento completa: podría presentar una prueba verificable de que **es mayor de 18 años**, evitando revelar información adicional que no sea necesaria para la operación.
 
@@ -125,7 +126,48 @@ Su arquitectura y requisitos técnicos se definen en el **European Digital Ident
 - [European Digital Identity Wallet — Architecture and Reference Framework](https://eudi.dev/latest/main/01-introduction/?utm_source=chatgpt.com#11-eudi-wallet-ecosystem)
 - [Comisión Europea — Aplicación de la cartera de identidad digital de la UE](https://digital-strategy.ec.europa.eu/es/policies/eudi-wallet-implementation)
 
-## Libro mayor electrónico (electronic ledger)
+## Nuevo servicio eIDAS2: Declaración electrónica de atributos (EAA)
+
+Una declaración electrónica de atributos es una manifestación electrónica firmada que acredita que un atributo de una persona física o jurídica es cierto (edad, titulación, permiso, cargo en una sociedad) sin tener que identificarla por completo. El término oficial en español es "declaración", no "atestación".
+
+Hay tres tipos, y lo que los distingue es quién la emite:
+
+- EAA: cualquier prestador de servicios de confianza. No se le puede negar valor como prueba solo por ser electrónica
+- QEAA (cualificada): un prestador cualificado (QTSP). Equivale a una declaración en papel y se reconoce en toda la UE. Si el atributo está en el anexo VI (dirección, edad, estado civil, nacionalidad, titulaciones, permisos, datos registrales...), el prestador debe poder comprobarlo en su fuente auténtica, el registro oficial que custodia el dato
+- Pub-EAA: un organismo público responsable de una fuente auténtica, o alguien en su nombre. Equivale también a la declaración en papel, y no necesita esa comprobación porque emite la propia fuente
+
+Su régimen está en los artículos 45 ter a 45 nonies del Reglamento eIDAS modificado (45b a 45h en inglés) y en los anexos V a VII. Lo desarrollan los actos de ejecución, como el [Reglamento de Ejecución (UE) 2024/2977](#qué-publica-para-eidas), y las normas de [ETSI](#etsi-european-telecommunications-standards-institute) y [CEN](#cen-y-cenelec). En septiembre de 2026 había todavía pocos prestadores de QEAA en las listas de confianza.
+
+Referencias:
+
+- [Reglamento (UE) 2024/1183 (eIDAS 2) en EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1183/oj)
+- [Buscador de prestadores y servicios de confianza de la UE (EU Trust Services Dashboard)](https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls)
+- [Qué son las declaraciones electrónicas de atributos EAA, QEAA y Pub-EAA en eIDAS2 (inza.blog)](https://inza.blog/2026/09/20/que-son-las-declaraciones-electronicas-de-atributos-eaa-qeaa-y-las-del-sector-publico-pub-eaa-en-eidas2/)
+
+## Nuevo servicio eIDAS2: Archivo electrónico (electronic archiving)
+
+El archivo electrónico es un servicio que recibe, almacena, recupera y elimina datos y documentos electrónicos. Su fin es que sigan siendo legibles y conserven su integridad, su confidencialidad y la prueba de su origen durante todo el periodo de conservación (artículo 3).
+
+Antes de eIDAS 2 ya existía un servicio parecido, pero más limitado: la conservación cualificada de firmas y sellos electrónicos cualificados (artículos 34 y 40), que mantiene verificable la firma aunque su tecnología quede obsoleta. El archivo electrónico, en cambio, cubre cualquier dato o documento, esté firmado o no.
+
+Como en el resto de servicios de confianza, hay dos niveles:
+
+- Archivo electrónico: un juez no puede rechazar como prueba los datos y documentos conservados solo por ser electrónicos o por no haberse conservado con un servicio cualificado
+- Archivo electrónico cualificado: lo presta un prestador cualificado de servicios de confianza, y la ley presume la integridad y el origen de los datos y documentos durante todo el periodo de conservación
+
+El servicio cualificado debe cumplir estos requisitos:
+
+- Usar procedimientos y tecnologías que garanticen que los datos sigan siendo duraderos y legibles más allá de la vida de la tecnología que los protege, y al menos durante el periodo de conservación legal o contractual
+- Proteger los datos frente a pérdidas y alteraciones. Se admiten los cambios de soporte o de formato electrónico, para poder migrar los datos cuando un formato quede obsoleto
+- Entregar a las partes usuarias autorizadas, de forma automatizada, un informe que confirme que los datos recuperados mantienen la presunción de integridad desde el inicio de la conservación hasta su recuperación
+
+Sus efectos y requisitos están en los artículos 45 decies y 45 undecies del Reglamento eIDAS modificado (45i y 45j en la versión inglesa).
+
+Referencias:
+
+- [Reglamento (UE) 2024/1183 (eIDAS 2) en EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1183/oj)
+
+## Nuevo servicio eIDAS2: Libro mayor electrónico (electronic ledger)
 
 Un libro mayor electrónico es un registro de datos en el que cada entrada queda en orden y no se puede modificar sin que se note. La idea es la de un libro de registro de entradas en papel, con las páginas numeradas, pero en formato digital.
 
@@ -136,7 +178,7 @@ Como en el resto de servicios de confianza, hay dos niveles:
 - Libro mayor electrónico: un juez no puede rechazarlo como prueba solo por ser electrónico o por no ser cualificado.
 - Libro mayor electrónico cualificado: lo presta un prestador cualificado de servicios de confianza supervisado, y la ley presume que los datos son auténticos, que su fecha y su orden son exactos y que no se han alterado. Quien quiera negarlo tiene que demostrarlo.
 
-El reglamento no menciona la tecnología: un libro mayor puede implementarse con o sin blockchain. La relación con las tecnologías de registro distribuido (DLT) se concreta en su desarrollo técnico. El Reglamento de Ejecución (UE) 2025/2531 fija las normas de referencia para los libros mayores cualificados, y uno de sus anexos se dedica a los "libros mayores electrónicos distribuidos cualificados", con definiciones de nodo, consenso, mecanismo de consenso y carácter definitivo de los registros.
+El reglamento no menciona la tecnología: un libro mayor puede implementarse con o sin blockchain. La relación con las tecnologías de registro distribuido (DLT) se concreta en su desarrollo técnico. El Reglamento de Ejecución (UE) 2025/2531 fija las normas de referencia para los libros mayores cualificados, y uno de sus anexos se dedica a los "libros mayores electrónicos distribuidos cualificados", con definiciones de nodo, consenso, mecanismo de consenso y carácter definitivo de los registros. Ese reglamento exige a todos los libros mayores cualificados la norma ETSI EN 319 401, y a los distribuidos además ISO 23257:2022 (arquitectura DLT) e ISO/TS 23635:2022 (gobernanza).
 
 En la práctica, esto significa que una red blockchain puede ofrecer un servicio con valor probatorio reconocido en toda la UE, siempre que la opere un prestador cualificado y cumpla esas normas. Que una red sea blockchain no le da por sí mismo esa presunción legal.
 
@@ -146,6 +188,93 @@ Referencias:
 
 - [Reglamento (UE) 2024/1183 (eIDAS 2) en EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1183/oj)
 - [Reglamento de Ejecución (UE) 2025/2531 sobre libros mayores electrónicos cualificados](https://eur-lex.europa.eu/eli/reg_impl/2025/2531/oj)
+
+## Nuevo servicio eIDAS2: Libro mayor electrónico (Electronic Ledger)
+
+Un libro mayor electrónico (electronic ledger) es un registro digital en el que los datos se incorporan siguiendo una secuencia cronológica y se utilizan mecanismos que permiten garantizar su integridad y detectar cualquier modificación posterior.
+
+Podemos entenderlo como la evolución digital de un libro de registro tradicional: cada anotación queda incorporada a una secuencia ordenada y debe poder verificarse que no ha sido manipulada. La diferencia es que, en lugar de depender de páginas numeradas o mecanismos físicos de custodia, utiliza técnicas criptográficas para proteger los registros y acreditar su posición dentro de la secuencia.
+
+Como sucede con otros servicios de confianza, eIDAS distingue entre el libro mayor electrónico y el libro mayor electrónico cualificado. La diferencia fundamental está en los requisitos que deben cumplir y en los efectos jurídicos que se les reconocen.
+
+- Libro mayor electrónico: no puede denegarse su efecto jurídico ni su admisibilidad como prueba en procedimientos judiciales por el mero hecho de estar en formato electrónico o de no cumplir los requisitos de un libro mayor cualificado. Esto no significa que cualquier registro tenga automáticamente valor probatorio suficiente: su fiabilidad y fuerza probatoria se valorarán atendiendo a las circunstancias del caso.
+
+- Libro mayor electrónico cualificado: debe cumplir los requisitos específicos del artículo 45 terdecies y estar creado y gestionado por uno o varios prestadores cualificados de servicios de confianza (QTSP). Sus registros gozan de una presunción jurídica de unicidad y exactitud de su orden cronológico secuencial y de integridad.
+
+Esta presunción tiene una consecuencia importante: quien cuestione la integridad de los registros o su orden cronológico deberá aportar elementos para rebatirla. No obstante, no significa que el contenido registrado sea necesariamente verdadero. Por ejemplo, si una empresa registra que ha entregado una mercancía, el libro mayor puede acreditar la integridad y la posición cronológica de ese registro, pero no demuestra por sí mismo que la entrega se haya producido realmente.
+
+También conviene distinguir dos conceptos: **la procedencia de un registro y la veracidad de su contenido**. El libro mayor cualificado debe establecer el origen de los datos, pero eso no equivale a garantizar que la información aportada por su autor sea cierta.
+
+Los efectos jurídicos de ambas modalidades se encuentran en el artículo 45 duodecies del Reglamento eIDAS.
+
+**Implementación del libro mayor**:
+
+El Reglamento eIDAS no obliga a utilizar blockchain para implementar un libro mayor electrónico. Puede construirse mediante una arquitectura centralizada o distribuida, siempre que se cumplan los requisitos establecidos.
+
+La relación con las tecnologías de registro distribuido (DLT) se concreta en el Reglamento de Ejecución (UE) 2025/2531, que contempla expresamente los libros mayores electrónicos distribuidos cualificados y establece especificaciones técnicas adicionales para ellos.
+
+Un libro mayor distribuido es aquel que se comparte entre diferentes nodos y mantiene sus registros sincronizados mediante un mecanismo de consenso.
+
+El Reglamento introduce varios conceptos específicos:
+
+- **Nodo:** dispositivo o proceso que forma parte de la red y almacena una copia completa o parcial de los registros.
+- **Red distribuida:** conjunto de nodos que forman el sistema de registro distribuido.
+- **Consenso:** acuerdo entre los nodos sobre la validez de las transacciones y el mantenimiento de un conjunto coherente y ordenado de transacciones validadas.
+- **Mecanismo de consenso:** conjunto de reglas y procedimientos mediante los cuales se alcanza ese acuerdo.
+- **Carácter definitivo (finality):** estado de un registro que se ha vuelto irreversible y no puede modificarse ni suprimirse.
+
+Este último concepto es especialmente relevante. En una red distribuida no basta con que una transacción haya sido aceptada por un nodo: debe existir un mecanismo que permita determinar cuándo alcanza el carácter definitivo y puede considerarse incorporada de forma irreversible al libro mayor.
+
+Para estos sistemas de libro mayor, el Reglamento 2025/2531 incorpora dos referencias técnicas adicionales:
+
+- **ISO 23257:2022:** arquitectura de referencia para tecnologías blockchain y de registros distribuidos.
+- **ISO/TS 23635:2022:** directrices de gobernanza para tecnologías blockchain y de registros distribuidos.
+
+
+### Reglamento de Ejecución (UE) 2025/2531: requisitos técnicos
+
+El Reglamento de Ejecución (UE) 2025/2531 desarrolla las normas y especificaciones de referencia para los libros mayores electrónicos cualificados. Su objetivo es concretar cómo deben garantizarse técnicamente la procedencia, la integridad y el orden cronológico de los registros.
+
+Establece como referencia general la norma **ETSI EN 319 401 v3.1.1**, relativa a los requisitos generales de política y seguridad de los prestadores de servicios de confianza, con adaptaciones específicas para este servicio.
+
+Entre otras cuestiones, concreta los mecanismos utilizados para:
+
+- Autenticar el origen de los registros mediante firmas electrónicas avanzadas o sellos electrónicos avanzados basados en certificados cualificados, creados por los usuarios del servicio.
+- Garantizar la secuencia cronológica mediante vínculos criptográficos basados en listas o árboles hash, utilizando funciones hash SHA-256 o superiores, o SHA3-256 o superiores.
+- Garantizar la integridad de los registros mediante firmas electrónicas avanzadas o sellos electrónicos avanzados basados en certificados cualificados.
+- Detectar inmediatamente cualquier modificación posterior de los datos.
+- Proteger las claves criptográficas utilizadas por el prestador.
+
+También contempla la utilización de sellos de tiempo cualificados como alternativa para garantizar la unicidad del orden cronológico secuencial.
+
+En el caso de los libros mayores distribuidos, se añaden las especificaciones relacionadas con la arquitectura DLT, la gobernanza de la red y los mecanismos de consenso.
+
+El Reglamento exige, además, que el prestador documente los mecanismos técnicos utilizados en su declaración de prácticas del servicio. De esta forma, los usuarios y las partes que confían en él pueden conocer cómo se garantiza la procedencia, la integridad y la ordenación de los registros.
+
+### ¿Qué aporta en la práctica?
+
+La incorporación de este servicio permite disponer de registros electrónicos con garantías técnicas y jurídicas armonizadas en toda la Unión Europea.
+
+Algunos ejemplos de aplicación son:
+
+- **Cadena de suministro:** registrar acontecimientos relacionados con la fabricación, transporte y entrega de mercancías.
+- **Propiedad intelectual:** registrar evidencias de la existencia de determinados contenidos en una secuencia temporal.
+- **Trazabilidad documental:** mantener un historial verificable de documentos y operaciones.
+- **Transacciones empresariales:** registrar operaciones y acontecimientos entre diferentes organizaciones.
+- **Auditoría:** conservar secuencias de registros cuya integridad y orden cronológico puedan verificarse posteriormente.
+
+La principal aportación no consiste simplemente en almacenar información, sino en proporcionar garantías verificables sobre su procedencia, integridad y orden cronológico, respaldadas por una presunción jurídica cuando el servicio está cualificado.
+
+En definitiva, eIDAS 2 permite que un libro mayor electrónico, incluida una infraestructura blockchain, pueda funcionar como un servicio de confianza cualificado y beneficiarse de un reconocimiento jurídico armonizado en la Unión Europea. La tecnología utilizada es secundaria: lo determinante es el cumplimiento de los requisitos normativos y la cualificación del servicio.
+
+### Referencias
+
+- [Reglamento (UE) 2024/1183 (eIDAS 2) en EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1183/oj).
+- [Reglamento (UE) n.º 910/2014 (eIDAS), texto consolidado](https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:02014R0910-20241018).
+- [Reglamento de Ejecución (UE) 2025/2531 sobre libros mayores electrónicos cualificados](https://eur-lex.europa.eu/eli/reg_impl/2025/2531/oj).
+- ETSI EN 319 401 v3.1.1: requisitos generales de política y seguridad para prestadores de servicios de confianza.
+- ISO 23257:2022: arquitectura de referencia para tecnologías blockchain y DLT.
+- ISO/TS 23635:2022: directrices de gobernanza para tecnologías blockchain y DLT.
 
 ### EBSI (European Blockchain Services Infrastructure)
 
