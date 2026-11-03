@@ -10,7 +10,7 @@ Define que por estado miembro existen los **servicios de confianza**, que es un 
 
 Un servicio de confianza, tiene un **Prestador de Servicios de Confianza** (TSP Trust Service Provider) que es la entidad que presta dichos servicios.
 
-Los prestadores de servicios de confianza pueden obtener la categoría de **Prestadores Cualificados de Servicios de Confianza** (*Qualified Trust Service Provider*, QTSP). Para ello, deben cumplir los requisitos previstos en el Reglamento eIDAS y contar con el reconocimiento formal del órgano de supervisión competente de su país, el cual los incluye en la **lista de confianza** del Estado miembro correspondiente (*Trusted List*, TL, especificada técnicamente como *Trust Service Status List*, TSL).
+Los prestadores de servicios de confianza pueden obtener la categoría de **Prestadores Cualificados de Servicios de Confianza** (*Qualified Trust Service Provider*, QTSP). Para ello, deben cumplir los requisitos previstos en el Reglamento eIDAS y contar con el reconocimiento formal del órgano de supervisión competente de su país, el cual los incluye en la [**lista de confianza**](trusted-lists.md) del Estado miembro correspondiente (*Trusted List*, TL, especificada técnicamente como *Trust Service Status List*, TSL).
 
 A su vez, las listas de cada Estado miembro (TL/TSL) se engloban centralmente en la *List of Trusted Lists* (LOTL). Al respecto, *EUTL (EU Trusted List)* es la denominación funcional y divulgativa habitual para referirse a esta infraestructura europea, mientras que la terminología técnica oficial bajo eIDAS y los estándares ETSI utiliza la sigla **LOTL**.
 
@@ -73,7 +73,7 @@ Un libro mayor electrónico es una secuencia de registros de datos que garantiza
 
 ## Cartera Europea de Identidad Digital (EUDI Wallet)
 
-[La Cartera Europea de Identidad Digital (EUDI Wallet)](eudi-wallet.md) es una aplicación digital segura y controlada por el usuario que permite gestionar, almacenar y utilizar su identidad digital y otras credenciales electrónicas verificables en sus interacciones con servicios públicos y privados, tanto a nivel nacional como transfronterizo dentro de la Unión Europea.
+La IDUE (Identidad Digital de la Unión Europea) conocida como [la Cartera Europea de Identidad Digital (EUDI Wallet)](eudi-wallet.md) es una aplicación digital segura y controlada por el usuario que permite gestionar, almacenar y utilizar su identidad digital y otras credenciales electrónicas verificables en sus interacciones con servicios públicos y privados, tanto a nivel nacional como transfronterizo dentro de la Unión Europea.
 
 La cartera forma parte de un ecosistema europeo de identidad digital en el que intervienen diferentes actores, entre ellos los usuarios, los proveedores que emiten datos de identidad y credenciales electrónicas, los proveedores de la cartera y las entidades que solicitan y verifican dichas credenciales. Este ecosistema se basa en mecanismos comunes de interoperabilidad, seguridad y confianza.
 

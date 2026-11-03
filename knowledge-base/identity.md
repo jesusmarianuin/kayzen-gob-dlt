@@ -4,24 +4,16 @@
 
 Antes de continuar, debemos aclarar los términos técnicos que la identidad maneja para que no exista ambigüedad sobre lo que hablamos, porque solemos confundirlos o, sobre todo, tratarlos como si fueran lo mismo.
 
-Los conceptos parten de una idea fundamental que todos podemos relacionar con el mundo real. Sin embargo, debemos distinguir entre lo que conocemos con su definición digital, formal o regulatoria. Cada institución, norma o regulador puede adoptar un término general y delimitar su significado en función de sus objetivos y necesidades. Por tanto, una definición no es necesariamente ambigua en sí misma, sino que puede resultar ambigua cuando no se especifica el contexto en el que se utiliza.
-Para evitarlo, estableceremos primero el contexto y después definiremos cada concepto. Esto es especialmente importante en el ámbito de la identidad electrónica, donde términos como certificado, credencial, firma y atestación tienen significados que pueden diferir de su interpretación general y de los utilizados en otros ámbitos técnicos o jurídicos.
-
 Un **identificador** es un código único que te representa en el sistema. Tu DNI, con su número y letra de control (12345678Z), funciona como tu identificador ante la Administración, un código que permite a los sistemas localizarte y comunicarse contigo. Este es un ejemplo simple, existen otros identificadores como el [DID (Decentralized Identifier)](https://www.w3.org/TR/did-core/). Lo importante es que un identificador no es una identidad, lo es según las relaciones que establecemos con él.
-
-Una **atestación**, o más concretamente, una atestación electrónica, no nace de un único marco, sino que converge desde el regulatorio (eIDAS, con la “Electronic Attestation of Attributes”), el técnico (client attestation en OAuth y OpenID4VC) y, en paralelo, Web3 (EAS).
-En términos simples, es cuando un emisor —una universidad, un empleador, una organización o una administración pública— confirma algo sobre ti de forma verificable. Por ejemplo, una universidad puede atestiguar que has completado un grado académico, o el Servicio Público de Empleo puede atestiguar que estás inscrito como demandante de empleo.
-En esta definición no hablamos de su formato ni de su implementación técnica, sino de qué es y qué finalidad tiene. La forma de representarla, firmarla, almacenarla o verificarla corresponde a su implementación técnica. Además, aunque es habitual utilizar firmas o sellos electrónicos para garantizar su autenticidad e integridad, no conviene definir toda atestación como necesariamente firmada digitalmente.
 
 Un **certificado** en un ámbito mas general, se le conoce a aquel soporte físico o digital donde un hecho o afirmación de un sujeto existe, respaldado por una entidad de confianza para permitir su verificación. La idea general con la que podemos quedarnos es que el certificado es ese documento o archivo que, teniéndolo, nos da esa seguridad de validar ese hecho.
 En el ámbito digital, **certificado electrónico** (término formal regulatorio) y **certificado digital** (término de uso común) suelen usarse como sinónimos. Su función principal es vincular una clave pública con la **identidad** de una persona física o jurídica mediante una Autoridad de Certificación (CA).
-El concepto de atestación parece similar al de certificado electrónico, pero la diferencia es clara: con el principio de minimización de datos, la atestación surge como necesidad para acreditar atributos o hechos específicos (como la mayoría de edad o la posesión de un título), a diferencia del certificado electrónico, que acredita la identidad general del titular (nombre, NIF).
 
 En su sentido más amplio, una **credencial** es cualquier prueba o artefacto (físico o digital) otorgado por una autoridad para que un tercero pueda confiar en quién eres o en qué derechos/atributos posees. Los participantes estáticos de una credencial son su emisor (issuer), el poseedor (holder) y el verificador (verifier); como procesos dinámicos sobre esa credencial tenemos la autenticación y la verificación.
 
 La **autenticación** es el proceso de demostrar que controlas una credencial, el cual tiene **tres factores** o métodos para comprobarlo: algo que sabes, algo que tienes y algo que eres.
 
-El primer factor, **algo que sabes**, son secretos como password, PINs o la frase semilla de una wallet. El password es el método de autenticación: el servidor verifica que conoces el secreto asociado a tu cuenta. Protocolos como [OAuth 2.0](https://oauth.net/2/) y [OpenID Connect](https://openid.net/connect/) construyen sobre este modelo mecanismos de federación de identidad ("Sign in with Google"), delegando la autenticación en un tercero —sea cual sea el factor que ese tercero use para autenticarte—. La debilidad estructural de este factor es que el secreto puede robarse, filtrarse o adivinarse.
+El primer factor, **algo que sabes**, son secretos como password, PINs o la frase semilla de una wallet. El password es el método de autenticación: el servidor verifica que conoces el secreto asociado a tu cuenta. La debilidad estructural de este factor es que el secreto puede robarse, filtrarse o adivinarse.
 
 El segundo factor, **algo que tienes**, es el objeto físico o criptográfico que custodias. Ejemplos conocidos son el DNIe o, más significativo como factor adicional, las llaves Yubico. Aunque el ejemplo más ilustrativo de este factor es la evolución directa del password: las [passkeys](https://fidoalliance.org/passkeys/).
 
@@ -29,19 +21,30 @@ El tercer factor, **algo que eres**, son rasgos biométricos como huella dactila
 
 La **verificación**, en cambio, no la hace quien se autentica sino el *verifier*: es la comprobación de que la credencial en sí es válida —firma correcta, emisor de confianza, no revocada— con independencia de si quien la presenta ha demostrado controlarla. Autenticación y verificación son procesos complementarios: uno confirma a la persona, el otro confirma el documento.
 
-Como aclaraciones, en el sentido amplio empleado aquí: un certificado digital y atestación es un tipo de credencial.
-
 Una **identidad** es la representación reconocible y significativa de quién eres en un contexto social. Conviene subrayarlo porque la identidad siempre depende del marco en el que se interpreta: en el ámbito legal, un identificador como el DNI puede operar como identidad por decisión institucional. También intervienen elementos de *marca personal* y la reputación que los demás asocian contigo. En muchos contextos no eres solo una persona, sino "la doctora X" o "el auditor Y". Por eso decimos que la identidad se construye y se verifica a partir de una o varias credenciales.
 
-Una **Credencial Verificable** (VC) surge cuando W3C necesita definir un estándar para una credencial más descentralizada, autoverificable y con la mínima información posible. Aunque mantiene los mismos participantes estáticos de una credencial tradicional (*issuer*, *holder* y *verifier*), estos actúan de forma desacoplada: el *holder* custodia la credencial en su billetera sin depender del *issuer* para gestionar su identidad. Como proceso dinámico de uso sobre esa credencial tenemos la **Verifiable Presentation** (VP). Adicionalmente las **OpenID4VC** como el puente entre OpenID y las credenciales verificables.
-
-//TODO no se aclara relacion o diferencia con atestación
+Una **Credencial Verificable (VC)** es el modelo de datos que W3C estandariza en su [Verifiable Credentials Data Model](https://www.w3.org/TR/vc-data-model/) para expresar afirmaciones (*claims*) sobre un sujeto, de forma que cualquiera pueda comprobar criptográficamente quién las emitió y que no se han alterado. Mantiene los mismos participantes estáticos de una credencial tradicional (*issuer*, *holder* y *verifier*), pero desacoplados: el *holder* custodia la credencial en su wallet y la presenta sin que el *issuer* intervenga en cada uso, aunque este conserva el control sobre su validez porque puede revocarla. Para comprobarla sin contactar con el *issuer*, el *verifier* se apoya en un cuarto rol, el [VDR (Verifiable Data Registry)](#vdr-verifiable-data-registry). Cuando el *holder* comparte una o varias credenciales, no las envía tal cual, sino que genera con ellas una Verifiable Presentation (VP). El intercambio de credenciales y presentaciones suele apoyarse en [OpenID4VC](https://openid.net/sg/openid4vc/), la familia de protocolos de la OpenID Foundation construida sobre OAuth 2.0, que define la emisión con [OpenID4VCI](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html) y la presentación con [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html).
 
 Una **Verifiable Presentation** (VP) es el paquete que el *holder* construye para mostrar una o varias credenciales verificables a un *verifier*. No reenvía la credencial tal cual: la envuelve, incluye solo los atributos que le piden cuando el formato lo permite (divulgación selectiva) y, normalmente, firma el conjunto con su propia clave junto a un valor de un solo uso (*nonce*) que fija el *verifier*, para que esa presentación no pueda reutilizarse. Así, en una misma operación se resuelven los dos procesos dinámicos vistos antes: el *verifier* comprueba la firma del *issuer* sobre la credencial (verificación) y la firma del *holder* sobre la presentación (autenticación, porque demuestra que controla la clave a la que se emitió la credencial). El intercambio se hace habitualmente con [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html), la parte de OpenID4VC dedicada a las presentaciones.
 
-La relación con la atestación es de capas: la atestación es lo que el emisor afirma sobre ti (que tienes un grado, que eres mayor de edad), la VC es una forma técnica de representar esa afirmación de manera firmada y verificable, y la VP es el acto de mostrarla a quien la pide. Por ejemplo, la universidad emite la atestación de tu grado como VC a tu wallet y, cuando una empresa la solicita, tu wallet genera una VP con solo el título y la fecha, firmada por ti. En eIDAS 2.0 ocurre lo mismo con las atestaciones electrónicas de atributos que guarda la EUDI Wallet, aunque allí no se usa solo el modelo W3C: también se emplean los formatos SD-JWT VC y mdoc (ISO/IEC 18013-5).
+Una **atestación**, o más concretamente una atestación electrónica de atributos (declaración electrónica de atributos en la versión en español de eIDAS), no nace de un único marco: aparece en el regulatorio (eIDAS, con la "Electronic Attestation of Attributes") y, en paralelo, en Web3 (EAS, Ethereum Attestation Service). En OAuth y OpenID4VC también se habla de atestación (*client attestation*), pero con otro objeto: no acredita atributos de una persona, sino que el software del cliente, por ejemplo la propia wallet, es legítimo.
+En términos simples, es cuando un emisor —una universidad, un empleador, una organización o una administración pública— confirma algo sobre ti de forma verificable. Por ejemplo, una universidad puede atestiguar que has completado un grado académico, o el Servicio Público de Empleo puede atestiguar que estás inscrito como demandante de empleo.
+En esta definición no hablamos de su formato ni de su implementación técnica, sino de qué es y qué finalidad tiene. La forma de representarla, firmarla, almacenarla o verificarla corresponde a su implementación técnica. Además, aunque es habitual utilizar firmas o sellos electrónicos para garantizar su autenticidad e integridad, no conviene definir toda atestación como necesariamente firmada digitalmente.
 
-**La wallet**:
+El concepto de atestación parece similar al de certificado electrónico, pero la diferencia es clara: con el principio de minimización de datos, la atestación surge como necesidad para acreditar atributos o hechos específicos (como la mayoría de edad o la posesión de un título), a diferencia del certificado electrónico, que acredita la identidad general del titular (nombre, NIF).
+
+Una atestación se parece mucho a una VC. Tanto eIDAS como EAS (en Web3) necesitaban representar atributos firmados, pero se encontraron con que el formato clásico de W3C (basado en JSON-LD) no cubría sus necesidades operativas. Para eIDAS, una atestación cualificada se codifica en formatos más pragmáticos como SD-JWT VC (IETF) o mdoc (ISO). El motivo del rechazo al modelo original fueron sus limitaciones prácticas: no permitía la presentación presencial sin conexión (bluetooth/NFC) ni tenía un mecanismo estándar y sencillo de divulgación selectiva. Por su parte, EAS prescinde por completo del ecosistema W3C y usa un formato propio, pensado para que los smart contracts puedan leer y verificar las atestaciones on-chain.
+
+En la EUDI Wallet, eIDAS distingue cuatro tipos de datos que se pueden guardar y presentar:
+
+- PID (Person Identification Data, datos de identificación de la persona): los datos que permiten establecer la identidad de una persona física o jurídica, o de quien la representa. Es el equivalente digital del DNI, y la emite el Estado miembro o la entidad que este designe
+- QEAA (atestación electrónica cualificada de atributos): la emite un prestador cualificado de servicios de confianza (QTSP) y tiene el mismo efecto jurídico que una atestación en papel emitida legalmente
+- PuB-EAA (atestación electrónica de atributos del sector público): la emite un organismo público responsable de una fuente auténtica, como un registro oficial, o designado por el Estado miembro. Tiene el mismo efecto jurídico que la cualificada
+- EAA no cualificada: la emite cualquier otro emisor. No se le puede negar efecto jurídico por ser electrónica, pero no tiene garantizado el mismo efecto que una atestación en papel
+
+Entre las tres atestaciones, lo que las distingue es quién las emite, no el formato. Un mismo título universitario es una QEAA si lo emite un prestador cualificado y una EAA no cualificada si no lo es.
+
+### La wallet
 
 Una wallet es la aplicación con la que custodias y usas tus claves privadas para firmar, y esa firma es lo que demuestra que eres tú quien actúa. La wallet no siempre guarda la clave: puede estar en la propia aplicación, en el chip seguro del móvil, en un dispositivo físico como una Ledger o en manos de un tercero, y la wallet solo pide la firma. En identidad, además, la wallet guarda tus credenciales verificables para presentarlas cuando te las pidan.
 
@@ -65,9 +68,9 @@ La idea no nace con eIDAS 2.0. Procede de la [Self-Sovereign Identity (SSI)](htt
 
 eIDAS 2.0 recoge de SSI el control del usuario sobre sus credenciales, pero no la autosoberanía completa. El legislador europeo adopta la [identidad descentralizada](https://www.entrust.com/blog/2023/06/decentralized-identity) como infraestructura técnica, y mantiene bajo control institucional la confianza: emisores cualificados, certificación de wallets y listas de confianza gestionadas por los Estados miembros.
 
-Ese estándar técnico fue definido por [W3C](https://www.w3.org/) (World Wide Web Consortium), el organismo internacional que desarrolla estándares web abiertos, mediante tres especificaciones complementarias: los [Decentralized Identifiers (DIDs)](https://www.w3.org/TR/did-core/) definen cómo se componen y resuelven los identificadores descentralizados, las [Verifiable Credentials (VCs)](https://www.w3.org/TR/vc-data-model/) establecen cómo estructurar credenciales que acrediten atributos de la identidad, y las [Verifiable Presentations (VPs)](https://www.w3.org/TR/vc-data-model/#presentations) definen cómo presentarlas selectivamente ante un verificador. Esta tecnología maximiza la privacidad mediante el control del usuario: las credenciales viven en su wallet, solo él decide cuándo y a quién mostrarlas, y puede revelar únicamente los atributos necesarios.
+Ese estándar técnico fue definido por [W3C](https://www.w3.org/) (World Wide Web Consortium), el organismo internacional que desarrolla estándares web abiertos, mediante dos especificaciones complementarias: los [Decentralized Identifiers (DIDs)](https://www.w3.org/TR/did-core/) definen cómo se componen y resuelven los identificadores descentralizados, y el modelo de [Verifiable Credentials (VCs)](https://www.w3.org/TR/vc-data-model/) establece cómo estructurar credenciales que acrediten atributos de la identidad y, con las [Verifiable Presentations (VPs)](https://www.w3.org/TR/vc-data-model/#presentations), cómo presentarlas ante un verificador. Esta tecnología maximiza la privacidad mediante el control del usuario: las credenciales viven en su wallet y solo él decide cuándo y a quién mostrarlas.
 
-En la EUDI Wallet, el [Architecture and Reference Framework (ARF)](https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/) concreta estos conceptos con formatos y protocolos propios: SD-JWT VC e ISO/IEC 18013-5 (mdoc) para las credenciales, con divulgación selectiva de atributos, y OpenID4VCI y OpenID4VP para su emisión y presentación. Los DIDs no son obligatorios, y las [Zero-Knowledge Proofs](https://ethereum.org/en/zero-knowledge-proofs/) se estudian como mejora para evitar que un verificador pueda correlacionar presentaciones.
+En la EUDI Wallet, el [Architecture and Reference Framework (ARF)](https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/) concreta estos conceptos con estándares ya existentes: SD-JWT VC e ISO/IEC 18013-5 (mdoc) para las atestaciones, con divulgación selectiva de atributos, y OpenID4VCI y OpenID4VP para su emisión y presentación. Los DIDs no son obligatorios, y las [Zero-Knowledge Proofs](https://ethereum.org/en/zero-knowledge-proofs/) se estudian como mejora para evitar que un verificador pueda correlacionar presentaciones.
 
 ### Triángulo de confianza (credential trust triangle)
 
@@ -77,7 +80,7 @@ Patrón básico de las credenciales verificables, con tres roles:
 - Titular (holder): la guarda y la presenta
 - Verificador (verifier): comprueba la firma y la validez de la credencial sin tener que contactar con el emisor
 
-Los tres se apoyan en un Verifiable Data Registry para resolver claves públicas, esquemas y estado de revocación.
+Para comprobar la credencial sin preguntar al emisor, el verificador necesita un sitio de confianza donde consultar con qué clave se firmó, si el emisor es de confianza y si la credencial sigue siendo válida. Cada marco lo resuelve a su manera: W3C con un Verifiable Data Registry (VDR), que se explica a continuación, y eIDAS con las [listas de confianza](eIDAS/trusted-lists.md) de los Estados miembros.
 
 ### VDR (Verifiable Data Registry)
 
@@ -96,7 +99,7 @@ Un ejemplo completo: una universidad emite un título digital a una alumna, que 
 
 El VDR nunca guarda las credenciales ni datos personales del titular, solo la información pública necesaria para verificarlas. Por eso puede ser compartido y consultable por cualquiera.
 
-El W3C define qué función cumple el VDR, pero no cómo se implementa: puede ser una base de datos, una infraestructura de clave pública (PKI) o una blockchain. La blockchain aporta que ningún actor puede alterar el registro por su cuenta y que queda constancia de cada cambio. En el ecosistema europeo, la blockchain de [EBSI](eIDAS.md#ebsi-european-blockchain-services-infrastructure) cumple este rol.
+El W3C define qué función cumple el VDR, pero no cómo se implementa: puede ser una base de datos, una infraestructura de clave pública (PKI) o una blockchain. La blockchain aporta que ningún actor puede alterar el registro por su cuenta y que queda constancia de cada cambio. En el ecosistema europeo, la blockchain de [EBSI](eIDAS/ebsi.md) cumple este rol.
 
 ### TIR (Trusted Issuers Registry)
 
@@ -108,7 +111,7 @@ EBSI reparte el rol de VDR en varios registros, y el TIR es solo uno de ellos. E
 
 La acreditación la da otra entidad ya acreditada (por ejemplo, un ministerio a una universidad), y así sucesivamente hasta una raíz reconocida por la gobernanza de EBSI. El resultado es una cadena de confianza que el verificador puede recorrer.
 
-El TIR no es un término de eIDAS. En eIDAS el papel legal de decir qué emisores son de confianza lo cumplen las [listas de confianza](eIDAS.md#listas-de-confianza-tl-y-lotl), basadas en certificados X.509 y no en DIDs. Que un emisor esté en el TIR de EBSI no da a sus credenciales el valor legal de una atestación cualificada de eIDAS.
+El TIR no es un término de eIDAS. En eIDAS el papel legal de decir qué emisores son de confianza lo cumplen las [listas de confianza](eIDAS/trusted-lists.md), basadas en certificados X.509 y no en DIDs. Que un emisor esté en el TIR de EBSI no da a sus credenciales el valor legal de una atestación cualificada de eIDAS.
 
 Referencias:
 
@@ -158,6 +161,8 @@ La diferencia estructural con eIDAS es precisamente esa: eIDAS impone un anillo 
 Por otra parte, el estándar [OpenID4VC (OpenID for Verifiable Credentials)](https://openid.net/sg/openid4vc/) está transformando el panorama al convertir IDPs (proveedores de identidad) tradicionales en VC (emisores de credenciales verificables). Esto significa que Google o Apple pueden emitir VCs que el usuario guarda en su wallet Web3 o [EUDI Wallet europeo](https://digital-strategy.ec.europa.eu/es/factpages/european-digital-identity-wallet), creando un puente entre la identidad federada Web2 y las credenciales autosoberanas.
 
 La diferencia fundamental con la federación tradicional es arquitectónica: en lugar de que Google intermedie cada login manteniendo control perpetuo, ahora Google puede emitir una credencial verificable una vez que tú guardas en tu wallet y presentas donde quieras sin su participación posterior. El IDP sigue siendo el emisor inicial, pero pierde el rol de intermediario permanente que caracteriza a la federación clásica.
+
+Eso no significa que desaparezcan los intermediarios. La cartera elimina el intermediario técnico de cada autenticación, pero no el económico. Las plataformas dejan de competir por el inicio de sesión y pasan a competir por la interfaz en la que se guardan y presentan las credenciales. Entre la cartera y las partes usuarias aparecen además nuevos actores que ofrecen la verificación como servicio. La intermediación no desaparece, cambia de sitio.
 
 La distinción crucial es que eIDAS 2.0 establece dos niveles de confianza: **credenciales cualificadas**, emitidas por Qualified Trust Service Providers (QTSPs) certificados bajo eIDAS con reconocimiento legal pleno en toda la UE, y **credenciales no cualificadas**, emitidas por proveedores privados, técnicamente compatibles con EUDI Wallet pero sin el mismo peso legal que las gubernamentales. Para casos críticos como identidad oficial o edad legal, predominarán las credenciales cualificadas; para casos de uso menos regulados como membresías o reputación, las credenciales privadas seguirán siendo válidas y útiles.
 
@@ -241,6 +246,7 @@ Frente a esto, eIDAS hace lo contrario: identidad fuerte disponible cuando la le
 - Formatos de credencial y vinculabilidad: SD-JWT VC y mdoc permiten la divulgación selectiva, pero si se presenta varias veces la misma credencial, su firma y sus valores se repiten, y varios verificadores que se pongan de acuerdo pueden correlacionar al usuario. El ARF lo mitiga con la emisión de credenciales en lotes, de un solo uso, mientras se estudian firmas compatibles con Zero-Knowledge Proofs (como BBS+) que eviten el problema de raíz
 - Reidentificación por combinación de atributos: aunque ningún dato identifique por sí solo, varios juntos (código postal, edad, profesión) pueden hacerlo. Minimizar no es solo ocultar el nombre
 - Partes usuarias que piden de más: el registro obligatorio de las partes usuarias y la información que muestra la wallet buscan frenarlo, pero su eficacia depende de la supervisión de cada Estado miembro
+- Financiación y no observabilidad: si el uso de la cartera se paga por operación, alguien tiene que contar las presentaciones, y eso choca con la exigencia de que nadie pueda rastrear ni correlacionar las operaciones del usuario. Sigue abierto cómo financiar el ecosistema sin observar su uso
 - Responsabilidad y abuso: un seudónimo protege la privacidad, pero también puede amparar fraudes o acoso. El equilibrio entre privacidad y la posibilidad de que una autoridad reidentifique a un usuario con orden legal es un debate abierto
 - DLT en la Administración: una red pública o de consorcio que registre operaciones de ciudadanos debe decidir qué va on-chain. Un hash o un identificador seudonimizado sigue siendo dato personal si alguien puede reidentificarlo, y no se podrá borrar
 
@@ -310,7 +316,7 @@ Las credenciales verificables también encajan en este problema: el principal pu
 
 El [Reglamento de Inteligencia Artificial (Reglamento (UE) 2024/1689)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) obliga en su artículo 50 a que los sistemas de IA destinados a interactuar con personas físicas se diseñen de forma que esas personas sepan que están interactuando con una IA, salvo que resulte evidente. Es una obligación de transparencia sobre la naturaleza del interlocutor, no un sistema de identificación: no define identificadores ni credenciales para agentes.
 
-[eIDAS 2.0](eIDAS.md) tampoco recoge una figura de identidad para agentes de IA: la EUDI Wallet y los certificados cualificados se emiten a personas físicas y jurídicas. Un agente que opere en este marco solo puede apoyarse en credenciales de la persona u organización a la que representa, y la responsabilidad recae en ella.
+[eIDAS 2.0](eIDAS/README.md#eidas2) tampoco recoge una figura de identidad para agentes de IA: la EUDI Wallet y los certificados cualificados se emiten a personas físicas y jurídicas. Un agente que opere en este marco solo puede apoyarse en credenciales de la persona u organización a la que representa, y la responsabilidad recae en ella.
 
 ### Problemas abiertos
 
@@ -325,7 +331,5 @@ Referencias:
 - [principios con los que Anthropic entrena a Claude (Anthropic)](https://www.anthropic.com/news/claudes-constitution)
 - [autorización en MCP (especificación)](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization)
 - [ERC-8004: Trustless Agents (EIPs de Ethereum)](https://eips.ethereum.org/EIPS/eip-8004)
-
-
 
 ---

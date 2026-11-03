@@ -4,7 +4,7 @@ eIDAS2 es el reglamento europeo que regula la identidad digital y los servicios 
 
 Pero hay un problema: el reglamento no define todos los detalles técnicos necesarios para construir esos servicios. Por ejemplo, establece que debe existir una cartera europea de identidad digital (EUDI Wallet), pero no define por sí solo todos los formatos de datos, protocolos de comunicación, mecanismos de seguridad o procedimientos de certificación que debe utilizar.
 
-Para concretar esos detalles existen los **actos de ejecución**.
+Para concretar esos detalles existen los actos de ejecución.
 
 Son especialmente importantes para los desarrolladores porque contienen requisitos técnicos que condicionan cómo deben construirse e integrarse los sistemas compatibles con eIDAS2. No basta con implementar una solución que funcione: hay que respetar las especificaciones que establece la normativa.
 
@@ -28,9 +28,11 @@ Por ejemplo, imaginemos que estamos desarrollando una cartera EUDI. Necesitamos 
 
 eIDAS2 establece las obligaciones generales, pero no desarrolla todos estos detalles. Los actos de ejecución son los documentos que concretan cómo deben cumplirse esas obligaciones.
 
-**La diferencia es importante:** eIDAS2 establece qué debe conseguir el sistema y los actos de ejecución especifican requisitos concretos para implementarlo.
+La diferencia es importante: eIDAS2 establece qué debe conseguir el sistema y los actos de ejecución especifican requisitos concretos para implementarlo.
 
 Esto permite que los requisitos técnicos puedan evolucionar sin tener que modificar todo el reglamento principal cada vez que cambia una especificación.
+
+Formalmente, eIDAS2 (Reglamento (UE) 2024/1183) es un reglamento de modificación: reforma el Reglamento (UE) 910/2014. Por eso los actos de ejecución citan en su título el 910/2014 y los artículos que desarrollan, como el 45 terdecies, siguen la numeración de su [versión consolidada](https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:02014R0910-20241018).
 
 Por ejemplo, eIDAS2 establece en su artículo 5 quater que las carteras europeas deben certificarse. Para desarrollar esa obligación, el [Reglamento de Ejecución (UE) 2024/2981](https://eur-lex.europa.eu/eli/reg_impl/2024/2981/oj) establece los requisitos y procedimientos relacionados con esa certificación.
 
@@ -38,15 +40,15 @@ Si desarrollas una cartera, no puedes limitarte a implementar las funcionalidade
 
 Otro ejemplo es el [Reglamento de Ejecución (UE) 2024/2982](https://eur-lex.europa.eu/eli/reg_impl/2024/2982/oj), que establece los protocolos e interfaces que deben utilizarse para determinadas comunicaciones entre las carteras y los servicios que interactúan con ellas.
 
-Esto tiene una consecuencia directa para el desarrollo: **no puedes diseñar libremente las interfaces de integración de una solución EUDI ignorando las especificaciones oficiales**.
+Esto tiene una consecuencia directa para el desarrollo: no puedes diseñar libremente las interfaces de integración de una solución EUDI ignorando las especificaciones oficiales.
 
 Los actos de ejecución tienen estas características:
 
-- **Son normas obligatorias.** No son recomendaciones, documentación técnica opcional ni buenas prácticas. Una vez entran en vigor, sus requisitos deben cumplirse dentro de su ámbito de aplicación.
-- **Se aplican en todos los países de la UE.** No necesitan que cada país apruebe otra ley para que sean aplicables.
-- **Desarrollan eIDAS2, pero no pueden contradecirlo.** No pueden eliminar obligaciones del reglamento ni inventar un marco legal incompatible con él.
-- **Pueden establecer requisitos técnicos concretos.** Por ejemplo, formatos, protocolos, interfaces, procedimientos de seguridad o estándares que deben utilizarse.
-- **Pueden actualizarse.** Si cambian las especificaciones técnicas de referencia, la Comisión puede aprobar modificaciones para adaptar los requisitos.
+- Son normas obligatorias. No son recomendaciones, documentación técnica opcional ni buenas prácticas. Una vez entran en vigor, sus requisitos deben cumplirse dentro de su ámbito de aplicación.
+- Se aplican en todos los países de la UE. No necesitan que cada país apruebe otra ley para que sean aplicables.
+- Desarrollan eIDAS2, pero no pueden contradecirlo. No pueden eliminar obligaciones del reglamento ni inventar un marco legal incompatible con él.
+- Pueden establecer requisitos técnicos concretos. Por ejemplo, formatos, protocolos, interfaces, procedimientos de seguridad o estándares que deben utilizarse.
+- Pueden actualizarse. Si cambian las especificaciones técnicas de referencia, la Comisión puede aprobar modificaciones para adaptar los requisitos.
 
 También es importante distinguir los actos de ejecución de los actos delegados.
 
@@ -89,7 +91,7 @@ Por tanto, al desarrollar una solución EUDI conviene distinguir entre:
 
 Los actos de ejecución los aprueba la Comisión Europea. Sin embargo, los países de la UE participan en el procedimiento y pueden controlar las propuestas a través de un comité.
 
-Este procedimiento se llama **comitología**.
+Este procedimiento se llama comitología.
 
 No necesitas conocer el procedimiento jurídico en detalle. Lo importante es entender que los requisitos técnicos de eIDAS2 no los decide unilateralmente un equipo técnico de la Comisión: los países participan en su elaboración y control.
 
@@ -103,6 +105,12 @@ El proceso general es el siguiente:
 - Una vez publicado, entra en vigor en la fecha que establezca el propio reglamento. Habitualmente, estos actos establecen su entrada en vigor a los veinte días de su publicación, aunque pueden existir excepciones.
 
 La regulación general de este procedimiento se encuentra en el [Reglamento (UE) 182/2011](https://eur-lex.europa.eu/eli/reg/2011/182/oj).
+
+La Comisión publica los borradores por lotes. Un ejemplo es el acto de los libros mayores electrónicos cualificados:
+
+- Septiembre de 2025: el borrador sale a [consulta pública](https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/14752-Qualified-electronic-ledgers_en) dentro del quinto lote, con plazo de comentarios hasta el 2 de octubre.
+- 16 de diciembre de 2025: la Comisión lo adopta como Reglamento de Ejecución (UE) 2025/2531.
+- 17 de diciembre de 2025: se publica en el DOUE.
 
 Desde el punto de vista del desarrollo, este procedimiento explica por qué las especificaciones técnicas de eIDAS2 se publican progresivamente y por qué hay que estar atento a las nuevas versiones de los reglamentos.
 
@@ -118,11 +126,11 @@ Por eso eIDAS2 establece plazos para que la Comisión apruebe los actos de ejecu
 
 Los principales paquetes se han publicado en distintas fechas:
 
-- **Noviembre de 2024:** requisitos fundamentales de la cartera europea, como los datos de identidad, la seguridad, la certificación y los protocolos.
-- **Mayo de 2025:** requisitos adicionales del ecosistema de la cartera, como el registro de entidades que solicitan datos, las violaciones de seguridad y la interoperabilidad entre países.
-- **Julio a septiembre de 2025:** requisitos para diferentes servicios de confianza, como certificados cualificados, dispositivos remotos de firma, sellos de tiempo, entrega electrónica certificada y conservación de firmas.
-- **Finales de 2025:** requisitos para nuevos servicios, entre ellos los libros mayores electrónicos cualificados.
-- **2026:** nuevas especificaciones y actualizaciones de los requisitos técnicos de la cartera, además de otros aspectos del ecosistema.
+- Diciembre de 2024: requisitos fundamentales de la cartera europea, como los datos de identidad, la seguridad, la certificación y los protocolos.
+- Mayo de 2025: requisitos adicionales del ecosistema de la cartera, como el registro de entidades que solicitan datos, las violaciones de seguridad y la interoperabilidad entre países.
+- Julio a septiembre de 2025: requisitos para diferentes servicios de confianza, como certificados cualificados, dispositivos remotos de firma, sellos de tiempo, entrega electrónica certificada y conservación de firmas.
+- Diciembre de 2025: requisitos de los prestadores cualificados, archivo electrónico, libros mayores electrónicos y certificados de autenticación de sitios web (QWAC). Con este paquete, los actos de ejecución publicados sumaban 26.
+- 2026: nuevas especificaciones y actualizaciones de los requisitos técnicos de la cartera, además de otros aspectos del ecosistema.
 
 Esto tiene una consecuencia práctica: desarrollar una solución compatible con eIDAS2 requiere seguir tanto el reglamento principal como los actos de ejecución que afectan a sus funcionalidades.
 
@@ -163,7 +171,7 @@ Otros actos de 2026 que afectan a la cartera:
 
 ### Libros mayores electrónicos (Electronic Ledgers)
 
-El [Reglamento de Ejecución (UE) 2025/2531](https://eur-lex.europa.eu/legal-content/ES/TXT/PDF/?uri=OJ:L_202502531) desarrolla los requisitos técnicos y las normas de referencia aplicables a los libros mayores electrónicos cualificados introducidos por eIDAS2. Establece las condiciones que deben cumplir los prestadores cualificados de servicios de confianza (QTSP) que ofrezcan este servicio, definiendo los requisitos de seguridad, la garantía de presunción de integridad, el orden cronológico exacto de los registros, los mecanismos criptográficos y el modelo de gobernanza exigido.
+El [Reglamento de Ejecución (UE) 2025/2531](https://eur-lex.europa.eu/eli/reg_impl/2025/2531/oj), que desarrolla el artículo 45 terdecies, apartado 3, fija los requisitos técnicos y las normas de referencia aplicables a los libros mayores electrónicos cualificados introducidos por eIDAS2. Establece las condiciones que deben cumplir los prestadores cualificados de servicios de confianza (QTSP) que ofrezcan este servicio, definiendo los requisitos de seguridad, la garantía de presunción de integridad, el orden cronológico exacto de los registros, los mecanismos criptográficos y el modelo de gobernanza exigido.
 
 Lo que garantiza un libro mayor cualificado es el orden cronológico de los registros: ninguna entrada puede insertarse, borrarse o reordenarse sin que se detecte.
 
@@ -178,20 +186,20 @@ CEN ha publicado además la especificación técnica CEN/TS 18264, dedicada a lo
 
 Como el servicio lo presta un QTSP, también le aplican los actos horizontales de los servicios de confianza cualificados:
 
-- [Reglamento de Ejecución (UE) 2025/2530](https://eur-lex.europa.eu/eli/reg_impl/2025/2530/oj): requisitos de los prestadores cualificados.
+- [Reglamento de Ejecución (UE) 2025/2530](https://eur-lex.europa.eu/eli/reg_impl/2025/2530/oj): requisitos de cumplimiento y seguridad de los prestadores cualificados (artículo 24).
 - [Reglamento de Ejecución (UE) 2025/1572](https://eur-lex.europa.eu/eli/reg_impl/2025/1572/oj): inicio de la prestación de servicios de confianza cualificados.
 - [Reglamento de Ejecución (UE) 2025/2162](https://eur-lex.europa.eu/eli/reg_impl/2025/2162/oj): acreditación de los organismos de evaluación de la conformidad; su anexo II reúne las normas con las que se evalúa cada servicio cualificado.
 
 El libro mayor es el último de tres servicios cualificados que se apoyan unos en otros:
 
 - Conservación de firmas y sellos cualificados ([Reglamento de Ejecución (UE) 2025/1946](https://eur-lex.europa.eu/eli/reg_impl/2025/1946/oj), ETSI TS 119 511 y TS 119 512): mantiene válida la evidencia criptográfica cuando caducan los certificados o envejecen los algoritmos.
-- Archivo electrónico cualificado ([Reglamento de Ejecución (UE) 2025/2532](https://eur-lex.europa.eu/eli/reg_impl/2025/2532/oj), CEN/TS 18170): custodia el documento, esté firmado o no, con integridad, legibilidad, trazabilidad de accesos y retención.
+- Archivo electrónico cualificado ([Reglamento de Ejecución (UE) 2025/2532](https://eur-lex.europa.eu/eli/reg_impl/2025/2532/oj), artículo 45 undecies, CEN/TS 18170): custodia el documento, esté firmado o no, con integridad, legibilidad, trazabilidad de accesos y retención.
 - Libro mayor electrónico cualificado (Reglamento de Ejecución (UE) 2025/2531, CEN/TS 18264): fija un orden cronológico verificable de los hechos registrados.
 
 Referencias oficiales y documentación técnica:
 
 - [Reglamento de Ejecución (UE) 2025/2531](https://eur-lex.europa.eu/eli/reg_impl/2025/2531/oj) — requisitos técnicos de los libros mayores electrónicos cualificados.
-- [Reglamento (UE) 2024/1183 (eIDAS2)](https://eur-lex.europa.eu/eli/reg/2024/1183/oj) — artículos 45 duodecies y 45 terdecies (sección 11; 45k y 45l en la versión inglesa), relativos a los efectos jurídicos y requisitos de los libros mayores electrónicos.
+- [Reglamento (UE) 910/2014, versión consolidada tras eIDAS2](https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:02014R0910-20241018) — artículos 45 duodecies y 45 terdecies (sección 11; 45k y 45l en la versión inglesa), relativos a los efectos jurídicos y requisitos de los libros mayores electrónicos.
 - [ETSI EN 319 401](https://www.etsi.org/deliver/etsi_en/319400_319499/319401/) — requisitos generales para prestadores de servicios de confianza.
 - [ISO 23257:2022](https://www.iso.org/standard/75093.html) — arquitectura de referencia para blockchain y DLT.
 - [ISO/TS 23635:2022](https://www.iso.org/standard/76480.html) — directrices de gobernanza para blockchain y DLT.
@@ -211,6 +219,7 @@ EBSI es una infraestructura técnica y un consorcio institucional (constituido b
 ## Referencias
 
 - [Reglamento (UE) 2024/1183 (eIDAS2) en EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1183/oj)
+- [Reglamento (UE) 910/2014, versión consolidada tras eIDAS2, en EUR-Lex](https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:02014R0910-20241018)
 - [Reglamento (UE) 182/2011 sobre el control de las competencias de ejecución de la Comisión en EUR-Lex](https://eur-lex.europa.eu/eli/reg/2011/182/oj)
 - [Resumen del reglamento europeo de identidad digital y sus actos de ejecución (Comisión Europea)](https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/915931811/The+European+Digital+Identity+Regulation)
 - [Aplicación de la cartera europea de identidad digital (Comisión Europea)](https://digital-strategy.ec.europa.eu/es/policies/eudi-wallet-implementation)
