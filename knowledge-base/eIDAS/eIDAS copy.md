@@ -1,32 +1,5 @@
 # Glosario de términos relacionado con eIDAS
 
-## ETSI (European Telecommunications Standards Institute)
-
-Instituto Europeo de Normas de Telecomunicaciones, con sede en Sophia Antipolis (Francia). Es uno de los tres organismos europeos de normalización reconocidos por el Reglamento (UE) 1025/2012, junto con CEN y CENELEC. Su comité ESI (Electronic Signatures and Infrastructures) elabora las normas técnicas que desarrollan eIDAS (firmas, certificados, prestadores de servicios de confianza, listas de confianza).
-
-Referencias:
-
-- [Web de ETSI](https://www.etsi.org/)
-- [Comité ESI de ETSI](https://www.etsi.org/committee/esi)
-
-## CEN y CENELEC
-
-El Comité Europeo de Normalización (CEN) y el Comité Europeo de Normalización Electrotécnica (CENELEC) son, junto con ETSI, los organismos europeos de normalización reconocidos oficialmente por la UE (Reglamento (UE) 1025/2012). Tienen su sede en Bruselas y se encargan de elaborar las normas europeas formales (EN), que posteriormente los organismos nacionales (como [UNE](https://www.une.org/) en España) adoptan como propias.
-
-Su función principal es traducir los requisitos legales generales de la Unión Europea en especificaciones técnicas concretas. Cuando la Comisión Europea aprueba una ley, encarga a estos organismos la creación de la norma técnica correspondiente; si un sistema o servicio cumple con dicha norma, adquiere automáticamente la presunción de conformidad legal. 
-
-Esta labor estandarizadora es clave para la infraestructura digital europea, operando a través de comités técnicos especializados en cada ámbito:
-
-- **eIDAS y EUDI Wallet:** El comité CEN/TC 224 elabora normas como la serie EN 419, que define los requisitos de seguridad de los dispositivos de creación de firma y sello electrónico (tarjetas inteligentes, módulos criptográficos HSM y firmas en servidor). Estas especificaciones son la base técnica ineludible para certificar los esquemas de seguridad de nivel "alto" que exige la arquitectura de la EUDI Wallet y los prestadores de servicios de confianza cualificados.
-- **Blockchain, EBSI e ISBE:** El comité conjunto CEN/CENELEC JTC 19 (Blockchain and Distributed Ledger Technologies) adapta los estándares internacionales de ISO al marco europeo y desarrolla normativas propias, especialmente sobre privacidad y protección de datos en redes DLT. Estos estándares son la referencia para las redes públicas permisionadas que buscan validez legal en la UE: [EBSI](#ebsi-european-blockchain-services-infrastructure), la infraestructura de la Comisión y los Estados miembros para verificar credenciales de forma transfronteriza, e ISBE (Infraestructura de Servicios Blockchain de España), la red nacional alineada con EBSI. En ambos casos, cumplirlos es lo que permite garantizar la interoperabilidad, cumplir con el RGPD y articular la integración legal con los servicios eIDAS.
-- **Espacios de datos:** El comité conjunto CEN/CENELEC JTC 25 (Data management, Dataspaces, Cloud and Edge), creado en septiembre de 2024, elabora las normas que concretan los requisitos de interoperabilidad del artículo 33 del Data Act por mandato de la Comisión.
-
-Referencias:
-
-- [Web de CEN y CENELEC](https://www.cencenelec.eu/)
-- [Creación del comité JTC 25 (CEN y CENELEC)](https://www.cencenelec.eu/news-events/news/2024/brief-news/2024-09-25-jtc-25/)
-- [Aceptación del mandato del Data Act (CEN y CENELEC)](https://www.cencenelec.eu/news-events/news/2025/brief-news/2025-07-11-data-act-standardization-request/)
-
 ## eIDAS (electronic IDentification, Authentication and trust Services)
 
 Reglamento (UE) relativo a la identificación electrónica, autenticación y los servicios de confianza para las transacciones electrónicas en el mercado interior (de los estados miembro como personas, bienes, servicios o capitales). Se aplica en toda la UE desde el 1 de julio de 2016.
@@ -362,6 +335,33 @@ Referencias:
 - [webinar sobre ISBE como infraestructura conforme a la regulación (LF Decentralized Trust)](https://www.lfdecentralizedtrust.org/learn/webinars/webinar-with-alastria-building-isbe-europes-regulation-compliant-blockchain-infrastructure-on-besu)
 - [marco de LACChain para redes públicas permisionadas (BID)](https://publications.iadb.org/en/lacchain-framework-permissioned-public-blockchain-networks-blockchain-technology-blockchain)
 
+## ETSI (European Telecommunications Standards Institute)
+
+Instituto Europeo de Normas de Telecomunicaciones, con sede en Sophia Antipolis (Francia). Es uno de los tres organismos europeos de normalización reconocidos por el Reglamento (UE) 1025/2012, junto con CEN y CENELEC. Su comité ESI (Electronic Signatures and Infrastructures) elabora las normas técnicas que desarrollan eIDAS (firmas, certificados, prestadores de servicios de confianza, listas de confianza).
+
+Referencias:
+
+- [Web de ETSI](https://www.etsi.org/)
+- [Comité ESI de ETSI](https://www.etsi.org/committee/esi)
+
+## CEN y CENELEC
+
+El Comité Europeo de Normalización (CEN) y el Comité Europeo de Normalización Electrotécnica (CENELEC) son, junto con ETSI, los organismos europeos de normalización reconocidos oficialmente por la UE (Reglamento (UE) 1025/2012). Tienen su sede en Bruselas y se encargan de elaborar las normas europeas formales (EN), que posteriormente los organismos nacionales (como [UNE](https://www.une.org/) en España) adoptan como propias.
+
+Su función principal es traducir los requisitos legales generales de la Unión Europea en especificaciones técnicas concretas. Cuando la Comisión Europea aprueba una ley, encarga a estos organismos la creación de la norma técnica correspondiente; si un sistema o servicio cumple con dicha norma, adquiere automáticamente la presunción de conformidad legal. 
+
+Esta labor estandarizadora es clave para la infraestructura digital europea, operando a través de comités técnicos especializados en cada ámbito:
+
+- **eIDAS y EUDI Wallet:** El comité CEN/TC 224 elabora normas como la serie EN 419, que define los requisitos de seguridad de los dispositivos de creación de firma y sello electrónico (tarjetas inteligentes, módulos criptográficos HSM y firmas en servidor). Estas especificaciones son la base técnica ineludible para certificar los esquemas de seguridad de nivel "alto" que exige la arquitectura de la EUDI Wallet y los prestadores de servicios de confianza cualificados.
+- **Blockchain, EBSI e ISBE:** El comité conjunto CEN/CENELEC JTC 19 (Blockchain and Distributed Ledger Technologies) adapta los estándares internacionales de ISO al marco europeo y desarrolla normativas propias, especialmente sobre privacidad y protección de datos en redes DLT. Estos estándares son la referencia para las redes públicas permisionadas que buscan validez legal en la UE: [EBSI](#ebsi-european-blockchain-services-infrastructure), la infraestructura de la Comisión y los Estados miembros para verificar credenciales de forma transfronteriza, e ISBE (Infraestructura de Servicios Blockchain de España), la red nacional alineada con EBSI. En ambos casos, cumplirlos es lo que permite garantizar la interoperabilidad, cumplir con el RGPD y articular la integración legal con los servicios eIDAS.
+- **Espacios de datos:** El comité conjunto CEN/CENELEC JTC 25 (Data management, Dataspaces, Cloud and Edge), creado en septiembre de 2024, elabora las normas que concretan los requisitos de interoperabilidad del artículo 33 del Data Act por mandato de la Comisión.
+
+Referencias:
+
+- [Web de CEN y CENELEC](https://www.cencenelec.eu/)
+- [Creación del comité JTC 25 (CEN y CENELEC)](https://www.cencenelec.eu/news-events/news/2024/brief-news/2024-09-25-jtc-25/)
+- [Aceptación del mandato del Data Act (CEN y CENELEC)](https://www.cencenelec.eu/news-events/news/2025/brief-news/2025-07-11-data-act-standardization-request/)
+
 ## DG CONNECT (Dirección General de Redes de Comunicación, Contenido y Tecnologías)
 
 Departamento de la Comisión Europea responsable de la política digital: redes de telecomunicaciones, datos, inteligencia artificial, ciberseguridad e identidad digital, entre otros ámbitos.
@@ -405,8 +405,6 @@ Las piezas que publica para eIDAS son:
 - ARF: la arquitectura de referencia de la cartera europea. Lo elaboran la Comisión y expertos de los Estados miembros, a partir de la caja de herramientas común (toolbox) que pidió la Recomendación (UE) 2021/946. No es obligatorio. [Ver ARF](https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/latest/) y [Recomendación (UE) 2021/946](https://eur-lex.europa.eu/eli/reco/2021/946/oj)
 - Implementación de referencia: código abierto que muestra cómo construir una cartera conforme al ARF y que los Estados pueden reutilizar. [Ver repositorios de la implementación de referencia](https://github.com/eu-digital-identity-wallet)
 - Blueprints: soluciones completas para un caso de uso concreto, explicadas en el [apartado siguiente](#blueprint)
-
-Si dos piezas se contradicen, manda el acto de ejecución.
 
 ### Blueprint
 
