@@ -13,7 +13,7 @@ Su uso principal es actuar como registro de confianza para credenciales verifica
 
 > Registro de confianza no es que sea el registro de las VC, es que es el registro o ancla. EBSI guarda los identificadores de los emisores y quién los acreditó, el [registro de emisores de confianza (Trusted Issuers Registry)](../identity.md#tir-trusted-issuers-registry)
 
-EBSI y el libro mayor electrónico de eIDAS son cosas distintas, aunque ambos usan DLT:
+EBSI y el [libro mayor electrónico](electronic-ledger.md) de eIDAS son cosas distintas, aunque ambos usan DLT:
 
 - El libro mayor electrónico es una categoría legal: un servicio de confianza que cualquier prestador puede ofrecer y que, si es cualificado, tiene valor probatorio reconocido
 - EBSI es una infraestructura concreta, construida para guardar la información pública con la que se verifican credenciales: identificadores de emisores, sus claves públicas, emisores de confianza y estado de revocación. Es decir, cumple el rol de VDR

@@ -86,7 +86,7 @@ Para comprobar la credencial sin preguntar al emisor, el verificador necesita un
 
 En el triángulo de confianza, el verificador comprueba la credencial sin llamar al emisor. Para poder hacerlo necesita consultar información pública en algún sitio de referencia. Ese sitio es el VDR, un rol definido en el [modelo de credenciales verificables del W3C](https://www.w3.org/TR/vc-data-model/#roles).
 
-Una analogía del mundo físico: un banco recibe un poder notarial. No llama al notario, pero sí consulta el registro de notarios para saber si ese notario existe y está en activo, compara la firma con la registrada y comprueba que el poder no se ha revocado. El VDR cumple la misma función con las credenciales digitales.
+El mundo físico ofrece una analogía: el banco que recibe un poder notarial no necesita contactar con el notario que lo autorizó. Le basta con consultar el registro de notarios para confirmar que está en activo, cotejar su firma con la registrada y comprobar que el poder no se ha revocado. Un VDR desempeña ese papel con las credenciales digitales: el verificador obtiene de él la clave pública del emisor y el estado de revocación, sin contactar con el emisor.
 
 El verificador consulta el VDR para responder a cuatro preguntas:
 

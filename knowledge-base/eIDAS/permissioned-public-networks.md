@@ -1,6 +1,6 @@
 # Redes públicas permisionadas que buscan ser institucionales
 
-ISBE, Alastria y LACChain son redes públicas permisionadas, como EBSI. Buscan lo mismo: que lo registrado en la red tenga validez legal. Para eso los validadores tienen que ser entidades identificadas, porque un regulador solo acepta una red en la que se sabe quién responde de ella y de los datos que trata.
+ISBE, Alastria y LACChain son redes públicas permisionadas, como [EBSI](ebsi.md). Buscan lo mismo: que lo registrado en la red tenga validez legal. Para eso los validadores tienen que ser entidades identificadas, porque un regulador solo acepta una red en la que se sabe quién responde de ella y de los datos que trata.
 
 EBSI cubre un uso concreto: la verificación transfronteriza de credenciales, con nodos que solo operan organismos públicos. Estas redes ofrecen una infraestructura de uso general sobre la que empresas y administraciones construyen sus propias aplicaciones.
 
@@ -10,7 +10,7 @@ Red blockchain nacional, pública e interoperable, alineada con EBSI. Es un proy
 
 Su marco regulatorio es el europeo:
 
-- eIDAS 2: está diseñada para llegar a ser un libro mayor electrónico cualificado conforme al Reglamento de Ejecución (UE) 2025/2531. Es un objetivo, no una condición ya reconocida por el organismo de supervisión
+- eIDAS 2: está diseñada para llegar a ser un [libro mayor electrónico cualificado](electronic-ledger.md) conforme al Reglamento de Ejecución (UE) 2025/2531. Es un objetivo, no una condición ya reconocida por el organismo de supervisión
 - RGPD: el cumplimiento se plantea desde el diseño, tanto en la parte técnica como en la gobernanza
 
 Su finalidad declarada es verificar documentos e identidades con plena validez jurídica sin depender de plataformas privadas de fuera de la UE.

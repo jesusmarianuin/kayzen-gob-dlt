@@ -1,10 +1,6 @@
 # Actos de ejecución de eIDAS2
 
-eIDAS2 es el reglamento europeo que regula la identidad digital y los servicios de confianza en la Unión Europea. Establece qué servicios deben existir, qué garantías deben ofrecer y qué obligaciones tienen los países y las empresas que participan en el ecosistema.
-
-Pero hay un problema: el reglamento no define todos los detalles técnicos necesarios para construir esos servicios. Por ejemplo, establece que debe existir una cartera europea de identidad digital (EUDI Wallet), pero no define por sí solo todos los formatos de datos, protocolos de comunicación, mecanismos de seguridad o procedimientos de certificación que debe utilizar.
-
-Para concretar esos detalles existen los actos de ejecución.
+Los actos de ejecución concretan los detalles técnicos que [eIDAS2](README.md#eidas2) no define por sí solo.
 
 Son especialmente importantes para los desarrolladores porque contienen requisitos técnicos que condicionan cómo deben construirse e integrarse los sistemas compatibles con eIDAS2. No basta con implementar una solución que funcione: hay que respetar las especificaciones que establece la normativa.
 
@@ -58,9 +54,16 @@ Los actos de ejecución, regulados en el artículo 291, establecen condiciones u
 
 Para un desarrollador, lo importante es que ambos pueden introducir cambios en el marco normativo, pero los actos de ejecución son especialmente relevantes porque concretan requisitos necesarios para implementar los servicios.
 
+Los actos de ejecución son redactados y aprobados por la Comisión Europea.
+
+Para hacerlos, la Comisión no parte de cero, sino que se apoya en dos pilares:
+
+- Expertos de los Estados miembros: representantes técnicos de cada país, reunidos en el grupo de expertos de eIDAS.
+- Organismos de normalización: la Comisión puede pedir a entidades como ETSI, CEN o CENELEC que preparen [estándares y especificaciones técnicas](#los-estándares-técnicos-y-su-importancia), que los actos de ejecución pueden citar después como referencia.
+
 ### Los estándares técnicos y su importancia
 
-Muchos actos de ejecución hacen referencia a estándares publicados por organizaciones como ETSI, CEN o ISO.
+Muchos actos de ejecución hacen referencia a estándares publicados por [organismos de normalización](standardization-bodies.md) como ETSI, CEN/CENELEC o ISO.
 
 Estos estándares contienen especificaciones técnicas que permiten implementar sistemas de forma interoperable y con requisitos comunes.
 
@@ -97,7 +100,7 @@ No necesitas conocer el procedimiento jurídico en detalle. Lo importante es ent
 
 El proceso general es el siguiente:
 
-- La Comisión Europea prepara una propuesta con los requisitos que necesita desarrollar. En el caso de eIDAS2, participa especialmente la DG CONNECT, el departamento de la Comisión responsable de las políticas digitales.
+- La Comisión Europea prepara una propuesta con los requisitos que necesita desarrollar. En el caso de eIDAS2, participa especialmente la [DG CONNECT](dg-connect.md), el departamento de la Comisión responsable de las políticas digitales.
 - La propuesta puede someterse a consulta pública. En el ecosistema EUDI, la Comisión utiliza este proceso para recibir comentarios de empresas, desarrolladores, organizaciones y otras partes interesadas.
 - El comité de eIDAS, creado por el artículo 48 del reglamento, participa en el procedimiento. Está formado por representantes de los países de la UE y examina las propuestas de la Comisión.
 - El comité emite su opinión mediante una votación. Según el procedimiento aplicable, la Comisión puede adoptar el acto si obtiene el resultado favorable correspondiente.
@@ -212,7 +215,7 @@ Análisis de referencia:
 
 ### EBSI
 
-EBSI es una infraestructura técnica y un consorcio institucional (constituido bajo la figura jurídica de un EDIC, EUROPEUM-EDIC), no un objeto normativo. Por este motivo, no se regula de forma nominal en los actos de ejecución de eIDAS2 ni aparece en los anexos legales. Es una red DLT permisionada transfronteriza y sirve de ejemplo de que la distribución es compatible con la confianza cualificada de los libros mayores, siempre que los nodos los operen entidades identificadas con anclas de confianza gubernamentales. Las reglas de arquitectura, el alta de nodos, la referencia de las APIs y las herramientas de validación de credenciales verificables no se publican en el [Diario Oficial de la Unión Europea (DOUE)](https://eur-lex.europa.eu/oj/direct-access.html?locale=es), sino directamente en su portal de desarrollo.
+[EBSI](ebsi.md) es una infraestructura técnica y un consorcio institucional (constituido bajo la figura jurídica de un EDIC, EUROPEUM-EDIC), no un objeto normativo. Por este motivo, no se regula de forma nominal en los actos de ejecución de eIDAS2 ni aparece en los anexos legales. Es una red DLT permisionada transfronteriza y sirve de ejemplo de que la distribución es compatible con la confianza cualificada de los libros mayores, siempre que los nodos los operen entidades identificadas con anclas de confianza gubernamentales. Las reglas de arquitectura, el alta de nodos, la referencia de las APIs y las herramientas de validación de credenciales verificables no se publican en el [Diario Oficial de la Unión Europea (DOUE)](https://eur-lex.europa.eu/oj/direct-access.html?locale=es), sino directamente en su portal de desarrollo.
 
 - [Portal para desarrolladores de EBSI (EBSI Hub)](https://hub.ebsi.eu/)
 

@@ -13,6 +13,10 @@ El reglamento no menciona la tecnología: un libro mayor puede implementarse con
 
 En la práctica, esto significa que una red blockchain puede ofrecer un servicio con valor probatorio reconocido en toda la UE, siempre que la opere un prestador cualificado y cumpla esas normas. Que una red sea blockchain no le da por sí mismo esa presunción legal.
 
+Por ejemplo, [EBSI](ebsi.md) es una infraestructura concreta para verificar credenciales y no es por sí misma un libro mayor electrónico cualificado.
+
+ISBE, en cambio, una de las [redes públicas permisionadas que buscan ser institucionales](permissioned-public-networks.md), está diseñada para llegar a serlo, aunque es un objetivo y no una condición ya reconocida por el organismo de supervisión.
+
 El término oficial en español es "libro mayor electrónico cualificado" (qualified electronic ledger). Sus efectos y requisitos están en los artículos 45 duodecies y 45 terdecies del Reglamento eIDAS modificado.
 
 Referencias:
@@ -87,11 +91,11 @@ La incorporación de este servicio permite disponer de registros electrónicos c
 
 Algunos ejemplos de aplicación son:
 
-- **Cadena de suministro:** registrar acontecimientos relacionados con la fabricación, transporte y entrega de mercancías.
-- **Propiedad intelectual:** registrar evidencias de la existencia de determinados contenidos en una secuencia temporal.
-- **Trazabilidad documental:** mantener un historial verificable de documentos y operaciones.
-- **Transacciones empresariales:** registrar operaciones y acontecimientos entre diferentes organizaciones.
-- **Auditoría:** conservar secuencias de registros cuya integridad y orden cronológico puedan verificarse posteriormente.
+- Cadena de suministro: registrar acontecimientos relacionados con la fabricación, transporte y entrega de mercancías.
+- Propiedad intelectual: registrar evidencias de la existencia de determinados contenidos en una secuencia temporal.
+- Trazabilidad documental: mantener un historial verificable de documentos y operaciones.
+- Transacciones empresariales: registrar operaciones y acontecimientos entre diferentes organizaciones.
+- Auditoría: conservar secuencias de registros cuya integridad y orden cronológico puedan verificarse posteriormente.
 
 La principal aportación no consiste simplemente en almacenar información, sino en proporcionar garantías verificables sobre su procedencia, integridad y orden cronológico, respaldadas por una presunción jurídica cuando el servicio está cualificado.
 

@@ -1,7 +1,8 @@
 # eIDAS
 
-## eIDAS (electronic IDentification, Authentication and trust Services)
+## eIDAS
 
+eIDAS: Electronic IDentification, Authentication and trust Services.
 Reglamento (UE) relativo a la identificación electrónica, autenticación y los servicios de confianza para las transacciones electrónicas en el mercado interior (de los estados miembro como personas, bienes, servicios o capitales). Se aplica en toda la UE desde el 1 de julio de 2016.
 
 Por una parte, permite el reconocimiento de sistemas nacionales de identificación electrónica (eID), incluyendo los procesos de autenticación asociados, notificados por los Estados miembros. Por ejemplo, DNI electrónico es reconocido como sistema de identificación electrónica.
@@ -24,19 +25,25 @@ Una **firma electrónica cualificada** tiene, conforme al artículo 25 de eIDAS,
 
 "Cualificado" es un atributo que se aplica a diferentes elementos en distintos contextos. Por ejemplo, pueden ser cualificados un prestador o un servicio de confianza, un certificado electrónico o un dispositivo de creación de firma. En el caso de una firma electrónica, existen distintos niveles (simple, avanzada y cualificada), siendo la firma cualificada aquella que cumple los requisitos adicionales de eIDAS, incluyendo el uso de un certificado cualificado y un dispositivo cualificado de creación de firma.
 
+eIDAS también cuenta con sus propios actos de ejecución, pero no se cubren aquí.
+
 ### Referencias de eIDAS
 
 - [Reglamento eIDAS (Comisión Europea)](https://digital-strategy.ec.europa.eu/es/policies/eidas-regulation)
 
 ## eIDAS2
 
-eIDAS2 establece un nuevo marco europeo de identidad digital.
+eIDAS2 es el reglamento europeo que regula la identidad digital y los servicios de confianza en la Unión Europea. Establece qué servicios deben existir, qué garantías deben ofrecer y qué obligaciones tienen los países y las empresas que participan en el ecosistema.
 
 > Se puede valorar que existe un [cambio de paradigma](../idea-sandbox/decentralization-paradox-idea.md).
 
 Su objetivo principal es evolucionar desde un sistema centrado en el reconocimiento mutuo de sistemas nacionales de identificación electrónica hacia un ecosistema europeo de identidad digital interoperable, donde los ciudadanos y organizaciones puedan utilizar una identidad digital reconocida en toda la Unión Europea.
 
 La principal novedad es la creación de la Cartera Europea de Identidad Digital (European Digital Identity Wallet, EUDI Wallet).
+
+Pero hay un problema: el reglamento no define todos los detalles técnicos necesarios para construir esos servicios. Por ejemplo, establece que debe existir una cartera europea de identidad digital (EUDI Wallet), pero no define por sí solo todos los formatos de datos, protocolos de comunicación, mecanismos de seguridad o procedimientos de certificación que debe utilizar.
+
+Para concretar esos detalles existen los [actos de ejecución](implementing-acts.md), que redacta la [DG CONNECT](dg-connect.md), la dirección general de la Comisión Europea responsable de eIDAS.
 
 ### Nuevos servicios de confianza
 
