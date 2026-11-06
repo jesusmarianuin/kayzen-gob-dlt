@@ -13,10 +13,11 @@ En este documentos veremos en diferentes partes:
 
 - [Cuándo es interesante una DLT](when-to-use-dlt.md): condiciones en las que una DLT aporta valor y casos en los que basta una base de datos convencional
 - [Gobernanza de la red](network-governance.md): modelo federado, el nodo como infraestructura propia y compartida, estándares abiertos, resiliencia y economía interna
-- [Identidad y protección de datos](identity-and-data-protection.md): identificación de nodos y firmantes, custodia de claves y encaje con el RGPD
+- [Coste del gas](gas-cost.md): si el gas debe costar cero, qué se pierde y qué permitiría un coste
+- [Identidad en la red](identity.md): quién firma cada transacción, cómo se une una dirección con un órgano y qué ocurre cuando cambia una clave
+- [Protección de datos en la red](data-protection.md): qué es dato personal en una blockchain, quién responde y qué estrategias permiten escribir en la cadena
 - [Retos de diseño con Besu](besu-design-challenges.md): crecimiento del estado, indexación, determinismo, disponibilidad del consenso y pruebas
+- [Orden de las transacciones](transaction-ordering.md): qué orden garantiza Besu, quién lo decide, cuándo importa y cómo diseñar para no depender de la llegada
 - [Inmutabilidad y evolución de los smart contracts](smart-contract-upgradeability.md): *proxies*, paradas de emergencia y *time locks*
-
-> La identidad y los retos técnicos de Besu y de los *smart contracts* son las partes en las que este repositorio tiene más trabajo por concretar.
 
 ---

@@ -1,13 +1,13 @@
-# eIDAS
+# Regulación: conceptos relacioandos con eIDAS
 
 ## eIDAS
 
 eIDAS: Electronic IDentification, Authentication and trust Services.
-Reglamento (UE) relativo a la identificación electrónica, autenticación y los servicios de confianza para las transacciones electrónicas en el mercado interior (de los estados miembro como personas, bienes, servicios o capitales). Se aplica en toda la UE desde el 1 de julio de 2016.
+[Reglamento (UE)](https://eur-lex.europa.eu/ES/legal-content/summary/european-union-regulations.html) relativo a la identificación electrónica, autenticación y los servicios de confianza para las transacciones electrónicas en el mercado interior (de los estados miembro como personas, bienes, servicios o capitales). Se aplica en toda la UE desde el 1 de julio de 2016.
 
 Por una parte, permite el reconocimiento de sistemas nacionales de identificación electrónica (eID), incluyendo los procesos de autenticación asociados, notificados por los Estados miembros. Por ejemplo, DNI electrónico es reconocido como sistema de identificación electrónica.
 
-Define que por estado miembro existen los **servicios de confianza**, que es un servicio electrónico que permite realizar determinadas operaciones relacionadas con la confianza en transacciones electrónicas y que está regulado, como puede ser la firma, sello de tiempo electrónicos (TSA), entrega electrónica certificada (ERDS o Qualified Electronic Registered Delivery Service) y certificados de autenticación de sitios web.
+Define que por cada estado miembro existen los **servicios de confianza**, que es un servicio electrónico que permite realizar determinadas operaciones relacionadas con la confianza en transacciones electrónicas y que está regulado, como puede ser la firma, sello de tiempo electrónicos (TSA), entrega electrónica certificada (ERDS o Qualified Electronic Registered Delivery Service) y certificados de autenticación de sitios web.
 
 Un servicio de confianza, tiene un **Prestador de Servicios de Confianza** (TSP Trust Service Provider) que es la entidad que presta dichos servicios.
 
@@ -33,7 +33,7 @@ eIDAS también cuenta con sus propios actos de ejecución, pero no se cubren aqu
 
 ## eIDAS2
 
-eIDAS2 es el reglamento europeo que regula la identidad digital y los servicios de confianza en la Unión Europea. Establece qué servicios deben existir, qué garantías deben ofrecer y qué obligaciones tienen los países y las empresas que participan en el ecosistema.
+eIDAS2 es la reforma de eIDAS aprobada por el Reglamento (UE) 2024/1183. Añade la Cartera Europea de Identidad Digital (EUDI Wallet) y nuevos servicios de confianza, como la declaración electrónica de atributos, el archivo electrónico y los libros mayores electrónicos.
 
 > Se puede valorar que existe un [cambio de paradigma](../idea-sandbox/decentralization-paradox-idea.md).
 
