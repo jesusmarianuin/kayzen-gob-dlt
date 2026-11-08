@@ -48,7 +48,7 @@ El Reglamento eIDAS no obliga a utilizar blockchain para implementar un libro ma
 
 La relación con las tecnologías de registro distribuido (DLT) se concreta en el Reglamento de Ejecución (UE) 2025/2531, que contempla expresamente los libros mayores electrónicos distribuidos cualificados y establece especificaciones técnicas adicionales para ellos.
 
-Un libro mayor distribuido es aquel que se comparte entre diferentes nodos y mantiene sus registros sincronizados mediante un mecanismo de consenso.
+Un libro mayor distribuido es aquel que se comparte entre diferentes nodos y mantiene sus registros sincronizados mediante un mecanismo de consenso. El reglamento llama a esta variante "libro mayor electrónico distribuido cualificado", y también se conoce como qDLT.
 
 El Reglamento introduce varios conceptos específicos:
 
@@ -67,7 +67,9 @@ Para estos sistemas de libro mayor, el Reglamento 2025/2531 incorpora dos refere
 
 ## Reglamento de Ejecución (UE) 2025/2531: requisitos técnicos
 
-El Reglamento de Ejecución (UE) 2025/2531 desarrolla las normas y especificaciones de referencia para los libros mayores electrónicos cualificados. Su objetivo es concretar cómo deben garantizarse técnicamente la procedencia, la integridad y el orden cronológico de los registros.
+El Reglamento de Ejecución (UE) 2025/2531 desarrolla las normas y especificaciones de referencia para los libros mayores electrónicos cualificados. Su objetivo es concretar cómo deben garantizarse técnicamente la procedencia, la integridad y el orden cronológico de los registros. Se adoptó el 16 de diciembre de 2025, tras una [consulta pública](https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/14752-Qualified-electronic-ledgers_en) en septiembre de ese año, y se publicó en el DOUE al día siguiente.
+
+Cumplir su anexo da presunción de cumplimiento de los requisitos del artículo 45 terdecies (apartado 2), aunque el prestador puede demostrarlo con otras prácticas.
 
 Establece como referencia general la norma **ETSI EN 319 401 v3.1.1**, relativa a los requisitos generales de política y seguridad de los prestadores de servicios de confianza, con adaptaciones específicas para este servicio.
 
@@ -84,6 +86,22 @@ También contempla la utilización de sellos de tiempo cualificados como alterna
 En el caso de los libros mayores distribuidos, se añaden las especificaciones relacionadas con la arquitectura DLT, la gobernanza de la red y los mecanismos de consenso.
 
 El Reglamento exige, además, que el prestador documente los mecanismos técnicos utilizados en su declaración de prácticas del servicio. De esta forma, los usuarios y las partes que confían en él pueden conocer cómo se garantiza la procedencia, la integridad y la ordenación de los registros.
+
+CEN ha publicado además la especificación técnica CEN/TS 18264:2026, dedicada a los libros mayores electrónicos. Es posterior al reglamento y este no la cita.
+
+Como el servicio lo presta un QTSP, también le aplican los actos horizontales de los servicios de confianza cualificados:
+
+- [Reglamento de Ejecución (UE) 2025/2530](https://eur-lex.europa.eu/eli/reg_impl/2025/2530/oj): requisitos de cumplimiento y seguridad de los prestadores cualificados.
+- [Reglamento de Ejecución (UE) 2025/1572](https://eur-lex.europa.eu/eli/reg_impl/2025/1572/oj): inicio de la prestación de servicios de confianza cualificados.
+- [Reglamento de Ejecución (UE) 2025/2162](https://eur-lex.europa.eu/eli/reg_impl/2025/2162/oj): acreditación de los organismos de evaluación de la conformidad; su anexo II reúne las normas con las que se evalúa cada servicio cualificado.
+
+## Diferencia con otros servicios cualificados
+
+El libro mayor se confunde a menudo con otros dos servicios cualificados cercanos:
+
+- Conservación de firmas y sellos cualificados ([Reglamento de Ejecución (UE) 2025/1946](https://eur-lex.europa.eu/eli/reg_impl/2025/1946/oj)): mantiene válida la evidencia criptográfica cuando caducan los certificados o envejecen los algoritmos.
+- [Archivo electrónico](electronic-archiving.md) cualificado ([Reglamento de Ejecución (UE) 2025/2532](https://eur-lex.europa.eu/eli/reg_impl/2025/2532/oj)): custodia el documento, esté firmado o no, con integridad, legibilidad, trazabilidad de accesos y retención.
+- Libro mayor electrónico cualificado (Reglamento de Ejecución (UE) 2025/2531): fija un orden cronológico verificable de los hechos registrados.
 
 ## ¿Qué aporta en la práctica?
 
@@ -106,6 +124,9 @@ En definitiva, eIDAS 2 permite que un libro mayor electrónico, incluida una inf
 - [Reglamento (UE) 2024/1183 (eIDAS 2) en EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1183/oj).
 - [Reglamento (UE) n.º 910/2014 (eIDAS), texto consolidado](https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:02014R0910-20241018).
 - [Reglamento de Ejecución (UE) 2025/2531 sobre libros mayores electrónicos cualificados](https://eur-lex.europa.eu/eli/reg_impl/2025/2531/oj).
-- ETSI EN 319 401 v3.1.1: requisitos generales de política y seguridad para prestadores de servicios de confianza.
-- ISO 23257:2022: arquitectura de referencia para tecnologías blockchain y DLT.
-- ISO/TS 23635:2022: directrices de gobernanza para tecnologías blockchain y DLT.
+- [ETSI EN 319 401](https://www.etsi.org/deliver/etsi_en/319400_319499/319401/): requisitos generales de política y seguridad para prestadores de servicios de confianza.
+- [ISO 23257:2022](https://www.iso.org/standard/75093.html): arquitectura de referencia para tecnologías blockchain y DLT.
+- [ISO/TS 23635:2022](https://www.iso.org/standard/76480.html): directrices de gobernanza para tecnologías blockchain y DLT.
+- [Actos de ejecución de eIDAS2](implementing-acts.md)
+- [De la conservación cualificada de firmas y sellos a los servicios cualificados de archivo con orden cronológico (qDLT)](../inza.blog/2026/09/18-de-la-conservacion-cualificada-de-firmas-y-sellos-a-los-servicios-cualificados-de-archivo-con-orden-cronologico-qdlt.md)
+- [De las tablillas cuneiformes al Cartulario: historia de la contabilidad y origen de las RJT](../inza.blog/2026/10/23-de-las-tablillas-cuneiformes-al-cartulario-historia-de-la-contabilidad-y-origen-de-las-rjt.md)

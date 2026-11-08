@@ -20,7 +20,12 @@ EBSI y el [libro mayor electrónico](electronic-ledger.md) de eIDAS son cosas di
 
 La condición de cualificado no depende de la tecnología, sino de quién presta el servicio y cómo: la otorga el organismo de supervisión a un prestador cualificado de servicios de confianza que cumple eIDAS y el Reglamento de Ejecución (UE) 2025/2531, y el servicio aparece en las listas de confianza. Por eso EBSI no es un libro mayor electrónico cualificado por sí misma. Podría serlo un servicio que un prestador cualificado ofreciera sobre ella. Donde más se acercan es en la notarización de documentos, que consiste precisamente en dejar constancia fechada e inalterable de unos datos.
 
-Referencia: [EBSI (Comisión Europea)](https://ec.europa.eu/digital-building-blocks/sites/display/EBSI/Home)
+EBSI tampoco es un objeto normativo. Los [actos de ejecución de eIDAS2](implementing-acts.md) no la regulan de forma nominal ni aparece en sus anexos. Sus reglas de arquitectura, el alta de nodos, la referencia de las APIs y las herramientas de validación de credenciales verificables no se publican en el [Diario Oficial de la Unión Europea (DOUE)](https://eur-lex.europa.eu/oj/direct-access.html?locale=es), sino en su portal de desarrollo.
+
+Referencias:
+
+- [EBSI (Comisión Europea)](https://ec.europa.eu/digital-building-blocks/sites/display/EBSI/Home)
+- [Portal para desarrolladores de EBSI (EBSI Hub)](https://hub.ebsi.eu/)
 
 ## EDIC (European Digital Infrastructure Consortium) y Europeum
 

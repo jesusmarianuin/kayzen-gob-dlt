@@ -38,9 +38,22 @@ DG CONNECT no publica canónicamente sino que participa en diferentes tipos de d
 Las piezas que publica para eIDAS son:
 
 - [Actos de ejecución](implementing-acts.md): reglamentos de la Comisión que fijan requisitos técnicos y estándares, por ejemplo el 2024/2977 sobre datos de identificación personal y declaraciones electrónicas de atributos. Son obligatorios. [Ver Reglamento de Ejecución (UE) 2024/2977](https://eur-lex.europa.eu/eli/reg_impl/2024/2977/oj)
-- ARF: la arquitectura de referencia de la cartera europea. Lo elaboran la Comisión y expertos de los Estados miembros, a partir de la caja de herramientas común (toolbox) que pidió la Recomendación (UE) 2021/946. No es obligatorio. [Ver ARF](https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/latest/) y [Recomendación (UE) 2021/946](https://eur-lex.europa.eu/eli/reco/2021/946/oj)
+- ARF: la arquitectura de referencia de la cartera europea, explicada en [su apartado](#arf). [Ver repositorio del ARF](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework)
 - Implementación de referencia: código abierto que muestra cómo construir una cartera conforme al ARF y que los Estados pueden reutilizar. [Ver repositorios de la implementación de referencia](https://github.com/eu-digital-identity-wallet)
-- Blueprints: soluciones completas para un caso de uso concreto, explicadas en el [apartado siguiente](#blueprint)
+- Blueprints: soluciones completas para un caso de uso concreto, explicadas en [su apartado](#blueprint)
+
+## ARF
+
+El ARF (Architecture and Reference Framework) define la arquitectura, los componentes y las interacciones del ecosistema de la cartera europea, para que sea interoperable, seguro y respete la privacidad. Cubre, entre otros temas, las funcionalidades de la cartera, los roles de los participantes, el modelo de datos y los protocolos, el modelo de confianza y la certificación.
+
+Forma parte de la caja de herramientas común (toolbox) que pidió la [Recomendación (UE) 2021/946](https://eur-lex.europa.eu/eli/reco/2021/946/oj), y en él intervienen dos actores:
+
+- European Digital Identity Cooperation Group (EDICG, antes eIDAS Expert Group): lleva a cabo el trabajo. Cada tema se debate en un documento de discusión (discussion paper) hasta alcanzar el consenso.
+- Comisión Europea: recibe comentarios por Confluence, GitHub y revisiones internas. Los que acepta se convierten en cambios del ARF.
+
+Es informativo, no vinculante: solo son obligatorios el Reglamento eIDAS y sus actos de ejecución y delegados.
+
+La versión de referencia es la última publicada con etiqueta (tagged release) en GitHub. La [ficha de la biblioteca de la Comisión](https://digital-strategy.ec.europa.eu/en/library/european-digital-identity-wallet-architecture-and-reference-framework), en una web que gestiona DG CONNECT, ofrece la v1.0.0 de 2023 y no indica autor.
 
 ## Blueprint
 
@@ -57,4 +70,5 @@ Referencias:
 
 - [DG CONNECT (Comisión Europea)](https://commission.europa.eu/about/departments-and-executive-agencies/communications-networks-content-and-technology_es)
 - [Recomendación (UE) 2021/946 sobre la caja de herramientas común en EUR-Lex](https://eur-lex.europa.eu/eli/reco/2021/946/oj)
-- [blueprint de verificación de edad (Comisión Europea)](https://digital-strategy.ec.europa.eu/en/factpages/blueprint-age-verification-solution-help-protect-minors-online)
+- [Introducción del ARF en GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/main/01-introduction.md)
+- [Blueprint de verificación de edad (Comisión Europea)](https://digital-strategy.ec.europa.eu/en/factpages/blueprint-age-verification-solution-help-protect-minors-online)

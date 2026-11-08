@@ -1,9 +1,5 @@
 # Listas de confianza (TL y LOTL)
 
-//TOOD: la provisión de EUDI Wallet no es un servicio de confianza según eIDAS2. Es una actividad regulada con régimen propio de supervisión y certificación.
-
-
-
 Una lista de confianza (Trusted List, TL) es la lista oficial que publica cada Estado miembro con los prestadores cualificados de servicios de confianza (QTSP) de su país y los servicios cualificados que prestan, junto con su estado. La publica el órgano de supervisión competente, conforme al artículo 22 de eIDAS. Técnicamente se especifica como Trust Service Status List (TSL).
 
 Las listas de los Estados miembros se agrupan en la List of Trusted Lists (LOTL), que publica la Comisión Europea y que enlaza a cada lista nacional. EUTL (EU Trusted List) es la denominación habitual para referirse a este conjunto, aunque el término técnico oficial es LOTL.
@@ -12,31 +8,34 @@ Las listas de los Estados miembros se agrupan en la List of Trusted Lists (LOTL)
 
 Responden a una pregunta concreta: si un prestador o un servicio es cualificado. Quien recibe una firma, un sello o una declaración electrónica cualificada de atributos (QEAA) comprueba en la lista de confianza que su emisor es un prestador cualificado y que lo era en el momento de emitirla.
 
-Se basan en certificados X.509: la lista asocia cada servicio cualificado con los certificados con los que firma.
+Se basan en certificados X.509. La lista asocia cada servicio cualificado con los certificados con los que firma.
 
 ## En la EUDI Wallet
 
-//TODO LoTE (List of Trusted Entities): lista de entidades de confianza del ecosistema EUDI.
+En el ecosistema de la EUDI Wallet, el verificador necesita saber qué emisores son de confianza. Las TL solo cubren a quienes prestan un servicio de confianza cualificado, y en este ecosistema hay actores que no lo son, como los proveedores de PID o de wallets (la provisión de wallets tiene su propio régimen de certificación y supervisión). Para ellos, eIDAS2 añade las listas de entidades de confianza (List of Trusted Entities, LoTE), que publica la Comisión a partir de lo que le notifican los Estados miembros.
 
-En el ecosistema de la EUDI Wallet, las listas de confianza cumplen el papel de decir al verificador qué emisores son de confianza. eIDAS2 extiende el mecanismo a otros actores del ecosistema, como los proveedores de PID y de wallets.
+Según el ARF 2.8, cada tipo de emisor publica su confianza así:
 
-//¿Qué entidades están autorizadas o reconocidas como emisoras de PID y de atestaciones electrónicas (EAA, QEAA y PuB-EAA), y cómo se publica y verifica esa confianza?
-el TIR es el registro gestionado por el Registrar nacional, pero no es el mecanismo completo de publicación de confianza.
-//Definido por el ARF 2.8
+- Proveedores de PID: el Estado miembro los registra y los notifica a la Comisión, que publica sus anclas de confianza en una LoTE.
+- Proveedores de QEAA: sus anclas entran en la TL de su país cuando obtienen el estatus cualificado, porque emitir QEAA sí es un servicio de confianza cualificado.
+- Proveedores de PuB-EAA: se registran y notifican igual que los de PID, y sus anclas se publican en una LoTE.
+- Proveedores de EAA no cualificadas: no hay una lista común, su confianza depende de mecanismos nacionales o sectoriales.
 
-Según el ARF 2.8:
-- PID Providers: se registran y notifican a la Comisión; sus anclas de confianza se publican en la LoTE.
-- QEAA Providers: sus anclas se incorporan a la Trusted List cuando obtienen el estatus cualificado. Asi es, una QEAA es un servicio de confianza, aunque no lo es la EUDI
-- PuB-EAA Providers: se registran y notifican; sus anclas se publican en la LoTE.
-- EAA no cualificadas: su registro depende de los mecanismos nacionales o sectoriales.
+Registrar una entidad no basta para que un verificador confíe en ella. El registro es el trámite administrativo ante el Estado miembro; lo que el verificador consulta es la lista publicada, TL o LoTE, con los certificados de cada emisor. Los proveedores de wallets también tienen su LoTE, que el proveedor de PID consulta para comprobar que la wallet es auténtica antes de emitir.
 
 Es el equivalente en eIDAS al [registro de emisores de confianza (TIR) de EBSI](../identity.md#tir-trusted-issuers-registry), pero con valor legal y basado en certificados X.509 en lugar de DIDs.
 
-Referencias:
+## Ejemplo práctico
+
+Una ciudadana española abre una cuenta en un banco alemán desde su EUDI Wallet.
+
+1. El banco le pide su identidad y la wallet presenta el PID, firmado por el proveedor de PID español. El banco busca ese proveedor en la LoTE de proveedores de PID, encuentra su certificado y comprueba la firma.
+2. El banco le pide también su título universitario, emitido como QEAA por un prestador cualificado español. Esta vez el banco va a la LOTL, de ahí salta a la TL española y comprueba que el prestador era cualificado cuando emitió la declaración.
+3. Si el título fuera una EAA no cualificada, el banco no tendría una lista común donde mirar y dependería de los acuerdos del sector educativo.
+
+En ningún paso el banco necesita conocer de antemano al emisor. Le basta con fiarse de las listas.
+
+## Referencias
 
 - [Buscador de prestadores y servicios de confianza de la UE (EU Trust Services Dashboard)](https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls)
 - [Reglamento (UE) 2024/1183 (eIDAS 2) en EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1183/oj)
-
-## llevar esto a la tierra
-
-//ll

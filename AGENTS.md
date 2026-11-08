@@ -1,5 +1,28 @@
 # Estándares generales de código del proyecto
 
+## Contexto del prompt frente a contenido del documento
+
+- Lo que el usuario te cuenta en el prompt es contexto para que decidas bien. No es
+  contenido del documento.
+- Ese contexto se usa para elegir, priorizar y descartar. Se refleja en la decisión,
+  nunca en el texto que escribes.
+- No trasladar al documento las circunstancias personales del usuario, sus dudas, su
+  forma de trabajar ni el motivo por el que pide algo, aunque lo haya explicado y
+  aunque justifique la decisión. Se reformula como criterio objetivo o se omite.
+- El documento solo contiene lo que necesita quien lo lea sin haber visto la
+  conversación.
+- Tampoco se vuelca en el documento el razonamiento que has seguido para decidir. Va
+  la decisión y lo que la sostiene desde el propio material, no el recorrido.
+- Si dudas de si algo es contexto o contenido, pregunta antes de escribirlo.
+
+## Lectura de contexto del repositorio
+
+- Solo puedes leer los ficheros o directorios que el usuario comparta en el prompt o cuya ruta aparezca
+  explícitamente en él. Se puede compartir una ruta de archivo o una ruta de directorio lo que implícitamente es también autorizar a sus ficheros contenidos.
+- Cualquier otra lectura está prohibida, incluido el intento, y con independencia de que
+  fuera a ser aprobada.
+- Si falta información, pregunta. Nunca la busques.
+
 ## Documentación en Markdown
 
 Normas para cualquier fichero `.md` de documentación del proyecto.
@@ -26,93 +49,41 @@ Normas para cualquier fichero `.md` de documentación del proyecto.
 - Buenas prácticas: explica el porqué de cada recomendación, céntrate en sus implicaciones de seguridad, acompáñala de código concreto y cita los estándares oficiales (ERC-20, ERC-721...) cuando apliquen
 - Añade una sección de resolución de problemas cuando haya fallos habituales
 
-### Metadatos (front matter)
+### Formato y redacción
 
-Clasificar un documento es añadirle un bloque de metadatos en YAML entre dos líneas `---`, antes del primer encabezado.
+Esto afecta para crear documentos y para revisar.
 
-Alcance:
+El lenguaje expresado debe ser natural, técnico cuando es necesario, con ejemplos simples si ayudan a entender el concepto, orientado a un nivel promedio de desarrollador de software.
 
-- Solo se clasifican documentos dentro de estas carpetas: `knowledge-base/` y `topics/`
-- Quedan fuera las carpetas privadas, cuyo nombre empieza por `_` (por ejemplo, `_skills`), y todo lo que contienen, en cualquier nivel
-- Si existe un archivo con nombre `.ignore.md` en una carpeta, se indica las sub-carpetas o archivos a ignorar, lee dicho archivo, le la lista de carpetas e ignora todos los archivos contenidos.
-- Quedan fuera los documentos de la raíz (README.md, AGENTS.md...) y cualquier otra carpeta, salvo que se añada a la lista anterior
-- No se clasifica por defecto: solo cuando el usuario lo pida para un documento concreto
-- Si un documento ya está clasificado y cambia su contenido, se actualizan sus metadatos en la misma tarea
+Corregir gramática es importante, el lenguaje, frases con correctos signos de puntuación, pero debes evitar el lenguaje pedante, sobre todo quitando naturalidad o frescura a frases o excediendo en signos de puntuación como los dos puntos ":". Si la frase ya se entiende y no tiene errores de gramática, no se tiene que corregir.
 
-Formato:
+### Síntesis y nivel de detalle
 
-```yaml
----
-summary: "Cómo desplegar un nodo Besu con consenso QBFT y verificar que sincroniza."
-source-type: [DOC-REF, TUTORIAL]
-areas: [INFRA, SEGOPS]
-depth: 5
-study: true
-card-model: mixed
-tags: [besu, qbft]
----
+El lector debe poder seguir la idea general del documento de principio a fin, y el detalle se subordina a ella.
+
+- Antes de escribir, fija la idea central del documento y la de cada sección. Si tienes duda pregunta para que quede claro el objetivo del documento y el perfil del lector.
+- Incluye ejemplos y citas solo cuando sean relevantes para el documento. Antes de empezar, pregunta qué nivel de detalle se quiere en las referencias: enlazar a conceptos generales o detallar ejemplos concretos con sus versiones.
+- Lo que es relevante va en apartado, lo que consideras necesario explicar en detalle se omite y se crea una nota que enlaza a un apartado de aclaraciones. Esto es para no perder el foco y solo cuando el lector quiera detalle, se pueda acceder.
+- Explica cada idea una sola vez y en un solo sitio. Un matiz nuevo se integra donde está la idea original o se descarta o se anota; nunca abre otro apartado si realmente no aporta nada nuevo al objetivo del documento.
+- Prefiere una generalización cierta en el caso habitual a una frase que cubra todas las excepciones, sin presentarla como absoluta
+- Si un detalle es real pero no hace falta para seguir el hilo, no lo desarrolles: señálalo en una nota de una línea.
+- Lo que cabe en una frase no ocupa dos
+- Para acortar, quita ideas secundarias o pásalas a una nota; no comprimas todas las ideas en frases más densas
+- Antes de entregar, elimina cada frase y cada apartado que el lector no echaría en falta, si crees que relevante, si te da toc crearlo, ya sabes, tienes las notas.
+
+Formato de la nota:
+
+```markdown
+> [El plazo varía según el tipo de proveedor](#enlaze-aclaraciones).
 ```
 
-Campos:
+Al redactar un documento nuevo, lee `knowledge-base/eIDAS/implementing-acts.md` y úsalo como modelo de forma. Es una excepción a la regla de lectura del repositorio y se aplica solo a esta tarea, así que no lo cargues para revisar ni para ninguna otra.
 
-- `summary` (obligatorio): resumen para saber de qué trata el documento sin leerlo entero
-  - Una o dos frases, en español
-  - Siempre entre comillas, para que los dos puntos u otros caracteres no rompan el YAML
-- `source-type` (obligatorio): tipos de fuente que aplican, uno o varios, de la tabla "Tipos de fuente"
-- `areas` (obligatorio): áreas de prioridad que aplican, una o varias, de la tabla "Áreas de prioridad"
-- `depth` (obligatorio): entero de 0 a 5, el nivel más alto entre las `areas` del documento
-- `study` (obligatorio): `true` si el contenido debe convertirse en tarjetas de repaso, `false` si no
-- `card-model` (obligatorio si `study: true`): modelo de las tarjetas del documento. Valores:
-  - `reversed`: básico con tarjeta invertida, para conceptos que basta con entender
-  - `typed`: teclear la respuesta, para términos, siglas y nombres que hay que saber con exactitud
-  - `mixed`: el documento combina ambos casos, y el modelo se elige en cada tarjeta con el criterio de los dos anteriores
-- `tags` (opcional): temas concretos en kebab-case (producto, protocolo, red...), fuera de las dos tablas
+Toma de ese documento lo siguiente:
 
-Reglas:
-
-- Las claves van en kebab-case
-- Los códigos de `source-type` y `areas` se escriben sin `@` ni `#`, porque en YAML esos caracteres rompen el valor o lo convierten en comentario
-- Si `depth` es 0, avisa antes de clasificar: el documento es ruido y se descarta salvo excepción
-- No añadas campos nuevos sin añadirlos antes a esta sección
-- Si no está claro el valor de un campo, pregunta antes de escribirlo
-- El criterio de los modelos de tarjeta está en la [especificación de la app de repetición espaciada](learning/spaced-repetition-app/SPEC.md)
-- Las tablas resumen la sección "Eligiendo lo que me toca" del [manifiesto](MANIFESTO.md), que manda en caso de duda; si cambia, se actualizan en la misma tarea
-
-Tipos de fuente (`source-type`):
-
-| Código | Qué es |
-| --- | --- |
-| NORMA | Norma vinculante: leyes, reglamentos, directivas, actos de ejecución |
-| GUIA-OFICIAL | Soft law: guías y criterios de autoridades, no vinculantes pero de facto obligatorios |
-| ESTANDAR | Estándar de organismo de normalización: W3C, ETSI, ISO, IETF, EIP |
-| ESPEC | Especificación de una plataforma concreta: arquitectura, APIs, requisitos |
-| DOC-REF | Manual oficial de un software o producto |
-| CODIGO | Código fuente, repositorios, configuraciones, changelogs |
-| ADHESION | Cómo unirse u operar: requisitos, altas, sandbox, conformidad |
-| TUTORIAL | Paso a paso, quickstarts, how-tos |
-| ESTRATEGIA | Política pública: planes, hojas de ruta, programas |
-| CONVOCATORIA | Contratación y ayudas: licitaciones, pliegos, bases |
-| INVESTIGACION | Papers, tesis, informes técnicos, observatorios |
-| DIVULGACION | Cursos, webinars, charlas, artículos explicativos |
-| ANALISIS | Opinión e interpretación; autoridad secundaria, vigencia efímera |
-| NOTICIA | Actualidad, anuncios, eventos; autoridad secundaria, vigencia efímera |
-| PROMO | Busca vender o captar; autoridad interesada, vigencia efímera |
-
-Áreas de prioridad (`areas`), con su nivel para `depth` y las fuentes de referencia (entre paréntesis, las de consulta en caso de duda):
-
-| Código | Ámbito | Nivel | Fuentes |
-| --- | --- | --- | --- |
-| INFRA | Nodos, consenso, despliegue, monitorización | 5 | DOC-REF, TUTORIAL, CODIGO (ESPEC, ESTANDAR) |
-| SEGOPS | Claves, HSM, ENS, NIS2, seguridad de nodos | 4 | GUIA-OFICIAL, DOC-REF, TUTORIAL (NORMA, ESTANDAR) |
-| ID | DIDs, credenciales verificables, cartera EUDI, confianza EBSI | 4 | ESPEC, ESTANDAR, DOC-REF (NORMA, GUIA-OFICIAL) |
-| GOB | Operación de nodos, validadores, consorcios | 3 | ESPEC, ADHESION, ESTRATEGIA (ANALISIS, DIVULGACION) |
-| INTEROP | ENI, W3C, OpenID4VC, ETSI, conformidad EBSI | 3 | ESTANDAR, ESPEC (NORMA, GUIA-OFICIAL) |
-| DEV | Solidity, contratos, JSON-RPC, SDKs | 3 | DOC-REF, TUTORIAL, CODIGO (ESPEC, ESTANDAR) |
-| REGULACION | eIDAS 2, RGPD, DLT Pilot Regime, Data Act, Leyes 39/40 | 2 | NORMA, GUIA-OFICIAL (ANALISIS, INVESTIGACION) |
-| FIN | Financiación y contratación pública | 2 | CONVOCATORIA, ESTRATEGIA (NOTICIA, GUIA-OFICIAL) |
-| CASOS | Casos de uso, pilotos, adopción | 2 | INVESTIGACION, DIVULGACION, NOTICIA (ANALISIS, ESPEC) |
-| ECO | Actores, proveedores, consorcios: quién hace qué | 1 | NOTICIA, ANALISIS (PROMO con cautela) |
-| CRIPTO | Tokens financieros, MiCA, trading, stablecoins | 0 | Se descarta; si aparece, NOTICIA o ANALISIS, nunca PROMO |
+- El texto principal sigue un único objetivo, acordado antes de redactar con el usuario.
+- Lo que desviaría de ese objetivo se resume en una nota que enlaza a un subapartado de `## Aclaraciones`.
+- Los enlaces llevan a las fuentes con el detalle acordado previamente con el usuario
 
 ### Ejemplos de código
 
@@ -142,7 +113,20 @@ Tipos de fuente (`source-type`):
 - Usa ALL_CAPS para las constantes
 - Todos los nombres de archivo, clase, método y tipo deben estar en inglés, aunque los comentarios pueden estar en español
 
-## Guía de mensajes de commit
+## Código fuente (git)
+
+### Convención de nombres de rama
+
+Sigue la metodología Git Flow con estos tipos de rama:
+
+- **Feature branches**: para nuevas funcionalidades. Ejemplo: `feature/chapter-1-ipfs` o `feature/install-proxy`
+- **Bugfix branches**: para corregir errores. Ejemplo: `bugfix/issue-123` o `bugfix/review-inconsistent-steps`
+- **Documentation branches**: para cambios en la documentación del repositorio. Ejemplo: `docs/initial-documentation`
+- **Experiment branches**: para probar ideas que podrían no incluirse finalmente. Ejemplo: `experiment/test-alternative-installation`
+
+Los nombres de rama deben usar palabras clave en inglés en `kebab-case`, con las secciones separadas únicamente por `-`.
+
+### Guía de mensajes de commit
 
 Todos los mensajes de commit deben seguir la especificación [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). Esto garantiza claridad y consistencia en el historial del proyecto.
 
@@ -177,28 +161,15 @@ docs: update README with setup instructions
 - Solo asunto, como los ejemplos, sin cuerpo.
 - Referencia issues y pull requests cuando sea relevante.
 
-## Convención de nombres de rama
-
-Sigue la metodología Git Flow con estos tipos de rama:
-
-- **Feature branches**: para nuevas funcionalidades. Ejemplo: `feature/chapter-1-ipfs` o `feature/install-proxy`
-- **Bugfix branches**: para corregir errores. Ejemplo: `bugfix/issue-123` o `bugfix/review-inconsistent-steps`
-- **Documentation branches**: para cambios en la documentación del repositorio. Ejemplo: `docs/initial-documentation`
-- **Experiment branches**: para probar ideas que podrían no incluirse finalmente. Ejemplo: `experiment/test-alternative-installation`
-
-Los nombres de rama deben usar palabras clave en inglés en `kebab-case`, con las secciones separadas únicamente por `-`.
-
-## Operativa respecto a git
+### Asistencia en operaciones git
 
 Una tarea solicitada nunca puede contener operaciones git. Ni para añadir o hacer commit o traer o subir porque es algo exclusivo del propietario del repositorio, nunca podrá ser ejecutado o gestionado por un agente de IA.
-
-## Asistencia en operaciones git
 
 No puedes hacer realizar operaciones git, pero puedes asistir cuando se pida, en la petición se indicará algo como "ayúdame con git".
 
 A continuación se crea un resumen para asistir:
 
-### Autor: iniciar rama de trabajo simplificada
+#### Autor: iniciar rama de trabajo simplificada
 
 Las ramas para simplificar se crean de forma simplificada de la siguiente forma:
 
@@ -210,31 +181,8 @@ Por ejemplo: `wip/jesus/20260416-update-docs`.
 
 Cuando pidan crear una rama, pregunta el usuario de git, pregunta sobre los cambios realizados y asiste con las instrucciones que el usuario debe lanzar en terminal.
 
-### Autor: realizar commits
+#### Autor: realizar commits
 
 Cuando el usuario pida instrucciones para crear el commit, pregunta más o menos sobre los cambios realizados, pero en este caso, si puedes hacer un status de git, diciendo al usuario que realize un "git add ." para que puedas proponer un mensaje de commit coherente.
-
-## Contexto del prompt frente a contenido del documento
-
-- Lo que el usuario te cuenta en el prompt es contexto para que decidas bien. No es
-  contenido del documento.
-- Ese contexto se usa para elegir, priorizar y descartar. Se refleja en la decisión,
-  nunca en el texto que escribes.
-- No trasladar al documento las circunstancias personales del usuario, sus dudas, su
-  forma de trabajar ni el motivo por el que pide algo, aunque lo haya explicado y
-  aunque justifique la decisión. Se reformula como criterio objetivo o se omite.
-- El documento solo contiene lo que necesita quien lo lea sin haber visto la
-  conversación.
-- Tampoco se vuelca en el documento el razonamiento que has seguido para decidir. Va
-  la decisión y lo que la sostiene desde el propio material, no el recorrido.
-- Si dudas de si algo es contexto o contenido, pregunta antes de escribirlo.
-
-## Lectura de contexto del repositorio
-
-- Solo puedes leer los ficheros o directorios que el usuario comparta en el prompt o cuya ruta aparezca
-  explícitamente en él. Se puede compartir una ruta de archivo o una ruta de directorio lo que implícitamente es también autorizar a sus ficheros contenidos.
-- Cualquier otra lectura está prohibida, incluido el intento, y con independencia de que
-  fuera a ser aprobada.
-- Si falta información, pregunta. Nunca la busques.
 
 ---
