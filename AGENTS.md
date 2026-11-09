@@ -41,12 +41,13 @@ Normas para cualquier fichero `.md` de documentación del proyecto.
 - Usa guiones para las listas
 - No uses tabulaciones en ningún sitio
 - Los bloques de código no van sangrados, llevan identificador de lenguaje (`bash`, `json`, `solidity`...) y van rodeados de líneas en blanco
+- No usar tablas, prefiere usar listas o texto.
 - Cumple las reglas de markdownlint
 
 ### Estructura según el tipo de documento
 
 - Guías de instalación: explica qué hace cada herramienta antes de instalarla, da comandos para Ubuntu y añade un comando de verificación de versión tras cada instalación
-- Buenas prácticas: explica el porqué de cada recomendación, céntrate en sus implicaciones de seguridad, acompáñala de código concreto y cita los estándares oficiales (ERC-20, ERC-721...) cuando apliquen
+- Buenas prácticas: explica el porqué de cada recomendación, céntrate en sus implicaciones de seguridad, incluye código solo si es necesario para entenderla y cita los estándares oficiales (ERC-20, ERC-721...) cuando apliquen
 - Añade una sección de resolución de problemas cuando haya fallos habituales
 
 ### Formato y redacción
@@ -87,6 +88,7 @@ Toma de ese documento lo siguiente:
 
 ### Ejemplos de código
 
+- Sólo pon ejemplos de código cuando tenga sentido, una documentación conceptual no debería tenerlo, solo puede distraer, en cualquier caso, si tienes duda pregunta.
 - Indica dónde se ejecuta cada comando o fragmento
 - Incluye la ruta del fichero cuando muestres configuración
 - Da secuencias de comandos completas y ajustadas al stack del proyecto
