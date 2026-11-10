@@ -11,11 +11,19 @@ Por otra parte, regula los **servicios de confianza**. Un servicio de confianza 
 
 Un servicio de confianza, tiene un **Prestador de Servicios de Confianza** (TSP Trust Service Provider) que es la entidad que presta dichos servicios, bajo la supervisión del Estado miembro correspondiente. Un prestador puede estar sujeto a requisitos nacionales que limiten a quién presta el servicio.
 
-Los prestadores de servicios de confianza pueden obtener la categoría de **Prestadores Cualificados de Servicios de Confianza** (*Qualified Trust Service Provider*, QTSP). Para ello, deben cumplir los requisitos previstos en el Reglamento eIDAS y contar con el reconocimiento formal del órgano de supervisión competente de su país, el cual los incluye en la [**lista de confianza**](trusted-lists.md) del Estado miembro correspondiente (*Trusted List*, TL, especificada técnicamente como *Trust Service Status List*, TSL).
+Los prestadores de servicios de confianza pueden obtener la categoría de **Prestadores Cualificados de Servicios de Confianza** (*Qualified Trust Service Provider*, QTSP). Para ello, deben cumplir los requisitos previstos en el Reglamento eIDAS y contar con el reconocimiento formal del órgano de supervisión competente de su país.
+
+Estos prestadores sean cualificados o no, se incluyen en la [**lista de confianza**](trusted-lists.md) del Estado miembro correspondiente (*Trusted List*, TL, especificada técnicamente como *Trust Service Status List*, TSL).
+
+> En el caso de los no cualificados con la etiqueta granted a no.
 
 A su vez, las listas de cada Estado miembro (TL/TSL) se engloban centralmente en la *List of Trusted Lists* (LOTL). Al respecto, *EUTL (EU Trusted List)* es la denominación funcional y divulgativa habitual para referirse a esta infraestructura europea, mientras que la terminología técnica oficial bajo eIDAS y los estándares ETSI utiliza la sigla **LOTL**.
 
-Estos servicios pueden ser **servicios cualificados**, es decir, servicios que cumplen los requisitos establecidos por eIDAS para una determinada categoría y que son prestados por un prestador cualificado (QTSP).
+//todo: comentar que ser proveedor de servicios cualificado automaticamente no te da nada, simplemente acceso a poder ser proveedor de servicios cualificados QTSP que además deben pasar esos servicios evaluaciones nacionales
+
+//todo: mejorar esta frase y contextualizar: Estos servicios pueden ser **servicios cualificados**, es decir, servicios que cumplen los requisitos establecidos por eIDAS para una determinada categoría y que son prestados por un prestador cualificado (QTSP).
+
+//todo: comentar que un prestador de servicio puede no ser no cualificado, y dar servicio no cualificado como digicert y certifcados TLS, eso implica que es perfecto para el 90% de operaciones comerciales cotidianas de riesgo bajo o medio donde prima la rapidez, pero asumes tú el riesgo probatorio si el asunto acaba en los tribunales
 
 **Aclaraciones**:
 
@@ -25,7 +33,11 @@ Una **firma electrónica cualificada** tiene, conforme al artículo 25 de eIDAS,
 
 "Cualificado" es un atributo que se aplica a diferentes elementos en distintos contextos. Por ejemplo, pueden ser cualificados un prestador o un servicio de confianza, un certificado electrónico o un dispositivo de creación de firma. En el caso de una firma electrónica, existen distintos niveles (simple, avanzada y cualificada), siendo la firma cualificada aquella que cumple los requisitos adicionales de eIDAS, incluyendo el uso de un certificado cualificado y un dispositivo cualificado de creación de firma.
 
-eIDAS cuenta con sus propios [actos de ejecución](https://commission.europa.eu/law/law-making-process/adopting-eu-law/implementing-and-delegated-acts_es), pero no se cubren aquí.
+**Actos de ejecución**:
+
+//todo: resumir en una frase corta que son los actos de ejeuccion para el lector.
+
+eIDAS como reglamente, cuenta con sus propios [actos de ejecución](https://commission.europa.eu/law/law-making-process/adopting-eu-law/implementing-and-delegated-acts_es), pero no se cubren aquí.
 
 ### Referencias de eIDAS
 
