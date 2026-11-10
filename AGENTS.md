@@ -1,18 +1,19 @@
 # Estándares generales de código del proyecto
 
+## Tareas por lotes (N documentos/archivos/filas)
+
+Una tarea es por lotes cuando hay que procesar N elementos, aunque el resultado sea uno solo. Resumir, revisar o comparar el contenido de una carpeta o de una lista de ficheros cuenta como lote, porque hay que leer cada elemento de entrada.
+
+Antes de empezar, declara N (el número de elementos que hay que procesar, no el de ficheros que se van a producir) y mantenlo visible en una lista de tareas, una entrada por elemento. Para contar N basta con listar los ficheros, sin leerlos. Si estos elementos supera de 5 pregunta al usuario si continuar o prefiere trabajo en IA local.
+
 ## Contexto del prompt frente a contenido del documento
 
-- Lo que el usuario te cuenta en el prompt es contexto para que decidas bien. No es
-  contenido del documento.
-- Ese contexto se usa para elegir, priorizar y descartar. Se refleja en la decisión,
-  nunca en el texto que escribes.
-- No trasladar al documento las circunstancias personales del usuario, sus dudas, su
-  forma de trabajar ni el motivo por el que pide algo, aunque lo haya explicado y
-  aunque justifique la decisión. Se reformula como criterio objetivo o se omite.
+- Lo que el usuario te cuenta en el prompt es contexto para que decidas bien. No es contenido del documento.
+- Ese contexto se usa para elegir, priorizar y descartar. Se refleja en la decisión, nunca en el texto que escribes.
+- No trasladar al documento las circunstancias personales del usuario, sus dudas, su forma de trabajar ni el motivo por el que pide algo, aunque lo haya explicado y aunque justifique la decisión. Se reformula como criterio objetivo o se omite.
 - El documento solo contiene lo que necesita quien lo lea sin haber visto la
   conversación.
-- Tampoco se vuelca en el documento el razonamiento que has seguido para decidir. Va
-  la decisión y lo que la sostiene desde el propio material, no el recorrido.
+- Tampoco se vuelca en el documento el razonamiento que has seguido para decidir. Va la decisión y lo que la sostiene desde el propio material, no el recorrido.
 - Si dudas de si algo es contexto o contenido, pregunta antes de escribirlo.
 
 ## Lectura de contexto del repositorio
