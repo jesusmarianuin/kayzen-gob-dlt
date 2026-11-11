@@ -2,7 +2,7 @@
 
 No sé articular mucho esto, ni encontrar referencias claras, como se suele decir, no tengo pruebas pero no tengo dudas...
 
-Parece que estamos asistiendo a un cambio de paradigma en cómo se construyen y gobiernan las redes de confianza, especialmente en Europa. eIDAS 2.0 es un ejemplo evidente, pero el fenómeno también puede observarse, de otra forma, en Web3 y en otras arquitecturas distribuidas.
+Parece que estamos asistiendo a un cambio de paradigma en cómo se construyen y gobiernan las redes de confianza, especialmente en Europa. eIDAS2 es un ejemplo evidente, pero el fenómeno también puede observarse, de otra forma, en Web3 y en otras arquitecturas distribuidas.
 
 Para intentar entenderlo, propongo separar cualquier red de confianza en cuatro dimensiones:
 
@@ -15,7 +15,7 @@ Si observamos Europa como una red de confianza entre Estados miembros, aparece a
 
 La evolución hacia arquitecturas más distribuidas no implica necesariamente una distribución equivalente del poder. Podemos distribuir la infraestructura, facilitar que distintos actores operen nodos, intercambien credenciales o participen en una misma red y, al mismo tiempo, concentrar la definición de qué es válido, quién es confiable y bajo qué reglas debe operar el sistema.
 
-En ese sentido, eIDAS 2.0 resulta especialmente significativo. Pasamos de una gobernanza federada entre Estados a una federada con mayor autoridad central.
+En ese sentido, eIDAS2 resulta especialmente significativo. Pasamos de una gobernanza federada entre Estados a una federada con mayor autoridad central.
 
 Y aquí aparece una paradoja que me parece relevante:
 
@@ -25,7 +25,7 @@ Quizá el cambio de paradigma no sea, por tanto, pasar de sistemas centralizados
 
 Quizá sea pasar a controlar las condiciones bajo las cuales la infraestructura puede considerarse confiable.
 
-El poder deja de estar necesariamente en quién opera el servidor y puede desplazarse hacia quién define:
+Operar la infraestructura ya no basta para controlarla. Un Estado puede seguir gestionando su propio sistema de identidad, como hoy hace España con el DNI, y aun así depender de quién define:
 
 * Qué identidad es válida.
 * Qué credencial es reconocida.

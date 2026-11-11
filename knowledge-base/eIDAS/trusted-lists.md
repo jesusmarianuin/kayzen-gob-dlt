@@ -1,6 +1,6 @@
 # Listas de confianza (TL y LOTL)
 
-Una lista de confianza (Trusted List, TL) es la lista oficial que publica cada Estado miembro con los prestadores cualificados de servicios de confianza (QTSP) de su país y los servicios cualificados que prestan, junto con su estado. La publica el órgano de supervisión competente, conforme al artículo 22 de eIDAS. Técnicamente se especifica como Trust Service Status List (TSL).
+Una lista de confianza (Trusted List, TL) es la lista oficial que publica cada Estado miembro con los prestadores cualificados de servicios de confianza (QTSP) de su país y los servicios cualificados que prestan, junto con su estado. Pueden incluir también, de forma voluntaria, prestadores y servicios no cualificados. La publica el organismo que designa cada Estado, conforme al artículo 22 de eIDAS. Técnicamente se especifica como Trust Service Status List (TSL).
 
 Las listas de los Estados miembros se agrupan en la List of Trusted Lists (LOTL), que publica la Comisión Europea y que enlaza a cada lista nacional. EUTL (EU Trusted List) es la denominación habitual para referirse a este conjunto, aunque el término técnico oficial es LOTL.
 

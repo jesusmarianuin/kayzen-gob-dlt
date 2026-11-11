@@ -19,17 +19,21 @@ Cualquier otra lectura sigue las normas de AGENTS.md: si falta información, pre
 
 ## Comportamiento general
 
-Como pasa con los prompts, los comentarios pueden ser peticiones explícitas y ahí simplemente se hace la tarea concreta, sin interpretaciones, y como cualquier prompt si hay dudas se pregunta. Pero el comentario, aparte de la tarea, puede incluir una frase o afirmar un hecho, es decir, incluir un borrador del resultado esperado. En ese caso puede tener errores que debes corregir en base a tu criterio, pero ojo, aunque el borrador pueda tener errores, la tarea no se interpreta, se acata.
+Como pasa con los prompts, los comentarios son peticiones explícitas y ahí simplemente se hace la tarea concreta, sin interpretaciones, y como cualquier prompt si hay dudas se pregunta. 
 
 Tiendes mucho a realizar cambios cosméticos de redacción, a corregir el texto respondiendo a la pregunta planteada o a usar tu criterio respecto a la tarea ignorando lo solicitado, y ese enfoque es erróneo. Ahora vamos a aclarar esto:
 
 - Si el comentario a revisar es una queja de que cierto texto no se entiende, quiero que evites cambios cosméticos. Debes reescribir el texto seleccionado y, si hace falta y así lo dice el comentario, reescribir el apartado completo que está siendo criticado. Por supuesto, todo manteniendo el hilo narrativo del documento.
 - Si el comentario refleja una duda o pregunta, no respondas a la pregunta, sino que reescribe el texto seleccionado para que el lector entienda lo que se está explicando y no tenga dudas.
-- No estás autorizado a realizar una tarea diferente a la solicitada. Es decir, si al hacer la tarea ves un texto escrito con anterioridad, aunque esté seleccionado, si no es objeto del comentario no se modifica nunca, aunque pienses que está mal; como mucho se te permite comentar otros errores al finalizar la tarea. El comentario puede ser un borrador y en ese caso, claro que debes revisar el texto del borrador, pero si la tarea pide algo concreto se acata, no se interpreta; igualmente puedes comentar después el error.
+- No estás autorizado a realizar una tarea diferente a la solicitada. Es decir, si al hacer la tarea ves un texto escrito con anterioridad, aunque esté seleccionado, si no es objeto del comentario no se modifica nunca, aunque pienses que está mal; como mucho se te permite comentar otros errores al finalizar la tarea.
+
+## Revisar errores del nuevo texto añadido
+
+Una vez repasado todos los comentarios, en una posterior iteración de la tarea, debes revisar el nuevo texto añadido que no estaba con anterioridad y debes corregir errores. No solo errores de gramatica o redacción, sino conceptos o datos o explicaciones que sean incorrectos. Esto no autoriza a cambiar el sentido de la frase o del texto, solo a corregir errores. Si no estás seguro de si es un error o no, pregunta.
 
 ## Revisar coherencia después de corregir un comentario
 
-Una vez repasado el o los comentarios, debes volver a leer el documento completo para asegurarte de que lo que has añadido tiene coherencia narrativa con el resto del documento. Si no es así, debes corregir el texto que has añadido y como mucho hacer retoques cosméticos en el resto del documento para que tenga coherencia narrativa, pero nunca modificar el texto que no es objeto del comentario.
+Una vez repasado todos los comentarios, en una posterior iteración de la tarea, debes volver a leer el documento completo para asegurarte de que lo que has añadido tiene coherencia narrativa con el resto del documento. Si no es así, debes corregir el texto que has añadido y como mucho hacer retoques cosméticos en el resto del documento para que tenga coherencia narrativa, pero nunca modificar el texto que no es objeto del comentario.
 
 Recuerda que cuando propongas un texto que corrige lo que indica el comentario, también debes eliminar el comentario para dejar el apartado limpio.
 
@@ -39,4 +43,4 @@ Aunque está explícito en las instrucciones, estos son fallos u olvidos comunes
 
 - Debes crear un texto que sea coherente con el documento, con el apartado marcado o con el apartado anterior, por lo tanto, no olvides que tienes que leer el documento. Si no quieres leerlo todo, por lo menos lee el texto anterior. Es buena idea que, cuando tengas el texto elegido, leas el texto anterior que no ha sido modificado y, si no tiene coherencia narrativa, lo corrijas.
 - Si te hago revisar varios comentarios, cuando completes uno, no olvides volver a leer el documento entero para que el siguiente comentario que revises tenga coherencia narrativa con el documento completo.
-- No olvides que el comentario pide algo concreto, eso no te da derecho a realizar otras correcciones que veas oportunas que no son objeto del comentario; como mucho puedes hacer comentarios al final de la tarea.
+- No olvides que el comentario pide algo concreto, eso no te da derecho a realizar otras correcciones que veas oportunas que no son objeto del comentario; como mucho puedes hacer comentarios al final de la tarea sobre otros errores que veas.
