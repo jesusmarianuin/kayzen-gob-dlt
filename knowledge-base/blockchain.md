@@ -111,6 +111,16 @@ Sobre una red blockchain se puede definir una lógica de negocio on-chain: la qu
 
 Todo lo demás es lógica off-chain: se ejecuta fuera de la red, en los sistemas de cada participante, y solo lleva a la cadena lo que tiene que quedar registrado y verificado por todos, como un hash, una evidencia o un cambio de estado.
 
+## Confidencialidad, integridad y disponibilidad
+
+Si evaluamos blockchain con los tres requisitos clásicos de seguridad de la información, el resultado no es equilibrado. En integridad y disponibilidad apunta muy alto, pero la confidencialidad choca con su propio diseño.
+
+La razón es la replicación. Que cada nodo guarde una copia del registro es justo lo que hace difícil manipularlo o tumbarlo, pero cada copia es también un punto por donde se puede filtrar la información. El consenso tolera nodos maliciosos (en QBFT, hasta f de 3f+1), mientras que para romper la confidencialidad basta con uno. Así, más nodos refuerzan la integridad y la disponibilidad y a la vez amplían la superficie de ataque. No es una contradicción sino un compromiso entre propiedades, y se mantiene aunque la red sea privada y cada nodo esté bien controlado.
+
+Cifrar los datos antes de registrarlos no lo resuelve del todo. El dato cifrado queda replicado para siempre, así que si una clave se compromete o el algoritmo deja de ser seguro, no se puede rotar ni borrar. Además, el cifrado oculta el contenido, pero no la transacción: sigue viéndose quién la firma, a quién va dirigida y cuándo se registra, y eso ya revela información (por ejemplo, que dos organizaciones se relacionan). Esa misma inmutabilidad choca también con el derecho de supresión del RGPD.
+
+Por eso, como norma general, los datos confidenciales no se registran en la cadena, ni en claro ni cifrados. Se quedan off-chain, en sistemas con acceso controlado, y en la cadena solo se ancla lo necesario para verificarlos, como un hash o una prueba de conocimiento cero, que permite demostrar algo (por ejemplo, que una credencial es válida) sin revelar el dato. DLT como Corda o Canton siguen la misma lógica: reparten cada dato solo a quien le afecta y, a cambio, renuncian a parte de la replicación.
+
 ## Distribución versus descentralización
 
 Los términos "distributed" y "decentralized" frecuentemente se confunden, pero representan conceptos distintos que es crucial diferenciar en el contexto de blockchain y sistemas distribuidos.
@@ -121,7 +131,7 @@ Se refiere a que los datos o procesos están replicados en múltiples ubicacione
 
 **Sistema descentralizado:**
 
-Implica que no existe una autoridad central que controle completamente el sistema. Las decisiones, el control y la gobernanza están distribuidos entre múltiples participantes que operan de forma autónoma. La descentralización fomenta la resistencia a la censura y reduce los puntos únicos de fallo tanto técnicos como de gobernanza.
+Implica que no existe una autoridad central que controle completamente el sistema, el gobierno es compartido entre los nodos. Por lo tanto, las decisiones, el control y la gobernanza están distribuidos entre múltiples participantes que operan de forma autónoma. La descentralización fomenta la resistencia a la censura y reduce los puntos únicos de fallo tanto técnicos como de gobernanza.
 
 Es crucial entender que el término DLT se refiere a un libro mayor distribuido, pero no implica necesariamente descentralización completa. Una DLT siempre es distribuida, pero su control puede estar centralizado, descentralizado o repartido en parte, según su diseño y su modelo de gobernanza. Dicho de otro modo, la distribución responde a dónde están los datos (cuántos nodos guardan una copia del registro), mientras que la descentralización responde a quién controla el sistema y toma las decisiones. Blockchain, en su concepción original, está diseñada principalmente para sistemas descentralizados, aunque existen implementaciones permisionadas con diferentes grados de descentralización.
 

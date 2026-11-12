@@ -6,13 +6,16 @@ Su finalidad declarada es verificar documentos e identidades con plena validez j
 
 ## Marco regulatorio
 
-ISBE se diseña desde el principio para cumplir la regulación europea:
+ISBE se diseña desde el principio para cumplir la regulación y presenta ese cumplimiento como una ventaja competitiva para las empresas que la usan. Les ahorra trabajo para cumplir, pero no las exime de sus obligaciones. Estas son las normas que tiene en cuenta:
 
-- eIDAS 2: aspira a ser un [libro mayor electrónico cualificado](electronic-ledger.md) conforme al Reglamento de Ejecución (UE) 2025/2531. A noviembre de 2026 no figura en la lista de confianza, y Alastria reconoce que ISBE no es un QTSP
-- RGPD: el cumplimiento se plantea desde el diseño, con piezas técnicas como el Filtering Proxy y con reglas de gobernanza que obligan a minimizar los datos personales on-chain (hash, referencias o pseudonimización)
-- DORA: si un caso de uso da servicio a entidades financieras, hay que firmar una adenda DORA antes de llevarlo a producción
-
-> [El proyecto analiza también otras normas](#otras-normas-analizadas).
+- eIDAS2: aspira a ser un [libro mayor electrónico cualificado](electronic-ledger.md) conforme al Reglamento de Ejecución (UE) 2025/2531. A noviembre de 2026 no figura en la lista de confianza, y Alastria reconoce que ISBE no es un QTSP
+- [RGPD](https://gdpr-text.com/es/): el cumplimiento se plantea desde el diseño, con piezas técnicas como el Filtering Proxy y con reglas de gobernanza que obligan a minimizar los datos personales on-chain (hash, referencias o pseudonimización)
+- [DORA](https://eur-lex.europa.eu/eli/reg/2022/2554/oj?locale=es), sobre la resiliencia operativa digital del sector financiero: si un caso de uso da servicio a entidades financieras, hay que firmar una adenda DORA antes de llevarlo a producción
+- [MiCA](https://eur-lex.europa.eu/eli/reg/2023/1114/oj?locale=es), que regula la emisión de criptoactivos y los servicios sobre ellos
+- [Data Act](https://eur-lex.europa.eu/eli/reg/2023/2854/oj?locale=es), que regula el acceso a los datos de los productos conectados y fija requisitos para los smart contracts que ejecutan acuerdos de intercambio de datos
+- [NIS2](https://eur-lex.europa.eu/eli/dir/2022/2555/oj?locale=es), que exige medidas de ciberseguridad y notificación de incidentes a las entidades esenciales e importantes
+- [ENS (Esquema Nacional de Seguridad)](https://www.boe.es/eli/es/rd/2022/05/03/311/con), que fija la seguridad exigida al sector público español y a sus proveedores tecnológicos
+- [LMVSI (Ley de los Mercados de Valores y de los Servicios de Inversión)](https://www.boe.es/eli/es/l/2023/03/17/6/con), que admite representar valores con tecnología de registro distribuido
 
 ## Arquitectura
 
@@ -58,10 +61,6 @@ El servicio de libro mayor electrónico cualificado (QEL) se presta sobre otra r
 Asociación española sin ánimo de lucro, creada en 2017, que reúne empresas, universidades y administraciones en torno a redes blockchain permisionadas. Tiene sus propias redes, independientes de ISBE. Además desarrolla y opera ISBE para la Comunidad de Madrid, y lleva a esa red su enfoque regulatorio, centrado en eIDAS y el RGPD.
 
 ## Aclaraciones
-
-### Otras normas analizadas
-
-La documentación de cumplimiento del proyecto incluye también análisis del ENS (Esquema Nacional de Seguridad), de NIS2, del artículo 56 de DORA y de la regulación de criptoactivos y tokenización.
 
 ### Capacidades, pilares y versiones
 
