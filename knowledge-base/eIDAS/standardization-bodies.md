@@ -47,3 +47,16 @@ Referencias:
 - [Web de ISO](https://www.iso.org/)
 - [ISO 23257:2022](https://www.iso.org/standard/75093.html)
 - [ISO/TS 23635:2022](https://www.iso.org/standard/76480.html)
+
+## EDPB (European Data Protection Board)
+
+El EDPB no es un organismo de normalización, pero fija el criterio del RGPD en blockchain.
+
+Comité Europeo de Protección de Datos. Es un organismo de la UE creado por el artículo 68 del RGPD, que reúne a las autoridades nacionales de protección de datos (como la AEPD en España) y publica directrices sobre cómo aplicar el RGPD. No elabora normas técnicas ni lo citan los actos de ejecución de eIDAS, pero su criterio es el que siguen las autoridades al valorar un tratamiento de datos.
+
+Para blockchain, la referencia es su directriz 02/2025, con versión final de julio de 2026. Desaconseja guardar datos personales en la cadena, recuerda que los datos seudonimizados o con hash siguen siendo datos personales y que la inmutabilidad no exime de derechos como el de supresión.
+
+Referencias:
+
+- [Web del EDPB](https://www.edpb.europa.eu/home_en)
+- [Directriz 02/2025 sobre el tratamiento de datos personales mediante blockchain (EDPB)](https://www.edpb.europa.eu/documents/guideline/guidelines-022025-on-processing-of-personal-data-through-blockchain_en)

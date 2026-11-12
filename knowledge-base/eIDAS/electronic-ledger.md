@@ -1,31 +1,5 @@
 # Libro mayor electrónico (electronic ledger)
 
-Un libro mayor electrónico es un registro de datos en el que cada entrada queda en orden y no se puede modificar sin que se note. La idea es la de un libro de registro de entradas en papel, con las páginas numeradas, pero en formato digital.
-
-eIDAS 2 (Reglamento (UE) 2024/1183) lo incorpora como un nuevo servicio de confianza, junto a la firma, el sello o el sello de tiempo. Lo define como "una secuencia de registros electrónicos de datos que garantiza la integridad de dichos registros y la exactitud de su orden cronológico" (artículo 3).
-
-Como en el resto de servicios de confianza, hay dos niveles:
-
-- Libro mayor electrónico: un juez no puede rechazarlo como prueba solo por ser electrónico o por no ser cualificado.
-- Libro mayor electrónico cualificado: lo presta un prestador cualificado de servicios de confianza supervisado, y la ley presume que los datos son auténticos, que su fecha y su orden son exactos y que no se han alterado. Quien quiera negarlo tiene que demostrarlo.
-
-El reglamento no menciona la tecnología: un libro mayor puede implementarse con o sin blockchain. La relación con las tecnologías de registro distribuido (DLT) se concreta en su desarrollo técnico. El Reglamento de Ejecución (UE) 2025/2531 fija las normas de referencia para los libros mayores cualificados, y uno de sus anexos se dedica a los "libros mayores electrónicos distribuidos cualificados", con definiciones de nodo, consenso, mecanismo de consenso y carácter definitivo de los registros. Ese reglamento exige a todos los libros mayores cualificados la norma ETSI EN 319 401, y a los distribuidos además ISO 23257:2022 (arquitectura DLT) e ISO/TS 23635:2022 (gobernanza).
-
-En la práctica, esto significa que una red blockchain puede ofrecer un servicio con valor probatorio reconocido en toda la UE, siempre que la opere un prestador cualificado y cumpla esas normas. Que una red sea blockchain no le da por sí mismo esa presunción legal.
-
-Por ejemplo, [EBSI](ebsi.md) es una infraestructura concreta para verificar credenciales y no es por sí misma un libro mayor electrónico cualificado.
-
-ISBE, en cambio, una de las [redes públicas permisionadas que buscan ser institucionales](permissioned-public-networks.md), está diseñada para llegar a serlo, aunque es un objetivo y no una condición ya reconocida por el organismo de supervisión.
-
-El término oficial en español es "libro mayor electrónico cualificado" (qualified electronic ledger). Sus efectos y requisitos están en los artículos 45 duodecies y 45 terdecies del Reglamento eIDAS modificado.
-
-Referencias:
-
-- [Reglamento (UE) 2024/1183 (eIDAS 2) en EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1183/oj)
-- [Reglamento de Ejecución (UE) 2025/2531 sobre libros mayores electrónicos cualificados](https://eur-lex.europa.eu/eli/reg_impl/2025/2531/oj)
-
-## Efectos jurídicos e implementación
-
 Un libro mayor electrónico (electronic ledger) es un registro digital en el que los datos se incorporan siguiendo una secuencia cronológica y se utilizan mecanismos que permiten garantizar su integridad y detectar cualquier modificación posterior.
 
 Podemos entenderlo como la evolución digital de un libro de registro tradicional: cada anotación queda incorporada a una secuencia ordenada y debe poder verificarse que no ha sido manipulada. La diferencia es que, en lugar de depender de páginas numeradas o mecanismos físicos de custodia, utiliza técnicas criptográficas para proteger los registros y acreditar su posición dentro de la secuencia.
@@ -42,66 +16,52 @@ También conviene distinguir dos conceptos: **la procedencia de un registro y la
 
 Los efectos jurídicos de ambas modalidades se encuentran en el artículo 45 duodecies del Reglamento eIDAS.
 
-**Implementación del libro mayor**:
-
-El Reglamento eIDAS no obliga a utilizar blockchain para implementar un libro mayor electrónico. Puede construirse mediante una arquitectura centralizada o distribuida, siempre que se cumplan los requisitos establecidos.
-
-La relación con las tecnologías de registro distribuido (DLT) se concreta en el Reglamento de Ejecución (UE) 2025/2531, que contempla expresamente los libros mayores electrónicos distribuidos cualificados y establece especificaciones técnicas adicionales para ellos.
-
-Un libro mayor distribuido es aquel que se comparte entre diferentes nodos y mantiene sus registros sincronizados mediante un mecanismo de consenso. El reglamento llama a esta variante "libro mayor electrónico distribuido cualificado", y también se conoce como qDLT.
-
-El Reglamento introduce varios conceptos específicos:
-
-- **Nodo:** dispositivo o proceso que forma parte de la red y almacena una copia completa o parcial de los registros.
-- **Red distribuida:** conjunto de nodos que forman el sistema de registro distribuido.
-- **Consenso:** acuerdo entre los nodos sobre la validez de las transacciones y el mantenimiento de un conjunto coherente y ordenado de transacciones validadas.
-- **Mecanismo de consenso:** conjunto de reglas y procedimientos mediante los cuales se alcanza ese acuerdo.
-- **Carácter definitivo (finality):** estado de un registro que se ha vuelto irreversible y no puede modificarse ni suprimirse.
-
-Este último concepto es especialmente relevante. En una red distribuida no basta con que una transacción haya sido aceptada por un nodo: debe existir un mecanismo que permita determinar cuándo alcanza el carácter definitivo y puede considerarse incorporada de forma irreversible al libro mayor.
-
-Para estos sistemas de libro mayor, el Reglamento 2025/2531 incorpora dos referencias técnicas adicionales:
-
-- **ISO 23257:2022:** arquitectura de referencia para tecnologías blockchain y de registros distribuidos.
-- **ISO/TS 23635:2022:** directrices de gobernanza para tecnologías blockchain y de registros distribuidos.
-
 ## Reglamento de Ejecución (UE) 2025/2531: requisitos técnicos
 
-El Reglamento de Ejecución (UE) 2025/2531 desarrolla las normas y especificaciones de referencia para los libros mayores electrónicos cualificados. Su objetivo es concretar cómo deben garantizarse técnicamente la procedencia, la integridad y el orden cronológico de los registros. Se adoptó el 16 de diciembre de 2025, tras una [consulta pública](https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/14752-Qualified-electronic-ledgers_en) en septiembre de ese año, y se publicó en el DOUE al día siguiente.
+El [Reglamento de Ejecución (UE) 2025/2531](https://eur-lex.europa.eu/eli/reg_impl/2025/2531/oj) fija las normas de referencia de los libros mayores electrónicos cualificados y concreta cómo garantizar técnicamente la procedencia, la integridad y el orden cronológico de los registros. Se adoptó el 16 de diciembre de 2025, tras una [consulta pública](https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/14752-Qualified-electronic-ledgers_en) en septiembre, y se publicó en el DOUE al día siguiente.
 
-Cumplir su anexo da presunción de cumplimiento de los requisitos del artículo 45 terdecies (apartado 2), aunque el prestador puede demostrarlo con otras prácticas.
+Los requisitos se dividen entre los comunes a cualquier prestador cualificado y los propios del libro mayor electrónico.
 
-Establece como referencia general la norma **ETSI EN 319 401 v3.1.1**, relativa a los requisitos generales de política y seguridad de los prestadores de servicios de confianza, con adaptaciones específicas para este servicio.
-
-Entre otras cuestiones, concreta los mecanismos utilizados para:
-
-- Autenticar el origen de los registros mediante firmas electrónicas avanzadas o sellos electrónicos avanzados basados en certificados cualificados, creados por los usuarios del servicio.
-- Garantizar la secuencia cronológica mediante vínculos criptográficos basados en listas o árboles hash, utilizando funciones hash SHA-256 o superiores, o SHA3-256 o superiores.
-- Garantizar la integridad de los registros mediante firmas electrónicas avanzadas o sellos electrónicos avanzados basados en certificados cualificados.
-- Detectar inmediatamente cualquier modificación posterior de los datos.
-- Proteger las claves criptográficas utilizadas por el prestador.
-
-También contempla la utilización de sellos de tiempo cualificados como alternativa para garantizar la unicidad del orden cronológico secuencial.
-
-En el caso de los libros mayores distribuidos, se añaden las especificaciones relacionadas con la arquitectura DLT, la gobernanza de la red y los mecanismos de consenso.
-
-El Reglamento exige, además, que el prestador documente los mecanismos técnicos utilizados en su declaración de prácticas del servicio. De esta forma, los usuarios y las partes que confían en él pueden conocer cómo se garantiza la procedencia, la integridad y la ordenación de los registros.
-
-CEN ha publicado además la especificación técnica CEN/TS 18264:2026, dedicada a los libros mayores electrónicos. Es posterior al reglamento y este no la cita.
-
-Como el servicio lo presta un QTSP, también le aplican los actos horizontales de los servicios de confianza cualificados:
+Para un prestador cualificado en general, como el servicio lo presta un QTSP, la referencia es la norma [ETSI EN 319 401 v3.1.1](https://www.etsi.org/deliver/etsi_en/319400_319499/319401/), con los requisitos generales de política y seguridad de los prestadores y adaptaciones para este servicio. Le aplican además los actos horizontales de los servicios de confianza cualificados:
 
 - [Reglamento de Ejecución (UE) 2025/2530](https://eur-lex.europa.eu/eli/reg_impl/2025/2530/oj): requisitos de cumplimiento y seguridad de los prestadores cualificados.
 - [Reglamento de Ejecución (UE) 2025/1572](https://eur-lex.europa.eu/eli/reg_impl/2025/1572/oj): inicio de la prestación de servicios de confianza cualificados.
 - [Reglamento de Ejecución (UE) 2025/2162](https://eur-lex.europa.eu/eli/reg_impl/2025/2162/oj): acreditación de los organismos de evaluación de la conformidad; su anexo II reúne las normas con las que se evalúa cada servicio cualificado.
 
-## Diferencia con otros servicios cualificados
+Para el libro mayor electrónico, el reglamento concreta, entre otras cuestiones, los mecanismos para:
 
-El libro mayor se confunde a menudo con otros dos servicios cualificados cercanos:
+- Autenticar el origen de los registros con firmas o sellos electrónicos avanzados basados en certificados cualificados, creados por los usuarios del servicio.
+- Garantizar la secuencia cronológica con vínculos criptográficos basados en listas o árboles hash (SHA-256 o superior, o SHA3-256 o superior). También admite sellos de tiempo cualificados como alternativa para garantizar la unicidad de ese orden.
+- Garantizar la integridad con firmas o sellos electrónicos avanzados basados en certificados cualificados.
+- Detectar inmediatamente cualquier modificación posterior de los datos.
+- Proteger las claves criptográficas del prestador.
 
-- Conservación de firmas y sellos cualificados ([Reglamento de Ejecución (UE) 2025/1946](https://eur-lex.europa.eu/eli/reg_impl/2025/1946/oj)): mantiene válida la evidencia criptográfica cuando caducan los certificados o envejecen los algoritmos.
-- [Archivo electrónico](electronic-archiving.md) cualificado ([Reglamento de Ejecución (UE) 2025/2532](https://eur-lex.europa.eu/eli/reg_impl/2025/2532/oj)): custodia el documento, esté firmado o no, con integridad, legibilidad, trazabilidad de accesos y retención.
-- Libro mayor electrónico cualificado (Reglamento de Ejecución (UE) 2025/2531): fija un orden cronológico verificable de los hechos registrados.
+El prestador debe además documentar estos mecanismos en la declaración de prácticas del servicio, para que usuarios y partes que confían en él sepan cómo se garantizan la procedencia, la integridad y la ordenación de los registros.
+
+En los [libros mayores distribuidos](#libro-mayor-electrónico-distribuido-cualificado-qdlt) se añaden especificaciones sobre la arquitectura DLT, la gobernanza de la red y los mecanismos de consenso.
+
+[CEN](standardization-bodies.md#cen-y-cenelec) ha publicado también la especificación técnica [CEN/TS 18264:2026](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/issues/646) sobre libros mayores electrónicos, posterior al reglamento y no citada en él.
+
+## Libro mayor electrónico distribuido cualificado (qDLT)
+
+El Reglamento eIDAS no obliga a utilizar blockchain para implementar un libro mayor electrónico. Puede construirse mediante una arquitectura centralizada o distribuida, siempre que se cumplan los requisitos establecidos.
+
+Cuando es distribuido, el libro mayor se comparte entre diferentes nodos que mantienen sus registros sincronizados mediante un mecanismo de consenso. El [Reglamento de Ejecución (UE) 2025/2531](https://eur-lex.europa.eu/eli/reg_impl/2025/2531/oj) llama a esta variante "libro mayor electrónico distribuido cualificado", también conocida como qDLT, y le añade especificaciones técnicas propias.
+
+El reglamento introduce varios conceptos específicos:
+
+- Nodo: dispositivo o proceso que forma parte de la red y almacena una copia completa o parcial de los registros.
+- Red distribuida: conjunto de nodos que forman el sistema de registro distribuido.
+- Consenso: acuerdo entre los nodos sobre la validez de las transacciones y el mantenimiento de un conjunto coherente y ordenado de transacciones validadas.
+- Mecanismo de consenso: conjunto de reglas y procedimientos mediante los cuales se alcanza ese acuerdo.
+- Carácter definitivo (finality): estado de un registro que se ha vuelto irreversible y no puede modificarse ni suprimirse.
+
+Este último concepto es especialmente relevante. En una red distribuida no basta con que una transacción haya sido aceptada por un nodo: debe existir un mecanismo que permita determinar cuándo alcanza el carácter definitivo y puede considerarse incorporada de forma irreversible al libro mayor.
+
+Para la arquitectura y la gobernanza de la red, el reglamento incorpora dos referencias técnicas adicionales:
+
+- [ISO 23257:2022](https://www.iso.org/standard/75093.html): arquitectura de referencia para tecnologías blockchain y de registros distribuidos.
+- [ISO/TS 23635:2022](https://www.iso.org/standard/76480.html): directrices de gobernanza para tecnologías blockchain y de registros distribuidos.
 
 ## ¿Qué aporta en la práctica?
 
@@ -117,7 +77,7 @@ Algunos ejemplos de aplicación son:
 
 La principal aportación no consiste simplemente en almacenar información, sino en proporcionar garantías verificables sobre su procedencia, integridad y orden cronológico, respaldadas por una presunción jurídica cuando el servicio está cualificado.
 
-En definitiva, eIDAS 2 permite que un libro mayor electrónico, incluida una infraestructura blockchain, pueda funcionar como un servicio de confianza cualificado y beneficiarse de un reconocimiento jurídico armonizado en la Unión Europea. La tecnología utilizada es secundaria: lo determinante es el cumplimiento de los requisitos normativos y la cualificación del servicio.
+En definitiva, eIDAS2 permite que un libro mayor electrónico, incluida una infraestructura blockchain, pueda funcionar como un servicio de confianza cualificado y beneficiarse de un reconocimiento jurídico armonizado en la Unión Europea. La tecnología utilizada es secundaria: lo determinante es el cumplimiento de los requisitos normativos y la cualificación del servicio.
 
 ## Referencias
 
@@ -127,6 +87,5 @@ En definitiva, eIDAS 2 permite que un libro mayor electrónico, incluida una inf
 - [ETSI EN 319 401](https://www.etsi.org/deliver/etsi_en/319400_319499/319401/): requisitos generales de política y seguridad para prestadores de servicios de confianza.
 - [ISO 23257:2022](https://www.iso.org/standard/75093.html): arquitectura de referencia para tecnologías blockchain y DLT.
 - [ISO/TS 23635:2022](https://www.iso.org/standard/76480.html): directrices de gobernanza para tecnologías blockchain y DLT.
-- [Actos de ejecución de eIDAS2](implementing-acts.md)
 - [De la conservación cualificada de firmas y sellos a los servicios cualificados de archivo con orden cronológico (qDLT)](../inza.blog/2026/09/18-de-la-conservacion-cualificada-de-firmas-y-sellos-a-los-servicios-cualificados-de-archivo-con-orden-cronologico-qdlt.md)
 - [De las tablillas cuneiformes al Cartulario: historia de la contabilidad y origen de las RJT](../inza.blog/2026/10/23-de-las-tablillas-cuneiformes-al-cartulario-historia-de-la-contabilidad-y-origen-de-las-rjt.md)

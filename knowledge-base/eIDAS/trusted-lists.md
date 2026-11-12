@@ -35,7 +35,24 @@ Una ciudadana española abre una cuenta en un banco alemán desde su EUDI Wallet
 
 En ningún paso el banco necesita conocer de antemano al emisor. Le basta con fiarse de las listas.
 
+## Cómo se valida técnicamente
+
+Las listas son ficheros que cualquier programa puede descargar y leer. Las TL y la LOTL son ficheros XML con un formato común definido por el estándar ETSI TS 119 612. Gracias a ese formato común, un verificador interpreta igual la lista de cualquier Estado miembro. Las LoTE usan otro formato, ETSI TS 119 602, y hay una lista por cada tipo de entidad, por ejemplo una para proveedores de PID y otra para proveedores de wallets.
+
+Todas las listas van firmadas. Así, quien las consulta puede comprobar que nadie las ha alterado y que las publicó quien dice publicarlas.
+
+Quien recibe algo firmado por un prestador cualificado, como un documento con firma cualificada o una QEAA que le presenta una wallet, actúa como verificador y comprueba al emisor siguiendo estos pasos:
+
+- Descarga la LOTL. Su dirección oficial la publica la Comisión en el Diario Oficial de la UE, así que el verificador sabe que está descargando la buena.
+- Comprueba la firma de la LOTL antes de fiarse de su contenido.
+- En la LOTL busca el enlace a la TL del país del emisor, la descarga y comprueba también su firma.
+- En esa TL busca el certificado con el que se hizo la firma. Si aparece, sabe qué prestador y qué servicio lo emitieron.
+- Revisa el historial de ese servicio. Las listas guardan cuándo un servicio obtuvo o perdió el estatus de cualificado, y lo que importa es que lo fuera en la fecha de la firma, no hoy.
+
+Con las LoTE el recorrido es más corto. No hay una lista de listas por medio, así que el verificador va directamente a la lista del tipo de entidad que le interesa.
+
 ## Referencias
 
 - [Buscador de prestadores y servicios de confianza de la UE (EU Trust Services Dashboard)](https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls)
 - [Reglamento (UE) 2024/1183 (eIDAS 2) en EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1183/oj)
+- [Reglamento de Ejecución (UE) 2024/2980 sobre las notificaciones del ecosistema de la cartera](https://eur-lex.europa.eu/eli/reg_impl/2024/2980/oj)

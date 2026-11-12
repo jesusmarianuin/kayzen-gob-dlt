@@ -6,8 +6,6 @@ Complementa a los datos de identificación personal (PID) de la cartera EUDI. El
 
 Emitirlas es uno de los servicios de confianza que define eIDAS2, como la firma, el sello o el [libro mayor electrónico](electronic-ledger.md). Por eso sigue el mismo esquema: puede prestarlo cualquier prestador de servicios de confianza, pero la ley solo le reconoce efectos reforzados cuando lo presta un prestador cualificado (QTSP).
 
-> [Aclaración sobre el calendario de la cartera](#calendario-de-la-cartera).
-
 ## Quién la emite y qué valor tiene
 
 Hay tres tipos, y lo que los distingue es quién la emite:
@@ -34,32 +32,11 @@ Por tanto, una QEAA o una PuB-EAA se emite en mdoc o en SD-JWT VC. El formato ta
 
 ## Normativa que la regula
 
-Su régimen está en los artículos 45 ter a 45 nonies del Reglamento eIDAS modificado (45b a 45h en inglés) y en los anexos V a VII.
+Su régimen está en los [artículos 45 ter a 45 nonies del Reglamento eIDAS modificado (45b a 45h en inglés) y en los anexos V a VII](https://inza.blog/category/declaraciones-electronicas-de-atributos/).
 
-> [Aclaración sobre qué regula cada artículo](#artículos-del-reglamento).
-
-Lo desarrollan los [actos de ejecución de la cartera](implementing-acts.md#cartera-eudi), sobre todo el Reglamento de Ejecución (UE) 2024/2977, sobre PID y declaraciones expedidas a la cartera, y el 2026/1735, sobre declaraciones cualificadas. Como el emisor de una QEAA es un QTSP, también le aplican los actos de ejecución comunes a todos los prestadores cualificados. Los requisitos técnicos se completan con normas de [ETSI](standardization-bodies.md#etsi-european-telecommunications-standards-institute) y [CEN](standardization-bodies.md#cen-y-cenelec).
+Lo desarrollan los [actos de ejecución de la cartera](implementing-acts.md#cartera-eudi), sobre todo el [Reglamento de Ejecución (UE) 2024/2977](https://eur-lex.europa.eu/legal-content/ES/ALL/?uri=CELEX:32024R2977), sobre PID y declaraciones expedidas a la cartera, y el [2026/1735](https://eur-lex.europa.eu/legal-content/ES/ALL/?uri=CELEX:32026R1735), sobre declaraciones cualificadas. Como el emisor de una QEAA es un QTSP, también le aplican los actos de ejecución comunes a todos los prestadores cualificados. Los requisitos técnicos se completan con normas de [ETSI](standardization-bodies.md#etsi-european-telecommunications-standards-institute) y [CEN](standardization-bodies.md#cen-y-cenelec).
 
 En septiembre de 2026 había todavía pocos prestadores de QEAA en las [listas de confianza](https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls).
-
-## Aclaraciones
-
-### Artículos del reglamento
-
-- 45 ter: efectos jurídicos de las declaraciones.
-- 45 quater: uso de las declaraciones en servicios públicos.
-- 45 quinquies: requisitos de las QEAA, desarrollados en el anexo V.
-- 45 sexies: comprobación de atributos en fuentes auténticas, con la lista mínima del anexo VI.
-- 45 septies: requisitos de las PuB-EAA, desarrollados en el anexo VII.
-- 45 octies: expedición de declaraciones a la cartera EUDI.
-- 45 nonies: reglas adicionales para prestar el servicio.
-
-### Calendario de la cartera
-
-Las declaraciones se usarán sobre todo a través de la cartera, así que su adopción sigue el calendario de esta:
-
-- 24 de diciembre de 2026: cada Estado miembro debe ofrecer al menos una cartera, y el sector público debe aceptarla como medio de identificación.
-- 24 de diciembre de 2027: el sector privado regulado (banca, telecomunicaciones, energía, transporte, sanidad...) debe aceptarla cuando su normativa le exija autenticación reforzada.
 
 ## Referencias
 
