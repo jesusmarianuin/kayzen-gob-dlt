@@ -6,7 +6,16 @@
   <h1 class="question">Cómo estudiar con esta app</h1>
 
   <section>
-    <h2>1. Se estudia repartido en días</h2>
+    <h2>1. Primero eliges un área</h2>
+    <p>
+      Las tarjetas están agrupadas por áreas de estudio. Al abrir la app eliges una, y el repaso, el progreso y
+      el estudio libre son solo de esa área. Puedes cambiar de área cuando quieras pulsando su nombre en la
+      barra superior. Lo que llevas estudiado de cada área se conserva.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Se estudia repartido en días</h2>
     <p>
       La app te pregunta cada tarjeta justo cuando empiezas a olvidarla. Recordarla en ese momento es lo que
       la fija en la memoria. Repetirla muchas veces el mismo día no sirve: la aciertas porque la acabas de ver
@@ -19,7 +28,7 @@
   </section>
 
   <section>
-    <h2>2. Cómo es un repaso</h2>
+    <h2>3. Cómo es un repaso</h2>
     <p><strong>Tarjetas de pensar la respuesta.</strong> Ves la pregunta, piensas la respuesta, pulsas
       «Mostrar respuesta» y dices cómo te ha ido:</p>
     <ul>
@@ -40,7 +49,7 @@
   </section>
 
   <section>
-    <h2>3. Cuándo vuelve una tarjeta</h2>
+    <h2>4. Cuándo vuelve una tarjeta</h2>
     <p>Cada vez que aciertas una tarjeta, tarda más en volver. Por ejemplo, si respondes «Bien» a «Dog»:</p>
     <ul>
       <li>1.ª vez: vuelve al día siguiente.</li>
@@ -54,7 +63,7 @@
   </section>
 
   <section>
-    <h2>4. Si no abres la app varios días</h2>
+    <h2>5. Si no abres la app varios días</h2>
     <p>
       No se pierde nada. Las tarjetas que te tocaban esos días salen con retraso la próxima vez, las más
       atrasadas primero. Si alguna se te ha olvidado, pulsa «Fallé» y volverá a empezar.
@@ -62,10 +71,10 @@
   </section>
 
   <section>
-    <h2>5. Cuándo parar</h2>
+    <h2>6. Cuándo parar</h2>
     <p>
       Si la app te muestra una tarjeta, te toca responderla. Si te muestra «Has terminado por hoy», puedes
-      parar. Cada día hay como mucho {{ config.NEW_CARDS_PER_DAY }} tarjetas nuevas, para que los repasos de los
+      parar. Cada día hay como mucho {{ config.NEW_CARDS_PER_DAY }} tarjetas nuevas por área, para que los repasos de los
       días siguientes no se acumulen.
     </p>
     <p>
@@ -75,7 +84,7 @@
   </section>
 
   <section id="progreso">
-    <h2>6. Cómo leer el progreso</h2>
+    <h2>7. Cómo leer el progreso</h2>
     <ul>
       <li><strong>No las sé:</strong> no las has estudiado todavía, o vuelven en menos de
         {{ config.MEDIUM_FROM_DAYS }} días.</li>
@@ -90,7 +99,7 @@
   </section>
 
   <section>
-    <h2>7. Estudio libre</h2>
+    <h2>8. Estudio libre</h2>
     <p>
       Sirve para repasar todas las tarjetas cuando quieras, por ejemplo antes de un examen. Salen todas, en
       orden aleatorio, y no cuentan para el calendario ni para el progreso. No sustituye al estudio diario.

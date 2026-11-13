@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Áreas{% endblock %}
+
+{% block content %}
+<article class="card wide">
+  <h1 class="question">¿Qué área estudias hoy?</h1>
+
+  {% if rows %}
+    <ul class="areas">
+      {% for area, total, pending in rows %}
+        <li>
+          <form method="post" action="{{ url_for('choose_area', area_id=area.id) }}">
+            <button type="submit" class="area {{ 'current' if current_area() and current_area().id == area.id }}"
+                    {% if loop.first %}autofocus{% endif %}>
+              <span class="area-name">{{ area.name }}</span>
+              {% if area.description %}<span class="area-description">{{ area.description }}</span>{% endif %}
+              <span class="area-count">
+                {% if total %}
+                  {{ total }} tarjeta{{ '' if total == 1 else 's' }}
+                  · {{ 'nada pendiente hoy' if not pending else pending ~ ' para hoy' }}
+                {% else %}
+                  No hay datos
+                {% endif %}
+              </span>
+            </button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="lead">No hay áreas. Añade filas a <code>data/areas.csv</code>.</p>
+  {% endif %}
+</article>
+{% endblock %}

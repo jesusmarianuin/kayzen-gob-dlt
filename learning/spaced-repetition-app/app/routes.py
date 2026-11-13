@@ -49,24 +49,60 @@ def _rate(card_id: str, rating: str, version: str) -> bool:
     return True
 
 
+def _current_area() -> storage.Area | None:
+    """Area chosen in this run of the app. The session is lost on restart, so each run starts on /areas."""
+    area_id = session.get("area")
+    return next((area for area in storage.load_areas() if area.id == area_id), None)
+
+
 def register(app: Flask) -> None:
     app.jinja_env.globals["image_url"] = _image_url
+    app.jinja_env.globals["current_area"] = _current_area
+
+    @app.before_request
+    def require_area():
+        # Repaso, progreso y estudio libre trabajan sobre un área: sin elegirla, pantalla de áreas
+        if request.endpoint in ("study", "progress_page", "free_start", "free") and _current_area() is None:
+            return redirect(url_for("areas"))
+        return None
 
     @app.get("/")
     def index():
-        # Primera vez: manual de ayuda antes de la primera tarjeta
+        # Primera vez: manual de ayuda antes de elegir área
         if not storage.progress_exists():
             return redirect(url_for("help_page"))
+        return redirect(url_for("areas"))
+
+    @app.get("/areas")
+    def areas():
+        now = datetime.now()
+        progress = storage.load_progress()
+        rows = []
+        for area in storage.load_areas():
+            cards = storage.load_cards(area=area.id)
+            rows.append((area, len(cards), planner.pending_today(cards, progress, now)))
+        return render_template("areas.html", rows=rows)
+
+    @app.post("/areas/<area_id>")
+    def choose_area(area_id: str):
+        if area_id not in {area.id for area in storage.load_areas()}:
+            abort(404)
+        session["area"] = area_id
+        # Un estudio libre a medias era de otra área
+        session.pop("free_order", None)
+        session.pop("free_position", None)
         return redirect(url_for("study"))
 
     @app.get("/study")
     def study():
         now = datetime.now()
-        cards = storage.load_cards()
+        cards = storage.load_cards(area=_current_area().id)
         progress = storage.load_progress()
+        if not cards:
+            return render_template("done.html", mode="empty")
         card = planner.next_card(cards, progress, now)
         if card is None:
-            next_due = planner.next_due_date(progress, now)
+            next_due = planner.next_due_date(cards, progress, now)
             return render_template("done.html", mode="review",
                                    next_due=spanish_date(next_due) if next_due else None)
         return render_template("review.html", card=card, mode="review", stage="question",
@@ -94,7 +130,8 @@ def register(app: Flask) -> None:
 
     @app.get("/progress")
     def progress_page():
-        summary = stats.summary(storage.load_cards(), storage.load_progress(), datetime.now().date())
+        summary = stats.summary(storage.load_cards(area=_current_area().id), storage.load_progress(),
+                                datetime.now().date())
         return render_template("progress.html", summary=summary)
 
     @app.get("/export/anki")
@@ -109,7 +146,7 @@ def register(app: Flask) -> None:
 
     @app.get("/free/start")
     def free_start():
-        session["free_order"] = planner.free_order(storage.load_cards())
+        session["free_order"] = planner.free_order(storage.load_cards(area=_current_area().id))
         session["free_position"] = 0
         return redirect(url_for("free"))
 
@@ -119,11 +156,13 @@ def register(app: Flask) -> None:
         if order is None:
             return redirect(url_for("free_start"))
         position = session.get("free_position", 0)
-        cards = {card.id: card for card in storage.load_cards()}
+        cards = {card.id: card for card in storage.load_cards(area=_current_area().id)}
         # Tarjetas borradas o desactivadas en cards.csv durante el estudio libre se saltan
         while position < len(order) and order[position] not in cards:
             position += 1
         session["free_position"] = position
+        if not order:
+            return render_template("done.html", mode="empty")
         if position >= len(order):
             return render_template("done.html", mode="free", reviewed=len(order))
         return render_template("review.html", card=cards[order[position]], mode="free", stage="question",

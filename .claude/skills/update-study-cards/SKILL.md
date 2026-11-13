@@ -29,6 +29,7 @@ Cualquier otra lectura sigue las normas de AGENTS.md: si falta información, pre
 
 - No hagas ninguna operación git
 - El formato de `cards.csv` está en `data/cards-demo.csv` y en `app/storage.py`: respétalo (cabecera, comillas dobles si el texto lleva comas, `;` para listas y `|` para alternativas en `typed`)
+- Cada tarjeta lleva en la columna `area` el id de un área de `data/areas.csv`. No cambies el área de las tarjetas existentes salvo que el usuario lo pida
 - No cambies nunca un id que ya exista: el progreso de `data/progress.json` está asociado a él
 - No modifiques el texto de las tarjetas existentes salvo que el usuario lo pida. Si ves erratas o respuestas `typed` imposibles de teclear con exactitud, avisa en el chat
 - El criterio para elegir `reversed` o `typed` está en `SPEC.md` (sección "Modelos elegidos")
@@ -38,12 +39,14 @@ Cualquier otra lectura sigue las normas de AGENTS.md: si falta información, pre
 1. Lee el documento fuente y `cards.csv`.
 2. Detecta las ideas del documento que no cubre ninguna tarjeta.
 3. Propón en el chat una lista numerada. Para cada propuesta, indica:
+   - Área (id de `data/areas.csv`)
    - Modelo (`reversed` o `typed`) y por qué
    - Frente
    - Reverso, en el formato que tendrá en el CSV
    - Sección del documento de la que sale
-4. Detente y espera a que el usuario elija los números. No añadas nada sin su elección.
-5. Añade al final de `cards.csv` las elegidas, con `enabled` a `true` y la columna `image` vacía.
+   Si el documento trata un tema que no encaja en ninguna área existente, propón también una área nueva (id, nombre y descripción) para añadir a `data/areas.csv`.
+4. Detente y espera a que el usuario elija los números y, si la has propuesto, apruebe el área nueva. No añadas nada sin su elección.
+5. Si se aprobó un área nueva, añádela al final de `data/areas.csv`. Después añade al final de `cards.csv` las tarjetas elegidas, con `enabled` a `true`, su `area` y la columna `image` vacía.
 
 Si el documento ya está cubierto, dilo y pasa al paso 2.
 

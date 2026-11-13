@@ -3,7 +3,14 @@
 
 {% block content %}
 <article class="card">
-  {% if mode == 'free' %}
+  {% if mode == 'empty' %}
+    <h1 class="question">No hay datos</h1>
+    <p class="lead">El área {{ current_area().name }} todavía no tiene tarjetas. Añade filas con su id en
+      <code>data/cards.csv</code>.</p>
+    <div class="actions">
+      <a href="{{ url_for('areas') }}" class="btn primary">Cambiar de área</a>
+    </div>
+  {% elif mode == 'free' %}
     <h1 class="question">Has repasado {{ reviewed }} tarjeta{{ '' if reviewed == 1 else 's' }}</h1>
     <p class="lead">El estudio libre no cambia tu calendario ni tu progreso.</p>
     <div class="actions">
@@ -17,6 +24,7 @@
     {% endif %}
     <div class="actions">
       <a href="{{ url_for('progress_page') }}" class="btn">Ver progreso</a>
+      <a href="{{ url_for('areas') }}" class="btn">Cambiar de área</a>
     </div>
   {% endif %}
 </article>

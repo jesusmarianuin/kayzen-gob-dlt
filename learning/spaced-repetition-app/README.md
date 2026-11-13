@@ -23,19 +23,35 @@ pip install -r requirements.txt
 python learning/spaced-repetition-app/run.py
 ```
 
-Se abre el navegador en `http://127.0.0.1:5000`. La primera vez aparece el manual de ayuda, que explica cómo trabajar con la app. Desde la barra superior se accede a **Progreso**, **Ayuda** y **Estudio libre**. Para terminar, pulsa **Ya vale por hoy**: el servidor se detiene y la terminal queda libre.
+Se abre el navegador en `http://127.0.0.1:5000`. La primera vez aparece el manual de ayuda, que explica cómo trabajar con la app. Después eliges el área que quieres estudiar. El nombre del área, a la izquierda de la barra superior, lleva de vuelta a la pantalla de áreas para cambiarla. Desde la barra superior se accede a **Progreso**, **Ayuda** y **Estudio libre**. Para terminar, pulsa **Ya vale por hoy**: el servidor se detiene y la terminal queda libre.
+
+## Áreas
+
+Las tarjetas se agrupan en áreas de estudio (por ejemplo, general, redes P2P o smart contracts). Cada área es una fila de `data/areas.csv`:
+
+```csv
+id,name,description
+general,General,"Regulación y conceptos generales de blockchain y de eIDAS"
+smart-contracts,Smart contracts,Desarrollo y seguridad de smart contracts
+```
+
+- `id`: identificador del área, con el mismo formato que el de una nota. Es el valor de la columna `area` de `cards.csv`.
+- `name` y `description`: lo que se ve en la pantalla de áreas, en el orden del fichero.
+
+El repaso, el progreso y el estudio libre son siempre del área elegida. Un área puede definirse antes de tener tarjetas: en la app aparece con "No hay datos".
 
 ## Añadir tarjetas
 
 Añade una fila a `data/cards.csv`. Se puede editar con cualquier editor de texto o con una hoja de cálculo. [data/cards-demo.csv](data/cards-demo.csv) es una plantilla comentada con un ejemplo de cada caso, y el formato completo está en [DESIGN.md](DESIGN.md#contenido-datacardscsv).
 
 ```csv
-id,enabled,model,front,back,image
-dog,true,reversed,Dog,Perro,
-boe,true,typed,¿Qué significa BOE?,Boletín Oficial del Estado|Boletín Oficial,
-poderes,true,typed,¿Cuáles son los tres poderes del Estado?,Legislativo|Parlamento;Ejecutivo;Judicial,
+id,enabled,area,model,front,back,image
+dog,true,general,reversed,Dog,Perro,
+boe,true,general,typed,¿Qué significa BOE?,Boletín Oficial del Estado|Boletín Oficial,
+poderes,true,general,typed,¿Cuáles son los tres poderes del Estado?,Legislativo|Parlamento;Ejecutivo;Judicial,
 ```
 
+- `area`: id de un área de `data/areas.csv`. Es obligatoria.
 - `model`: `reversed` (piensas la respuesta, sale en las dos direcciones) o `typed` (tecleas la respuesta exacta).
 - `back` en `typed`: `|` separa formas válidas (vale cualquiera) y `;` separa elementos de una lista (valen todos, en cualquier orden). En `reversed` se muestra tal cual.
 - `enabled`: `false` oculta la nota sin borrarla ni perder su progreso.
@@ -70,12 +86,12 @@ python learning/spaced-repetition-app/scripts/fetch_images.py boe "Boletín Ofic
 
 Si el servidor responde que hay demasiadas peticiones, el script espera y lo reintenta.
 
-Para pasar las tarjetas a Anki, en la pantalla Progreso pulsa Exportar para Anki y abre el fichero descargado en Anki (*Archivo → Importar*).
+Para pasar las tarjetas a Anki, en la pantalla Progreso pulsa Exportar para Anki y abre el fichero descargado en Anki (*Archivo → Importar*). Se exportan las notas activas de todas las áreas, y cada nota lleva su área como etiqueta de Anki.
 
 ## Progreso local
 
 > [!IMPORTANT]
-> El progreso se guarda en `data/progress.json`, que **no se sube a git**. Solo existe en el equipo donde estudias. Si clonas el repositorio en otro equipo, empiezas de cero. Si borras el fichero, pierdes el progreso.
+> El progreso se guarda en `data/progress.json`, que **no se sube a git**. Es un único fichero para todas las áreas. Solo existe en el equipo donde estudias. Si clonas el repositorio en otro equipo, empiezas de cero. Si borras el fichero, pierdes el progreso.
 
 ## Licencia
 

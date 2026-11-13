@@ -56,6 +56,12 @@ Usuario ejecuta script, se abre el navegador e inicia las pruebas. Se entiende e
 
 El usuario continua su progreso de preguntas, es decir, no inicia el set de preguntas de cera cada vez, el programa le recuerda donde estaba según su progreso de aprendizaje espaciado o si es la primera vez, claro inicia por primera vez.
 
+### Usuario elige área de estudio
+
+Las tarjetas se agrupan en áreas de estudio, por ejemplo conceptos generales, regulación, DLT en la administración o smart contracts. La lista de áreas, con su nombre y una descripción, está en un fichero de configuración aparte, y cada tarjeta indica a qué área pertenece.
+
+Al abrir la aplicación, el usuario elige en una pantalla inicial el área que quiere estudiar. Desde ese momento el repaso, el progreso y el estudio libre son solo de esa área, y puede cambiar de área cuando quiera. El progreso de cada tarjeta se conserva al cambiar de área.
+
 ### Tarjetas de diferentes tipos
 
 Hemos visto que hay 2 modelos elegidos: básico con tarjeta invertida y básico para teclear la respuesta. Simplemente el set de preguntas que se le muestra serán ambas, la duda es ¿primero de un tipo y luego otro o entremezcladas? Lo mejor es dejar eso al proceso de creación de la base de datos de preguntas, es decir, existirá tarjeta 1, luego 2, 3.. cada tarjeta en su creación será de tipo 1 o 2 según fue creada. Pero sabemos que no es tan simple, porque qué se pregunta en un sistema de repetición espaciada se basa en formular las preguntas según sea necesario en lo aprendido, pero para el programa simplemente, a groso modo, evalúa tarjeta 1, ve que se sabe, la omite y va a tarjeta 2, etc. Y tarjeta 1 podría ser de tipo 1 y tarjeta 2 de tipo 2 y tarjeta 3 de tipo 1 otra vez..

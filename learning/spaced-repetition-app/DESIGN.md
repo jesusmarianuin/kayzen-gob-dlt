@@ -6,10 +6,11 @@ Resumen técnico de la solución a [SPEC.md](SPEC.md). Los casos de prueba acord
 
 - Aplicación web local en Python + Flask, para un único usuario.
 - `run.py` arranca el servidor en `127.0.0.1:5000` y abre el navegador.
-- Datos en dos ficheros: `data/cards.csv` (contenido, editable a mano o con una hoja de cálculo) y `data/progress.json` (progreso, local y fuera de git).
+- Datos en tres ficheros: `data/areas.csv` (áreas de estudio), `data/cards.csv` (contenido) y `data/progress.json` (progreso, local y fuera de git). Los dos primeros se editan a mano o con una hoja de cálculo.
+- Cada nota pertenece a un área. Al arrancar se elige el área, y el repaso, el progreso y el estudio libre se limitan a ella.
 - Exportación a Anki desde la pantalla de progreso.
 - Planificación con SM-2, con un intervalo máximo de 21 días.
-- Pantallas: repaso, progreso, ayuda (se abre sola la primera vez) y estudio libre (no cuenta para el calendario).
+- Pantallas: áreas (al arrancar), repaso, progreso, ayuda (se abre sola la primera vez) y estudio libre (no cuenta para el calendario).
 - Imágenes de fondo descargadas desde Wikimedia Commons con un script.
 
 ## Componentes
@@ -19,35 +20,53 @@ Resumen técnico de la solución a [SPEC.md](SPEC.md). Los casos de prueba acord
 | `run.py` | Arranca el servidor, abre el navegador y espera la orden de parada |
 | `app/__init__.py` | Crea la app Flask |
 | `app/config.py` | Constantes ajustables (ver [Parámetros](#parámetros)) |
-| `app/routes.py` | Pantallas y acciones: repaso, progreso, ayuda, estudio libre, exportar, cerrar |
-| `app/storage.py` | Lee `cards.csv` y lo exporta para Anki; lee y escribe `progress.json` |
+| `app/routes.py` | Pantallas y acciones: áreas, repaso, progreso, ayuda, estudio libre, exportar, cerrar |
+| `app/storage.py` | Lee `areas.csv` y `cards.csv`, y exporta las notas para Anki; lee y escribe `progress.json` |
 | `app/planner.py` | Decide la siguiente tarjeta de la sesión y el orden del estudio libre |
 | `app/scheduler.py` | Aplica SM-2 a una puntuación |
 | `app/checker.py` | Compara la respuesta tecleada con tolerancia |
 | `app/stats.py` | Calcula los grupos de progreso y lo que falta para acabar |
-| `app/templates/` | `base.html`, `review.html`, `done.html`, `progress.html`, `help.html`, `goodbye.html` |
+| `app/templates/` | `base.html`, `areas.html`, `review.html`, `done.html`, `progress.html`, `help.html`, `goodbye.html` |
 | `app/static/` | CSS, JS mínimo (revelar respuesta) e imágenes descargadas |
 | `scripts/fetch_images.py` | Busca y descarga una imagen de Wikimedia para una nota |
+| `data/areas.csv` | Áreas de estudio |
 | `data/cards-demo.csv` | Plantilla comentada con un ejemplo de cada caso. La app no la lee |
 | `data/image-credits.md` | Autoría y licencia de cada imagen |
 
 ## Datos
+
+### Áreas: `data/areas.csv`
+
+Una fila por área, con el mismo formato CSV que `cards.csv`: cabecera obligatoria y exacta, comentarios con `#` y líneas vacías ignoradas.
+
+```csv
+id,name,description
+general,General,"Regulación y conceptos generales de blockchain y de eIDAS"
+smart-contracts,Smart contracts,Desarrollo y seguridad de smart contracts
+```
+
+- `id`: identificador del área, con el mismo [formato](#formato-del-id) que el de una nota. Único en `areas.csv` e inmutable, porque las notas lo usan en su columna `area`.
+- `name`: nombre que se muestra en la app. Obligatorio.
+- `description`: frase corta para la pantalla de áreas. Puede quedar vacía.
+
+El orden de las filas es el orden de la pantalla de áreas. Un área se puede definir antes de tener notas activas. En la pantalla de áreas aparece con "No hay datos", y si se elige, el repaso y el estudio libre muestran "No hay datos" con un enlace para cambiar de área.
 
 ### Contenido: `data/cards.csv`
 
 Una fila por **nota**, en CSV estándar (UTF-8, separado por comas). La primera fila de datos es la cabecera, obligatoria y exacta. Las líneas que empiezan por `#` son comentarios y las vacías se ignoran:
 
 ```csv
-id,enabled,model,front,back,image
-dog,true,reversed,Dog,Perro,dog.jpg
-boe,true,typed,¿Qué significa BOE?,Boletín Oficial del Estado|Boletín Oficial,boe.jpg
-consensus,false,reversed,"Consenso QBFT, en una frase",Acuerdo entre validadores,
+id,enabled,area,model,front,back,image
+dog,true,general,reversed,Dog,Perro,dog.jpg
+boe,true,general,typed,¿Qué significa BOE?,Boletín Oficial del Estado|Boletín Oficial,boe.jpg
+consensus,false,general,reversed,"Consenso QBFT, en una frase",Acuerdo entre validadores,
 ```
 
 | Columna | Contenido |
 | --- | --- |
 | `id` | Identificador de la nota (ver [Formato del id](#formato-del-id)). También es el `guid` al exportar a Anki |
 | `enabled` | `true` o vacío: la nota se estudia. `false`: desactivada (ver [Notas desactivadas](#notas-desactivadas)) |
+| `area` | Id de un área de `areas.csv`. Obligatoria. Si no existe, la app no arranca e indica la línea |
 | `model` | `reversed` (básico con tarjeta invertida) o `typed` (básico de teclear la respuesta) |
 | `front` | Pregunta |
 | `back` | Respuesta. En `typed`, `\|` separa formas válidas y `;` elementos de una lista (ver [Respuesta de `typed`](#respuesta-de-typed)). En `reversed` se muestra tal cual |
@@ -78,7 +97,7 @@ Cadena corta que identifica la nota. La escribe a mano quien crea la nota.
 - **Formato:** kebab-case con minúsculas ASCII y dígitos: una o más palabras separadas por un solo `-`, de 1 a 40 caracteres. Expresión regular: `^[a-z0-9]+(-[a-z0-9]+)*$`.
   - Válidos: `dog`, `boe`, `dog-verb`, `capital-france`, `onu-2`.
   - No válidos: `Dog` (mayúscula), `tengo una casa` (espacios), `árbol` (tilde), `dog_verb` (guion bajo), `-dog` o `dog--verb` (guion mal colocado).
-- **Único** en todo `cards.csv`. Si se repite un concepto, se distingue en el id: `dog` y `dog-verb`.
+- **Único** en todo `cards.csv`, sea cual sea el área. Si se repite un concepto, se distingue en el id: `dog` y `dog-verb`.
 - **Inmutable:** no se cambia una vez creado, porque el progreso y la imagen se asocian a él. Corregir la pregunta o la respuesta no afecta al id.
 - **Uso:** identifica las tarjetas en `progress.json` (`dog:forward`), da nombre a la imagen (`dog.jpg`) y es el argumento de `fetch_images.py`.
 - **Validación:** al arrancar, la app y `fetch_images.py` comprueban el formato y los duplicados. Si hay un error, no continúan y muestran la línea afectada, por ejemplo: `cards.csv línea 12: id duplicado "dog" (ya usado en la línea 2)`.
@@ -104,6 +123,7 @@ Solo lo escribe la app. Si no existe, se crea en la primera puntuación. Está e
 ```
 
 - Si una tarjeta no aparece en `cards`, es nueva.
+- Es un único fichero para todas las áreas. Como el id de una tarjeta es único en `cards.csv`, no hace falta separar el progreso por área: al cambiar una nota de área, conserva su calendario.
 - Se guarda **en cada puntuación**, con escritura atómica (fichero temporal + `os.replace`). Cerrar en cualquier momento no pierde nada.
 - Las horas son locales.
 - Cada formulario de puntuación lleva oculto el `last_review` que tenía la tarjeta al mostrarse (vacío si es nueva). Si al puntuar no coincide con el guardado, la pantalla estaba desfasada (doble clic, botón "Atrás" o recarga) y la puntuación se ignora. Así una misma respuesta nunca cuenta dos veces.
@@ -195,23 +215,27 @@ Si se adopta en el futuro, el cambio queda dentro de `scheduler.py`. `progress.j
 
 ## Orden de la sesión
 
-`planner.py` elige la siguiente tarjeta con este orden:
+`planner.py` trabaja solo con las tarjetas del área elegida y elige la siguiente con este orden:
 
 1. **Falladas hoy cuyos 10 minutos ya se han cumplido.** Pasan por delante de todo para que vuelvan a tiempo, intercaladas con las demás.
 2. **Repasos vencidos** (`due` ≤ ahora), del más atrasado al más reciente. Incluye las falladas en días anteriores.
-3. **Nuevas**, en el orden de `cards.csv`, hasta `NEW_CARDS_PER_DAY` al día. Se cuentan las tarjetas cuyo `first_seen` es hoy.
+3. **Nuevas**, en el orden de `cards.csv`, hasta `NEW_CARDS_PER_DAY` al día en cada área. Se cuentan las tarjetas del área cuyo `first_seen` es hoy.
 4. **Falladas hoy que aún esperan sus 10 minutos**, solo si no queda nada más: se muestra antes de tiempo la que venza primero.
-5. Si no queda nada: pantalla "Has terminado por hoy" con la fecha del próximo repaso.
+5. Si no queda nada: pantalla "Has terminado por hoy" con la fecha del próximo repaso del área y un enlace para cambiar de área.
 
 Tarjetas hermanas: las dos tarjetas de una nota del modelo 1 no se muestran el mismo día. Si una ya se ha respondido hoy, la otra no se muestra hasta otro día. Como el intervalo de la primera crece, la segunda sale el primer día en que la primera no vence.
 
 ## Navegación
 
-Barra superior en todas las pantallas: **Estudiar** · **Progreso** · **Ayuda** · **Estudio libre** · **Ya vale por hoy**.
+Barra superior en todas las pantallas: nombre del área elegida · **Estudiar** · **Progreso** · **Ayuda** · **Estudio libre** · **Ya vale por hoy**. El nombre del área lleva a la pantalla de áreas.
+
+El área elegida se guarda en la sesión de Flask (cookie). La clave de la sesión es nueva en cada arranque, así que cada vez que se abre la app se vuelve a elegir área. Si se entra en el repaso, el progreso o el estudio libre sin área elegida, se redirige a `/areas`.
 
 | Ruta | Pantalla |
 | --- | --- |
-| `GET /` | Entrada. Si no existe `progress.json`, redirige a `/help`; si existe, a `/study` |
+| `GET /` | Entrada. Si no existe `progress.json`, redirige a `/help`; si existe, a `/areas` |
+| `GET /areas` | Pantalla de áreas: nombre, descripción, número de tarjetas y cuántas tocan hoy |
+| `POST /areas/<area_id>` | Elige el área y lleva a `/study` |
 | `GET /study` | Repaso: siguiente tarjeta o "Has terminado por hoy" |
 | `POST /answer/<card_id>`, `POST /rate/<card_id>` | Comprobar la respuesta tecleada y puntuar |
 | `GET /progress` | Progreso, con el enlace para exportar a Anki |
@@ -223,7 +247,7 @@ Barra superior en todas las pantallas: **Estudiar** · **Progreso** · **Ayuda**
 
 ## Pantalla de progreso
 
-Resumen del mazo sin nombres de tarjetas. Se calcula en `stats.py` a partir de `progress.json`.
+Resumen de las tarjetas del área elegida, sin sus nombres. Se calcula en `stats.py` a partir de `progress.json`.
 
 Cada **tarjeta** (no cada nota) pertenece a un grupo según su intervalo actual:
 
@@ -250,13 +274,14 @@ Ejemplo, con 10 tarjetas: 2 en buen progreso, 3 en medio (intervalo 8) y 5 nueva
 
 `help.html`, en español y en lenguaje no técnico. Contenido:
 
-1. Qué es la repetición espaciada y por qué se estudia **repartido en días**: recordar algo justo cuando empieza a olvidarse lo refuerza. Repetirlo varias veces el mismo día no.
-2. Cómo es un repaso en cada modelo y qué significa cada botón.
-3. Cómo cambia la fecha de una tarjeta, con el ejemplo de "Dog" (1, 3, 8, 20 y 21 días) y el tope de 21 días.
-4. Qué pasa si no se abre la app varios días: nada se pierde; las atrasadas salen primero.
-5. Cuándo parar: si la app muestra una tarjeta, toca; si muestra "Has terminado por hoy", se puede parar.
-6. Cómo leer la pantalla de progreso.
-7. Para qué sirve el estudio libre y por qué no cuenta.
+1. Que primero se elige un área y que el repaso, el progreso y el estudio libre son de esa área.
+2. Qué es la repetición espaciada y por qué se estudia **repartido en días**: recordar algo justo cuando empieza a olvidarse lo refuerza. Repetirlo varias veces el mismo día no.
+3. Cómo es un repaso en cada modelo y qué significa cada botón.
+4. Cómo cambia la fecha de una tarjeta, con el ejemplo de "Dog" (1, 3, 8, 20 y 21 días) y el tope de 21 días.
+5. Qué pasa si no se abre la app varios días: nada se pierde; las atrasadas salen primero.
+6. Cuándo parar: si la app muestra una tarjeta, toca; si muestra "Has terminado por hoy", se puede parar.
+7. Cómo leer la pantalla de progreso.
+8. Para qué sirve el estudio libre y por qué no cuenta.
 
 Se abre sola mientras no exista `progress.json` (es decir, hasta la primera puntuación). Después, solo desde el enlace "Ayuda".
 
@@ -264,10 +289,10 @@ Se abre sola mientras no exista `progress.json` (es decir, hasta la primera punt
 
 Repaso de todas las tarjetas cuando se quiera, por ejemplo antes de un examen. **No modifica `progress.json`**: no cuenta para el calendario ni para el progreso.
 
-- Incluye todas las tarjetas, también las nuevas y las dos direcciones del modelo 1, **en orden aleatorio**. No se aplica la regla de tarjetas hermanas.
+- Incluye todas las tarjetas del área elegida, también las nuevas y las dos direcciones del modelo 1, **en orden aleatorio**. No se aplica la regla de tarjetas hermanas.
 - Misma pantalla que el repaso (`review.html`), con un aviso fijo: "Estudio libre: no cuenta para tu progreso".
 - Modelo 1: revelar la respuesta → botón **Siguiente**. Modelo 2: escribir → se muestra si coincide (misma comparación que en el repaso) → botón **Siguiente**. No hay botones de puntuación.
-- El orden barajado y la posición se guardan en la sesión de Flask (cookie), no en disco. Cada arranque de la app empieza sin estudio libre en curso.
+- El orden barajado y la posición se guardan en la sesión de Flask (cookie), no en disco. Cada arranque de la app empieza sin estudio libre en curso, y al cambiar de área se descarta el que hubiera.
 - Al terminar: "Has repasado N tarjetas" y un enlace para volver a Estudiar.
 
 ## Imágenes
@@ -291,21 +316,22 @@ Repaso de todas las tarjetas cuando se quiera, por ejemplo antes de un examen. *
 #html:false
 #guid column:1
 #notetype column:2
-#columns:id⇥model⇥front⇥back⇥image
-dog⇥Basic (and reversed card)⇥Dog⇥Perro⇥dog.jpg
-boe⇥Basic (type in the answer)⇥¿Qué significa BOE?⇥Boletín Oficial del Estado / Boletín Oficial⇥boe.jpg
+#tags column:6
+#columns:id⇥model⇥front⇥back⇥image⇥tags
+dog⇥Basic (and reversed card)⇥Dog⇥Perro⇥dog.jpg⇥general
+boe⇥Basic (type in the answer)⇥¿Qué significa BOE?⇥Boletín Oficial del Estado / Boletín Oficial⇥boe.jpg⇥general
 ```
 
 - Columnas separadas por tabuladores (`⇥` en el ejemplo), con la cabecera del formato de importación de texto de Anki.
 - `model` se traduce al nombre del tipo de nota de Anki: `reversed` → `Basic (and reversed card)`, `typed` → `Basic (type in the answer)`. Con `id` como `guid`, al reimportar se actualiza la nota en lugar de duplicarla.
-- Solo se exportan las notas activas.
+- Se exportan las notas activas de todas las áreas. El id del área va como etiqueta de Anki, para filtrar o crear un mazo por área.
 - `back` de `typed` se exporta como se muestra en pantalla (`;` como coma y `|` como ` / `). Anki compara el texto entero, así que no acepta formas sueltas ni otro orden.
 - Anki usa `front` y `back`. La columna `image` no tiene equivalente en los tipos de nota estándar y se ignora al asignar los campos.
 - No se exporta el progreso: Anki no importa calendarios desde texto.
 
 ## Arranque y cierre
 
-- `run.py` valida `cards.csv` (si hay un error, no arranca y muestra la línea), crea un servidor `werkzeug` (`make_server`), abre `http://127.0.0.1:5000` con `webbrowser` y atiende peticiones hasta recibir la orden de parada.
+- `run.py` valida `areas.csv` y `cards.csv` (si hay un error, no arranca y muestra la línea), crea un servidor `werkzeug` (`make_server`), abre `http://127.0.0.1:5000` con `webbrowser` y atiende peticiones hasta recibir la orden de parada.
 - `--no-browser` arranca sin abrir el navegador. Si el puerto está ocupado (por ejemplo, porque la app ya está abierta en otra terminal), se indica y no arranca.
 - El botón "Ya vale por hoy" (`POST /quit`) devuelve la pantalla "Hasta mañana" y después detiene el servidor, con lo que termina el script. Como no hay nada pendiente de guardar, el cierre es inmediato.
 - La pestaña del navegador la cierra el usuario: un navegador no permite cerrar por código una pestaña que no abrió un script.

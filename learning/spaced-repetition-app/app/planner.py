@@ -21,6 +21,7 @@ def _is_relearning_today(state: dict, today: date) -> bool:
 
 
 def new_cards_left_today(cards: list[Card], progress: dict, today: date) -> int:
+    # El límite se cuenta sobre las tarjetas recibidas: con las de un área, es un límite por área
     states = progress["cards"]
     seen_today = sum(1 for card in cards
                      if card.id in states and states[card.id].get("first_seen") == today.isoformat())
@@ -62,9 +63,22 @@ def next_card(cards: list[Card], progress: dict, now: datetime) -> Card | None:
     return None
 
 
-def next_due_date(progress: dict, now: datetime) -> datetime | None:
-    upcoming = [_due(state) for state in progress["cards"].values() if _due(state) > now]
+def next_due_date(cards: list[Card], progress: dict, now: datetime) -> datetime | None:
+    """Next due date among the given cards (the ones of the current area)."""
+    states = progress["cards"]
+    upcoming = [_due(states[card.id]) for card in cards if card.id in states and _due(states[card.id]) > now]
     return min(upcoming) if upcoming else None
+
+
+def pending_today(cards: list[Card], progress: dict, now: datetime) -> int:
+    """Approximate cards left for today: due reviews plus the new ones the daily limit allows.
+
+    No aplica la regla de tarjetas hermanas: es una orientación para elegir área.
+    """
+    states = progress["cards"]
+    due = sum(1 for card in cards if card.id in states and _due(states[card.id]) <= now)
+    new = sum(1 for card in cards if card.id not in states)
+    return due + min(new, new_cards_left_today(cards, progress, now.date()))
 
 
 def free_order(cards: list[Card]) -> list[str]:

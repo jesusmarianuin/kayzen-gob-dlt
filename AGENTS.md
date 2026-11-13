@@ -1,27 +1,10 @@
 # Estándares generales de código del proyecto
 
-## Tareas por lotes (N documentos/archivos/filas)
-
-Una tarea es por lotes cuando hay que procesar N elementos, aunque el resultado sea uno solo. Resumir, revisar o comparar el contenido de una carpeta o de una lista de ficheros cuenta como lote, porque hay que leer cada elemento de entrada.
-
-Antes de empezar, declara N (el número de elementos que hay que procesar, no el de ficheros que se van a producir) y mantenlo visible en una lista de tareas, una entrada por elemento. Para contar N basta con listar los ficheros, sin leerlos. Si estos elementos supera de 5 pregunta al usuario si continuar o prefiere trabajo en IA local.
-
-## Contexto del prompt frente a contenido del documento
-
-- Lo que el usuario te cuenta en el prompt es contexto para que decidas bien. No es contenido del documento.
-- Ese contexto se usa para elegir, priorizar y descartar. Se refleja en la decisión, nunca en el texto que escribes.
-- No trasladar al documento las circunstancias personales del usuario, sus dudas, su forma de trabajar ni el motivo por el que pide algo, aunque lo haya explicado y aunque justifique la decisión. Se reformula como criterio objetivo o se omite.
-- El documento solo contiene lo que necesita quien lo lea sin haber visto la
-  conversación.
-- Tampoco se vuelca en el documento el razonamiento que has seguido para decidir. Va la decisión y lo que la sostiene desde el propio material, no el recorrido.
-- Si dudas de si algo es contexto o contenido, pregunta antes de escribirlo.
-
 ## Lectura de contexto del repositorio
 
-- Solo puedes leer los ficheros o directorios que el usuario comparta en el prompt o cuya ruta aparezca
-  explícitamente en él. Se puede compartir una ruta de archivo o una ruta de directorio lo que implícitamente es también autorizar a sus ficheros contenidos.
-- Cualquier otra lectura está prohibida, incluido el intento, y con independencia de que
-  fuera a ser aprobada.
+- Solo puedes leer los ficheros o directorios que el usuario comparta en el prompt o cuya ruta aparezca explícitamente en él. Se puede compartir una ruta de archivo o una ruta de directorio lo que implícitamente es también autorizar a sus ficheros contenidos.
+- Cualquier otra lectura está prohibida, incluido el intento, y con independencia de que fuera a ser aprobada.
+- Siempre tienes acceso completo a la carpeta de skills ".claude"
 - Si falta información, pregunta. Nunca la busques.
 
 ## Documentación en Markdown
@@ -45,55 +28,17 @@ Normas para cualquier fichero `.md` de documentación del proyecto.
 - No usar tablas, prefiere usar listas o texto.
 - Cumple las reglas de markdownlint
 
-### Estructura según el tipo de documento
-
-- Guías de instalación: explica qué hace cada herramienta antes de instalarla, da comandos para Ubuntu y añade un comando de verificación de versión tras cada instalación
-- Buenas prácticas: explica el porqué de cada recomendación, céntrate en sus implicaciones de seguridad, incluye código solo si es necesario para entenderla y cita los estándares oficiales (ERC-20, ERC-721...) cuando apliquen
-- Añade una sección de resolución de problemas cuando haya fallos habituales
-
-### Formato y redacción
-
-Esto afecta para crear documentos y para revisar.
+### Redacción
 
 El lenguaje expresado debe ser natural, técnico cuando es necesario, con ejemplos simples si ayudan a entender el concepto, orientado a un nivel promedio de desarrollador de software.
 
-Corregir gramática es importante, el lenguaje, frases con correctos signos de puntuación, pero debes evitar el lenguaje pedante, sobre todo quitando naturalidad o frescura a frases o excediendo en signos de puntuación como los dos puntos ":". Si la frase ya se entiende y no tiene errores de gramática, no se tiene que corregir.
-
 ### Síntesis y nivel de detalle
 
-El lector debe poder seguir la idea general del documento de principio a fin, y el detalle se subordina a ella.
-
-- Antes de escribir, fija la idea central del documento y la de cada sección. Si tienes duda pregunta para que quede claro el objetivo del documento y el perfil del lector.
-- Incluye ejemplos y citas solo cuando sean relevantes para el documento. Antes de empezar, pregunta qué nivel de detalle se quiere en las referencias: enlazar a conceptos generales o detallar ejemplos concretos con sus versiones.
-- Lo que es relevante va en apartado, lo que consideras necesario explicar en detalle se omite y se crea una nota que enlaza a un apartado de aclaraciones. Esto es para no perder el foco y solo cuando el lector quiera detalle, se pueda acceder.
-- Explica cada idea una sola vez y en un solo sitio. Un matiz nuevo se integra donde está la idea original o se descarta o se anota; nunca abre otro apartado si realmente no aporta nada nuevo al objetivo del documento.
-- Prefiere una generalización cierta en el caso habitual a una frase que cubra todas las excepciones, sin presentarla como absoluta
-- Si un detalle es real pero no hace falta para seguir el hilo, no lo desarrolles: señálalo en una nota de una línea.
-- Lo que cabe en una frase no ocupa dos
-- Para acortar, quita ideas secundarias o pásalas a una nota; no comprimas todas las ideas en frases más densas
-- Antes de entregar, elimina cada frase y cada apartado que el lector no echaría en falta, si crees que relevante, si te da toc crearlo, ya sabes, tienes las notas.
-
-Formato de la nota:
-
-```markdown
-> [El plazo varía según el tipo de proveedor](#enlaze-aclaraciones).
-```
-
-Al redactar un documento nuevo, lee `knowledge-base/eIDAS/implementing-acts.md` y úsalo como modelo de forma. Es una excepción a la regla de lectura del repositorio y se aplica solo a esta tarea, así que no lo cargues para revisar ni para ninguna otra.
-
-Toma de ese documento lo siguiente:
-
-- El texto principal sigue un único objetivo, acordado antes de redactar con el usuario.
-- Lo que desviaría de ese objetivo se resume en una nota que enlaza a un subapartado de `## Aclaraciones`.
-- Los enlaces llevan a las fuentes con el detalle acordado previamente con el usuario
+Antes de escribir, fija la idea central del documento y la de cada sección. Si tienes duda pregunta para que quede claro el objetivo del documento y el perfil del lector.
 
 ### Ejemplos de código
 
-- Sólo pon ejemplos de código cuando tenga sentido, una documentación conceptual no debería tenerlo, solo puede distraer, en cualquier caso, si tienes duda pregunta.
-- Indica dónde se ejecuta cada comando o fragmento
-- Incluye la ruta del fichero cuando muestres configuración
-- Da secuencias de comandos completas y ajustadas al stack del proyecto
-- Indica la versión de una herramienta cuando el procedimiento dependa de ella
+Sólo pon ejemplos de código cuando tenga sentido, una documentación conceptual no debería tenerlo, solo puede distraer, en cualquier caso, si tienes duda pregunta.
 
 ### Enlaces
 
@@ -101,20 +46,17 @@ Toma de ese documento lo siguiente:
 - Enlaza a documentación oficial antes que a tutoriales de terceros
 - Escribe el texto del enlace en español aunque el destino esté en inglés
 
-### Mantenimiento
+### Contexto del prompt frente a contenido del documento
 
-- Si un cambio afecta a una herramienta o a la estructura del proyecto, actualiza la documentación relacionada en la misma tarea
-- Marca las prácticas obsoletas e indica cómo migrar
+Lo que el usuario te cuenta en el prompt es contexto para que decidas bien. No es contenido del documento. Siempre son documentos educativos para terceros, por lo tanto, el documento siempre tiene que servir para la perspectiva del lector, en conclusión: ninguna circusntancia o debate o análisis previo que se hable en el chat cuando se plantea el promtp debe quedar reflejado en el documento.
 
-## Convenciones de nombres
+## Lenguaje de programación
 
-- Usa PascalCase para nombres de componentes, interfaces y alias de tipos
-- Usa camelCase para variables, funciones y métodos
-- Usa kebab-case para nombres de archivos de texto y documentación, carpetas y ramas
-- Los archivos y carpetas de código siguen la convención de su lenguaje, para que se puedan importar (por ejemplo, snake_case en Python: `answer_checker.py`)
-- Antepón un guion bajo (_) a los miembros privados de una clase
-- Usa ALL_CAPS para las constantes
-- Todos los nombres de archivo, clase, método y tipo deben estar en inglés, aunque los comentarios pueden estar en español
+- Sigue la convención de nombres estándar de cada lenguaje (PEP 8 en Python, la habitual en TypeScript...)
+- Los nombres de archivo, clase, método, variable y tipo van en inglés; los comentarios pueden ir en español
+- Python 3.x, dependencias con <uv/pip>, formato y lint según `<ruta de configuración>`
+- No añadas dependencias nuevas sin preguntar
+- Tests solo cuando se pidan
 
 ## Código fuente (git)
 

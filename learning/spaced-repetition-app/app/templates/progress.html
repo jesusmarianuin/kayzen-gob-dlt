@@ -3,6 +3,7 @@
 
 {% block content %}
 <article class="card wide">
+  <p class="kind">{{ current_area().name }}</p>
   <h1 class="question">Progreso: {{ summary.total }} tarjeta{{ '' if summary.total == 1 else 's' }}</h1>
 
   {% if summary.total %}
@@ -30,7 +31,7 @@
       <p class="lead">Todas tienen buen progreso. Solo quedan repasos como mucho cada 21 días para no olvidarlas.</p>
     {% endif %}
   {% else %}
-    <p class="lead">No hay tarjetas. Añade filas a <code>data/cards.csv</code>.</p>
+    <p class="lead">No hay datos: esta área todavía no tiene tarjetas. Añade filas a <code>data/cards.csv</code>.</p>
   {% endif %}
 
   <div class="actions">
