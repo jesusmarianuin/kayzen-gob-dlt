@@ -8,6 +8,12 @@ Entiendo los conceptos sin problema, pero el nombre exacto, la versión o el nú
 
 ## Rutina
 
+Ejecuta:
+
+```bash
+python learning/spaced-repetition-app/run.py
+```
+
 - 5-10 min al día de repaso en Anki, enganchado a un hábito ya automático (café de la mañana).
 - Práctica en voz alta de vez en cuando, no solo lectura — el fallo pasa hablando, así que hay que entrenar hablando.
 - Repetición espaciada.

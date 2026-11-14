@@ -72,7 +72,7 @@ Conviene tener claros algunos puntos:
 - En una red local no hace falta faucet, porque las cuentas de desarrollo arrancan con saldo
 - En una red permisionada basada en Hyperledger Besu tampoco suele hacer falta: el precio del gas puede ser cero y, si no lo es, alguien debe transferir saldo.
 
-## Un smart contract no se autoejecuta
+## Un smart contract no se auto-ejecuta
 
 A pesar de lo que sugiere la palabra "automático", un smart contract no actúa por iniciativa propia. Permanece inactivo hasta que algo lo invoca: una transacción de un usuario, una llamada desde otro contrato o un servicio off-chain que envía la transacción cuando se cumple una condición, como un temporizador o un proceso de la organización.
 

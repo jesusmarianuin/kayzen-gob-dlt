@@ -27,3 +27,7 @@ Siempre que sea posible, los enlaces de este repositorio apuntan a:
 - Fuentes de naturaleza explicativa y educativa.
 
 Si ves margen de mejora, puedes comentarlo abriendo un issue.
+
+## Seguridad
+
+Sobre aspectos de seguridad visita el [documento seguridad](SECURITY.md) creado al respecto.
