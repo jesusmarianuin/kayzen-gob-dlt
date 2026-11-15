@@ -4,10 +4,11 @@
 #   id       kebab-case, minúsculas sin tildes, único e inmutable (dog, capital-france, onu-2)
 #   enabled  true o vacío: se estudia. false: no se muestra y conserva su progreso
 #   area     id de un área de data/areas.csv (general, smart-contracts...). Obligatoria
-#   model    reversed: piensas la respuesta y la tarjeta sale en las dos direcciones
-#            typed: tecleas la respuesta exacta, en una sola dirección
+#   model    basic: piensas la respuesta, la revelas y te puntúas
+#            typed: tecleas la respuesta exacta
+#            Cada línea es una tarjeta
 #   front    pregunta
-#   back     respuesta. En reversed se muestra tal cual. En typed:
+#   back     respuesta. En basic se muestra tal cual. En typed:
 #              | separa formas válidas (OR): Boletín Oficial del Estado|Boletín Oficial
 #              ; separa elementos de una lista, en cualquier orden (AND): Legislativo;Ejecutivo;Judicial
 #              juntos, | va dentro de cada elemento: Legislativo|Parlamento;Ejecutivo;Judicial
@@ -15,10 +16,10 @@
 #
 # Si un texto lleva comas, va entre comillas dobles. Una comilla dentro de un texto se escribe doble ("").
 id,enabled,area,model,front,back,image
-# reversed: concepto que basta con entender; genera Dog → Perro y Perro → Dog
-dog,true,general,reversed,Dog,Perro,dog.jpg
-# reversed sin imagen y con comas en el texto
-consensus,true,general,reversed,"Consenso QBFT, en una frase",Acuerdo entre validadores que tolera hasta un tercio de nodos maliciosos,
+# basic: concepto que basta con entender
+dog,true,general,basic,Dog,Perro,dog.jpg
+# basic sin imagen y con comas en el texto
+consensus,true,general,basic,"Consenso QBFT, en una frase",Acuerdo entre validadores que tolera hasta un tercio de nodos maliciosos,
 # typed: solo vale la respuesta (se toleran mayúsculas, tildes, espacios y punto final)
 spain,,general,typed,¿Qué país tiene por capital Madrid?,España,spain.jpg
 # typed con varias formas válidas (OR)

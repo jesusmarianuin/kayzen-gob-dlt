@@ -10,15 +10,15 @@ Notas de `data/cards.csv`, en este orden, todas activas (`enabled` a `true`) y d
 
 | id | Modelo | Pregunta | Respuesta (`back`) | Imagen |
 | --- | --- | --- | --- | --- |
-| `dog` | 1 invertida | Dog | Perro | sí |
+| `dog` | 1 básico | Dog | Perro | sí |
 | `boe` | 2 teclear | ¿Qué significa BOE? | `Boletín Oficial del Estado\|Boletín Oficial` | sí |
-| `cat` | 1 invertida | Cat | Gato | sí |
+| `cat` | 1 básico | Cat | Gato | sí |
 | `onu` | 2 teclear | ¿Qué significa ONU? | `Organización de las Naciones Unidas\|Naciones Unidas\|Organización Naciones Unidas` | sí |
-| `house` | 1 invertida | House | Casa | sí |
+| `house` | 1 básico | House | Casa | sí |
 | `paris` | 2 teclear | ¿Capital de Francia? | París | sí |
-| `tree` | 1 invertida | Tree | Árbol | sí |
+| `tree` | 1 básico | Tree | Árbol | sí |
 | `spain` | 2 teclear | ¿Qué país tiene por capital Madrid? | España | sí |
-| `book` | 1 invertida | Book | Libro | no |
+| `book` | 1 básico | Book | Libro | no |
 
 Salvo que se indique lo contrario, cada caso parte de estos datos y **sin** `data/progress.json`. Cada vez que se ejecuta la app, se elige "General" en la pantalla de áreas.
 
@@ -27,7 +27,7 @@ Salvo que se indique lo contrario, cada caso parte de estos datos y **sin** `dat
 | ID | Situación | Pasos | Resultado esperado |
 | --- | --- | --- | --- |
 | TC-01 | Primera ejecución | Ejecutar `python learning/spaced-repetition-app/run.py` | Se abre el navegador en `http://127.0.0.1:5000` con el manual de ayuda. Al pulsar "Empezar" sale la pantalla de áreas y, al elegir "General", la tarjeta "Dog". Todavía no existe `progress.json` |
-| TC-02 | Primera puntuación | En "Dog", revelar y pulsar "Bien" | Se crea `progress.json` con `dog:forward` y el siguiente repaso para mañana. Aparece "¿Qué significa BOE?" |
+| TC-02 | Primera puntuación | En "Dog", revelar y pulsar "Bien" | Se crea `progress.json` con `dog` y el siguiente repaso para mañana. Aparece "¿Qué significa BOE?" |
 | TC-03 | Continuar otro día | Día 1: puntuar "Dog" y "BOE" con "Bien" y cerrar. Día 2: ejecutar de nuevo | Salen primero "Dog" y "BOE" (vencen hoy) y después las nuevas, empezando por "Cat". No se empieza de cero |
 | TC-04 | Continuar el mismo día | Puntuar "Dog" con "Bien", cerrar y volver a ejecutar | "Dog" no aparece. La primera tarjeta es "¿Qué significa BOE?" |
 | TC-31 | Id duplicado | Añadir al final de `cards.csv` otra nota con id `dog` y ejecutar | La app no arranca y muestra: `cards.csv línea 11: id duplicado "dog" (ya usado en la línea 2)`. Con id `dog-verb` arranca con normalidad |
@@ -48,12 +48,12 @@ Estos casos añaden a los datos de ejemplo la nota `solidity,true,smart-contract
 - TC-58, área sin datos: añadir `security,Seguridad,Seguridad en blockchain y DLT` a `areas.csv`, sin notas, y ejecutar. En la pantalla de áreas, "Seguridad" muestra "No hay datos". Al elegirla, "Estudiar" y "Estudio libre" muestran "No hay datos" con el botón "Cambiar de área", y "Progreso" indica que no hay datos.
 - TC-57, cada arranque pide área: elegir "Smart contracts", pulsar "Ya vale por hoy" y volver a ejecutar. Sale otra vez la pantalla de áreas.
 
-## Modelo 1: tarjeta invertida
+## Modelo 1: básico
 
 | ID | Situación | Pasos | Resultado esperado |
 | --- | --- | --- | --- |
 | TC-05 | Revelar y puntuar | Ver "Dog" y pulsar "Mostrar respuesta" | Aparece "Perro" y los cuatro botones: Fallé, Me costó, Bien, Fácil |
-| TC-06 | Dos direcciones | Jueves 1 oct: "Dog" → Bien. Viernes 2 oct: "Dog" → Bien. Sábado 3 oct: abrir la app | Jueves y viernes no sale "Perro", porque ese día ya se estudia "Dog". El sábado "Dog" no toca (su fecha es el lunes 5) y sale "Perro" como nueva (pregunta "Perro", respuesta "Dog"), con su propio calendario |
+| TC-06 | Una línea, una tarjeta | Puntuar "Dog" y volver días después | Nunca sale una tarjeta que pregunte "Perro" |
 
 ## Modelo 2: teclear la respuesta
 
@@ -140,7 +140,7 @@ La tarjeta no se pierde por no abrir la app el día que tocaba. Sale el primer d
 
 ## Progreso
 
-El progreso se cuenta por tarjetas: los datos de ejemplo tienen 9 notas y 14 tarjetas (5 notas invertidas × 2 + 4 de teclear).
+El progreso se cuenta por tarjetas: los datos de ejemplo tienen 9 notas y 9 tarjetas (una por línea).
 
 | ID | Situación | Pasos | Resultado esperado |
 | --- | --- | --- | --- |
@@ -185,6 +185,6 @@ El progreso se cuenta por tarjetas: los datos de ejemplo tienen 9 notas y 14 tar
 
 | ID | Situación | Pasos | Resultado esperado |
 | --- | --- | --- | --- |
-| TC-29 | Importar en Anki | En Progreso, pulsar "Exportar para Anki". En Anki, *Archivo → Importar* el `cards-anki.txt` descargado | Se crean 9 notas: 5 del tipo "Basic (and reversed card)" (10 tarjetas) y 4 del tipo "Basic (type in the answer)", todas con la etiqueta `general` |
+| TC-29 | Importar en Anki | En Progreso, pulsar "Exportar para Anki". En Anki, *Archivo → Importar* el `cards-anki.txt` descargado | Se crean 9 notas: 5 del tipo "Basic" y 4 del tipo "Basic (type in the answer)", todas con la etiqueta `general` |
 | TC-30 | Reimportar | Cambiar "Perro" por "Perro (animal)" en `cards.csv`, exportar e importar otra vez | Se actualiza la nota `dog`. No se duplica |
 | TC-47 | Exportar sin desactivadas | Poner `enabled` a `false` en `book` y exportar | `cards-anki.txt` tiene 8 notas y no incluye `book` |

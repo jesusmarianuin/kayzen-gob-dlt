@@ -7,7 +7,9 @@
 #
 # El orden de las filas es el orden en la pantalla de áreas.
 id,name,description
-general,General,"Regulación y conceptos generales de blockchain y de eIDAS"
+general,General,Conceptos generales
+eidas,eIDAS,Regulación eIDAS
+blockchain,Blockchain, DLT Blockchain
 p2p-networks,Redes P2P,Conceptos de redes entre pares
 security,Seguridad,Seguridad en blockchain y DLT
 dlt-public-administration,DLT en la administración,Uso de blockchain y DLT en la administración pública

@@ -10,11 +10,11 @@ from pathlib import Path
 
 from app import config
 
-MODEL_REVERSED = "reversed"
+MODEL_BASIC = "basic"
 MODEL_TYPED = "typed"
-MODELS = (MODEL_REVERSED, MODEL_TYPED)
+MODELS = (MODEL_BASIC, MODEL_TYPED)
 # Nombres de los tipos de nota equivalentes en Anki, para exportar
-ANKI_MODELS = {MODEL_REVERSED: "Basic (and reversed card)", MODEL_TYPED: "Basic (type in the answer)"}
+ANKI_MODELS = {MODEL_BASIC: "Basic", MODEL_TYPED: "Basic (type in the answer)"}
 
 ID_PATTERN = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 ID_MAX_LENGTH = 40
@@ -56,12 +56,10 @@ class Note:
 @dataclass
 class Card:
     id: str
-    note_id: str
     model: str
     question: str
     answer: str
     image: str
-    sibling_id: str | None
     area: str = ""
 
     @property
@@ -91,7 +89,7 @@ def answer_items(text: str) -> list[list[str]]:
 
 
 def display(text: str, model: str) -> str:
-    """Answer as shown on screen. Only typed answers are interpreted; reversed ones are shown as written."""
+    """Answer as shown on screen. Only typed answers are interpreted; basic ones are shown as written."""
     if model != MODEL_TYPED:
         return text
     return LIST_DISPLAY_SEPARATOR.join(OPTION_DISPLAY_SEPARATOR.join(options) for options in answer_items(text))
@@ -203,24 +201,14 @@ def load_notes(path: Path | None = None, areas_path: Path | None = None) -> list
     return notes
 
 
-def expand_cards(notes: list[Note]) -> list[Card]:
-    """Model 1 -> "<id>:forward" and "<id>:reverse"; model 2 -> "<id>"."""
-    cards: list[Card] = []
-    for note in notes:
-        if note.model == MODEL_REVERSED:
-            forward_id, reverse_id = f"{note.id}:forward", f"{note.id}:reverse"
-            cards.append(Card(forward_id, note.id, note.model, note.front, note.back, note.image, reverse_id,
-                              note.area))
-            cards.append(Card(reverse_id, note.id, note.model, note.back, note.front, note.image, forward_id,
-                              note.area))
-        else:
-            cards.append(Card(note.id, note.id, note.model, note.front, note.back, note.image, None, note.area))
-    return cards
+def to_cards(notes: list[Note]) -> list[Card]:
+    """One line of cards.csv, one card, with the same id."""
+    return [Card(note.id, note.model, note.front, note.back, note.image, note.area) for note in notes]
 
 
 def load_cards(path: Path | None = None, area: str | None = None) -> list[Card]:
     """Cards of the enabled notes, of one area or of all. Disabled notes keep their progress but are not shown."""
-    return expand_cards([note for note in load_notes(path)
+    return to_cards([note for note in load_notes(path)
                          if note.enabled and (area is None or note.area == area)])
 
 

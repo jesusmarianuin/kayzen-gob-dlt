@@ -57,9 +57,9 @@ Una fila por **nota**, en CSV estándar (UTF-8, separado por comas). La primera 
 
 ```csv
 id,enabled,area,model,front,back,image
-dog,true,general,reversed,Dog,Perro,dog.jpg
+dog,true,general,basic,Dog,Perro,dog.jpg
 boe,true,general,typed,¿Qué significa BOE?,Boletín Oficial del Estado|Boletín Oficial,boe.jpg
-consensus,false,general,reversed,"Consenso QBFT, en una frase",Acuerdo entre validadores,
+consensus,false,general,basic,"Consenso QBFT, en una frase",Acuerdo entre validadores,
 ```
 
 | Columna | Contenido |
@@ -67,17 +67,14 @@ consensus,false,general,reversed,"Consenso QBFT, en una frase",Acuerdo entre val
 | `id` | Identificador de la nota (ver [Formato del id](#formato-del-id)). También es el `guid` al exportar a Anki |
 | `enabled` | `true` o vacío: la nota se estudia. `false`: desactivada (ver [Notas desactivadas](#notas-desactivadas)) |
 | `area` | Id de un área de `areas.csv`. Obligatoria. Si no existe, la app no arranca e indica la línea |
-| `model` | `reversed` (básico con tarjeta invertida) o `typed` (básico de teclear la respuesta) |
+| `model` | `basic` (básico: piensas la respuesta y te puntúas) o `typed` (básico de teclear la respuesta) |
 | `front` | Pregunta |
-| `back` | Respuesta. En `typed`, `\|` separa formas válidas y `;` elementos de una lista (ver [Respuesta de `typed`](#respuesta-de-typed)). En `reversed` se muestra tal cual |
+| `back` | Respuesta. En `typed`, `\|` separa formas válidas y `;` elementos de una lista (ver [Respuesta de `typed`](#respuesta-de-typed)). En `basic` se muestra tal cual |
 | `image` | Nombre del fichero en `app/static/images/`. Puede quedar vacía |
 
 Un texto con comas va entre comillas dobles, y una comilla dentro de un texto se escribe doble (`""`). Un texto no puede ocupar varias líneas.
 
-Tarjetas que salen de cada nota:
-
-- Modelo 1 (invertida): dos tarjetas, `<id>:forward` (front → back) y `<id>:reverse` (back → front).
-- Modelo 2 (teclear): una tarjeta, `<id>`, en una sola dirección (front → back).
+Cada nota es una tarjeta, con el mismo `id`, que pregunta `front` y tiene por respuesta `back`. Vale para los dos modelos.
 
 El orden de las filas es el orden de creación, que decide en qué orden salen las tarjetas nuevas. Los dos modelos se mezclan según ese orden.
 
@@ -99,7 +96,7 @@ Cadena corta que identifica la nota. La escribe a mano quien crea la nota.
   - No válidos: `Dog` (mayúscula), `tengo una casa` (espacios), `árbol` (tilde), `dog_verb` (guion bajo), `-dog` o `dog--verb` (guion mal colocado).
 - **Único** en todo `cards.csv`, sea cual sea el área. Si se repite un concepto, se distingue en el id: `dog` y `dog-verb`.
 - **Inmutable:** no se cambia una vez creado, porque el progreso y la imagen se asocian a él. Corregir la pregunta o la respuesta no afecta al id.
-- **Uso:** identifica las tarjetas en `progress.json` (`dog:forward`), da nombre a la imagen (`dog.jpg`) y es el argumento de `fetch_images.py`.
+- **Uso:** identifica la tarjeta en `progress.json` (`dog`), da nombre a la imagen (`dog.jpg`) y es el argumento de `fetch_images.py`.
 - **Validación:** al arrancar, la app y `fetch_images.py` comprueban el formato y los duplicados. Si hay un error, no continúan y muestran la línea afectada, por ejemplo: `cards.csv línea 12: id duplicado "dog" (ya usado en la línea 2)`.
 
 ### Progreso: `data/progress.json`
@@ -109,7 +106,7 @@ Solo lo escribe la app. Si no existe, se crea en la primera puntuación. Está e
 ```json
 {
   "cards": {
-    "dog:forward": {
+    "dog": {
       "reps": 2,
       "interval_days": 3,
       "ease": 2.5,
@@ -133,7 +130,7 @@ Solo lo escribe la app. Si no existe, se crea en la primera puntuación. Está e
 ```mermaid
 flowchart TD
     A[Siguiente tarjeta] --> B{Modelo}
-    B -->|1 invertida| C[Ver pregunta]
+    B -->|1 básico| C[Ver pregunta]
     C --> D[Revelar respuesta]
     D --> E[4 botones: fallé / me costó / bien / fácil]
     B -->|2 teclear| F[Ver pregunta + cuadro de texto]
@@ -166,7 +163,7 @@ Las variantes habituales de un nombre largo se añaden al crear la nota. Por eje
 
 ### Respuesta de `typed`
 
-En `typed`, `back` admite dos operadores. Solo se interpretan en `typed`: en `reversed`, `back` se muestra tal cual.
+En `typed`, `back` admite dos operadores. Solo se interpretan en `typed`: en `basic`, `back` se muestra tal cual.
 
 | Operador | Significado | Ejemplo de `back` | Qué acepta |
 | --- | --- | --- | --- |
@@ -223,8 +220,6 @@ Si se adopta en el futuro, el cambio queda dentro de `scheduler.py`. `progress.j
 4. **Falladas hoy que aún esperan sus 10 minutos**, solo si no queda nada más: se muestra antes de tiempo la que venza primero.
 5. Si no queda nada: pantalla "Has terminado por hoy" con la fecha del próximo repaso del área y un enlace para cambiar de área.
 
-Tarjetas hermanas: las dos tarjetas de una nota del modelo 1 no se muestran el mismo día. Si una ya se ha respondido hoy, la otra no se muestra hasta otro día. Como el intervalo de la primera crece, la segunda sale el primer día en que la primera no vence.
-
 ## Navegación
 
 Barra superior en todas las pantallas: a la izquierda el menú **Elegir área** · **Estudiar** · **Progreso** · **Estudio libre** · **Ayuda**; en el centro el nombre del área elegida (o el título de la app si aún no hay ninguna); a la derecha **Ya vale por hoy**.
@@ -261,7 +256,7 @@ Cada **tarjeta** (no cada nota) pertenece a un grupo según su intervalo actual:
 
 - El número de tarjetas de cada grupo, con una barra proporcional.
 - **Respuestas que faltan:** para cada tarjeta, se simulan respuestas "Bien" con SM-2 hasta llegar al tope, y se suman. Una tarjeta nueva necesita 5 (intervalos 1, 3, 8, 20 y 21).
-- **Días que faltan:** en esa misma simulación, el día en que cada tarjeta recibe su última respuesta. Se toma el máximo. La simulación parte de la fecha de repaso de cada tarjeta (hoy, si está atrasada). Las nuevas empiezan según el límite diario: la tarjeta nueva número *i* (desde 0) empieza el día `i // NEW_CARDS_PER_DAY`. No se tiene en cuenta la regla de tarjetas hermanas.
+- **Días que faltan:** en esa misma simulación, el día en que cada tarjeta recibe su última respuesta. Se toma el máximo. La simulación parte de la fecha de repaso de cada tarjeta (hoy, si está atrasada). Las nuevas empiezan según el límite diario: la tarjeta nueva número *i* (desde 0) empieza el día `i // NEW_CARDS_PER_DAY`.
 - La advertencia de que es un mínimo: cada fallo añade respuestas y días.
 
 Ejemplo, con 10 tarjetas: 2 en buen progreso, 3 en medio (intervalo 8) y 5 nuevas.
@@ -289,7 +284,7 @@ Se abre sola mientras no exista `progress.json` (es decir, hasta la primera punt
 
 Repaso de todas las tarjetas cuando se quiera, por ejemplo antes de un examen. **No modifica `progress.json`**: no cuenta para el calendario ni para el progreso.
 
-- Incluye todas las tarjetas del área elegida, también las nuevas y las dos direcciones del modelo 1, **en orden aleatorio**. No se aplica la regla de tarjetas hermanas.
+- Incluye todas las tarjetas del área elegida, también las nuevas, **en orden aleatorio**.
 - Misma pantalla que el repaso (`review.html`), con un aviso fijo: "Estudio libre: no cuenta para tu progreso".
 - Modelo 1: revelar la respuesta → botón **Siguiente**. Modelo 2: escribir → se muestra si coincide (misma comparación que en el repaso) → botón **Siguiente**. No hay botones de puntuación.
 - El orden barajado y la posición se guardan en la sesión de Flask (cookie), no en disco. Cada arranque de la app empieza sin estudio libre en curso, y al cambiar de área se descarta el que hubiera.
@@ -318,12 +313,12 @@ Repaso de todas las tarjetas cuando se quiera, por ejemplo antes de un examen. *
 #notetype column:2
 #tags column:6
 #columns:id⇥model⇥front⇥back⇥image⇥tags
-dog⇥Basic (and reversed card)⇥Dog⇥Perro⇥dog.jpg⇥general
+dog⇥Basic⇥Dog⇥Perro⇥dog.jpg⇥general
 boe⇥Basic (type in the answer)⇥¿Qué significa BOE?⇥Boletín Oficial del Estado / Boletín Oficial⇥boe.jpg⇥general
 ```
 
 - Columnas separadas por tabuladores (`⇥` en el ejemplo), con la cabecera del formato de importación de texto de Anki.
-- `model` se traduce al nombre del tipo de nota de Anki: `reversed` → `Basic (and reversed card)`, `typed` → `Basic (type in the answer)`. Con `id` como `guid`, al reimportar se actualiza la nota en lugar de duplicarla.
+- `model` se traduce al nombre del tipo de nota de Anki: `basic` → `Basic`, `typed` → `Basic (type in the answer)`. Con `id` como `guid`, al reimportar se actualiza la nota en lugar de duplicarla.
 - Se exportan las notas activas de todas las áreas. El id del área va como etiqueta de Anki, para filtrar o crear un mazo por área.
 - `back` de `typed` se exporta como se muestra en pantalla (`;` como coma y `|` como ` / `). Anki compara el texto entero, así que no acepta formas sueltas ni otro orden.
 - Anki usa `front` y `back`. La columna `image` no tiene equivalente en los tipos de nota estándar y se ignora al asignar los campos.

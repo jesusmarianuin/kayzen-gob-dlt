@@ -11,8 +11,6 @@ Temas abiertos para próximas sesiones. Cuando uno se resuelva, se marca y, si c
 ## Limitaciones conocidas
 
 - [ ] **Error en `cards.csv` con la app abierta.** Si se deja un error en el fichero con la app en marcha, aparece una página de error genérica. El mensaje con la línea solo sale al volver a arrancar. Poco probable; no se arregla por ahora.
-- [ ] **Estimación de "días que faltan".** No tiene en cuenta que las dos direcciones de una tarjeta invertida no salen el mismo día, así que el número real puede ser algo mayor.
-- [ ] **Tarjetas para hoy en la pantalla de áreas.** Es una cifra aproximada: suma los repasos vencidos y las nuevas que permite el límite diario, sin aplicar la regla de tarjetas hermanas, así que puede ser algo mayor que lo que sale al estudiar.
 - [ ] **Manual de ayuda automático.** Se abre mientras no exista `progress.json`. Si se cierra la app sin puntuar ninguna tarjeta, vuelve a abrirse en el siguiente arranque.
 - [ ] **Anki no recibe todo.** Al importar, se pierden las imágenes y el progreso, y Anki compara la respuesta entera: no acepta formas sueltas (`|`) ni otro orden en las listas (`;`).
 

@@ -33,12 +33,8 @@ def next_card(cards: list[Card], progress: dict, now: datetime) -> Card | None:
     today = now.date()
     states = progress["cards"]
 
-    def sibling_blocked(card: Card) -> bool:
-        return card.sibling_id is not None and _reviewed_on(states.get(card.sibling_id), today)
-
-    candidates = [card for card in cards if not sibling_blocked(card)]
     relearning, reviews, new = [], [], []
-    for card in candidates:
+    for card in cards:
         state = states.get(card.id)
         if state is None:
             new.append(card)
@@ -71,10 +67,7 @@ def next_due_date(cards: list[Card], progress: dict, now: datetime) -> datetime 
 
 
 def pending_today(cards: list[Card], progress: dict, now: datetime) -> int:
-    """Approximate cards left for today: due reviews plus the new ones the daily limit allows.
-
-    No aplica la regla de tarjetas hermanas: es una orientación para elegir área.
-    """
+    """Cards left for today: due reviews plus the new ones the daily limit allows."""
     states = progress["cards"]
     due = sum(1 for card in cards if card.id in states and _due(states[card.id]) <= now)
     new = sum(1 for card in cards if card.id not in states)

@@ -32,7 +32,7 @@ Cualquier otra lectura sigue las normas de AGENTS.md: si falta información, pre
 - Cada tarjeta lleva en la columna `area` el id de un área de `data/areas.csv`. No cambies el área de las tarjetas existentes salvo que el usuario lo pida
 - No cambies nunca un id que ya exista: el progreso de `data/progress.json` está asociado a él
 - No modifiques el texto de las tarjetas existentes salvo que el usuario lo pida. Si ves erratas o respuestas `typed` imposibles de teclear con exactitud, avisa en el chat
-- El criterio para elegir `reversed` o `typed` está en `SPEC.md` (sección "Modelos elegidos")
+- El criterio para elegir `basic` o `typed` está en `SPEC.md` (sección "Modelos elegidos")
 
 ## Paso 1: proponer preguntas que faltan
 
@@ -40,7 +40,7 @@ Cualquier otra lectura sigue las normas de AGENTS.md: si falta información, pre
 2. Detecta las ideas del documento que no cubre ninguna tarjeta.
 3. Propón en el chat una lista numerada. Para cada propuesta, indica:
    - Área (id de `data/areas.csv`)
-   - Modelo (`reversed` o `typed`) y por qué
+   - Modelo (`basic` o `typed`) y por qué
    - Frente
    - Reverso, en el formato que tendrá en el CSV
    - Sección del documento de la que sale

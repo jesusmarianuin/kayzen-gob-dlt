@@ -1,6 +1,6 @@
 # spaced-repetition-app
 
-Aplicación web local para memorizar con tarjetas y repetición espaciada. Admite dos modelos de tarjeta: básica con tarjeta invertida y básica de teclear la respuesta.
+Aplicación web local para memorizar con tarjetas y repetición espaciada. Admite dos modelos de tarjeta: básica y básica de teclear la respuesta. Cada línea del fichero de tarjetas es una tarjeta.
 
 - Qué se espera de la app: [SPEC.md](SPEC.md)
 - Cómo está hecha: [DESIGN.md](DESIGN.md)
@@ -46,14 +46,14 @@ Añade una fila a `data/cards.csv`. Se puede editar con cualquier editor de text
 
 ```csv
 id,enabled,area,model,front,back,image
-dog,true,general,reversed,Dog,Perro,
+dog,true,general,basic,Dog,Perro,
 boe,true,general,typed,¿Qué significa BOE?,Boletín Oficial del Estado|Boletín Oficial,
 poderes,true,general,typed,¿Cuáles son los tres poderes del Estado?,Legislativo|Parlamento;Ejecutivo;Judicial,
 ```
 
 - `area`: id de un área de `data/areas.csv`. Es obligatoria.
-- `model`: `reversed` (piensas la respuesta, sale en las dos direcciones) o `typed` (tecleas la respuesta exacta).
-- `back` en `typed`: `|` separa formas válidas (vale cualquiera) y `;` separa elementos de una lista (valen todos, en cualquier orden). En `reversed` se muestra tal cual.
+- `model`: `basic` (piensas la respuesta y te puntúas) o `typed` (tecleas la respuesta exacta).
+- `back` en `typed`: `|` separa formas válidas (vale cualquiera) y `;` separa elementos de una lista (valen todos, en cualquier orden). En `basic` se muestra tal cual.
 - `enabled`: `false` oculta la nota sin borrarla ni perder su progreso.
 
 Para asociarle una imagen de licencia libre, desde la raíz del repositorio:
