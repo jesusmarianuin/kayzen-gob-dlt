@@ -37,58 +37,58 @@ slashing,FALSE,general,typed,¿Cómo se llama la penalización económica a los 
 permissioned-governance,FALSE,general,reversed,¿En qué se basa la gobernanza de una red permisionada?,"En acuerdos entre organizaciones, políticas de acceso, responsabilidades definidas y procedimientos formales de cambio. La confianza es jurídica, organizativa y técnica, sin tokens",permissioned-governance.jpg
 federated-governance,FALSE,general,reversed,Modelo de gobernanza federado,"Supervisión centralizada con ejecución descentralizada: un órgano común fija normas de seguridad, cumplimiento e interoperabilidad, y cada organización gestiona su parte con autonomía",federated-governance.jpg
 federated-governance-example,FALSE,general,typed,¿Qué red europea entre Estados miembros sigue un modelo de gobernanza federado?,EBSI|European Blockchain Services Infrastructure,federated-governance-example.jpg
-eidas-meaning,TRUE,general,typed,¿Qué significa eIDAS?,"Electronic Identification Authentication and trust Services|Electronic Identification, Authentication and trust Services",
-eidas-scope,TRUE,general,reversed,¿Qué regula eIDAS?,"La identificación electrónica, la autenticación y los servicios de confianza para las transacciones electrónicas en el mercado interior de la UE",
-internal-market,TRUE,general,reversed,Mercado interior de la UE,"Espacio donde circulan libremente personas, bienes, servicios y capitales",
-eidas-two-pillars,TRUE,general,reversed,Los dos pilares de eIDAS,Reconocer los sistemas nacionales de identificación electrónica (eID) notificados por los Estados miembros y regular los servicios de confianza,
-eidas-spain-eid,TRUE,general,typed,¿Qué eID reconoce eIDAS en España?,DNIe|DNI electrónico|DNI,
-eidas-ts,TRUE,general,typed,¿Qué es TS en eIDAS?,Trust Service,
-eidas-trust-service-definition,TRUE,general,reversed,Servicio de confianza en eIDAS,"Servicio electrónico regulado que permite operaciones de confianza en transacciones electrónicas, como firmar, sellar en el tiempo o entregar de forma certificada",
-eidas-trust-services,TRUE,general,typed,"Ejemplos de servicio de confianza: firma, sello de tiempo y dos más",entrega electrónica certificada|entrega electrónica cualificada|ERDS;certificado de autenticación de sitio web|certificados de autenticación de sitios web|certificado de sitio web|certificado sitio web|QWAC,
-eidas-tsa,TRUE,general,typed,Siglas del sello de tiempo electrónico en eIDAS,TSA,
-eidas-erds,TRUE,general,typed,¿Qué es ERDS en eIDAS?,Qualified Electronic Registered Delivery Service,
-eidas-tsp,TRUE,general,typed,¿Qué es TSP en eIDAS?,Trust Service Provider,
-eidas-tsp-definition,TRUE,general,reversed,Prestador de servicios de confianza (TSP),"Entidad que presta servicios de confianza bajo la supervisión de su Estado miembro, que puede limitar con requisitos nacionales a quién los presta",
-eidas-tsp-recipients,TRUE,general,typed,"En eIDAS, ¿a quién ofrece servicios un TSP?",empresas;ciudadanos;organizaciones;administraciones públicas|administraciones,
-eidas-qtsp,TRUE,general,typed,¿Qué es QTSP en eIDAS?,Qualified Trust Service Provider,
-eidas-qtsp-requirements,TRUE,general,reversed,¿Qué necesita un TSP para ser cualificado (QTSP)?,Cumplir los requisitos del Reglamento eIDAS y obtener el reconocimiento formal del órgano de supervisión de su país,
-eidas-tl,TRUE,general,typed,¿Qué es TL en eIDAS?,Trusted List,
-eidas-tsl,TRUE,general,typed,¿Qué es TSL en eIDAS?,Trust Service Status List,
-eidas-trusted-list-content,TRUE,general,reversed,¿Qué prestadores entran en la lista de confianza (TL) de un Estado miembro?,"Los cualificados (QTSP) siempre, con sus servicios cualificados y su estado. Los no cualificados, solo si el Estado lo decide",
-eidas-qts,TRUE,general,typed,¿Qué es QTS en eIDAS?,Qualified Trust Service,
-eidas-qts-approval,TRUE,general,reversed,"Además de ser QTSP, ¿qué hace falta para ofrecer un servicio cualificado (QTS)?",Que el órgano de supervisión del país de la sede legal del prestador apruebe ese servicio conforme a los requisitos de eIDAS,
-eidas-legal-presumption,TRUE,general,reversed,Ventaja de un servicio cualificado,"Presunción legal en toda la UE de su integridad, origen o fecha: ante un juez se da por cierto y quien lo impugna tiene que probar lo contrario",
-eidas-non-qualified-risk,TRUE,general,reversed,"Utilidad Servicio de confianza no cualificado, como un certificado TLS","Sirve para operaciones cotidianas de riesgo bajo o medio, pero el proveedor asume el riesgo probatorio si el asunto llega a los tribunales",
-eidas-qes,TRUE,general,typed,Siglas de la firma electrónica cualificada,QES,
-eidas-qes-effect,TRUE,general,reversed,Efecto jurídico de una firma electrónica cualificada,Equivale a una firma manuscrita,
-qwac-acronym,TRUE,general,typed,Siglas de los certificados de autenticación de sitios web,QWAC,
-eidas-qualified-attribute,TRUE,general,reversed,"Elementos que pueden ser cualificados en eIDAS, además de prestadores y servicios","Certificados electrónicos, que solo expide un QTSP, y dispositivos de creación de firma, que se certifican como cualificados",
-trusted-list-publisher,FALSE,general,reversed,¿Quién publica la lista de confianza (TL) de cada país?,"El organismo que designa cada Estado miembro, conforme al artículo 22 de eIDAS",
-eidas-lotl,TRUE,general,typed,¿Qué es LOTL en eIDAS?,List of Trusted Lists,
-eidas-lotl-definition,TRUE,general,reversed,List of Trusted Lists (LOTL),Lista que publica la Comisión Europea y que enlaza a la lista de confianza de cada Estado miembro,
-eidas-eutl,TRUE,general,reversed,Denominación EUTL en eIDAS,"EUTL (EU Trusted List) es la denominación habitual, pero el término técnico oficial es LOTL (List of Trusted Lists)",
-trusted-list-purpose,TRUE,general,reversed,¿Para qué sirve una lista de confianza?,"Para comprobar si un prestador o un servicio es cualificado, y si lo era cuando emitió la firma, el sello o la QEAA",
-trusted-list-certificates,TRUE,general,typed,¿En qué certificados se basan las listas de confianza?,X.509|X509,
-trusted-list-validation,TRUE,general,reversed,Pasos para validar con las listas de confianza al emisor de una firma cualificada,"Descargar la LOTL de la dirección publicada en el DOUE y comprobar su firma, saltar a la TL del país del emisor y comprobar su firma, buscar el certificado y revisar el historial del servicio",
-trusted-list-history-date,TRUE,general,reversed,"En el historial de una TL, ¿qué fecha importa al validar una firma?","La de la firma, no la de hoy: el servicio tenía que ser cualificado cuando se firmó",
-trusted-list-vs-ebsi-tir,TRUE,general,reversed,Listas de confianza de eIDAS frente al TIR de EBSI,"Cumplen el mismo papel de registro de emisores de confianza, pero las de eIDAS tienen valor legal y usan certificados X.509 en lugar de DIDs",
-trust-services-dashboard,TRUE,general,reversed,EU Trust Services Dashboard,Buscador de prestadores y servicios de confianza de la UE,
-implementing-act-definition,TRUE,general,reversed,Acto de ejecución,"Norma que adopta la Comisión Europea para concretar cómo se aplica un reglamento en todos los Estados miembros, sin modificar el reglamento",
-implementing-act-features,TRUE,general,reversed,Características de los actos de ejecución,"Son obligatorios, se aplican en toda la UE sin ley nacional, desarrollan el reglamento sin contradecirlo, fijan requisitos técnicos concretos y pueden actualizarse",
-doue-meaning,TRUE,general,typed,¿Qué es el DOUE?,Diario Oficial de la Unión Europea,
-doue-role,TRUE,general,reversed,Papel del DOUE en eIDAS,"Publica los actos de ejecución adoptados y la dirección oficial de la LOTL, y en él se comprueba la versión concreta de cada norma que cita un acto",
+eidas-meaning,TRUE,general,typed,¿Qué significa eIDAS?,"Electronic Identification Authentication and trust Services|Electronic Identification, Authentication and trust Services",thematic/eIDAS.png
+eidas-scope,TRUE,general,reversed,¿Qué regula eIDAS?,"La identificación electrónica, la autenticación y los servicios de confianza para las transacciones electrónicas en el mercado interior de la UE",thematic/eIDAS.png
+internal-market,FALSE,general,reversed,Mercado interior de la UE,"Espacio donde circulan libremente personas, bienes, servicios y capitales",thematic/eIDAS.png
+eidas-vs-eidas2,TRUE,general,reversed,Diferencia entre eIDAS y eIDAS2,"eIDAS reconoce las identidades electrónicas nacionales y los primeros servicios de confianza. eIDAS2 introduce una identificación interoperable para todos los Estados miembros, con servicios de confianza relevantes como la declaración de atributos, y otros nuevos como el electronic ledger o el archivo electrónico.",thematic/eIDAS.png
+eidas-spain-eid,TRUE,general,typed,¿Qué eID reconoce eIDAS en España?,DNIe|DNI electrónico|DNI,thematic/eIDAS.png
+eidas-ts,TRUE,general,typed,¿Qué es TS en eIDAS?,Trust Service,thematic/eIDAS.png
+eidas-trust-service-definition,TRUE,general,reversed,¿Qué es Servicio de confianza en eIDAS),"Servicio electrónico regulado que permite operaciones de confianza en transacciones electrónicas, como firmar, sellar en el tiempo o entregar de forma certificada",thematic/eIDAS.png
+eidas-trust-services-certificate,TRUE,general,typed,"En eIDAS, ¿Que otros servicios de confianza que no sean emisión de certificado o validación de firma conoces? (no respondas iniciales)",conservación de firmas y sellos electrónicos;sello de tiempo electrónico;entrega electrónica certificada,thematic/eIDAS.png
+eidas-tsa,TRUE,general,typed,Siglas del sello de tiempo electrónico en eIDAS,TSA,thematic/eIDAS.png
+eidas-erds,TRUE,general,typed,¿Qué es ERDS en eIDAS?,Electronic Registered Delivery Service (Servicio de entrega electrónica certificada),thematic/eIDAS.png
+eidas-tsp,TRUE,general,typed,¿Qué es TSP en eIDAS?,Trust Service Provider,thematic/eIDAS.png
+eidas-tsp-definition,TRUE,general,reversed,¿Qué es un Prestador de servicios de confianza (TSP)?,"Entidad que presta servicios de confianza bajo la supervisión de su Estado miembro, que puede limitar con requisitos nacionales a quién los presta",thematic/eIDAS.png
+eidas-tsp-recipients,TRUE,general,reversed,"En eIDAS, ¿a quién ofrece servicios un TSP?","A empresas, ciudadanos, organizaciones y administraciones públicas de los Estados miembro",thematic/eIDAS.png
+eidas-qtsp,TRUE,general,typed,¿Qué es QTSP en eIDAS?,Qualified Trust Service Provider,thematic/eIDAS.png
+eidas-qtsp-requirements,TRUE,general,reversed,¿Qué necesita un TSP para ser cualificado (QTSP)?,Cumplir los requisitos del Reglamento eIDAS y obtener el reconocimiento formal del órgano de supervisión de su país,thematic/eIDAS.png
+eidas-tl,TRUE,general,typed,¿Qué es TL en eIDAS?,Trusted List,thematic/eIDAS.png
+eidas-tsl,TRUE,general,typed,¿Qué es TSL en eIDAS?,Trust Service Status List,thematic/eIDAS.png
+eidas-trusted-list-content,TRUE,general,reversed,¿Qué prestadores entran en la lista de confianza (TL) de un Estado miembro?,"Los cualificados (QTSP) siempre, con sus servicios cualificados y su estado. Los no cualificados, solo si el Estado lo decide",thematic/eIDAS.png
+eidas-qts,TRUE,general,typed,¿Qué es QTS en eIDAS?,Qualified Trust Service,thematic/eIDAS.png
+eidas-qts-approval,TRUE,general,reversed,"Además de ser QTSP, ¿qué hace falta para ofrecer un servicio cualificado (QTS)?",Que el órgano de supervisión del país de la sede legal del prestador apruebe ese servicio conforme a los requisitos de eIDAS,thematic/eIDAS.png
+eidas-legal-presumption,TRUE,general,reversed,Ventaja de un servicio cualificado,"Presunción legal en toda la UE de su integridad, origen o fecha: ante un juez se da por cierto y quien lo impugna tiene que probar lo contrario",thematic/eIDAS.png
+eidas-non-qualified-risk,TRUE,general,reversed,"Utilidad Servicio de confianza no cualificado, como un certificado TLS","Sirve para operaciones cotidianas de riesgo bajo o medio, pero el proveedor asume el riesgo probatorio si el asunto llega a los tribunales",thematic/eIDAS.png
+eidas-qes,TRUE,general,typed,Siglas de la firma electrónica cualificada,QES,thematic/eIDAS.png
+eidas-qes-effect,TRUE,general,reversed,Efecto jurídico de una firma electrónica cualificada,Equivale a una firma manuscrita,thematic/eIDAS.png
+qwac-acronym,TRUE,general,typed,Siglas de los certificados de autenticación de sitios web,QWAC,thematic/eIDAS.png
+eidas-qualified-attribute,TRUE,general,reversed,"Elementos que pueden ser cualificados en eIDAS, además de prestadores y servicios","Certificados electrónicos, que solo expide un QTSP, y dispositivos de creación de firma, que se certifican como cualificados",thematic/eIDAS.png
+trusted-list-publisher,FALSE,general,reversed,¿Quién publica la lista de confianza (TL) de cada país?,"El organismo que designa cada Estado miembro, conforme al artículo 22 de eIDAS",thematic/eIDAS.png
+eidas-lotl,TRUE,general,typed,¿Qué es LOTL en eIDAS?,List of Trusted Lists,thematic/eIDAS.png
+eidas-lotl-definition,TRUE,general,reversed,List of Trusted Lists (LOTL),Lista que publica la Comisión Europea y que enlaza a la lista de confianza de cada Estado miembro,thematic/eIDAS.png
+eidas-eutl,TRUE,general,reversed,Denominación EUTL en eIDAS,"EUTL (EU Trusted List) es la denominación habitual, pero el término técnico oficial es LOTL (List of Trusted Lists)",thematic/eIDAS.png
+trusted-list-purpose,TRUE,general,reversed,¿Para qué sirve una lista de confianza?,"Para comprobar si un prestador o un servicio es cualificado, y si lo era cuando emitió la firma, el sello o la QEAA",thematic/eIDAS.png
+trusted-list-certificates,TRUE,general,typed,¿En qué certificados se basan las listas de confianza?,X.509|X509,thematic/eIDAS.png
+trusted-list-validation,TRUE,general,reversed,Pasos para validar con las listas de confianza al emisor de una firma cualificada,"Descargar la LOTL de la dirección publicada en el DOUE y comprobar su firma, saltar a la TL del país del emisor y comprobar su firma, buscar el certificado y revisar el historial del servicio",thematic/eIDAS.png
+trusted-list-history-date,TRUE,general,reversed,"En el historial de una TL, ¿qué fecha importa al validar una firma?","La de la firma, no la de hoy: el servicio tenía que ser cualificado cuando se firmó",thematic/eIDAS.png
+trusted-list-vs-ebsi-tir,TRUE,general,reversed,Listas de confianza de eIDAS frente al TIR de EBSI,"Cumplen el mismo papel de registro de emisores de confianza, pero las de eIDAS tienen valor legal y usan certificados X.509 en lugar de DIDs",thematic/eIDAS.png
+trust-services-dashboard,TRUE,general,reversed,EU Trust Services Dashboard,Buscador de prestadores y servicios de confianza de la UE,thematic/eIDAS.png
+implementing-act-definition,TRUE,general,reversed,Acto de ejecución,"Norma que adopta la Comisión Europea para concretar cómo se aplica un reglamento en todos los Estados miembros, sin modificar el reglamento",thematic/eIDAS.png
+implementing-act-features,TRUE,general,reversed,Características de los actos de ejecución,"Son obligatorios, se aplican en toda la UE sin ley nacional, desarrollan el reglamento sin contradecirlo, fijan requisitos técnicos concretos y pueden actualizarse",thematic/eIDAS.png
+doue-meaning,TRUE,general,typed,¿Qué es el DOUE?,Diario Oficial de la Unión Europea,thematic/eIDAS.png
+doue-role,TRUE,general,reversed,Papel del DOUE en eIDAS,"Publica los actos de ejecución adoptados y la dirección oficial de la LOTL, y en él se comprueba la versión concreta de cada norma que cita un acto",thematic/eIDAS.png
 tfue-meaning,TRUE,general,typed,¿Qué es el TFUE?,Tratado de Funcionamiento de la Unión Europea,
-delegated-vs-implementing-act,TRUE,general,reversed,Acto delegado frente a acto de ejecución,Delegado (artículo 290 del TFUE): modifica o completa elementos no esenciales de una ley. De ejecución (artículo 291): fija condiciones uniformes para aplicar una ley que ya existe,
-implementing-act-pillars,TRUE,general,reversed,Dos apoyos de la Comisión para redactar los actos de ejecución,"Los expertos técnicos de los Estados miembros (grupo de expertos de eIDAS) y los organismos de normalización (ETSI, CEN, CENELEC)",
-implementing-act-process,FALSE,general,reversed,Fases de aprobación de un acto de ejecución de eIDAS2,"Propuesta de la Comisión, consulta pública opcional, dictamen del comité del artículo 48, adopción y publicación en el DOUE, y entrada en vigor, habitualmente a los 20 días",
-eidas2-continuous-study,TRUE,general,reversed,¿Por qué no basta con estudiar eIDAS2 una sola vez?,"Porque sus requisitos técnicos se publican y actualizan de forma progresiva en los actos de ejecución, y hay que seguirlos periódicamente",
-eudi-document-types,TRUE,general,reversed,Tres tipos de documento que conviene distinguir al desarrollar una solución EUDI,"La normativa obligatoria, los estándares técnicos que esa normativa incorpora o cita, y las especificaciones de arquitectura que orientan (como el ARF)",
-cited-standard-cautions,FALSE,general,reversed,Cautelas al usar una norma citada en un acto de ejecución,"Comprobar en el DOUE la versión concreta y las adaptaciones que fija el acto, y detectar los códigos mal escritos en el DOUE que no corresponden a ninguna norma",
-implementing-acts-official-list,FALSE,general,reversed,¿Dónde se comprueba si un acto de ejecución de eIDAS2 está adoptado o modificado?,"En la página de la Comisión Europea con la lista de actos de ejecución de eIDAS2, que indica el artículo que desarrolla, su estado y el enlace a EUR-Lex",
-eudi-sts-repository,TRUE,general,reversed,Repositorio STS de la cartera EUDI,Estándares y especificaciones técnicas: relaciona cada estándar o especificación con el acto de ejecución que lo exige,
-dg-connect-meaning,TRUE,general,typed,¿Qué significa DG CONNECT?,"Dirección General de Redes de Comunicación, Contenido y Tecnologías|Dirección General de Redes de Comunicación Contenido y Tecnologías",
-dg-connect-role,TRUE,general,reversed,Papel de DG CONNECT en eIDAS,"Prepara las propuestas de reglamento, redacta los actos de ejecución y coordina con los Estados miembros el desarrollo de la cartera europea",
-dg-connect-eidas-outputs,TRUE,general,typed,Las cuatro piezas que publica DG CONNECT para eIDAS,Actos de ejecución;ARF;implementación de referencia;blueprints|blueprint,
+delegated-vs-implementing-act,TRUE,general,reversed,Acto delegado frente a acto de ejecución,Delegado (artículo 290 del TFUE): modifica o completa elementos no esenciales de una ley. De ejecución (artículo 291): fija condiciones uniformes para aplicar una ley que ya existe,thematic/eIDAS.png
+implementing-act-pillars,TRUE,general,reversed,Dos apoyos de la Comisión para redactar los actos de ejecución,"Los expertos técnicos de los Estados miembros (grupo de expertos de eIDAS) y los organismos de normalización (ETSI, CEN, CENELEC)",thematic/eIDAS.png
+implementing-act-process,FALSE,general,reversed,Fases de aprobación de un acto de ejecución de eIDAS2,"Propuesta de la Comisión, consulta pública opcional, dictamen del comité del artículo 48, adopción y publicación en el DOUE, y entrada en vigor, habitualmente a los 20 días",thematic/eIDAS.png
+eidas2-continuous-study,TRUE,general,reversed,¿Por qué no basta con estudiar eIDAS2 una sola vez?,"Porque sus requisitos técnicos se publican y actualizan de forma progresiva en los actos de ejecución, y hay que seguirlos periódicamente",thematic/eIDAS.png
+eudi-document-types,TRUE,general,reversed,Tres tipos de documento que conviene distinguir al desarrollar una solución EUDI,"La normativa obligatoria, los estándares técnicos que esa normativa incorpora o cita, y las especificaciones de arquitectura que orientan (como el ARF)",thematic/eIDAS.png
+cited-standard-cautions,FALSE,general,reversed,Cautelas al usar una norma citada en un acto de ejecución,"Comprobar en el DOUE la versión concreta y las adaptaciones que fija el acto, y detectar los códigos mal escritos en el DOUE que no corresponden a ninguna norma",thematic/eIDAS.png
+implementing-acts-official-list,FALSE,general,reversed,¿Dónde se comprueba si un acto de ejecución de eIDAS2 está adoptado o modificado?,"En la página de la Comisión Europea con la lista de actos de ejecución de eIDAS2, que indica el artículo que desarrolla, su estado y el enlace a EUR-Lex",thematic/eIDAS.png
+eudi-sts-repository,TRUE,general,reversed,Repositorio STS de la cartera EUDI,Estándares y especificaciones técnicas: relaciona cada estándar o especificación con el acto de ejecución que lo exige,thematic/eIDAS.png
+dg-connect-meaning,TRUE,general,typed,¿Qué significa DG CONNECT?,"Dirección General de Redes de Comunicación, Contenido y Tecnologías|Dirección General de Redes de Comunicación Contenido y Tecnologías",thematic/eIDAS.png
+dg-connect-role,TRUE,general,reversed,Papel de DG CONNECT en eIDAS,"Prepara las propuestas de reglamento, redacta los actos de ejecución y coordina con los Estados miembros el desarrollo de la cartera europea",thematic/eIDAS.png
+dg-connect-eidas-outputs,TRUE,general,typed,Las cuatro piezas que publica DG CONNECT para eIDAS,Actos de ejecución;ARF;implementación de referencia;blueprints|blueprint,thematic/eIDAS.png
 eu-regulation,TRUE,general,reversed,Reglamento (regulation) de la UE,Norma vinculante de aplicación directa en todos los Estados miembros,
 eu-directive,TRUE,general,reversed,Directiva (directive) de la UE,Norma que fija objetivos de obligado cumplimiento y deja a cada país la forma legislativa,
 eu-guidelines,TRUE,general,reversed,"Directrices o recomendaciones (guidelines, recommendations) de la UE",Documentos no vinculantes que sugieren líneas de actuación,
@@ -99,126 +99,125 @@ eu-roadmap,TRUE,general,reversed,Hoja de ruta (roadmap),Define el camino a segui
 strategic-plan,TRUE,general,reversed,Plan estratégico (strategic plan) de una dirección general,Documento a cinco años que describe su contribución a los objetivos políticos,
 management-plan,TRUE,general,reversed,Plan de gestión (management plan) de una dirección general,Detalla las actividades y los recursos anuales previstos,
 annual-activity-report,TRUE,general,reversed,Informe anual de actividad (annual activity report),Presenta los logros y los recursos utilizados el año anterior,
-reference-implementation,TRUE,general,reversed,Implementación de referencia de la cartera europea,Código abierto que muestra cómo construir una cartera conforme al ARF y que los Estados pueden reutilizar,
-blueprint-definition,TRUE,general,reversed,Blueprint en el ecosistema eIDAS,"Solución de referencia para un caso de uso: especificaciones, documentación y app de código abierto que un Estado o una empresa adapta y publica con su marca. No es una norma",
-blueprint-action-plan,TRUE,general,reversed,Otro sentido de blueprint en la UE,"Plan de actuación sin código detrás, como el blueprint de respuesta coordinada a incidentes de ciberseguridad a gran escala",
-age-verification-blueprint,TRUE,general,reversed,Blueprint de verificación de edad,"Permite demostrar que se es mayor de 18 años sin revelar la fecha de nacimiento, para que las plataformas protejan a los menores",
-eudi-wallet-arf,TRUE,general,typed,¿Qué es el ARF relacionado con la normativa eIDAS2?,European Digital Identity Wallet Architecture and Reference Framework|Architecture and Reference Framework,
-arf-toolbox,TRUE,general,reversed,¿De qué forma parte el ARF?,De la caja de herramientas común (toolbox) que pidió una recomendación de la UE,
-arf-binding,TRUE,general,reversed,Valor jurídico del ARF,"Es una guía no obligatoria alineada con los actos de ejecución: seguirla facilita cumplirlos pero no lo garantiza, y si difieren manda el acto",
-arf-authors,FALSE,general,reversed,¿Quién elabora el ARF?,"El European Digital Identity Cooperation Group (antes eIDAS Expert Group), con documentos de discusión hasta el consenso, y la Comisión, que integra los comentarios aceptados",
-arf-reference-version,FALSE,general,reversed,Versión de referencia del ARF,La última publicada con etiqueta (tagged release) en GitHub,
-eu-standardization-bodies,TRUE,general,typed,Los tres organismos europeos de normalización reconocidos por la UE,ETSI;CEN;CENELEC,
-standardization-bodies-nature,TRUE,general,reversed,"Naturaleza de ETSI, CEN, CENELEC e ISO","Asociaciones independientes sin ánimo de lucro, no departamentos de la UE. La Comisión puede encargarles normas, que solo obligan cuando un acto de ejecución las cita",
-etsi-meaning,TRUE,general,typed,¿Qué significa ETSI?,European Telecommunications Standards Institute,
-cen-meaning,TRUE,general,typed,¿Qué significa CEN?,Comité Europeo de Normalización,
-cenelec-meaning,TRUE,general,typed,¿Qué significa CENELEC?,Comité Europeo de Normalización Electrotécnica,
-en-standards,TRUE,general,reversed,Normas EN,"Normas europeas formales que elaboran CEN y CENELEC y que los organismos nacionales, como UNE, adoptan como propias",
-iso-meaning,TRUE,general,typed,¿Qué significa ISO?,International Organization for Standardization|Organización Internacional de Normalización,
-etsi-esi,TRUE,general,typed,Comité de ETSI que elabora las normas técnicas de eIDAS,ESI|Electronic Signatures and Infrastructures,
-iso-in-eidas,FALSE,general,reversed,¿Cómo entran las normas ISO en el marco de eIDAS?,Por cita directa en un acto de ejecución (ISO 23257 e ISO/TS 23635 en los libros mayores) o adaptadas al marco europeo por el comité CEN/CENELEC JTC 19,
+reference-implementation,TRUE,general,reversed,Implementación de referencia de la cartera europea,Código abierto que muestra cómo construir una cartera conforme al ARF y que los Estados pueden reutilizar,thematic/eIDAS.png
+blueprint-definition,TRUE,general,reversed,Blueprint en el ecosistema eIDAS,"Solución de referencia para un caso de uso: especificaciones, documentación y app de código abierto que un Estado o una empresa adapta y publica con su marca. No es una norma",thematic/eIDAS.png
+blueprint-action-plan,TRUE,general,reversed,Otro sentido de blueprint en la UE,"Plan de actuación sin código detrás, como el blueprint de respuesta coordinada a incidentes de ciberseguridad a gran escala",thematic/eIDAS.png
+age-verification-blueprint,TRUE,general,reversed,Blueprint de verificación de edad,"Permite demostrar que se es mayor de 18 años sin revelar la fecha de nacimiento, para que las plataformas protejan a los menores",thematic/eIDAS.png
+eudi-wallet-arf,TRUE,general,typed,¿Qué es el ARF relacionado con la normativa eIDAS2?,European Digital Identity Wallet Architecture and Reference Framework|Architecture and Reference Framework,thematic/eIDAS.png
+arf-toolbox,TRUE,general,reversed,¿De qué forma parte el ARF?,De la caja de herramientas común (toolbox) que pidió una recomendación de la UE,thematic/eIDAS.png
+arf-binding,TRUE,general,reversed,Valor jurídico del ARF,"Es una guía no obligatoria alineada con los actos de ejecución: seguirla facilita cumplirlos pero no lo garantiza, y si difieren manda el acto",thematic/eIDAS.png
+arf-authors,FALSE,general,reversed,¿Quién elabora el ARF?,"El European Digital Identity Cooperation Group (antes eIDAS Expert Group), con documentos de discusión hasta el consenso, y la Comisión, que integra los comentarios aceptados",thematic/eIDAS.png
+arf-reference-version,FALSE,general,reversed,Versión de referencia del ARF,La última publicada con etiqueta (tagged release) en GitHub,thematic/eIDAS.png
+eu-standardization-bodies,TRUE,general,typed,Los tres organismos europeos de normalización reconocidos por la UE,ETSI;CEN;CENELEC,thematic/eIDAS.png
+standardization-bodies-nature,TRUE,general,reversed,"Naturaleza de ETSI, CEN, CENELEC e ISO","Asociaciones independientes sin ánimo de lucro, no departamentos de la UE. La Comisión puede encargarles normas, que solo obligan cuando un acto de ejecución las cita",thematic/eIDAS.png
+etsi-meaning,TRUE,general,typed,¿Qué significa ETSI?,European Telecommunications Standards Institute,thematic/eIDAS.png
+cen-meaning,TRUE,general,typed,¿Qué significa CEN?,Comité Europeo de Normalización,thematic/eIDAS.png
+cenelec-meaning,TRUE,general,typed,¿Qué significa CENELEC?,Comité Europeo de Normalización Electrotécnica,thematic/eIDAS.png
+en-standards,TRUE,general,reversed,Normas EN,"Normas europeas formales que elaboran CEN y CENELEC y que los organismos nacionales, como UNE, adoptan como propias",thematic/eIDAS.png
+iso-meaning,TRUE,general,typed,¿Qué significa ISO?,International Organization for Standardization|Organización Internacional de Normalización,thematic/eIDAS.png
+etsi-esi,TRUE,general,typed,Comité de ETSI que elabora las normas técnicas de eIDAS,ESI|Electronic Signatures and Infrastructures,thematic/eIDAS.png
+iso-in-eidas,FALSE,general,reversed,¿Cómo entran las normas ISO en el marco de eIDAS?,Por cita directa en un acto de ejecución (ISO 23257 e ISO/TS 23635 en los libros mayores) o adaptadas al marco europeo por el comité CEN/CENELEC JTC 19,thematic/eIDAS.png
 edpb-meaning,TRUE,general,typed,¿Qué es el EDPB?,European Data Protection Board|Comité Europeo de Protección de Datos,
 edpb-role,TRUE,general,reversed,Papel del EDPB,Organismo de la UE creado por el RGPD que reúne a las autoridades nacionales de protección de datos y publica directrices sobre cómo aplicar el RGPD,
-edpb-blockchain-guideline,TRUE,general,reversed,Directriz del EDPB sobre blockchain,Desaconseja guardar datos personales en la cadena: los datos seudonimizados o con hash siguen siendo personales y la inmutabilidad no exime del derecho de supresión,
-eidas-2-goal,TRUE,general,reversed,Objetivo de eIDAS2,Pasar del reconocimiento mutuo de sistemas nacionales de eID a un ecosistema europeo de identidad digital interoperable,
-eidas2-main-novelty,TRUE,general,typed,Principal novedad de eIDAS2,EUDI Wallet|Cartera Europea de Identidad Digital|European Digital Identity Wallet,
-eidas2-technical-gaps,TRUE,general,reversed,¿Qué deja eIDAS2 a los actos de ejecución?,"Los detalles técnicos: formatos de datos, protocolos de comunicación, mecanismos de seguridad y procedimientos de certificación",
-eudi-wallet-definition,TRUE,general,reversed,EUDI Wallet,"Aplicación segura y controlada por el usuario para gestionar, almacenar y usar su identidad digital y credenciales verificables ante servicios públicos y privados de toda la UE",
-eudi-wallet-self-custody,TRUE,general,reversed,¿Quién custodia la EUDI Wallet?,"El propio usuario (autocustodia), como un pasaporte digital en el que acumula su identidad y otras credenciales verificables",
-eudi-wallet-capabilities,TRUE,general,reversed,Capacidades principales de la EUDI Wallet,"Identificar y autenticar, guardar el PID y las declaraciones de atributos, uso transfronterizo, firma electrónica cualificada y control del usuario sobre lo que comparte",
-eudi-wallet-qualified-signature,TRUE,general,typed,¿Qué firma permite la EUDI Wallet en los casos que prevé el marco europeo?,firma electrónica cualificada|firma cualificada|QES,
-eudi-wallet-providers,TRUE,general,reversed,Proveedor de la cartera EUDI (wallet provider),"Quien pone a disposición la aplicación: el propio Estado miembro, una organización a la que se lo encarga o una entidad independiente que el Estado reconoce",
-pid-meaning,TRUE,general,typed,¿Qué es el PID de la cartera EUDI?,datos de identificación de la persona|datos de identificación personal,
-pid-content,TRUE,general,reversed,Datos de identificación de la persona (PID),"Los que acreditan quién eres (nombre, apellidos, fecha de nacimiento), como hoy el DNI. Los emite el proveedor de PID que designa cada Estado miembro",
-pid-provider-spain,TRUE,general,typed,Organismo que presumiblemente emitirá el PID en España,AEAD|Agencia Estatal de Administración Digital,
-pub-eaa-definition,TRUE,general,reversed,PuB-EAA,"Declaración de atributos que emite el organismo público responsable de la fuente auténtica del dato, como el ayuntamiento para el padrón. Equivale a un documento en papel",
-eudi-ecosystem-not-trust-services,TRUE,general,reversed,"Cartera, PID y PuB-EAA frente a los servicios de confianza",Forman parte del ecosistema EUDI pero no son servicios de confianza ni aparecen en las TL: sus proveedores se publican en las LoTE,
-lote-meaning,TRUE,general,typed,¿Qué es LoTE?,List of Trusted Entities|lista de entidades de confianza|listas de entidades de confianza,
-lote-definition,TRUE,general,reversed,Listas de entidades de confianza (LoTE),"Listas firmadas, una por tipo de entidad y válidas en toda la UE, que publica la Comisión con los proveedores que le notifican los Estados miembros",
-eudi-issuer-trust-anchors,TRUE,general,reversed,¿Dónde publica sus anclas de confianza cada emisor de la cartera EUDI?,"PID y PuB-EAA: en una LoTE. QEAA: en la TL de su país. EAA no cualificada: no hay lista común, depende de mecanismos nacionales o sectoriales",
-registration-vs-published-list,FALSE,general,reversed,Registro de una entidad frente a lista publicada,El registro es el trámite administrativo ante el Estado miembro; el verificador consulta la lista publicada (TL o LoTE) con los certificados del emisor,
-wallet-provider-lote-check,FALSE,general,reversed,¿Para qué consulta el proveedor de PID la LoTE de proveedores de carteras?,Para comprobar que la cartera es auténtica antes de emitirle el PID,
-lote-vs-tl-validation,FALSE,general,reversed,Validar un emisor con una LoTE frente a una TL,Con la LoTE se va directamente a la lista del tipo de entidad; con la TL hay que pasar antes por la LOTL,
-eudi-wallet-data-minimization,TRUE,general,reversed,Principio relevante de la EUDI Wallet,Minimización de datos: revelar que eres mayor de edad sin mostrar la fecha de nacimiento,
-selective-disclosure,TRUE,general,typed,¿Cómo se llama demostrar que eres mayor de edad sin revelar tu fecha de nacimiento?,divulgación selectiva,
-eudi-wallet-infrastructure,TRUE,general,reversed,¿Por qué la EUDI Wallet no es solo un DNI digital?,"Es una infraestructura de identidad y credenciales controlada por el usuario para que distintas entidades emitan, soliciten y verifiquen información de forma segura e interoperable",
-eudi-wallet-private-sectors,TRUE,general,reversed,Sector privado obligado a aceptar la cartera EUDI,"El regulado (banca, telecomunicaciones, energía, transporte, sanidad, seguros, educación e infraestructura digital) cuando su normativa exija autenticación reforzada",
-eidas-new-trust-services,TRUE,general,typed,"En eIDAS2, enumera en inglés los nuevos servicios de confianza",EAA|Electronic Attestation of Attributes;Electronic Archiving|archiving;Electronic Ledger|Electronic Ledgers|ledger,
-eaa-meaning,TRUE,general,typed,¿Qué es EAA en eIDAS2?,Electronic Attestation of Attributes,
-eaa-definition,TRUE,general,reversed,Declaración electrónica de atributos,"Manifestación electrónica firmada que acredita que un atributo de una persona física o jurídica es cierto (edad, título, permiso, cargo) sin identificarla por completo",
-eaa-spanish-term,TRUE,general,typed,Término oficial en español para attestation en EAA,declaración,
-pid-vs-eaa,TRUE,general,reversed,PID frente a declaración de atributos,El PID responde a «¿quién eres?» y la declaración a «¿es cierto este dato sobre ti?»,
-eidas-2-credential-types,TRUE,general,typed,Los tres tipos de declaración electrónica de atributos,EAA;QEAA;PuB-EAA|PuBEAA|Pub EAA,
-eaa-types-by-issuer,TRUE,general,reversed,"EAA, QEAA y PuB-EAA según su emisor","EAA: cualquier TSP, no se le niega valor por ser electrónica. QEAA: un QTSP, equivale al papel en toda la UE. PuB-EAA: el organismo de la fuente auténtica, también equivale al papel",
-authentic-source,TRUE,general,reversed,Fuente auténtica,"Registro oficial que custodia un dato, como el registro civil, el registro mercantil o el de la DGT",
-qeaa-annex-vi-check,FALSE,general,reversed,¿Qué debe hacer un QTSP antes de emitir una QEAA de un atributo del anexo VI?,Comprobarlo en la fuente auténtica. La PuB-EAA no lo necesita porque la emite la propia fuente,
-qeaa-verification,TRUE,general,reversed,Dos comprobaciones al recibir una QEAA,"La firma o el sello cualificado del QTSP que la emite, y que ese prestador figure en la TL con el servicio de declaraciones cualificadas",
-eaa-mandatory-formats,TRUE,general,typed,Dos formatos de declaración que la cartera EUDI debe admitir,mdoc|ISO/IEC 18013-5|ISO 18013-5|18013-5;SD-JWT VC|SD-JWT,
-mdoc-origin,TRUE,general,typed,¿De qué documento es el formato mdoc?,carné de conducir móvil|carnet de conducir móvil,
-sd-jwt-vc,TRUE,general,reversed,SD-JWT VC,"Credencial en JSON con divulgación selectiva, definida en el IETF",
-eaa-w3c-format,FALSE,general,reversed,W3C VCDM 2.0 en la cartera EUDI,Formato opcional y solo para EAA no cualificadas; podría pasar a obligatorio cuando ETSI publique perfiles para él,
-mdoc-proximity,FALSE,general,typed,Único formato de declaración válido en una presentación presencial (proximidad),mdoc|ISO/IEC 18013-5|ISO 18013-5|18013-5,
-archiving-definition,TRUE,general,reversed,Archivo electrónico (servicio de confianza),"Servicio que recibe, almacena, recupera y elimina datos y documentos para que conserven legibilidad, integridad, confidencialidad y prueba de origen durante el periodo de conservación",
-archiving-vs-preservation,TRUE,general,reversed,Archivo electrónico frente a conservación cualificada de firmas y sellos,"La conservación mantiene verificable una firma o sello cuando su tecnología queda obsoleta; el archivo cubre cualquier dato o documento, firmado o no",
-archiving-qualified-effect,TRUE,general,reversed,Efecto jurídico del archivo electrónico cualificado,Presunción de integridad y origen de los datos y documentos durante todo el periodo de conservación,
-archiving-requirements,TRUE,general,reversed,Requisitos del archivo electrónico cualificado,"Datos duraderos y legibles más allá de la tecnología que los protege, protegidos frente a pérdidas y alteraciones (se admiten migraciones de formato) e informe automatizado de integridad al recuperarlos",
-archiving-public-administration,TRUE,general,reversed,Qué aporta el archivo cualificado a una administración que ya usaba plataformas como SIAVAL,El estatus legal: presunción de integridad reconocida en toda la UE,
-eidas-2-ledger-definition,TRUE,general,reversed,El libro mayor electrónico de eIDAS2 se define como...,Secuencia de registros electrónicos de datos que garantiza su integridad y la exactitud de su orden cronológico. Puede ser cualificado o no cualificado,
-eidas-electronic-ledger-guarantees,TRUE,general,typed,¿Qué tres cosas garantiza un libro mayor electrónico cualificado?,origen|procedencia|origen de los registros;integridad;orden cronológico,
-ledger-technology,TRUE,general,reversed,Tecnología exigida a un libro mayor electrónico en eIDAS2,Ninguna concreta: puede ser un registro centralizado de un único prestador o una red de nodos que acuerdan la secuencia,
-ledger-qualified-vs-not,TRUE,general,reversed,Libro mayor electrónico no cualificado frente a cualificado,"No cualificado: no se le niega valor como prueba por ser electrónico, pero se valora caso a caso. Cualificado: lo gestionan QTSP y tiene presunción de unicidad, orden e integridad",
-ledger-presumption-limit,TRUE,general,reversed,Límite de la presunción de un libro mayor cualificado,"Acredita la integridad, el origen y la posición cronológica del registro, no que su contenido sea verdadero (que la entrega registrada se produjera)",
-ledger-act-mechanisms,FALSE,general,reversed,Mecanismos que concreta el Reglamento de Ejecución 2025/2531,"Origen e integridad con firmas o sellos avanzados basados en certificados cualificados, orden con listas o árboles hash o sellos de tiempo cualificados, detección inmediata de cambios y protección de claves",
-ledger-hash-functions,FALSE,general,typed,Funciones hash mínimas para encadenar registros en un libro mayor cualificado,SHA-256|SHA256;SHA3-256|SHA3 256,
-ledger-act-presumption,FALSE,general,reversed,Presunción de cumplimiento del Reglamento de Ejecución 2025/2531,"Cumplir su anexo da presunción de cumplimiento (artículo 45 terdecies, apartado 2), aunque el QTSP puede demostrarlo con otras prácticas",
-ledger-practice-statement,FALSE,general,reversed,¿Dónde documenta el QTSP los mecanismos de su libro mayor?,En la declaración de prácticas del servicio,
-qdlt-meaning,TRUE,general,reversed,qDLT,Libro mayor electrónico distribuido cualificado: la variante en la que una red de nodos mantiene los registros sincronizados mediante consenso,
-ledger-node,TRUE,general,reversed,Nodo en un libro mayor distribuido,Dispositivo o proceso de la red que almacena una copia completa o parcial de los registros,
-distributed-network,TRUE,general,reversed,Red distribuida en un libro mayor,Conjunto de nodos que forman el sistema de registro distribuido,
-ledger-consensus,TRUE,general,reversed,Consenso en un libro mayor distribuido,Acuerdo entre los nodos sobre la validez de las transacciones y el mantenimiento de un conjunto coherente y ordenado de transacciones validadas,
-consensus-mechanism,TRUE,general,reversed,Mecanismo de consenso,Conjunto de reglas y procedimientos con los que los nodos alcanzan el consenso,
-qdlt-finality,TRUE,general,reversed,Carácter definitivo (finality) en un qDLT,Estado de un registro que ya es irreversible y no puede modificarse ni suprimirse; la red debe poder determinar cuándo se alcanza,
-preservation-archive-ledger,TRUE,general,reversed,"Conservación de firmas, archivo y libro mayor cualificados",Conservación: mantiene válida la evidencia criptográfica. Archivo: custodia el documento. Libro mayor: fija un orden cronológico verificable de hechos,
-ledger-use-cases,TRUE,general,typed,Cinco ejemplos de aplicación del libro mayor electrónico,cadena de suministro|cadena suministro;propiedad intelectual;trazabilidad documental|trazabilidad;transacciones empresariales;auditoría,
-ebsi-meaning,TRUE,general,typed,¿Qué es EBSI?,European Blockchain Services Infrastructure,
-ebsi-manager,TRUE,general,typed,¿Qué entidad gestiona hoy EBSI?,EUROPEUM-EDIC|EUROPEUM EDIC|EUROPEUM,
-ebsi-role,TRUE,general,reversed,Función de la red EBSI,"Actúa como ancla de una infraestructura DID de W3C para un consorcio de países, con un recorrido limitado por el RGPD",
-ebsi-not-qualified-ledger,TRUE,general,reversed,¿Por qué EBSI no es un libro mayor cualificado?,"Es una red DLT permisionada que opera un consorcio institucional, no un objeto normativo: tendría que gestionarla uno o varios QTSP cumpliendo los requisitos de eIDAS2",
-ebsi-technical-rules,FALSE,general,reversed,"¿Dónde publica EBSI sus reglas técnicas (arquitectura, alta de nodos, APIs)?","En su portal de desarrollo, EBSI Hub, no en el DOUE",
-isbe-meaning,TRUE,general,typed,¿Qué significa ISBE?,Infraestructura de Servicios Blockchain de España,
-isbe-promoters,TRUE,general,reversed,¿Quién impulsa y quién opera ISBE?,"La impulsa la Comunidad de Madrid con fondos Next Generation EU, y la desarrolla y opera Alastria sobre Hyperledger Besu",
-isbe-technology,TRUE,general,typed,Tecnología blockchain sobre la que funciona ISBE,Hyperledger Besu|Besu,
-isbe-eidas-goal,TRUE,general,reversed,Aspiración de ISBE en eIDAS2,Ser QTSP del libro mayor electrónico cualificado sobre una blockchain público-permisionada; todavía no figura en la lista de confianza,
-isbe-gdpr-approach,TRUE,general,reversed,Cómo aborda ISBE la directriz del EDPB sobre blockchain,"En la cadena solo guarda una huella del dato, que sin una clave secreta guardada fuera no identifica a nadie; para borrar se destruye esa clave",
+edpb-blockchain-guideline,TRUE,general,reversed,Directriz del EDPB sobre blockchain,Desaconseja guardar datos personales en la cadena: los datos seudonimizados o con hash siguen siendo personales y la inmutabilidad no exime del derecho de supresión,thematic/blockchain.png
+eidas-2-goal,TRUE,general,reversed,Objetivo de eIDAS2,Pasar del reconocimiento mutuo de sistemas nacionales de eID a un ecosistema europeo de identidad digital interoperable,thematic/eIDAS.png
+eidas2-main-novelty,TRUE,general,typed,Principal novedad de eIDAS2,EUDI Wallet|Cartera Europea de Identidad Digital|European Digital Identity Wallet,thematic/eIDAS.png
+eidas2-technical-gaps,TRUE,general,reversed,¿Qué deja eIDAS2 a los actos de ejecución?,"Los detalles técnicos: formatos de datos, protocolos de comunicación, mecanismos de seguridad y procedimientos de certificación",thematic/eIDAS.png
+eudi-wallet-definition,TRUE,general,reversed,EUDI Wallet,"Aplicación segura y controlada por el usuario para gestionar, almacenar y usar su identidad digital y credenciales verificables ante servicios públicos y privados de toda la UE",thematic/eIDAS.png
+eudi-wallet-self-custody,TRUE,general,reversed,¿Quién custodia la EUDI Wallet?,"El propio usuario (autocustodia), como un pasaporte digital en el que acumula su identidad y otras credenciales verificables",thematic/eIDAS.png
+eudi-wallet-capabilities,TRUE,general,reversed,Capacidades principales de la EUDI Wallet,"Identificar y autenticar, guardar el PID y las declaraciones de atributos, uso transfronterizo, firma electrónica cualificada y control del usuario sobre lo que comparte",thematic/eIDAS.png
+eudi-wallet-qualified-signature,TRUE,general,typed,¿Qué firma permite la EUDI Wallet en los casos que prevé el marco europeo?,firma electrónica cualificada|firma cualificada|QES,thematic/eIDAS.png
+eudi-wallet-providers,TRUE,general,reversed,Proveedor de la cartera EUDI (wallet provider),"Quien pone a disposición la aplicación: el propio Estado miembro, una organización a la que se lo encarga o una entidad independiente que el Estado reconoce",thematic/eIDAS.png
+pid-meaning,TRUE,general,typed,¿Qué es el PID de la cartera EUDI?,datos de identificación de la persona|datos de identificación personal,thematic/eIDAS.png
+pid-content,TRUE,general,reversed,Datos de identificación de la persona (PID),"Los que acreditan quién eres (nombre, apellidos, fecha de nacimiento), como hoy el DNI. Los emite el proveedor de PID que designa cada Estado miembro",thematic/eIDAS.png
+pid-provider-spain,TRUE,general,typed,Organismo que presumiblemente emitirá el PID en España,AEAD|Agencia Estatal de Administración Digital,thematic/eIDAS.png
+pub-eaa-definition,TRUE,general,reversed,PuB-EAA,"Declaración de atributos que emite el organismo público responsable de la fuente auténtica del dato, como el ayuntamiento para el padrón. Equivale a un documento en papel",thematic/eIDAS.png
+eudi-ecosystem-not-trust-services,TRUE,general,reversed,"Cartera, PID y PuB-EAA frente a los servicios de confianza",Forman parte del ecosistema EUDI pero no son servicios de confianza ni aparecen en las TL: sus proveedores se publican en las LoTE,thematic/eIDAS.png
+lote-meaning,TRUE,general,typed,¿Qué es LoTE?,List of Trusted Entities|lista de entidades de confianza|listas de entidades de confianza,thematic/eIDAS.png
+lote-definition,TRUE,general,reversed,Listas de entidades de confianza (LoTE),"Listas firmadas, una por tipo de entidad y válidas en toda la UE, que publica la Comisión con los proveedores que le notifican los Estados miembros",thematic/eIDAS.png
+eudi-issuer-trust-anchors,TRUE,general,reversed,¿Dónde publica sus anclas de confianza cada emisor de la cartera EUDI?,"PID y PuB-EAA: en una LoTE. QEAA: en la TL de su país. EAA no cualificada: no hay lista común, depende de mecanismos nacionales o sectoriales",thematic/eIDAS.png
+registration-vs-published-list,FALSE,general,reversed,Registro de una entidad frente a lista publicada,El registro es el trámite administrativo ante el Estado miembro; el verificador consulta la lista publicada (TL o LoTE) con los certificados del emisor,thematic/eIDAS.png
+wallet-provider-lote-check,FALSE,general,reversed,¿Para qué consulta el proveedor de PID la LoTE de proveedores de carteras?,Para comprobar que la cartera es auténtica antes de emitirle el PID,thematic/eIDAS.png
+lote-vs-tl-validation,FALSE,general,reversed,Validar un emisor con una LoTE frente a una TL,Con la LoTE se va directamente a la lista del tipo de entidad; con la TL hay que pasar antes por la LOTL,thematic/eIDAS.png
+eudi-wallet-data-minimization,TRUE,general,reversed,Principio relevante de la EUDI Wallet,Minimización de datos: revelar que eres mayor de edad sin mostrar la fecha de nacimiento,thematic/eIDAS.png
+selective-disclosure,TRUE,general,typed,¿Cómo se llama demostrar que eres mayor de edad sin revelar tu fecha de nacimiento?,divulgación selectiva,thematic/eIDAS.png
+eudi-wallet-infrastructure,TRUE,general,reversed,¿Por qué la EUDI Wallet no es solo un DNI digital?,"Es una infraestructura de identidad y credenciales controlada por el usuario para que distintas entidades emitan, soliciten y verifiquen información de forma segura e interoperable",thematic/eIDAS.png
+eudi-wallet-private-sectors,TRUE,general,reversed,Sector privado obligado a aceptar la cartera EUDI,"El regulado (banca, telecomunicaciones, energía, transporte, sanidad, seguros, educación e infraestructura digital) cuando su normativa exija autenticación reforzada",thematic/eIDAS.png
+eidas-new-trust-services,TRUE,general,typed,"En eIDAS2, enumera en inglés los nuevos servicios de confianza",EAA|Electronic Attestation of Attributes;Electronic Archiving|archiving;Electronic Ledger|Electronic Ledgers|ledger,thematic/eIDAS.png
+eaa-meaning,TRUE,general,typed,¿Qué es EAA en eIDAS2?,Electronic Attestation of Attributes,thematic/eIDAS.png
+eaa-definition,TRUE,general,reversed,Declaración electrónica de atributos,"Manifestación electrónica firmada que acredita que un atributo de una persona física o jurídica es cierto (edad, título, permiso, cargo) sin identificarla por completo",thematic/eIDAS.png
+eaa-spanish-term,TRUE,general,typed,Término oficial en español para attestation en EAA,declaración,thematic/eIDAS.png
+pid-vs-eaa,TRUE,general,reversed,PID frente a declaración de atributos,El PID responde a «¿quién eres?» y la declaración a «¿es cierto este dato sobre ti?»,thematic/eIDAS.png
+eidas-2-credential-types,TRUE,general,typed,Los tres tipos de declaración electrónica de atributos,EAA;QEAA;PuB-EAA|PuBEAA|Pub EAA,thematic/eIDAS.png
+eaa-types-by-issuer,TRUE,general,reversed,"EAA, QEAA y PuB-EAA según su emisor","EAA: cualquier TSP, no se le niega valor por ser electrónica. QEAA: un QTSP, equivale al papel en toda la UE. PuB-EAA: el organismo de la fuente auténtica, también equivale al papel",thematic/eIDAS.png
+authentic-source,TRUE,general,reversed,Fuente auténtica,"Registro oficial que custodia un dato, como el registro civil, el registro mercantil o el de la DGT",thematic/eIDAS.png
+qeaa-annex-vi-check,FALSE,general,reversed,¿Qué debe hacer un QTSP antes de emitir una QEAA de un atributo del anexo VI?,Comprobarlo en la fuente auténtica. La PuB-EAA no lo necesita porque la emite la propia fuente,thematic/eIDAS.png
+qeaa-verification,TRUE,general,reversed,Dos comprobaciones al recibir una QEAA,"La firma o el sello cualificado del QTSP que la emite, y que ese prestador figure en la TL con el servicio de declaraciones cualificadas",thematic/eIDAS.png
+eaa-mandatory-formats,TRUE,general,typed,Dos formatos de declaración que la cartera EUDI debe admitir,mdoc|ISO/IEC 18013-5|ISO 18013-5|18013-5;SD-JWT VC|SD-JWT,thematic/eIDAS.png
+mdoc-origin,TRUE,general,typed,¿De qué documento es el formato mdoc?,carné de conducir móvil|carnet de conducir móvil,thematic/eIDAS.png
+sd-jwt-vc,TRUE,general,reversed,SD-JWT VC,"Credencial en JSON con divulgación selectiva, definida en el IETF",thematic/eIDAS.png
+eaa-w3c-format,FALSE,general,reversed,W3C VCDM 2.0 en la cartera EUDI,Formato opcional y solo para EAA no cualificadas; podría pasar a obligatorio cuando ETSI publique perfiles para él,thematic/eIDAS.png
+mdoc-proximity,FALSE,general,typed,Único formato de declaración válido en una presentación presencial (proximidad),mdoc|ISO/IEC 18013-5|ISO 18013-5|18013-5,thematic/eIDAS.png
+archiving-definition,TRUE,general,reversed,Archivo electrónico (servicio de confianza),"Servicio que recibe, almacena, recupera y elimina datos y documentos para que conserven legibilidad, integridad, confidencialidad y prueba de origen durante el periodo de conservación",thematic/eIDAS.png
+archiving-vs-preservation,TRUE,general,reversed,Archivo electrónico frente a conservación cualificada de firmas y sellos,"La conservación mantiene verificable una firma o sello cuando su tecnología queda obsoleta; el archivo cubre cualquier dato o documento, firmado o no",thematic/eIDAS.png
+archiving-qualified-effect,TRUE,general,reversed,Efecto jurídico del archivo electrónico cualificado,Presunción de integridad y origen de los datos y documentos durante todo el periodo de conservación,thematic/eIDAS.png
+archiving-requirements,TRUE,general,reversed,Requisitos del archivo electrónico cualificado,"Datos duraderos y legibles más allá de la tecnología que los protege, protegidos frente a pérdidas y alteraciones (se admiten migraciones de formato) e informe automatizado de integridad al recuperarlos",thematic/eIDAS.png
+eidas-2-ledger-definition,TRUE,general,reversed,El libro mayor electrónico de eIDAS2 se define como...,Secuencia de registros electrónicos de datos que garantiza su integridad y la exactitud de su orden cronológico. Puede ser cualificado o no cualificado,thematic/eIDAS.png
+eidas-electronic-ledger-guarantees,TRUE,general,typed,¿Qué tres cosas garantiza un libro mayor electrónico cualificado?,origen|procedencia|origen de los registros;integridad;orden cronológico,thematic/eIDAS.png
+ledger-technology,TRUE,general,reversed,Tecnología exigida a un libro mayor electrónico en eIDAS2,Ninguna concreta: puede ser un registro centralizado de un único prestador o una red de nodos que acuerdan la secuencia,thematic/eIDAS.png
+ledger-qualified-vs-not,TRUE,general,reversed,Libro mayor electrónico no cualificado frente a cualificado,"No cualificado: no se le niega valor como prueba por ser electrónico, pero se valora caso a caso. Cualificado: lo gestionan QTSP y tiene presunción de unicidad, orden e integridad",thematic/eIDAS.png
+ledger-presumption-limit,TRUE,general,reversed,Límite de la presunción de un libro mayor cualificado,"Acredita la integridad, el origen y la posición cronológica del registro, no que su contenido sea verdadero (que la entrega registrada se produjera)",thematic/eIDAS.png
+ledger-act-mechanisms,FALSE,general,reversed,Mecanismos que concreta el Reglamento de Ejecución 2025/2531,"Origen e integridad con firmas o sellos avanzados basados en certificados cualificados, orden con listas o árboles hash o sellos de tiempo cualificados, detección inmediata de cambios y protección de claves",thematic/eIDAS.png
+ledger-hash-functions,FALSE,general,typed,Funciones hash mínimas para encadenar registros en un libro mayor cualificado,SHA-256|SHA256;SHA3-256|SHA3 256,thematic/eIDAS.png
+ledger-act-presumption,FALSE,general,reversed,Presunción de cumplimiento del Reglamento de Ejecución 2025/2531,"Cumplir su anexo da presunción de cumplimiento (artículo 45 terdecies, apartado 2), aunque el QTSP puede demostrarlo con otras prácticas",thematic/eIDAS.png
+ledger-practice-statement,FALSE,general,reversed,¿Dónde documenta el QTSP los mecanismos de su libro mayor?,En la declaración de prácticas del servicio,thematic/eIDAS.png
+qdlt-meaning,TRUE,general,reversed,qDLT,Libro mayor electrónico distribuido cualificado: la variante en la que una red de nodos mantiene los registros sincronizados mediante consenso,thematic/eIDAS.png
+ledger-node,TRUE,general,reversed,Nodo en un libro mayor distribuido,Dispositivo o proceso de la red que almacena una copia completa o parcial de los registros,thematic/blockchain.png
+distributed-network,TRUE,general,reversed,Red distribuida en un libro mayor,Conjunto de nodos que forman el sistema de registro distribuido,thematic/blockchain.png
+ledger-consensus,TRUE,general,reversed,Consenso en un libro mayor distribuido,Acuerdo entre los nodos sobre la validez de las transacciones y el mantenimiento de un conjunto coherente y ordenado de transacciones validadas,thematic/blockchain.png
+consensus-mechanism,TRUE,general,reversed,Mecanismo de consenso,Conjunto de reglas y procedimientos con los que los nodos alcanzan el consenso,thematic/blockchain.png
+qdlt-finality,TRUE,general,reversed,Carácter definitivo (finality) en un qDLT,Estado de un registro que ya es irreversible y no puede modificarse ni suprimirse; la red debe poder determinar cuándo se alcanza,thematic/eIDAS.png
+preservation-archive-ledger,TRUE,general,reversed,"Conservación de firmas, archivo y libro mayor cualificados",Conservación: mantiene válida la evidencia criptográfica. Archivo: custodia el documento. Libro mayor: fija un orden cronológico verificable de hechos,thematic/eIDAS.png
+ledger-use-cases,TRUE,general,typed,Cinco ejemplos de aplicación del libro mayor electrónico,cadena de suministro|cadena suministro;propiedad intelectual;trazabilidad documental|trazabilidad;transacciones empresariales;auditoría,thematic/eIDAS.png
+ebsi-meaning,TRUE,general,typed,¿Qué es EBSI?,European Blockchain Services Infrastructure,thematic/blockchain.png
+ebsi-manager,TRUE,general,typed,¿Qué entidad gestiona hoy EBSI?,EUROPEUM-EDIC|EUROPEUM EDIC|EUROPEUM,thematic/blockchain.png
+ebsi-role,TRUE,general,reversed,Función de la red EBSI,"Actúa como ancla de una infraestructura DID de W3C para un consorcio de países, con un recorrido limitado por el RGPD",thematic/blockchain.png
+ebsi-not-qualified-ledger,TRUE,general,reversed,¿Por qué EBSI no es un libro mayor cualificado?,"Es una red DLT permisionada que opera un consorcio institucional, no un objeto normativo: tendría que gestionarla uno o varios QTSP cumpliendo los requisitos de eIDAS2",thematic/blockchain.png
+ebsi-technical-rules,FALSE,general,reversed,"¿Dónde publica EBSI sus reglas técnicas (arquitectura, alta de nodos, APIs)?","En su portal de desarrollo, EBSI Hub, no en el DOUE",thematic/blockchain.png
+isbe-meaning,TRUE,general,typed,¿Qué significa ISBE?,Infraestructura de Servicios Blockchain de España,thematic/blockchain.png
+isbe-promoters,TRUE,general,reversed,¿Quién impulsa y quién opera ISBE?,"La impulsa la Comunidad de Madrid con fondos Next Generation EU, y la desarrolla y opera Alastria sobre Hyperledger Besu",thematic/blockchain.png
+isbe-technology,TRUE,general,typed,Tecnología blockchain sobre la que funciona ISBE,Hyperledger Besu|Besu,thematic/blockchain.png
+isbe-eidas-goal,TRUE,general,reversed,Aspiración de ISBE en eIDAS2,Ser QTSP del libro mayor electrónico cualificado sobre una blockchain público-permisionada; todavía no figura en la lista de confianza,thematic/blockchain.png
+isbe-gdpr-approach,TRUE,general,reversed,Cómo aborda ISBE la directriz del EDPB sobre blockchain,"En la cadena solo guarda una huella del dato, que sin una clave secreta guardada fuera no identifica a nadie; para borrar se destruye esa clave",thematic/blockchain.png
 dora,TRUE,general,reversed,DORA,Reglamento sobre la resiliencia operativa digital del sector financiero,
-mica,TRUE,general,reversed,MiCA,Reglamento que regula la emisión de criptoactivos y los servicios sobre ellos,
+mica,TRUE,general,reversed,MiCA,Reglamento que regula la emisión de criptoactivos y los servicios sobre ellos,thematic/blockchain.png
 data-act,TRUE,general,reversed,Data Act,Reglamento que regula el acceso a los datos de los productos conectados y fija requisitos para los smart contracts que ejecutan acuerdos de intercambio de datos,
 nis2,TRUE,general,reversed,NIS2,Directiva que exige medidas de ciberseguridad y notificación de incidentes a las entidades esenciales e importantes,
 ens-meaning,TRUE,general,typed,¿Qué es el ENS?,Esquema Nacional de Seguridad,
 ens-scope,TRUE,general,reversed,Esquema Nacional de Seguridad (ENS),Fija la seguridad exigida al sector público español y a sus proveedores tecnológicos,
 lmvsi-meaning,TRUE,general,typed,¿Qué es la LMVSI?,Ley de los Mercados de Valores y de los Servicios de Inversión,
-lmvsi-dlt,TRUE,general,reversed,Qué admite la LMVSI respecto a blockchain,Representar valores con tecnología de registro distribuido,
-isbe-regulations,FALSE,general,typed,Normas que tiene en cuenta ISBE desde el diseño (8),eIDAS2|eIDAS;RGPD|GDPR;DORA;MiCA;Data Act;NIS2;ENS;LMVSI,
-isbe-architecture,TRUE,general,reversed,Arquitectura de ISBE,"Red de redes federada: una red base y redes de casos de uso donde se despliegan los smart contracts, con capa pública abierta y control permisionado",
-isbe-smart-contract-pattern,FALSE,general,typed,Patrón del Smart Contract Framework de ISBE,Diamond|patrón Diamond|EIP-2535|EIP 2535,
-isbe-did-method,TRUE,general,typed,Método DID de ISBE,did:isbe,
-isbe-gdpr-component,TRUE,general,typed,Pieza de ISBE orientada a garantizar el RGPD,Filtering Proxy,
-isbe-tkn,FALSE,general,reversed,Token TKN de ISBE,Utility token denominado en euros y exento de MiCA,
+lmvsi-dlt,TRUE,general,reversed,Qué admite la LMVSI respecto a blockchain,Representar valores con tecnología de registro distribuido,thematic/blockchain.png
+isbe-regulations,FALSE,general,typed,Normas que tiene en cuenta ISBE desde el diseño (8),eIDAS2|eIDAS;RGPD|GDPR;DORA;MiCA;Data Act;NIS2;ENS;LMVSI,thematic/blockchain.png
+isbe-architecture,TRUE,general,reversed,Arquitectura de ISBE,"Red de redes federada: una red base y redes de casos de uso donde se despliegan los smart contracts, con capa pública abierta y control permisionado",thematic/blockchain.png
+isbe-smart-contract-pattern,FALSE,general,typed,Patrón del Smart Contract Framework de ISBE,Diamond|patrón Diamond|EIP-2535|EIP 2535,thematic/blockchain.png
+isbe-did-method,TRUE,general,typed,Método DID de ISBE,did:isbe,thematic/blockchain.png
+isbe-gdpr-component,TRUE,general,typed,Pieza de ISBE orientada a garantizar el RGPD,Filtering Proxy,thematic/blockchain.png
+isbe-tkn,FALSE,general,reversed,Token TKN de ISBE,Utility token denominado en euros y exento de MiCA,thematic/blockchain.png
 kyb-meaning,TRUE,general,typed,¿Qué es KYB?,Know Your Business,
-baas-meaning,TRUE,general,typed,¿Qué es BaaS?,Blockchain as a Service,
-qel-acronym,TRUE,general,typed,Siglas del libro mayor electrónico cualificado en ISBE,QEL,
-isbe-management-entity,FALSE,general,reversed,Entidad gestora de ISBE,"Única contraparte de cada participante: admite y excluye participantes, aprueba las políticas ISBE y define el protocolo de consenso",
-isbe-onboarding,FALSE,general,reversed,Requisitos para participar en ISBE,"Ser persona jurídica, firmar el Contrato Marco de Adhesión con al menos un anexo de rol y superar una verificación KYB",
-isbe-participation-levels,TRUE,general,typed,Los cinco niveles de participación en ISBE,básico;observador;desarrollador;operador de nodo de ejecución|nodo de ejecución;operador de nodo de consenso|nodo de consenso,
-isbe-observer-level,FALSE,general,reversed,Nivel observador de ISBE,"Acceso de solo lectura con monitorización, reservado a supervisores, reguladores y organismos públicos de la UE o el EEE",
-isbe-execution-vs-consensus-node,FALSE,general,reversed,Nodo de ejecución frente a nodo de consenso en ISBE,"Ejecución: procesa transacciones y expone RPC o APIs, sin participar en el consenso. Consenso: propone y valida bloques, en la UE, el EEE u otro territorio autorizado, en red cerrada y con SLAs. Ambos requieren aprobación de la entidad gestora",
-isbe-economic-model,FALSE,general,reversed,Modelo económico de ISBE,"Tarifas fijas por los servicios consumidos (BaaS, Trust Framework & Registry, Network Service Provider), sin gas fees por transacción",
-isbe-qel-network,FALSE,general,typed,Red de ISBE sobre la que se presta el libro mayor electrónico cualificado (QEL),Bare|red Bare,
-alastria,TRUE,general,reversed,Alastria,"Asociación española sin ánimo de lucro en torno a redes blockchain permisionadas; tiene redes propias, distintas de ISBE",
-blockchain-sandbox,TRUE,general,reversed,European Blockchain Sandbox,Espacio de diálogo de la Comisión para que proyectos blockchain consultaran dudas legales a reguladores. No aprueba proyectos ni cambia normas,
-blockchain-sandbox-conclusion,TRUE,general,reversed,Conclusión principal del European Blockchain Sandbox,"La regulación europea permite usar blockchain; lo difícil es saber cómo cumplir cada norma (RGPD, NIS2, eIDAS2, MiCA...) en un proyecto concreto",
-business-wallet-definition,TRUE,general,reversed,Cartera Empresarial Europea (European Business Wallet),Herramienta para que empresas y administraciones se identifiquen e intercambien documentos con validez jurídica en la UE: es a las organizaciones lo que la EUDI Wallet a los ciudadanos,
-business-wallet-vs-eidas2,TRUE,general,reversed,Relación de la Cartera Empresarial Europea con eIDAS2,No forma parte de eIDAS2: es un reglamento propio que reutiliza sus servicios de confianza y sus organismos de supervisión,
-business-wallet-functions,TRUE,general,reversed,Funciones básicas de la Cartera Empresarial Europea,"Identificar y autenticar a la empresa, firmar y sellar documentos, y enviar y recibir documentos con constancia de entrega (entrega electrónica certificada cualificada)",
-business-wallet-obligation,TRUE,general,reversed,Obligatoriedad de la Cartera Empresarial Europea,"Voluntaria para las empresas, pero las administraciones públicas estarían obligadas a aceptarla para sus funciones básicas",
-business-wallet-status,FALSE,general,reversed,Estado de la Cartera Empresarial Europea en noviembre de 2026,"Propuesta de la Comisión del 19 de noviembre de 2025, en negociación entre Parlamento y Consejo; después necesitará actos de ejecución"
+baas-meaning,TRUE,general,typed,¿Qué es BaaS?,Blockchain as a Service,thematic/blockchain.png
+qel-acronym,TRUE,general,typed,Siglas del libro mayor electrónico cualificado en ISBE,QEL,thematic/blockchain.png
+isbe-management-entity,FALSE,general,reversed,Entidad gestora de ISBE,"Única contraparte de cada participante: admite y excluye participantes, aprueba las políticas ISBE y define el protocolo de consenso",thematic/blockchain.png
+isbe-onboarding,FALSE,general,reversed,Requisitos para participar en ISBE,"Ser persona jurídica, firmar el Contrato Marco de Adhesión con al menos un anexo de rol y superar una verificación KYB",thematic/blockchain.png
+isbe-participation-levels,TRUE,general,typed,Los cinco niveles de participación en ISBE,básico;observador;desarrollador;operador de nodo de ejecución|nodo de ejecución;operador de nodo de consenso|nodo de consenso,thematic/blockchain.png
+isbe-observer-level,FALSE,general,reversed,Nivel observador de ISBE,"Acceso de solo lectura con monitorización, reservado a supervisores, reguladores y organismos públicos de la UE o el EEE",thematic/blockchain.png
+isbe-execution-vs-consensus-node,FALSE,general,reversed,Nodo de ejecución frente a nodo de consenso en ISBE,"Ejecución: procesa transacciones y expone RPC o APIs, sin participar en el consenso. Consenso: propone y valida bloques, en la UE, el EEE u otro territorio autorizado, en red cerrada y con SLAs. Ambos requieren aprobación de la entidad gestora",thematic/blockchain.png
+isbe-economic-model,FALSE,general,reversed,Modelo económico de ISBE,"Tarifas fijas por los servicios consumidos (BaaS, Trust Framework & Registry, Network Service Provider), sin gas fees por transacción",thematic/blockchain.png
+isbe-qel-network,FALSE,general,typed,Red de ISBE sobre la que se presta el libro mayor electrónico cualificado (QEL),Bare|red Bare,thematic/blockchain.png
+alastria,TRUE,general,reversed,Alastria,"Asociación española sin ánimo de lucro en torno a redes blockchain permisionadas; tiene redes propias, distintas de ISBE",thematic/blockchain.png
+blockchain-sandbox,TRUE,general,reversed,European Blockchain Sandbox,Espacio de diálogo de la Comisión para que proyectos blockchain consultaran dudas legales a reguladores. No aprueba proyectos ni cambia normas,thematic/blockchain.png
+blockchain-sandbox-conclusion,TRUE,general,reversed,Conclusión principal del European Blockchain Sandbox,"La regulación europea permite usar blockchain; lo difícil es saber cómo cumplir cada norma (RGPD, NIS2, eIDAS2, MiCA...) en un proyecto concreto",thematic/blockchain.png
+business-wallet-definition,TRUE,general,reversed,Cartera Empresarial Europea (European Business Wallet),Herramienta para que empresas y administraciones se identifiquen e intercambien documentos con validez jurídica en la UE: es a las organizaciones lo que la EUDI Wallet a los ciudadanos,thematic/eIDAS.png
+business-wallet-vs-eidas2,TRUE,general,reversed,Relación de la Cartera Empresarial Europea con eIDAS2,No forma parte de eIDAS2: es un reglamento propio que reutiliza sus servicios de confianza y sus organismos de supervisión,thematic/eIDAS.png
+business-wallet-functions,TRUE,general,reversed,Funciones básicas de la Cartera Empresarial Europea,"Identificar y autenticar a la empresa, firmar y sellar documentos, y enviar y recibir documentos con constancia de entrega (entrega electrónica certificada cualificada)",thematic/eIDAS.png
+business-wallet-obligation,TRUE,general,reversed,Obligatoriedad de la Cartera Empresarial Europea,"Voluntaria para las empresas, pero las administraciones públicas estarían obligadas a aceptarla para sus funciones básicas",thematic/eIDAS.png
+business-wallet-status,FALSE,general,reversed,Estado de la Cartera Empresarial Europea en noviembre de 2026,"Propuesta de la Comisión del 19 de noviembre de 2025, en negociación entre Parlamento y Consejo; después necesitará actos de ejecución",thematic/eIDAS.png

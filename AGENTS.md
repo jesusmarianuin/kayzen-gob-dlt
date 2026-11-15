@@ -2,7 +2,7 @@
 
 ## Lectura de contexto del repositorio
 
-- Solo puedes leer los ficheros o directorios que el usuario comparta en el prompt o cuya ruta aparezca explícitamente en él. Se puede compartir una ruta de archivo o una ruta de directorio lo que implícitamente es también autorizar a sus ficheros contenidos.
+- Solo puedes leer los ficheros o directorios que el usuario comparta en el prompt o cuya ruta aparezca explícitamente en él (el fichero abierto en el editor cuenta como compartido). Se puede compartir una ruta de archivo o una ruta de directorio lo que implícitamente es también autorizar a sus ficheros contenidos.
 - Cualquier otra lectura está prohibida, incluido el intento, y con independencia de que fuera a ser aprobada.
 - Siempre tienes acceso completo a la carpeta de skills ".claude"
 - Si falta información, pregunta. Nunca la busques.

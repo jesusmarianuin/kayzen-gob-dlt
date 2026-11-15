@@ -86,7 +86,12 @@ Para cada fila con `enabled` distinto de `false` y la columna `image` vacía:
    ```
 
    Guarda `app/static/images/<note_id>.jpg`, escribe el nombre en la columna `image` y añade el autor y la licencia a `data/image-credits.md`.
-5. Si ningún candidato encaja, busca con otro término. Haz como máximo 3 búsquedas por tarjeta; si ninguna sirve, deja la columna vacía y avisa en el chat.
+5. Si ningún candidato encaja, busca con otro término. Haz como máximo 3 búsquedas por tarjeta.
+6. Si ninguna búsqueda sirve, usa una imagen temática de `app/static/images/thematic/`:
+   - Deduce el tema de la tarjeta por su pregunta, su respuesta y su área (por ejemplo, una pregunta sobre servicios de confianza es de eIDAS)
+   - Compara el tema con los nombres de fichero de la carpeta, sin extensión y sin distinguir mayúsculas (`eIDAS.png` es el tema eIDAS, `blockchain.png` el tema blockchain)
+   - Si coincide, escribe en la columna `image` la ruta `thematic/<fichero>`, por ejemplo `thematic/eIDAS.png`. No descargues nada ni añadas créditos
+   - Si no coincide ningún tema, deja la columna vacía y avisa en el chat
 
 ## Paso 4: verificar
 
@@ -100,5 +105,5 @@ Termina con un resumen en el chat:
 
 - Tarjetas añadidas
 - Id asignados
-- Imagen elegida para cada tarjeta, con el término que la encontró
+- Imagen elegida para cada tarjeta, con el término que la encontró, o la imagen temática asignada y el tema deducido
 - Tarjetas sin imagen y avisos sobre erratas o respuestas dudosas

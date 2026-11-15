@@ -7,7 +7,17 @@ eIDAS es un [reglamento](https://eur-lex.europa.eu/ES/legal-content/summary/euro
 
 Por una parte, permite el reconocimiento de sistemas nacionales de identificación electrónica (eID), incluyendo los procesos de autenticación asociados, notificados por los Estados miembros. Por ejemplo, DNI electrónico es reconocido como sistema de identificación electrónica.
 
-Por otra parte, regula los **servicios de confianza** (TS, Trust Service). Un servicio de confianza es un servicio electrónico que permite realizar determinadas operaciones relacionadas con la confianza en transacciones electrónicas (a ciudadanos, empresas, organizaciones o administraciones públicas) y que está regulado, como puede ser la firma, sello de tiempo electrónicos (TSA), entrega electrónica cualificada (ERDS o Qualified Electronic Registered Delivery Service) y certificados de autenticación de sitios web.
+Por otra parte, regula los **servicios de confianza** (TS, Trust Service). Un servicio de confianza es un servicio electrónico que permite realizar determinadas operaciones relacionadas con la confianza en transacciones electrónicas (a ciudadanos, empresas, organizaciones o administraciones públicas) y que está regulado. eIDAS reconoce estos servicios de confianza:
+
+- Emisión de certificados de firma electrónica (QCert for ESig, Qualified Certificate for Electronic Signature).
+- Emisión de certificados de sello electrónico (QCert for ESeal, Qualified Certificate for Electronic Seal).
+- Emisión de certificados de autenticación de sitios web (QWAC, Qualified Website Authentication Certificate).
+- Validación de firmas y sellos electrónicos (QVal, Qualified Validation Service).
+- Conservación de firmas y sellos electrónicos (QPres, Qualified Preservation Service).
+- Sello de tiempo electrónico (TSA, Time-Stamping Authority, o QTimestamp, Qualified Electronic Time Stamp, si es cualificado).
+- Entrega electrónica certificada (ERDS, Electronic Registered Delivery Service, o QERDS, Qualified Electronic Registered Delivery Service, si es cualificada).
+
+Las siglas que empiezan por Q corresponden a la versión cualificada de cada servicio.
 
 Un servicio de confianza, tiene un **Prestador de Servicios de Confianza** (TSP Trust Service Provider) que es la entidad que presta dichos servicios, bajo la supervisión del Estado miembro correspondiente. Un prestador puede estar sujeto a requisitos nacionales que limiten a quién presta el servicio.
 
@@ -98,7 +108,7 @@ Introduce el servicio de archivo electrónico. Su finalidad es garantizar la con
 
 Está orientado a conservar evidencias digitales con valor jurídico.
 
-Para la administración ya estaba habilitado que terceros le ofrezacan ese servicio, como plataformas como SIAVAL, lo que habilita es el status legal cuando es un servicio cualificado, con una presunción legal de integridad en toda la UE.
+No hay que confundirlo con la conservación de firmas y sellos que ya existía en eIDAS. Esa conservación solo garantiza que una firma o un sello se puedan seguir validando con el paso del tiempo, aunque caduque el certificado o se debilite el algoritmo. El archivo electrónico cubre cualquier documento o dato, esté firmado o no, y garantiza que se mantiene íntegro y disponible durante todo el periodo de archivo.
 
 [**Libros mayores electrónicos (*Electronic Ledger*)**](electronic-ledger.md):
 

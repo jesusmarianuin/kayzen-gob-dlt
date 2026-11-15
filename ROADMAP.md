@@ -9,4 +9,6 @@ Este es el documento que es la brújula de mi viaje de aprendizaje.
 
 No puede ser perfecto desde el principio, por eso uso kayzen, cada iteración lo ira afinando y mejorando.
 
+
+
 ---
