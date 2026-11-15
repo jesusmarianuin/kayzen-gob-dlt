@@ -1,6 +1,6 @@
-# Blockchain Operational Resilience and Governance (resiliencia operativa y gobernanza de redes blockchain)
+# Resiliencia operativa y gobernanza de redes blockchain
 
-Objetivo: Identificar los factores de ingeniería necesarios para que los sistemas complejos —en particular, las redes DLT permisionadas— sean automatizados y redundantes, garantizando su continuidad operativa, resiliencia y capacidad de evolución. Esta es la razón de ser del análisis: reducir la dependencia de intervenciones manuales y evitar puntos únicos de fallo.
+Objetivo: Identificar los factores de ingeniería necesarios para que los sistemas complejos —en particular, las redes DLT permisionadas— sean automatizados y redundantes, garantizando su continuidad operativa, resiliencia y capacidad de evolución. Esta es la razón de ser del análisis: reducir en un DLT la dependencia de intervenciones manuales y evitar puntos únicos de fallo.
 
 ## Alcance y principios del análisis
 
