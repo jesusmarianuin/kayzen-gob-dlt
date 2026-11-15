@@ -10,7 +10,7 @@ Resumen técnico de la solución a [SPEC.md](SPEC.md). Los casos de prueba acord
 - Cada nota pertenece a un área. Al arrancar se elige el área, y el repaso, el progreso y el estudio libre se limitan a ella.
 - Exportación a Anki desde la pantalla de progreso.
 - Planificación con SM-2, con un intervalo máximo de 21 días.
-- Pantallas: áreas (al arrancar), repaso, progreso, ayuda (se abre sola la primera vez) y estudio libre (no cuenta para el calendario).
+- Pantallas: áreas (al arrancar), repaso, progreso, estudio libre (no cuenta para el calendario) y ayuda (se abre sola la primera vez).
 - Imágenes de fondo descargadas desde Wikimedia Commons con un script.
 
 ## Componentes
@@ -227,7 +227,7 @@ Tarjetas hermanas: las dos tarjetas de una nota del modelo 1 no se muestran el m
 
 ## Navegación
 
-Barra superior en todas las pantallas: nombre del área elegida · **Estudiar** · **Progreso** · **Ayuda** · **Estudio libre** · **Ya vale por hoy**. El nombre del área lleva a la pantalla de áreas.
+Barra superior en todas las pantallas: a la izquierda el menú **Elegir área** · **Estudiar** · **Progreso** · **Estudio libre** · **Ayuda**; en el centro el nombre del área elegida (o el título de la app si aún no hay ninguna); a la derecha **Ya vale por hoy**.
 
 El área elegida se guarda en la sesión de Flask (cookie). La clave de la sesión es nueva en cada arranque, así que cada vez que se abre la app se vuelve a elegir área. Si se entra en el repaso, el progreso o el estudio libre sin área elegida, se redirige a `/areas`.
 
