@@ -58,3 +58,42 @@ def apply_rating(state: dict | None, rating: str, now: datetime) -> dict:
     state["last_review"] = now.isoformat(timespec="seconds")
     state.setdefault("first_seen", now.date().isoformat())
     return state
+
+
+# Resultados del examen: fijan el grupo de la tarjeta, suba o baje
+EXAM_FAIL = "fail"
+EXAM_PASS = "pass"
+EXAM_EASY = "easy"
+EXAM_RESULTS = (EXAM_FAIL, EXAM_PASS, EXAM_EASY)
+# reps mínimas tras el examen, para que el siguiente "Bien" en Estudiar multiplique el intervalo
+EXAM_MIN_REPS = 2
+
+
+def apply_exam(state: dict | None, result: str, now: datetime) -> dict:
+    """Return the new state of a card after an exam answer.
+
+    fail -> "no las sé" (como "Fallé"), pass -> "medio", easy -> "buen progreso".
+    """
+    if result not in EXAM_RESULTS:
+        raise ValueError(f"Resultado de examen desconocido: {result}")
+    is_new = state is None
+    if result == EXAM_FAIL:
+        state = apply_rating(state, AGAIN, now)
+    else:
+        state = dict(state or new_state())
+        interval = state["interval_days"]
+        if result == EXAM_EASY:
+            interval = config.MAX_INTERVAL_DAYS
+        elif not config.MEDIUM_FROM_DAYS <= interval < config.MAX_INTERVAL_DAYS:
+            # Si ya estaba en "medio" conserva su intervalo; si no, entra en "medio" por abajo
+            interval = config.MEDIUM_FROM_DAYS
+        state["interval_days"] = interval
+        state["reps"] = max(state["reps"], EXAM_MIN_REPS)
+        due = datetime.combine(now.date() + timedelta(days=interval), time.min)
+        state["due"] = due.isoformat(timespec="seconds")
+        state["last_review"] = now.isoformat(timespec="seconds")
+        state.setdefault("first_seen", now.date().isoformat())
+    if is_new:
+        # Una tarjeta vista por primera vez en el examen no gasta el límite diario de nuevas de Estudiar
+        state["from_exam"] = True
+    return state

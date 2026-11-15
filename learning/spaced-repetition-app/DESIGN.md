@@ -10,7 +10,7 @@ Resumen técnico de la solución a [SPEC.md](SPEC.md). Los casos de prueba acord
 - Cada nota pertenece a un área. Al arrancar se elige el área, y el repaso, el progreso y el estudio libre se limitan a ella.
 - Exportación a Anki desde la pantalla de progreso.
 - Planificación con SM-2, con un intervalo máximo de 21 días.
-- Pantallas: áreas (al arrancar), repaso, progreso, estudio libre (no cuenta para el calendario) y ayuda (se abre sola la primera vez).
+- Pantallas: áreas (al arrancar), repaso, progreso, estudio libre (no cuenta para el calendario), examen (sí cuenta) y ayuda (se abre sola la primera vez).
 - Imágenes de fondo descargadas desde Wikimedia Commons con un script.
 
 ## Componentes
@@ -20,7 +20,7 @@ Resumen técnico de la solución a [SPEC.md](SPEC.md). Los casos de prueba acord
 | `run.py` | Arranca el servidor, abre el navegador y espera la orden de parada |
 | `app/__init__.py` | Crea la app Flask |
 | `app/config.py` | Constantes ajustables (ver [Parámetros](#parámetros)) |
-| `app/routes.py` | Pantallas y acciones: áreas, repaso, progreso, ayuda, estudio libre, exportar, cerrar |
+| `app/routes.py` | Pantallas y acciones: áreas, repaso, progreso, ayuda, estudio libre, examen, exportar, cerrar |
 | `app/storage.py` | Lee `areas.csv` y `cards.csv`, y exporta las notas para Anki; lee y escribe `progress.json` |
 | `app/planner.py` | Decide la siguiente tarjeta de la sesión y el orden del estudio libre |
 | `app/scheduler.py` | Aplica SM-2 a una puntuación |
@@ -222,7 +222,7 @@ Si se adopta en el futuro, el cambio queda dentro de `scheduler.py`. `progress.j
 
 ## Navegación
 
-Barra superior en todas las pantallas: a la izquierda el menú **Elegir área** · **Estudiar** · **Progreso** · **Estudio libre** · **Ayuda**; en el centro el nombre del área elegida (o el título de la app si aún no hay ninguna); a la derecha **Ya vale por hoy**.
+Barra superior en todas las pantallas: a la izquierda el menú **Elegir área** · **Estudiar** · **Progreso** · **Estudio libre** · **Examinarse** · **Ayuda**; en el centro el nombre del área elegida (o el título de la app si aún no hay ninguna); a la derecha **Ya vale por hoy**.
 
 El área elegida se guarda en la sesión de Flask (cookie). La clave de la sesión es nueva en cada arranque, así que cada vez que se abre la app se vuelve a elegir área. Si se entra en el repaso, el progreso o el estudio libre sin área elegida, se redirige a `/areas`.
 
@@ -238,6 +238,9 @@ El área elegida se guarda en la sesión de Flask (cookie). La clave de la sesi�
 | `GET /help` | Manual de ayuda, con botón "Empezar" que lleva a `/study` |
 | `GET /free/start` | Baraja todas las tarjetas y empieza un estudio libre |
 | `GET /free`, `POST /free/answer/<card_id>`, `POST /free/next` | Tarjeta actual, comprobar respuesta tecleada y pasar a la siguiente del estudio libre |
+| `GET /exam/welcome` | Bienvenida al examen: explica el efecto en el progreso y deja elegir el alcance |
+| `POST /exam/start` | Baraja las tarjetas (`scope`: `all` o `exclude-good`) y empieza el examen |
+| `GET /exam`, `POST /exam/answer/<card_id>`, `POST /exam/rate/<card_id>` | Tarjeta actual, comprobar respuesta tecleada y registrar el resultado del examen |
 | `POST /quit` | Ya vale por hoy |
 
 ## Pantalla de progreso
@@ -289,6 +292,22 @@ Repaso de todas las tarjetas cuando se quiera, por ejemplo antes de un examen. *
 - Modelo 1: revelar la respuesta → botón **Siguiente**. Modelo 2: escribir → se muestra si coincide (misma comparación que en el repaso) → botón **Siguiente**. No hay botones de puntuación.
 - El orden barajado y la posición se guardan en la sesión de Flask (cookie), no en disco. Cada arranque de la app empieza sin estudio libre en curso, y al cambiar de área se descarta el que hubiera.
 - Al terminar: "Has repasado N tarjetas" y un enlace para volver a Estudiar.
+
+## Examen
+
+Repaso de las tarjetas del área sin límite diario que **sí modifica `progress.json`**. Sirve para colocar de golpe las tarjetas que ya se saben, sin esperar al ritmo de Estudiar.
+
+- Pantalla de bienvenida (`exam-welcome.html`) con el efecto de cada resultado y dos botones: **Examen completo** (todas las tarjetas del área) o **Excluir el buen progreso**. En ambos casos, **en orden aleatorio**.
+- Misma pantalla que el repaso (`review.html`), con el aviso "Examen: cuenta para tu progreso".
+- Modelo 1: revelar la respuesta → **Fallé**, **Acerté** o **Fácil**. Modelo 2: si no coincide, es fallo sin preguntar; si coincide, **Acerté** o **Fácil**.
+- El resultado fija el grupo de la tarjeta, suba o baje (`scheduler.apply_exam`):
+  - Fallo: igual que "Fallé" en Estudiar. Pasa a "no las sé" y vuelve en `RELEARN_MINUTES`.
+  - Acerté: pasa a "medio". Si ya estaba en "medio" conserva su intervalo; si no, el intervalo es `MEDIUM_FROM_DAYS`.
+  - Fácil: pasa a "buen progreso", con intervalo `MAX_INTERVAL_DAYS`.
+  - En los aciertos, `reps` pasa a 2 como mínimo, para que el siguiente "Bien" en Estudiar multiplique el intervalo.
+- Una tarjeta vista por primera vez en el examen se marca con `from_exam: true` en `progress.json` y no cuenta para el límite diario de nuevas de Estudiar.
+- El orden, la posición y el recuento de resultados se guardan en la sesión de Flask, como en el estudio libre. Un doble envío o el botón "Atrás" no registran dos veces la misma respuesta.
+- Al terminar: recuento de tarjetas que pasan a cada grupo y enlaces a Progreso y a Estudiar.
 
 ## Imágenes
 

@@ -1,8 +1,19 @@
 {% extends "base.html" %}
-{% block title %}{{ 'Estudio libre' if mode == 'free' else 'Repaso' }}{% endblock %}
+{% block title %}{{ 'Estudio libre' if mode == 'free' else 'Examen' if mode == 'exam' else 'Repaso' }}{% endblock %}
 
 {% macro next_or_rate(ratings) %}
-  {% if mode == 'free' %}
+  {% if mode == 'exam' %}
+    <form method="post" action="{{ url_for('exam_rate', card_id=card.id) }}" class="actions ratings">
+      <input type="hidden" name="version" value="{{ version }}">
+      {% for value, label in ratings %}
+        {% if value != 'hard' %}
+          {# Examen: "Fallé", "Acerté" (cualquier acierto que no sea fácil) y "Fácil" #}
+          <button type="submit" name="result" value="{{ 'fail' if value == 'again' else 'pass' if value == 'good' else 'easy' }}"
+                  class="btn rate-{{ value }}">{{ 'Acerté' if value == 'good' else label }}</button>
+        {% endif %}
+      {% endfor %}
+    </form>
+  {% elif mode == 'free' %}
     <form method="post" action="{{ url_for('free_next') }}" class="actions">
       <button type="submit" class="btn primary" autofocus>Siguiente</button>
     </form>
@@ -19,6 +30,8 @@
 {% block content %}
 {% if mode == 'free' %}
   <p class="banner">Estudio libre: no cuenta para tu progreso · {{ position }} de {{ total }}</p>
+{% elif mode == 'exam' %}
+  <p class="banner">Examen: cuenta para tu progreso · {{ position }} de {{ total }}</p>
 {% endif %}
 
 <article class="card">
@@ -37,7 +50,8 @@
 
   {% elif stage == 'question' %}
     <form method="post" class="typed-form"
-          action="{{ url_for('free_answer' if mode == 'free' else 'answer', card_id=card.id) }}">
+          action="{{ url_for('free_answer' if mode == 'free' else 'exam_answer' if mode == 'exam' else 'answer',
+                             card_id=card.id) }}">
       {% if mode != 'free' %}<input type="hidden" name="version" value="{{ version }}">{% endif %}
       <input type="text" name="typed" autocomplete="off" autocapitalize="off" spellcheck="false"
              aria-label="Tu respuesta" autofocus required
@@ -59,6 +73,11 @@
     </dl>
     {% if mode == 'free' %}
       {{ next_or_rate([]) }}
+    {% elif mode == 'exam' %}
+      <p class="hint">Cuenta como fallo: pasa a «No las sé».</p>
+      <div class="actions">
+        <a href="{{ url_for('exam') }}" class="btn primary" autofocus>Continuar</a>
+      </div>
     {% else %}
       <p class="hint">Cuenta como «Fallé»: volverá dentro de unos minutos.</p>
       <div class="actions">

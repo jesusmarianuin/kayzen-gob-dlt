@@ -24,7 +24,8 @@ def new_cards_left_today(cards: list[Card], progress: dict, today: date) -> int:
     # El límite se cuenta sobre las tarjetas recibidas: con las de un área, es un límite por área
     states = progress["cards"]
     seen_today = sum(1 for card in cards
-                     if card.id in states and states[card.id].get("first_seen") == today.isoformat())
+                     if card.id in states and states[card.id].get("first_seen") == today.isoformat()
+                     and not states[card.id].get("from_exam"))
     return max(0, config.NEW_CARDS_PER_DAY - seen_today)
 
 

@@ -23,7 +23,7 @@ pip install -r requirements.txt
 python learning/spaced-repetition-app/run.py
 ```
 
-Se abre el navegador en `http://127.0.0.1:5000`. La primera vez aparece el manual de ayuda, que explica cómo trabajar con la app. Después eliges el área que quieres estudiar. El área que estás estudiando aparece en el centro de la barra superior. Desde el menú de la izquierda se accede a **Elegir área** (para cambiarla), **Estudiar**, **Progreso**, **Estudio libre** y **Ayuda**. Para terminar, pulsa **Ya vale por hoy**: el servidor se detiene y la terminal queda libre.
+Se abre el navegador en `http://127.0.0.1:5000`. La primera vez aparece el manual de ayuda, que explica cómo trabajar con la app. Después eliges el área que quieres estudiar. El área que estás estudiando aparece en el centro de la barra superior. Desde el menú de la izquierda se accede a **Elegir área** (para cambiarla), **Estudiar**, **Progreso**, **Estudio libre**, **Examinarse** y **Ayuda**. Para terminar, pulsa **Ya vale por hoy**: el servidor se detiene y la terminal queda libre.
 
 ## Áreas
 

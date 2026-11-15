@@ -17,6 +17,7 @@
       <a href="{{ url_for('study') }}" class="{{ 'active' if request.endpoint == 'study' }}">Estudiar</a>
       <a href="{{ url_for('progress_page') }}" class="{{ 'active' if request.endpoint == 'progress_page' }}">Progreso</a>
       <a href="{{ url_for('free_start') }}" class="{{ 'active' if request.endpoint and request.endpoint.startswith('free') }}">Estudio libre</a>
+      <a href="{{ url_for('exam_welcome') }}" class="{{ 'active' if request.endpoint and request.endpoint.startswith('exam') }}">Examinarse</a>
       <a href="{{ url_for('help_page') }}" class="{{ 'active' if request.endpoint == 'help_page' }}">Ayuda</a>
     </div>
     <span class="current-area">{{ area.name if area else 'Repetición espaciada' }}</span>

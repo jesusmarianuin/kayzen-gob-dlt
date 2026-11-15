@@ -8,6 +8,9 @@ from flask import Flask, Response, abort, current_app, redirect, render_template
 from app import checker, config, planner, scheduler, stats, storage
 
 WEEKDAYS = ("lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo")
+AREA_ENDPOINTS = ("study", "progress_page", "free_start", "free", "exam_welcome", "exam_start", "exam")
+EXAM_KEYS = ("exam_order", "exam_position", "exam_results")
+EXAM_SCOPES = ("all", "exclude-good")
 MONTHS = ("ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic")
 
 
@@ -49,6 +52,20 @@ def _rate(card_id: str, rating: str, version: str) -> bool:
     return True
 
 
+def _exam_answer(card_id: str, result: str, version: str) -> None:
+    """Apply an exam result and move to the next card, only if the page was up to date (see _rate)."""
+    progress = storage.load_progress()
+    state = progress["cards"].get(card_id)
+    if (state["last_review"] if state else "") != version:
+        return
+    progress["cards"][card_id] = scheduler.apply_exam(state, result, datetime.now())
+    storage.save_progress(progress)
+    results = session.get("exam_results", {})
+    results[result] = results.get(result, 0) + 1
+    session["exam_results"] = results
+    session["exam_position"] = session.get("exam_position", 0) + 1
+
+
 def _current_area() -> storage.Area | None:
     """Area chosen in this run of the app. The session is lost on restart, so each run starts on /areas."""
     area_id = session.get("area")
@@ -61,8 +78,8 @@ def register(app: Flask) -> None:
 
     @app.before_request
     def require_area():
-        # Repaso, progreso y estudio libre trabajan sobre un área: sin elegirla, pantalla de áreas
-        if request.endpoint in ("study", "progress_page", "free_start", "free") and _current_area() is None:
+        # Repaso, progreso, estudio libre y examen trabajan sobre un área: sin elegirla, pantalla de áreas
+        if request.endpoint in AREA_ENDPOINTS and _current_area() is None:
             return redirect(url_for("areas"))
         return None
 
@@ -88,9 +105,9 @@ def register(app: Flask) -> None:
         if area_id not in {area.id for area in storage.load_areas()}:
             abort(404)
         session["area"] = area_id
-        # Un estudio libre a medias era de otra área
-        session.pop("free_order", None)
-        session.pop("free_position", None)
+        # Un estudio libre o un examen a medias era de otra área
+        for key in ("free_order", "free_position", *EXAM_KEYS):
+            session.pop(key, None)
         return redirect(url_for("study"))
 
     @app.get("/study")
@@ -181,6 +198,70 @@ def register(app: Flask) -> None:
     def free_next():
         session["free_position"] = session.get("free_position", 0) + 1
         return redirect(url_for("free"))
+
+    @app.get("/exam/welcome")
+    def exam_welcome():
+        cards = storage.load_cards(area=_current_area().id)
+        states = storage.load_progress()["cards"]
+        good = sum(1 for card in cards if stats.group_of(states.get(card.id)) == stats.GOOD)
+        return render_template("exam-welcome.html", config=config, total=len(cards), without_good=len(cards) - good)
+
+    @app.post("/exam/start")
+    def exam_start():
+        scope = request.form.get("scope", "")
+        if scope not in EXAM_SCOPES:
+            abort(400)
+        cards = storage.load_cards(area=_current_area().id)
+        if scope == "exclude-good":
+            states = storage.load_progress()["cards"]
+            cards = [card for card in cards if stats.group_of(states.get(card.id)) != stats.GOOD]
+        session["exam_order"] = planner.free_order(cards)
+        session["exam_position"] = 0
+        session["exam_results"] = {}
+        return redirect(url_for("exam"))
+
+    @app.get("/exam")
+    def exam():
+        order = session.get("exam_order")
+        if order is None:
+            return redirect(url_for("exam_welcome"))
+        position = session.get("exam_position", 0)
+        cards = {card.id: card for card in storage.load_cards(area=_current_area().id)}
+        # Tarjetas borradas o desactivadas en cards.csv durante el examen se saltan
+        while position < len(order) and order[position] not in cards:
+            position += 1
+        session["exam_position"] = position
+        if position >= len(order):
+            results = session.get("exam_results", {})
+            return render_template("done.html", mode="exam", total=len(order),
+                                   failed=results.get(scheduler.EXAM_FAIL, 0),
+                                   passed=results.get(scheduler.EXAM_PASS, 0),
+                                   easy=results.get(scheduler.EXAM_EASY, 0))
+        card = cards[order[position]]
+        return render_template("review.html", card=card, mode="exam", stage="question",
+                               version=_version(card.id), position=position + 1, total=len(order))
+
+    @app.post("/exam/answer/<card_id>")
+    def exam_answer(card_id: str):
+        card = _find_card(card_id)
+        typed = request.form.get("typed", "")
+        version = request.form.get("version", "")
+        correct = checker.is_correct(typed, card.answer)
+        position = session.get("exam_position", 0) + 1
+        if not correct:
+            # Fallo al teclear: suspende sin preguntar
+            _exam_answer(card.id, scheduler.EXAM_FAIL, version)
+        return render_template("review.html", card=card, mode="exam", stage="right" if correct else "wrong",
+                               typed=typed, version=version, position=position,
+                               total=len(session.get("exam_order", [])))
+
+    @app.post("/exam/rate/<card_id>")
+    def exam_rate(card_id: str):
+        result = request.form.get("result", "")
+        if result not in scheduler.EXAM_RESULTS:
+            abort(400)
+        _exam_answer(_find_card(card_id).id, result, request.form.get("version", ""))
+        return redirect(url_for("exam"))
 
     @app.post("/quit")
     def quit_app():
