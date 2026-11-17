@@ -49,6 +49,7 @@ def _rate(card_id: str, rating: str, version: str) -> bool:
         return False
     progress["cards"][card_id] = scheduler.apply_rating(state, rating, datetime.now())
     storage.save_progress(progress)
+    session["last_card"] = card_id
     return True
 
 
@@ -117,7 +118,7 @@ def register(app: Flask) -> None:
         progress = storage.load_progress()
         if not cards:
             return render_template("done.html", mode="empty")
-        card = planner.next_card(cards, progress, now)
+        card = planner.next_card(cards, progress, now, session.get("last_card"))
         if card is None:
             next_due = planner.next_due_date(cards, progress, now)
             return render_template("done.html", mode="review",
@@ -143,6 +144,16 @@ def register(app: Flask) -> None:
         if rating not in scheduler.RATINGS:
             abort(400)
         _rate(_find_card(card_id).id, rating, request.form.get("version", ""))
+        return redirect(url_for("study"))
+
+    @app.post("/continue/<card_id>")
+    def continue_after_fail(card_id: str):
+        # Fallo al teclear: los minutos de espera cuentan desde que se deja la tarjeta, no desde que se respondió
+        progress = storage.load_progress()
+        state = progress["cards"].get(card_id)
+        if state and state["reps"] == 0:
+            state["due"] = max(state["due"], scheduler.relearn_due(datetime.now()))
+            storage.save_progress(progress)
         return redirect(url_for("study"))
 
     @app.get("/progress")

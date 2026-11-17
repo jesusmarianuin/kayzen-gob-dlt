@@ -6,16 +6,29 @@ Su finalidad declarada es verificar documentos e identidades con plena validez j
 
 ## Marco regulatorio
 
-ISBE se diseña desde el principio para cumplir la regulación y presenta ese cumplimiento como una ventaja competitiva para las empresas que la usan. Les ahorra trabajo para cumplir, pero no las exime de sus obligaciones. Estas son las normas que tiene en cuenta:
+ISBE se diseña desde el principio para cumplir la regulación, tanto en su arquitectura técnica como en su modelo de gobernanza, y presenta ese cumplimiento como una ventaja competitiva para las empresas que la usan: no tienen que construir desde cero las garantías de privacidad, seguridad, trazabilidad y validez legal. Les ahorra trabajo para cumplir, pero no las exime de sus obligaciones. Lo completa con una monitorización constante de la infraestructura, mecanismos de respuesta ante incidentes y pruebas periódicas de privacidad, confidencialidad y ciberseguridad.
 
-- eIDAS2: aspira a ser un [libro mayor electrónico cualificado](electronic-ledger.md) conforme al Reglamento de Ejecución (UE) 2025/2531. A noviembre de 2026 no figura en la lista de confianza, y Alastria reconoce que ISBE no es un QTSP
-- [RGPD](https://gdpr-text.com/es/): el cumplimiento se plantea desde el diseño, con piezas técnicas como el Filtering Proxy y con reglas de gobernanza que obligan a minimizar los datos personales on-chain (hash, referencias o pseudonimización)
-- [DORA](https://eur-lex.europa.eu/eli/reg/2022/2554/oj?locale=es), sobre la resiliencia operativa digital del sector financiero: si un caso de uso da servicio a entidades financieras, hay que firmar una adenda DORA antes de llevarlo a producción
-- [MiCA](https://eur-lex.europa.eu/eli/reg/2023/1114/oj?locale=es), que regula la emisión de criptoactivos y los servicios sobre ellos
+Estas son las normas que tiene en cuenta:
+
+- [eIDAS2](https://eur-lex.europa.eu/eli/reg/2024/1183/oj?locale=es): su diseño se alinea con los servicios de confianza del reglamento, pero eso no convierte a ISBE en un servicio cualificado, como se explica en [qué significa que ISBE cumpla eIDAS2](#qué-significa-que-isbe-cumpla-eidas2)
+- [RGPD](https://gdpr-text.com/es/): el cumplimiento se plantea desde el diseño, con piezas técnicas como el Filtering Proxy y con reglas de gobernanza que obligan a minimizar los datos personales on-chain (hash, referencias o pseudonimización). Solo se tratan los datos necesarios, el control queda en manos del usuario y hay un procedimiento para gestionar las brechas de datos personales
+- [DORA](https://eur-lex.europa.eu/eli/reg/2022/2554/oj?locale=es), sobre la resiliencia operativa digital del sector financiero: ISBE se apoya en su arquitectura distribuida para garantizar la continuidad operativa y la integridad de los procesos críticos ante incidentes. Si un caso de uso da servicio a entidades financieras, hay que firmar una adenda DORA antes de llevarlo a producción
+- [MiCA](https://eur-lex.europa.eu/eli/reg/2023/1114/oj?locale=es), que regula la emisión de criptoactivos y los servicios sobre ellos: ISBE se ofrece como base regulada para la tokenización, y su token TKN está diseñado para quedar fuera del ámbito de MiCA
 - [Data Act](https://eur-lex.europa.eu/eli/reg/2023/2854/oj?locale=es), que regula el acceso a los datos de los productos conectados y fija requisitos para los smart contracts que ejecutan acuerdos de intercambio de datos
 - [NIS2](https://eur-lex.europa.eu/eli/dir/2022/2555/oj?locale=es), que exige medidas de ciberseguridad y notificación de incidentes a las entidades esenciales e importantes
 - [ENS (Esquema Nacional de Seguridad)](https://www.boe.es/eli/es/rd/2022/05/03/311/con), que fija la seguridad exigida al sector público español y a sus proveedores tecnológicos
 - [LMVSI (Ley de los Mercados de Valores y de los Servicios de Inversión)](https://www.boe.es/eli/es/l/2023/03/17/6/con), que admite representar valores con tecnología de registro distribuido
+- [Declaración Europea sobre los Derechos y Principios Digitales para la Década Digital](https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32023C0123(01)), un compromiso político de la UE, no vinculante, que sitúa a las personas en el centro de la transformación digital. ISBE se alinea con sus principios de seguridad, interoperabilidad, soberanía digital y gestión responsable de la información
+
+### Qué significa que ISBE cumpla eIDAS2
+
+Que ISBE cumpla eIDAS2 no significa que todo lo que se registra en ella tenga los efectos jurídicos de un [libro mayor electrónico cualificado](electronic-ledger.md), es decir, la presunción legal de que los datos están íntegros y en orden cronológico. La afirmación mezcla tres cosas distintas:
+
+- Ser un libro mayor cualificado: para serlo, el servicio lo tiene que prestar un QTSP, superar una evaluación de conformidad, obtener la cualificación del organismo supervisor y figurar en la lista de confianza nacional. ISBE se diseña conforme a los requisitos del Reglamento de Ejecución (UE) 2025/2531, pero a noviembre de 2026 no figura en la lista de confianza y Alastria reconoce que no es un QTSP. Hoy ISBE no es un libro mayor cualificado
+- Qué red se cualificaría: el servicio de libro mayor cualificado está previsto en una red concreta, la red Bare, con su propio contrato. Los casos de uso habituales se despliegan en la red Main a través de BaaS y no adquieren esa condición. Aunque la red Bare llegue a cualificarse, un smart contract desplegado en Main no tendrá esos efectos jurídicos
+- Alojar casos de uso de eIDAS2: ISBE permite desplegar casos de uso de credenciales verificables, como las declaraciones electrónicas de atributos (EAA y QEAA), y de [listas de confianza](trusted-lists.md). Eso no hace que ISBE forme parte de la LoTL, que solo recoge las listas de confianza nacionales, ni convierte en cualificadas las credenciales que se anotan en ella: una QEAA solo es cualificada si la emite un QTSP
+
+Tampoco hay que buscar en eIDAS2 cómo se protegen los datos personales registrados en la red. Eso lo regula el RGPD, y ISBE lo resuelve evitando que lleguen on-chain.
 
 ## Arquitectura
 

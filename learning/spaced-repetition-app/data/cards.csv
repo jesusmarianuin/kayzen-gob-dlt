@@ -44,7 +44,7 @@ eidas-vs-eidas2,TRUE,eidas,basic,Diferencia entre eIDAS y eIDAS2,"eIDAS reconoce
 eidas-spain-eid,TRUE,eidas,typed,¿Qué eID reconoce eIDAS en España?,DNIe|DNI electrónico|DNI,thematic/eIDAS.png
 eidas-ts,TRUE,eidas,typed,¿Qué es TS en eIDAS?,Trust Service,thematic/eIDAS.png
 eidas-trust-service-definition,TRUE,eidas,basic,¿Qué es Servicio de confianza en eIDAS),"Servicio electrónico regulado que permite operaciones de confianza en transacciones electrónicas, como firmar, sellar en el tiempo o entregar de forma certificada",thematic/eIDAS.png
-eidas-trust-services-certificate,TRUE,eidas,typed,"En eIDAS, ¿Que otros servicios de confianza que no sean emisión de certificado o validación de firma conoces? (no respondas iniciales)",conservación de firmas y sellos electrónicos;sello de tiempo electrónico;entrega electrónica certificada,thematic/eIDAS.png
+eidas-trust-services-certificate,TRUE,eidas,basic,"En eIDAS, ¿Que otros servicios de confianza que no sean emisión de certificado o validación? (no respondas iniciales)",conservación de firmas;conservación de sellos;sello de tiempo electrónico;entrega electrónica certificada,thematic/eIDAS.png
 eidas-tsa,TRUE,eidas,typed,Siglas del sello de tiempo electrónico en eIDAS,TSA,thematic/eIDAS.png
 eidas-erds,TRUE,eidas,typed,¿Qué es ERDS en eIDAS?,Electronic Registered Delivery Service (Servicio de entrega electrónica certificada),thematic/eIDAS.png
 eidas-tsp,TRUE,eidas,typed,¿Qué es TSP en eIDAS?,Trust Service Provider,thematic/eIDAS.png
@@ -221,3 +221,4 @@ business-wallet-vs-eidas2,TRUE,eidas,basic,Relación de la Cartera Empresarial E
 business-wallet-functions,TRUE,eidas,basic,Funciones básicas de la Cartera Empresarial Europea,"Identificar y autenticar a la empresa, firmar y sellar documentos, y enviar y recibir documentos con constancia de entrega (entrega electrónica certificada cualificada)",thematic/eIDAS.png
 business-wallet-obligation,TRUE,eidas,basic,Obligatoriedad de la Cartera Empresarial Europea,"Voluntaria para las empresas, pero las administraciones públicas estarían obligadas a aceptarla para sus funciones básicas",thematic/eIDAS.png
 business-wallet-status,FALSE,eidas,basic,Estado de la Cartera Empresarial Europea en noviembre de 2026,"Propuesta de la Comisión del 19 de noviembre de 2025, en negociación entre Parlamento y Consejo; después necesitará actos de ejecución",thematic/eIDAS.png
+tl-vs-tsl,TRUE,eidas,basic,TL frente a TSL,"TL es el nombre legal de la lista de confianza de cada Estado miembro. TSL es su forma técnica: cómo se escribe ese fichero, una lista firmada con un formato común",thematic/eIDAS.png

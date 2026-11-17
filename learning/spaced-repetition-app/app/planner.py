@@ -29,13 +29,22 @@ def new_cards_left_today(cards: list[Card], progress: dict, today: date) -> int:
     return max(0, config.NEW_CARDS_PER_DAY - seen_today)
 
 
-def next_card(cards: list[Card], progress: dict, now: datetime) -> Card | None:
-    """Return the next card to show, or None when the session is over."""
+def next_card(cards: list[Card], progress: dict, now: datetime, last_id: str | None = None) -> Card | None:
+    """Return the next card to show, or None when the session is over.
+
+    La última tarjeta respondida (last_id) no se repite seguida mientras haya otra que mostrar.
+    """
+    others = [card for card in cards if card.id != last_id]
+    return _pick(others, cards, progress, now) or _pick(cards, cards, progress, now)
+
+
+def _pick(candidates: list[Card], cards: list[Card], progress: dict, now: datetime) -> Card | None:
+    # El límite de nuevas se cuenta sobre todas las tarjetas del área (cards), no solo las candidatas
     today = now.date()
     states = progress["cards"]
 
     relearning, reviews, new = [], [], []
-    for card in cards:
+    for card in candidates:
         state = states.get(card.id)
         if state is None:
             new.append(card)

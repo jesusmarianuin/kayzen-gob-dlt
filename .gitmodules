@@ -88,3 +88,63 @@
 [submodule "knowledge-base/eudi/eudi-lib-jvm-sdjwt-kt"]
 	path = knowledge-base/eudi/eudi-lib-jvm-sdjwt-kt
 	url = https://github.com/eu-digital-identity-wallet/eudi-lib-jvm-sdjwt-kt
+[submodule "knowledge-base/ethereum/EIPs"]
+	path = knowledge-base/ethereum/EIPs
+	url = https://github.com/ethereum/EIPs.git
+[submodule "knowledge-base/ethereum/go-ethereum"]
+	path = knowledge-base/ethereum/go-ethereum
+	url = https://github.com/ethereum/go-ethereum.git
+[submodule "knowledge-base/ethereum/ethereum-org-website"]
+	path = knowledge-base/ethereum/ethereum-org-website
+	url = https://github.com/ethereum/ethereum-org-website.git
+[submodule "knowledge-base/ethereum/zkID"]
+	path = knowledge-base/ethereum/zkID
+	url = https://github.com/ethereum/zkID.git
+[submodule "knowledge-base/ethereum/execution-specs"]
+	path = knowledge-base/ethereum/execution-specs
+	url = https://github.com/ethereum/execution-specs.git
+[submodule "knowledge-base/ethereum/annotated-spec"]
+	path = knowledge-base/ethereum/annotated-spec
+	url = https://github.com/ethereum/annotated-spec.git
+[submodule "knowledge-base/ethereum/consensus-specs"]
+	path = knowledge-base/ethereum/consensus-specs
+	url = https://github.com/ethereum/consensus-specs.git
+[submodule "knowledge-base/ethereum/RIPs"]
+	path = knowledge-base/ethereum/RIPs
+	url = https://github.com/ethereum/RIPs.git
+[submodule "knowledge-base/ethereum/L2-interop"]
+	path = knowledge-base/ethereum/L2-interop
+	url = https://github.com/ethereum/L2-interop.git
+[submodule "knowledge-base/ethereum/soundcalc"]
+	path = knowledge-base/ethereum/soundcalc
+	url = https://github.com/ethereum/soundcalc.git
+[submodule "knowledge-base/ethereum/recursion-topology-fv"]
+	path = knowledge-base/ethereum/recursion-topology-fv
+	url = https://github.com/ethereum/recursion-topology-fv.git
+[submodule "knowledge-base/ethereum/c-kzg-4844"]
+	path = knowledge-base/ethereum/c-kzg-4844
+	url = https://github.com/ethereum/c-kzg-4844.git
+[submodule "knowledge-base/ethereum/sonobe"]
+	path = knowledge-base/ethereum/sonobe
+	url = https://github.com/ethereum/sonobe.git
+[submodule "knowledge-base/ethereum/spartan-whir"]
+	path = knowledge-base/ethereum/spartan-whir
+	url = https://github.com/ethereum/spartan-whir.git
+[submodule "knowledge-base/ethereum/private-transfers-benchmarks"]
+	path = knowledge-base/ethereum/private-transfers-benchmarks
+	url = https://github.com/ethereum/private-transfers-benchmarks.git
+[submodule "knowledge-base/ethereum/kohaku"]
+	path = knowledge-base/ethereum/kohaku
+	url = https://github.com/ethereum/kohaku.git
+[submodule "knowledge-base/ethereum/kohaku-rs"]
+	path = knowledge-base/ethereum/kohaku-rs
+	url = https://github.com/ethereum/kohaku-rs.git
+[submodule "knowledge-base/ethereum/access-layer-specs"]
+	path = knowledge-base/ethereum/access-layer-specs
+	url = https://github.com/ethereum/access-layer-specs.git
+[submodule "knowledge-base/ethereum/anon-rpc"]
+	path = knowledge-base/ethereum/anon-rpc
+	url = https://github.com/ethereum/anon-rpc.git
+[submodule "knowledge-base/ethereum/tor-js"]
+	path = knowledge-base/ethereum/tor-js
+	url = https://github.com/ethereum/tor-js.git

@@ -11,11 +11,15 @@ Por otra parte, regula los **servicios de confianza** (TS, Trust Service). Un se
 
 - Emisión de certificados de firma electrónica (QCert for ESig, Qualified Certificate for Electronic Signature).
 - Emisión de certificados de sello electrónico (QCert for ESeal, Qualified Certificate for Electronic Seal).
-- Emisión de certificados de autenticación de sitios web (QWAC, Qualified Website Authentication Certificate).
-- Validación de firmas y sellos electrónicos (QVal, Qualified Validation Service).
-- Conservación de firmas y sellos electrónicos (QPres, Qualified Preservation Service).
 - Sello de tiempo electrónico (TSA, Time-Stamping Authority, o QTimestamp, Qualified Electronic Time Stamp, si es cualificado).
+- Emisión de certificados de autenticación de sitios web (QWAC, Qualified Website Authentication Certificate).
+- Validación de firmas electrónicas (QVal for ESig, Qualified Validation Service for Electronic Signatures).
+- Validación de sellos electrónicos (QVal for ESeal, Qualified Validation Service for Electronic Seals).
+- Conservación de firmas electrónicas (QPres for ESig, Qualified Preservation Service for Electronic Signatures).
+- Conservación de sellos electrónicos (QPres for ESeal, Qualified Preservation Service for Electronic Seals).
 - Entrega electrónica certificada (ERDS, Electronic Registered Delivery Service, o QERDS, Qualified Electronic Registered Delivery Service, si es cualificada).
+
+> El reglamento reserva "firma" para personas físicas y "sello" para personas jurídicas.
 
 Las siglas que empiezan por Q corresponden a la versión cualificada de cada servicio.
 
@@ -23,7 +27,7 @@ Un servicio de confianza, tiene un **Prestador de Servicios de Confianza** (TSP 
 
 Los prestadores de servicios de confianza pueden obtener la categoría de **Prestadores Cualificados de Servicios de Confianza** (*Qualified Trust Service Provider*, QTSP). Para ello, deben cumplir los requisitos previstos en el Reglamento eIDAS y contar con el reconocimiento formal del órgano de supervisión competente de su país.
 
-Estos prestadores, si son cualificados, se incluyen en la [**lista de confianza**](trusted-lists.md) del Estado miembro correspondiente (*Trusted List*, TL, especificada técnicamente como *Trust Service Status List*, TSL); los no cualificados, solo si el Estado lo decide.
+Estos prestadores, si son cualificados, se incluyen en la [**lista de confianza**](trusted-lists.md) del Estado miembro correspondiente (*Trusted List*, TL); los no cualificados, solo si el Estado lo decide. TL es el nombre que usa el reglamento para la lista de cada Estado. TSL (*Trust-service Status List*) es su forma técnica: una lista firmada con la estructura que define la norma ETSI TS 119 612.
 
 Ser prestador cualificado de servicios (QTSP) es lo que habilita a poder ofrecer **servicios cualificados** (QTS, Qualified Trust Service). Pero aún existen requisitos descritos en eIDAS, que tienen que ser aprobados por el órgano de supervisión nacional (según sede legal del proveedor).
 

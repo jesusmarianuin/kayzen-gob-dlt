@@ -189,6 +189,18 @@ Este mecanismo de selección de cadena es crucial para la seguridad y funcionali
 
 Algunos protocolos de consenso, como QBFT o IBFT 2.0, no necesitan esta regla porque tienen finalidad inmediata: un bloque solo se añade a la cadena cuando lo aprueban más de dos tercios de los validadores, y a partir de ese momento ya no puede revertirse.
 
+## Settlement ledger
+
+Una red actúa como settlement ledger (libro de liquidación) cuando otras redes ejecutan las operaciones y ella fija su resultado final. La red de operación procesa las transacciones y la de liquidación verifica ese resultado, resuelve las disputas y le da finalidad. Es el papel de Ethereum frente a los rollups que se describen en el siguiente apartado: una transacción del rollup solo es final cuando Ethereum la acepta, y a partir de ese momento revertirla exige revertir Ethereum.
+
+En la arquitectura modular, que separa ejecución, liquidación, consenso y disponibilidad de datos, la liquidación es una capa propia: el entorno donde las capas de ejecución verifican pruebas y resuelven disputas.
+
+Referencias:
+
+* [Ethereum como capa de liquidación de los optimistic rollups](https://ethereum.org/developers/docs/scaling/optimistic-rollups/)
+* [Introducción a layer 2 en ethereum.org](https://ethereum.org/layer-2/learn/)
+* [La pila modular, documentación de Celestia](https://celestia.org/learn/intermediates/the-modular-stack/)
+
 ## Escalabilidad y sidechains
 
 A medida que las blockchains principales enfrentan limitaciones de escalabilidad, han surgido diversas soluciones para procesar más transacciones sin comprometer la descentralización o seguridad.
@@ -200,6 +212,10 @@ Son blockchains independientes que se conectan a la blockchain principal mediant
 **Layer 2:**
 
 Son protocolos construidos sobre la blockchain principal que procesan transacciones fuera de la cadena principal pero heredan sus garantías de seguridad. Tecnologías como [Lightning Network](https://lightning.network/) para Bitcoin y [Optimistic Rollups](https://ethereum.org/en/developers/docs/scaling/optimistic-rollups/) o [ZK-Rollups](https://ethereum.org/en/developers/docs/scaling/zk-rollups/) para Ethereum permiten throughput significativamente mayor mientras mantienen la finalidad en la blockchain base.
+
+**ZK-rollups:**
+
+Un [ZK-rollup](https://ethereum.org/developers/docs/scaling/zk-rollups/) ejecuta las transacciones fuera de Ethereum y envía periódicamente cada lote a Ethereum junto con una prueba de validez, que demuestra que el nuevo estado es el resultado correcto de ejecutar esas transacciones. Un contrato en Ethereum verifica la prueba y solo entonces las transacciones del lote son finales; desde ese momento no se pueden revertir. Como no hay periodo de disputa, los fondos se retiran a Ethereum en cuanto el contrato verifica la prueba.
 
 **Sharding:**
 

@@ -40,6 +40,11 @@ def next_interval(state: dict, rating: str) -> tuple[float, int]:
     return round(ease, 2), min(days, config.MAX_INTERVAL_DAYS)
 
 
+def relearn_due(now: datetime) -> str:
+    """When a failed card comes back: RELEARN_MINUTES from now."""
+    return (now + timedelta(minutes=config.RELEARN_MINUTES)).isoformat(timespec="seconds")
+
+
 def apply_rating(state: dict | None, rating: str, now: datetime) -> dict:
     """Return the new state of a card after a rating, with its due date."""
     state = dict(state or new_state())
@@ -48,7 +53,7 @@ def apply_rating(state: dict | None, rating: str, now: datetime) -> dict:
         state["reps"] = 0
         state["interval_days"] = 0
         state["lapses"] += 1
-        due = now + timedelta(minutes=config.RELEARN_MINUTES)
+        due = datetime.fromisoformat(relearn_due(now))
     else:
         state["ease"], state["interval_days"] = next_interval(state, rating)
         state["reps"] += 1

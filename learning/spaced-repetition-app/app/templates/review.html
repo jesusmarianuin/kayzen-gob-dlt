@@ -80,9 +80,9 @@
       </div>
     {% else %}
       <p class="hint">Cuenta como «Fallé»: volverá dentro de unos minutos.</p>
-      <div class="actions">
-        <a href="{{ url_for('study') }}" class="btn primary" autofocus>Continuar</a>
-      </div>
+      <form method="post" action="{{ url_for('continue_after_fail', card_id=card.id) }}" class="actions">
+        <button type="submit" class="btn primary" autofocus>Continuar</button>
+      </form>
     {% endif %}
   {% endif %}
 </article>

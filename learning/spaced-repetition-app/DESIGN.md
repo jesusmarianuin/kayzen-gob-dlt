@@ -220,6 +220,10 @@ Si se adopta en el futuro, el cambio queda dentro de `scheduler.py`. `progress.j
 4. **Falladas hoy que aún esperan sus 10 minutos**, solo si no queda nada más: se muestra antes de tiempo la que venza primero.
 5. Si no queda nada: pantalla "Has terminado por hoy" con la fecha del próximo repaso del área y un enlace para cambiar de área.
 
+La última tarjeta respondida no se repite seguida mientras quede otra que mostrar (se guarda en la sesión como `last_card`).
+
+En el modelo 2, los 10 minutos de una fallada cuentan desde que se pulsa "Continuar" (`POST /continue/<card_id>`), no desde que se envió la respuesta. Así, el tiempo que se pasa leyendo la respuesta correcta no cuenta como espera.
+
 ## Navegación
 
 Barra superior en todas las pantallas: a la izquierda el menú **Elegir área** · **Estudiar** · **Progreso** · **Estudio libre** · **Examinarse** · **Ayuda**; en el centro el nombre del área elegida (o el título de la app si aún no hay ninguna); a la derecha **Ya vale por hoy**.

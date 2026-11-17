@@ -11,4 +11,6 @@ No puede ser perfecto desde el principio, por eso uso kaizen: cada iteración lo
 
 Hitos en: <https://github.com/jesusmarianuin/kayzen-gob-dlt/milestones>.
 
-Panel en: <https://github.com/users/jesusmarianuin/projects/5>.
+> Es mejor definir aquí los hitos primero y dentro cada issue para luego elegir donde ponerlo en el panel de kanban.
+
+Panel kanban en: <https://github.com/users/jesusmarianuin/projects/5>.

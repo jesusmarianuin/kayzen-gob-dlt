@@ -1,6 +1,8 @@
 # Listas de confianza (TL y LOTL)
 
-Una lista de confianza (Trusted List, TL) es la lista oficial que publica cada Estado miembro con los prestadores cualificados de servicios de confianza (QTSP) de su país y los servicios cualificados que prestan, junto con su estado. Pueden incluir también, de forma voluntaria, prestadores y servicios no cualificados. La publica el organismo que designa cada Estado, conforme al artículo 22 de eIDAS. Técnicamente se especifica como Trust Service Status List (TSL).
+Una lista de confianza (Trusted List, TL) es la lista oficial que publica cada Estado miembro con los prestadores cualificados de servicios de confianza (QTSP) de su país y los servicios cualificados que prestan, junto con su estado. Pueden incluir también, de forma voluntaria, prestadores y servicios no cualificados. La publica el organismo que designa cada Estado, conforme al artículo 22 de eIDAS.
+
+TL es el nombre legal, el que usa eIDAS para la lista de cada Estado miembro. TSL (Trust-service Status List) es su forma técnica: una lista firmada con la estructura que define la norma ETSI TS 119 612 (ver [cómo se valida técnicamente](#cómo-se-valida-técnicamente)). Dicho de otro modo, la TL es lo que la ley exige publicar y la TSL es cómo se escribe ese fichero.
 
 Las listas de los Estados miembros se agrupan en la List of Trusted Lists (LOTL), que publica la Comisión Europea y que enlaza a cada lista nacional. EUTL (EU Trusted List) es la denominación habitual para referirse a este conjunto, aunque el término técnico oficial es LOTL.
 
@@ -37,7 +39,7 @@ En ningún paso el banco necesita conocer de antemano al emisor. Le basta con fi
 
 ## Cómo se valida técnicamente
 
-Las listas son ficheros que cualquier programa puede descargar y leer. Las TL y la LOTL son ficheros XML con un formato común definido por el estándar ETSI TS 119 612. Gracias a ese formato común, un verificador interpreta igual la lista de cualquier Estado miembro. Las LoTE usan otro formato, ETSI TS 119 602, y hay una lista por cada tipo de entidad, por ejemplo una para proveedores de PID y otra para proveedores de wallets.
+Las listas son ficheros que cualquier programa puede descargar y leer. Técnicamente, las TL y la LOTL se publican como TSL: ficheros XML firmados con la estructura común definida por el estándar ETSI TS 119 612. Gracias a ese formato común, un verificador interpreta igual la lista de cualquier Estado miembro. Las LoTE usan otro formato, ETSI TS 119 602, y hay una lista por cada tipo de entidad, por ejemplo una para proveedores de PID y otra para proveedores de wallets.
 
 Todas las listas van firmadas. Así, quien las consulta puede comprobar que nadie las ha alterado y que las publicó quien dice publicarlas.
 
@@ -45,8 +47,8 @@ Quien recibe algo firmado por un prestador cualificado, como un documento con fi
 
 - Descarga la LOTL. Su dirección oficial la publica la Comisión en el Diario Oficial de la UE, así que el verificador sabe que está descargando la buena.
 - Comprueba la firma de la LOTL antes de fiarse de su contenido.
-- En la LOTL busca el enlace a la TL del país del emisor, la descarga y comprueba también su firma.
-- En esa TL busca el certificado con el que se hizo la firma. Si aparece, sabe qué prestador y qué servicio lo emitieron.
+- En la LOTL busca el enlace a la TSL del país del emisor, la descarga y comprueba también su firma.
+- En esa TSL busca el certificado con el que se hizo la firma. Si aparece, sabe qué prestador y qué servicio lo emitieron.
 - Revisa el historial de ese servicio. Las listas guardan cuándo un servicio obtuvo o perdió el estatus de cualificado, y lo que importa es que lo fuera en la fecha de la firma, no hoy.
 
 Con las LoTE el recorrido es más corto. No hay una lista de listas por medio, así que el verificador va directamente a la lista del tipo de entidad que le interesa.
