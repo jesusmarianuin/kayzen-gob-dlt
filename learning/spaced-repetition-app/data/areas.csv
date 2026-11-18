@@ -1,0 +1,16 @@
+# Áreas de estudio. Las líneas que empiezan por # son comentarios y se ignoran.
+#
+# Columnas (la cabecera es obligatoria y va tal cual):
+#   id           kebab-case, minúsculas sin tildes, único e inmutable. Es el valor de la columna area de cards.csv
+#   name         nombre que se muestra en la app
+#   description  frase corta que se muestra en la pantalla de áreas. Puede quedar vacía
+#
+# El orden de las filas es el orden en la pantalla de áreas.
+id,name,description
+general,General,Conceptos generales
+eidas,eIDAS,Regulación eIDAS
+blockchain,Blockchain, DLT Blockchain
+p2p-networks,Redes P2P,Conceptos de redes entre pares
+security,Seguridad,Seguridad en blockchain y DLT
+dlt-public-administration,DLT en la administración,Uso de blockchain y DLT en la administración pública
+smart-contracts,Smart contracts,Desarrollo y seguridad de smart contracts

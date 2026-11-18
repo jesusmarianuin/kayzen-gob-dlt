@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Examinarse{% endblock %}
+
+{% block content %}
+<article class="card wide help">
+  <h1 class="question">Bienvenido al examen</h1>
+  <p class="lead">
+    El examen te pregunta las tarjetas del área en orden aleatorio, sin límite diario. A diferencia del estudio
+    libre, sí cuenta para tu progreso: cada respuesta coloca la tarjeta en un grupo, tanto si sube como si baja.
+  </p>
+  <ul>
+    <li><strong>Fallas:</strong> pasa a «No las sé» y vuelve a salir en Estudiar dentro de unos minutos.</li>
+    <li><strong>Aciertas:</strong> pasa a «Medio» y vuelve a Estudiar en unos días
+      (en {{ config.MEDIUM_FROM_DAYS }} días si no estaba ya en «Medio»).</li>
+    <li><strong>Aciertas y marcas «Fácil»:</strong> pasa a «Buen progreso» y vuelve a Estudiar dentro de
+      {{ config.MAX_INTERVAL_DAYS }} días.</li>
+  </ul>
+  <p class="lead">
+    En las tarjetas de pensar la respuesta, la revelas y eliges «Fallé», «Acerté» o «Fácil». En las de escribir,
+    la app comprueba lo que escribes: si no coincide, es fallo; si coincide, eliges «Acerté» o «Fácil».
+  </p>
+
+  {% if total %}
+    <form method="post" action="{{ url_for('exam_start') }}" class="actions">
+      <button type="submit" name="scope" value="all" class="btn primary" autofocus>
+        Examen completo ({{ total }})</button>
+      <button type="submit" name="scope" value="exclude-good" class="btn" {% if not without_good %}disabled{% endif %}>
+        Excluir el buen progreso ({{ without_good }})</button>
+    </form>
+  {% else %}
+    <p class="lead">El área {{ current_area().name }} todavía no tiene tarjetas.</p>
+  {% endif %}
+</article>
+{% endblock %}

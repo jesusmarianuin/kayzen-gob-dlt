@@ -1,36 +1,22 @@
-# Glosario de términos
+# Glosario generales de términos
 
 ## OSCAL (Open Security Controls Assessment Language)
 
-Lenguaje estándar, desarrollado por el NIST (National Institute of Standards and Technology), para representar de forma estructurada (JSON, XML o YAML) controles de seguridad, catálogos de cumplimiento, planes de seguridad (SSP) y evaluaciones de riesgo. Su objetivo es permitir que la información de cumplimiento normativo se pueda leer, validar y transformar de forma automatizada, en lugar de mantenerla en documentos manuales (PDF/Word).
+Lenguaje estándar desarrollado por el NIST (National Institute of Standards and Technology) para representar de forma estructurada (JSON, XML o YAML) controles de seguridad, catálogos de cumplimiento, planes de seguridad (SSP) y evaluaciones de riesgo. Su objetivo es que la información de cumplimiento normativo se pueda leer, validar y transformar de forma automatizada, en lugar de mantenerla en documentos manuales (PDF o Word).
 
-**Herramientas que lo soportan:**
+Herramientas que lo soportan:
 
-- **NIST OSCAL CLI** — herramienta oficial que convierte entre JSON, XML y YAML, y valida documentos contra el esquema oficial.
-- **Trestle (compliance-trestle)**, de Red Hat/CISA — la herramienta más usada para trabajar con catálogos OSCAL en Python, generar SSP (System Security Plan), profiles, etc.
-- **OpenControl** y **GovReady-Q** — también consumen documentos OSCAL.
-- Al ser JSON/XML/YAML estándar, cualquier parser genérico (Python, `jq`, JavaScript...) puede leerlo sin necesidad de tooling especializado si solo se quiere extraer datos.
+- NIST OSCAL CLI: herramienta oficial que convierte entre JSON, XML y YAML y valida documentos contra el esquema oficial
+- Trestle (compliance-trestle): la herramienta más usada para trabajar con catálogos OSCAL en Python y generar SSP (System Security Plan), profiles, etc.
+- OpenControl y GovReady-Q: también consumen documentos OSCAL
+- Cualquier parser genérico (Python, `jq`, JavaScript...), al ser JSON, XML o YAML estándar, si solo se quieren extraer datos
 
-**Referencia:** [pages.nist.gov/OSCAL](https://pages.nist.gov/OSCAL/)
+Referencia: [documentación de OSCAL (NIST)](https://pages.nist.gov/OSCAL/)
 
----
+## FIWARE
 
-## EDIC (European Digital Infrastructure Consortium) — Europeum
+Fundación que mantiene un conjunto de componentes open source para gestionar datos de contexto (por ejemplo, el Orion Context Broker), basados en la especificación NGSI-LD de ETSI. Es muy usado en ciudades inteligentes y aporta conectores e implementaciones de referencia a los espacios de datos.
 
-Figura jurídica creada por la Comisión Europea para que varios Estados miembros implementen conjuntamente proyectos digitales transfronterizos. "Europeum" es el EDIC constituido específicamente para el desarrollo y despliegue de infraestructura blockchain europea (vinculado a EBSI, European Blockchain Services Infrastructure).
-
-**Referencia:** [digital-strategy.ec.europa.eu — Blockchain: creation of Europeum EDIC](https://digital-strategy.ec.europa.eu/es/news/blockchain-creation-europeum-edic)
+Referencia: [web de FIWARE](https://www.fiware.org/)
 
 ---
-
-## QBFT (Quorum Byzantine Fault Tolerant)
-
-Algoritmo de consenso de tolerancia a fallos bizantinos (BFT) basado en Prueba de Autoridad (PoA), utilizado en redes blockchain permisionadas (p. ej. Hyperledger Besu). Un conjunto de validadores conocidos propone y valida bloques mediante rondas de votación; la red tolera hasta *f* validadores maliciosos o caídos de un total de *3f+1*.
-
-**Referencia:** [Documentación de Hyperledger Besu — QBFT](https://besu.hyperledger.org/private-networks/how-to/configure/consensus/qbft)
-
-## IBFT 2.0 (Istanbul Byzantine Fault Tolerant 2.0)
-
-Predecesor de QBFT, también basado en PoA y con propiedades de tolerancia a fallos bizantinos. Especificado originalmente en el EIP-650. Ambos algoritmos (QBFT e IBFT 2.0) garantizan finalidad inmediata de los bloques (a diferencia de Proof of Work), lo que los hace habituales en consorcios y redes gubernamentales/empresariales.
-
-**Referencia:** [EIP-650: Istanbul Byzantine Fault Tolerance](https://github.com/ethereum/EIPs/issues/650)

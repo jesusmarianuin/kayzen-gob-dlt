@@ -1,3 +1,6 @@
 # Progreso de estudio: local a cada equipo, no se versiona
 data/progress.json
 data/progress.json.tmp
+
+# Claves de API locales (scripts/fetch_images.py), no se versionan
+.env

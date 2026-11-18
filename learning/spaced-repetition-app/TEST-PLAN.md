@@ -4,39 +4,56 @@ Casos de prueba de acuerdo: describen con ejemplos cómo debe comportarse la apl
 
 ## Datos de ejemplo
 
-Notas de `data/cards.tsv`, en este orden:
+Áreas de `data/areas.csv`, en este orden: `general` (General) y `smart-contracts` (Smart contracts).
 
-| id | Modelo | Pregunta | Respuesta | Alternativas | Imagen |
-| --- | --- | --- | --- | --- | --- |
-| `dog` | 1 invertida | Dog | Perro | | sí |
-| `boe` | 2 teclear | ¿Qué significa BOE? | Boletín Oficial del Estado | Boletín Oficial | sí |
-| `cat` | 1 invertida | Cat | Gato | | sí |
-| `onu` | 2 teclear | ¿Qué significa ONU? | Organización de las Naciones Unidas | Naciones Unidas, Organización Naciones Unidas | sí |
-| `house` | 1 invertida | House | Casa | | sí |
-| `paris` | 2 teclear | ¿Capital de Francia? | París | | sí |
-| `tree` | 1 invertida | Tree | Árbol | | sí |
-| `spain` | 2 teclear | ¿Qué país tiene por capital Madrid? | España | | sí |
-| `book` | 1 invertida | Book | Libro | | no |
+Notas de `data/cards.csv`, en este orden, todas activas (`enabled` a `true`) y del área `general`:
 
-Salvo que se indique lo contrario, cada caso parte de estos datos y **sin** `data/progress.json`.
+| id | Modelo | Pregunta | Respuesta (`back`) | Imagen |
+| --- | --- | --- | --- | --- |
+| `dog` | 1 básico | Dog | Perro | sí |
+| `boe` | 2 teclear | ¿Qué significa BOE? | `Boletín Oficial del Estado\|Boletín Oficial` | sí |
+| `cat` | 1 básico | Cat | Gato | sí |
+| `onu` | 2 teclear | ¿Qué significa ONU? | `Organización de las Naciones Unidas\|Naciones Unidas\|Organización Naciones Unidas` | sí |
+| `house` | 1 básico | House | Casa | sí |
+| `paris` | 2 teclear | ¿Capital de Francia? | París | sí |
+| `tree` | 1 básico | Tree | Árbol | sí |
+| `spain` | 2 teclear | ¿Qué país tiene por capital Madrid? | España | sí |
+| `book` | 1 básico | Book | Libro | no |
+
+Salvo que se indique lo contrario, cada caso parte de estos datos y **sin** `data/progress.json`. Cada vez que se ejecuta la app, se elige "General" en la pantalla de áreas.
 
 ## Inicio y continuidad
 
 | ID | Situación | Pasos | Resultado esperado |
 | --- | --- | --- | --- |
-| TC-01 | Primera ejecución | Ejecutar `python learning/spaced-repetition-app/run.py` | Se abre el navegador en `http://127.0.0.1:5000` con el manual de ayuda. Al pulsar "Empezar" sale la tarjeta "Dog". Todavía no existe `progress.json` |
-| TC-02 | Primera puntuación | En "Dog", revelar y pulsar "Bien" | Se crea `progress.json` con `dog:forward` y el siguiente repaso para mañana. Aparece "¿Qué significa BOE?" |
+| TC-01 | Primera ejecución | Ejecutar `python learning/spaced-repetition-app/run.py` | Se abre el navegador en `http://127.0.0.1:5000` con el manual de ayuda. Al pulsar "Empezar" sale la pantalla de áreas y, al elegir "General", la tarjeta "Dog". Todavía no existe `progress.json` |
+| TC-02 | Primera puntuación | En "Dog", revelar y pulsar "Bien" | Se crea `progress.json` con `dog` y el siguiente repaso para mañana. Aparece "¿Qué significa BOE?" |
 | TC-03 | Continuar otro día | Día 1: puntuar "Dog" y "BOE" con "Bien" y cerrar. Día 2: ejecutar de nuevo | Salen primero "Dog" y "BOE" (vencen hoy) y después las nuevas, empezando por "Cat". No se empieza de cero |
 | TC-04 | Continuar el mismo día | Puntuar "Dog" con "Bien", cerrar y volver a ejecutar | "Dog" no aparece. La primera tarjeta es "¿Qué significa BOE?" |
-| TC-31 | Id duplicado | Añadir al final de `cards.tsv` otra nota con id `dog` y ejecutar | La app no arranca y muestra: `cards.tsv línea 15: id duplicado "dog" (ya usado en la línea 6)`. Con id `dog-verb` arranca con normalidad |
+| TC-31 | Id duplicado | Añadir al final de `cards.csv` otra nota con id `dog` y ejecutar | La app no arranca y muestra: `cards.csv línea 11: id duplicado "dog" (ya usado en la línea 2)`. Con id `dog-verb` arranca con normalidad |
 | TC-32 | Id con formato inválido | Añadir una nota con id `tengo una casa` y ejecutar | La app no arranca e indica la línea y que el id no cumple el formato. Lo mismo con `Dog`, `árbol` o `dog_verb` |
+| TC-45 | Nota desactivada | Con "Dog" estudiada, cambiar su `enabled` a `false` y ejecutar. Después, volver a `true` | Desactivada: no salen "Dog" ni "Perro" en el repaso ni en el estudio libre, y Progreso cuenta 12 tarjetas. Reactivada: "Dog" vuelve con el calendario que tenía |
+| TC-46 | Texto con comas | Añadir `bank,true,general,typed,"Banco, entidad",Banco,` y ejecutar | Arranca y la pregunta es "Banco, entidad". Sin las comillas, la app no arranca e indica que hay más de 7 columnas |
 
-## Modelo 1: tarjeta invertida
+## Áreas
+
+Estos casos añaden a los datos de ejemplo la nota `solidity,true,smart-contracts,typed,¿Lenguaje más usado para smart contracts en Ethereum?,Solidity,`.
+
+- TC-51, elegir área: ejecutar la app con `progress.json`. Sale la pantalla de áreas con "General" (14 tarjetas) y "Smart contracts" (1 tarjeta), cada una con su descripción y las que tocan hoy. Al elegir "Smart contracts", la primera tarjeta es "¿Lenguaje más usado para smart contracts en Ethereum?" y la barra superior muestra "Smart contracts".
+- TC-52, todo es del área: con "Smart contracts" elegida, abrir "Progreso" y "Estudio libre". Progreso cuenta 1 tarjeta y el estudio libre recorre solo esa tarjeta. Nunca sale "Dog".
+- TC-53, cambiar de área: con "Smart contracts" elegida, empezar un estudio libre, pulsar el nombre del área en la barra superior y elegir "General". Sale "Dog". Al volver a "Estudio libre", empieza uno nuevo con sus 14 tarjetas.
+- TC-54, el progreso se conserva: puntuar "Dog" con "Bien", cambiar a "Smart contracts", puntuar "Solidity" y volver a "General". "Dog" no vuelve a salir ese día y su calendario sigue igual en `progress.json`.
+- TC-55, límite de nuevas por área: con 15 notas nuevas del modelo 2 en cada área, estudiar un día completo en las dos. Salen 10 nuevas en cada área.
+- TC-56, área no definida: cambiar el `area` de `dog` a `p2p`, sin añadirla a `areas.csv`, y ejecutar. La app no arranca e indica la línea y las áreas válidas. Al añadir `p2p` a `areas.csv`, arranca y la nueva área aparece en la pantalla de áreas.
+- TC-58, área sin datos: añadir `security,Seguridad,Seguridad en blockchain y DLT` a `areas.csv`, sin notas, y ejecutar. En la pantalla de áreas, "Seguridad" muestra "No hay datos". Al elegirla, "Estudiar" y "Estudio libre" muestran "No hay datos" con el botón "Cambiar de área", y "Progreso" indica que no hay datos.
+- TC-57, cada arranque pide área: elegir "Smart contracts", pulsar "Ya vale por hoy" y volver a ejecutar. Sale otra vez la pantalla de áreas.
+
+## Modelo 1: básico
 
 | ID | Situación | Pasos | Resultado esperado |
 | --- | --- | --- | --- |
 | TC-05 | Revelar y puntuar | Ver "Dog" y pulsar "Mostrar respuesta" | Aparece "Perro" y los cuatro botones: Fallé, Me costó, Bien, Fácil |
-| TC-06 | Dos direcciones | Jueves 1 oct: "Dog" → Bien. Viernes 2 oct: "Dog" → Bien. Sábado 3 oct: abrir la app | Jueves y viernes no sale "Perro", porque ese día ya se estudia "Dog". El sábado "Dog" no toca (su fecha es el lunes 5) y sale "Perro" como nueva (pregunta "Perro", respuesta "Dog"), con su propio calendario |
+| TC-06 | Una línea, una tarjeta | Puntuar "Dog" y volver días después | Nunca sale una tarjeta que pregunte "Perro" |
 
 ## Modelo 2: teclear la respuesta
 
@@ -44,16 +61,19 @@ Salvo que se indique lo contrario, cada caso parte de estos datos y **sin** `dat
 | --- | --- | --- | --- |
 | TC-07 | Acierto exacto | En "¿Qué significa BOE?" escribir `Boletín Oficial del Estado` | Se marca como acierto y aparecen solo tres botones: Me costó, Bien, Fácil |
 | TC-08 | Tolerancia general | Escribir `boletin oficial  del estado.` con espacios al principio | Acierto: se ignoran mayúsculas, espacios sobrantes, punto final y tildes |
-| TC-09 | Alternativa de la nota | Escribir `Boletin oficial` | Acierto por la alternativa `Boletín Oficial` |
+| TC-09 | Otra forma válida | Escribir `Boletin oficial` | Acierto por la forma `Boletín Oficial` (separada con `\|` en `back`) |
 | TC-10 | Letras erróneas | Escribir `Boletín Oficial del Estdo` | Fallo: se muestra lo escrito junto a `Boletín Oficial del Estado`, se registra "Fallé" sin preguntar y aparece "Continuar" |
 | TC-11 | La ñ cuenta | En "¿Qué país tiene por capital Madrid?" escribir `Espana` | Fallo. `españa` sería acierto |
+| TC-48 | Lista en cualquier orden | Añadir `poderes,true,typed,¿Cuáles son los tres poderes del Estado?,Legislativo;Ejecutivo;Judicial,` y escribir `Judicial, Legislativo y Ejecutivo` | Acierto. La respuesta se muestra como `Legislativo, Ejecutivo, Judicial` |
+| TC-50 | Lista con formas válidas | Cambiar el `back` de `poderes` a `Legislativo\|Parlamento;Ejecutivo;Judicial` y escribir `Parlamento, Judicial y Ejecutivo`. Otro día, `Parlamento, Legislativo, Judicial` | El primero es acierto. El segundo es fallo: son dos formas del mismo elemento y falta Ejecutivo |
+| TC-49 | Lista incompleta o con sobrantes | En la misma tarjeta, escribir `Legislativo, Ejecutivo` y después, otro día, `Legislativo, Ejecutivo, Judicial, Electoral` | Fallo en los dos casos: se registra "Fallé" sin preguntar |
 | TC-12 | Una sola dirección | Puntuar "¿Capital de Francia?" y volver días después | Nunca sale una tarjeta que pregunte "París" |
 
 ## Orden de la sesión
 
 | ID | Situación | Pasos | Resultado esperado |
 | --- | --- | --- | --- |
-| TC-13 | Modelos mezclados | Primer día, puntuar todo con "Bien" | Orden: Dog, BOE, Cat, ONU, House, París, Tree, España, Book. Los dos modelos se alternan según `cards.tsv` y ninguna tarjeta inversa sale ese día |
+| TC-13 | Modelos mezclados | Primer día, puntuar todo con "Bien" | Orden: Dog, BOE, Cat, ONU, House, París, Tree, España, Book. Los dos modelos se alternan según `cards.csv` y ninguna tarjeta inversa sale ese día |
 | TC-14 | Límite de nuevas | Con 15 notas del modelo 2 sin estudiar, estudiar un día completo | Salen 10 nuevas y después "Has terminado por hoy". Las otras 5 salen al día siguiente |
 | TC-15 | Vencidas primero | `progress.json` con "Cat" vencida hace 3 días y "Dog" vencida hoy | Sale "Cat", después "Dog" y después las nuevas |
 | TC-16 | Fallo en sesión | Pulsar "Fallé" en "Dog" y seguir con las demás | "Dog" vuelve unos 10 minutos después, intercalada. Si antes no queda nada más, sale en ese momento |
@@ -120,7 +140,7 @@ La tarjeta no se pierde por no abrir la app el día que tocaba. Sale el primer d
 
 ## Progreso
 
-El progreso se cuenta por tarjetas: los datos de ejemplo tienen 9 notas y 14 tarjetas (5 notas invertidas × 2 + 4 de teclear).
+El progreso se cuenta por tarjetas: los datos de ejemplo tienen 9 notas y 9 tarjetas (una por línea).
 
 | ID | Situación | Pasos | Resultado esperado |
 | --- | --- | --- | --- |
@@ -134,7 +154,7 @@ El progreso se cuenta por tarjetas: los datos de ejemplo tienen 9 notas y 14 tar
 | ID | Situación | Pasos | Resultado esperado |
 | --- | --- | --- | --- |
 | TC-39 | Primera vez | Ejecutar sin `progress.json` | Se abre el manual. Explica que se estudia repartido en días, qué hace cada botón, la historia de "Dog" con el tope de 21 días, qué pasa si no se abre la app, cuándo parar, la pantalla de progreso y el estudio libre |
-| TC-40 | Siguientes veces | Ejecutar con `progress.json` | Sale directamente la primera tarjeta. El enlace "Ayuda" abre el manual |
+| TC-40 | Siguientes veces | Ejecutar con `progress.json` | Sale directamente la pantalla de áreas y, tras elegir, la primera tarjeta. El enlace "Ayuda" abre el manual |
 
 ## Estudio libre
 
@@ -165,5 +185,6 @@ El progreso se cuenta por tarjetas: los datos de ejemplo tienen 9 notas y 14 tar
 
 | ID | Situación | Pasos | Resultado esperado |
 | --- | --- | --- | --- |
-| TC-29 | Importar en Anki | En Anki, *Archivo → Importar* `data/cards.tsv` | Se crean 9 notas: 5 del tipo "Basic (and reversed card)" (10 tarjetas) y 4 del tipo "Basic (type in the answer)" |
-| TC-30 | Reimportar | Cambiar "Perro" por "Perro (animal)" e importar otra vez | Se actualiza la nota `dog`. No se duplica |
+| TC-29 | Importar en Anki | En Progreso, pulsar "Exportar para Anki". En Anki, *Archivo → Importar* el `cards-anki.txt` descargado | Se crean 9 notas: 5 del tipo "Basic" y 4 del tipo "Basic (type in the answer)", todas con la etiqueta `general` |
+| TC-30 | Reimportar | Cambiar "Perro" por "Perro (animal)" en `cards.csv`, exportar e importar otra vez | Se actualiza la nota `dog`. No se duplica |
+| TC-47 | Exportar sin desactivadas | Poner `enabled` a `false` en `book` y exportar | `cards-anki.txt` tiene 8 notas y no incluye `book` |
