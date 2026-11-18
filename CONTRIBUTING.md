@@ -162,6 +162,40 @@ Se usa [Conventional Commits](https://www.conventionalcommits.org/) para escribi
 - Separa el asunto del cuerpo con una línea en blanco.
 - Referencia issues y pull requests cuando sea relevante.
 
+### Consolidar cambios periódicos de la rama principal
+
+Recuerda traer periódicamente los cambios de la rama `main` usando `rebase`, así tu rama se mantiene al día y el historial queda lineal:
+
+- Trae los cambios de `main` desde el remoto:
+
+   ```bash
+   git fetch origin main
+   ```
+
+- Aplica tus commits encima de la versión actualizada de `main`:
+
+   ```bash
+   git rebase origin/main
+   ```
+
+- Si hay conflictos, resuélvelos, marca los ficheros como resueltos y continúa:
+
+   ```bash
+   git add <resolved_file>
+   git rebase --continue
+   ```
+
+Antes de subir la rama, revisa su historial con un `rebase` interactivo para:
+
+- Fusionar commits pequeños o relacionados (`squash`).
+- Reescribir los mensajes de commit para que sean claros y descriptivos.
+
+```bash
+git rebase -i origin/main
+```
+
+Por último, sube los cambios a tu rama remota y comprueba desde ahí que todo está correcto. Si la rama ya estaba en el remoto, el `rebase` reescribe su historial y tendrás que subirla con `--force-with-lease`, como se explica en el apartado anterior.
+
 ### Flujo de trabajo con ramas y pull requests
 
 Se disponen dos formas:
