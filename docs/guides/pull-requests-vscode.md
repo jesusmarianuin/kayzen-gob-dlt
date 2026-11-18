@@ -21,7 +21,7 @@ Estos pasos los realiza la persona que ha hecho los cambios y quiere que se revi
 
 3. **Crear la pull request**: en el panel **GitHub Pull Requests** (Activity Bar, a la izquierda), pulsa **Create Pull Request**. Se abre un formulario dentro de VS Code.
 
-4. **Completar los datos**: indica la rama destino (`main`), escribe un título y una descripción, y pulsa **Create**.
+4. **Completar los datos**: indica la rama destino `main` donde pone `BASE`, escribe un título y una descripción, y pulsa **Create**.
 
    > **Consejo**: pulsa el botón ✨ junto al campo del título para que GitHub Copilot sugiera uno. La sugerencia seguirá la convención Conventional Commits configurada en `.vscode/settings.json`.
    >
@@ -30,6 +30,8 @@ Estos pasos los realiza la persona que ha hecho los cambios y quiere que se revi
 ## Parte 2 — Revisor: revisar la pull request
 
 Estos pasos los realiza la persona responsable de aprobar los cambios.
+
+La extensión añade dos iconos: GitHub, que muestra todas las PRs del repositorio y permite ver sus cambios sin cambiar de rama, y GitHub Pull Request, que solo aparece cuando estás en la rama de una PR y es donde trabajaremos para revisarla.
 
 5. **Abrir la PR**: en el panel **GitHub Pull Requests**, localiza la PR y haz clic en ella. La vista de la PR se abre en el editor.
 
@@ -60,9 +62,35 @@ La fusiona una persona con permiso de escritura en el repositorio, normalmente q
    - Panel izquierdo (REVIEW PULL REQUEST): pulsa la flecha del desplegable junto a `Create Merge Commit` y `selecciona Squash and Merge`. El botón pasa a llamarse `Squash and Merge`; al pulsarlo, la PR se fusiona directamente, sin opción de editar el mensaje del commit, que será el título de la PR.
    - Vista de la PR en el editor (desplazándote hacia abajo): localiza la sección `Merge Pull Request`, cambia el método a `Squash and Merge` y pulsa el botón. Aparece un paso de confirmación en el que puedes editar el título y la descripción del commit antes de confirmar.
 
-   Usa el panel izquierdo si el título de la PR ya es un mensaje de commit válido, y la vista de la PR si quieres retocarlo.
+   Usa el panel izquierdo si el título de la PR ya es un mensaje de commit válido, y la vista de la PR si quieres retocarlo. Se recomienda la vista de la PR, para revisar lo siguiente en el paso de confirmación:
 
-9. **Limpiar**: tras la fusión, pulsa **Delete Branch...** en la parte inferior del panel izquierdo de la vista **GitHub Pull Requests**. Ofrecerá borrar tanto la rama local como la remota: confirma ambas. Después, actualiza tu `main` local:
+   - **Título**: suele ser correcto, porque es el que se puso al crear la PR. Deja el `(#número)` del final: es el número de la PR, y en GitHub se convierte en un enlace a ella.
+   - **Descripción**: propone la lista de commits. Sustitúyela por la descripción de la PR. Para copiarla, pulsa el icono **Open Pull Request on GitHub** (arriba a la derecha), y en la web, en la descripción, pulsa `···` → `Edit`, copia el markdown y pulsa `Cancel`.
+
+9. **Comprobar antes de borrar la rama**: lo hace el autor de la PR, en su ordenador.
+
+   1. Comprueba en la vista de la PR que su estado es **Merged**.
+   2. En la rama de la PR, ejecuta `git status`. Debe decir que no hay cambios pendientes y que la rama está al día con la remota (`up to date with 'origin/...'`). Si no, haz commit o push de lo que falte: ese trabajo no está en la PR.
+   3. Actualiza `main` y compárala con la rama:
+
+      ```bash
+      git checkout main
+      git pull origin main
+      git diff main <rama-de-la-PR> --stat
+      ```
+
+      O, sin salir de la rama de la PR:
+
+      ```bash
+      git fetch origin main:main
+      git diff main <rama-de-la-PR> --stat
+      ```
+
+      Si no muestra nada, todo el contenido de la rama está en `main`. Si muestra archivos, revísalos antes de borrar: pueden ser trabajo que no entró en la PR o cambios que otros han fusionado en `main` después.
+
+10. **Limpiar (opcional)**: lo hace el autor cuando además es el revisor, cuando ha comprobado el paso 9. Pulsa **Delete Branch...** en la parte inferior del panel izquierdo de la vista **GitHub Pull Requests** y confirma el borrado de la rama local y de la remota.
+
+11. Actualiza tu `main` local:
 
    ```bash
    git checkout main
