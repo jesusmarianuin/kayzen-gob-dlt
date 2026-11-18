@@ -27,7 +27,7 @@ Si analizamos las decisiones de diseño de blockchain, podemos concluir que:
 
   > Imagina lo inviable que sería que cientos o miles de nodos tengan que llegar a un acuerdo por cada transacción individual que reciben.
 
-* Agrupar las transacciones en bloques y, además, incluir el hash del bloque anterior —que resume y valida todas las transacciones previas— facilita la validación de nuevos bloques por parte de los nodos. 
+* Agrupar las transacciones en bloques y, además, incluir el hash del bloque anterior —que resume y valida todas las transacciones previas— facilita la validación de nuevos bloques por parte de los nodos.
 
   > Sin este mecanismo, los nodos tendrían que validar millones de transacciones previas, lo que sería inviable.
 
@@ -191,15 +191,14 @@ Algunos protocolos de consenso, como QBFT o IBFT 2.0, no necesitan esta regla po
 
 ## Settlement ledger
 
-Una red actúa como settlement ledger (libro de liquidación) cuando otras redes ejecutan las operaciones y ella fija su resultado final. La red de operación procesa las transacciones y la de liquidación verifica ese resultado, resuelve las disputas y le da finalidad. Es el papel de Ethereum frente a los rollups que se describen en el siguiente apartado: una transacción del rollup solo es final cuando Ethereum la acepta, y a partir de ese momento revertirla exige revertir Ethereum.
+Settlement ledger no es un tipo de blockchain, sino un papel que cumple un ledger dentro de un sistema: el de ser el registro donde una operación queda liquidada de forma definitiva. A partir de ese momento la operación tiene finalidad (settlement finality): es irrevocable y ya no se puede deshacer.
 
-En la arquitectura modular, que separa ejecución, liquidación, consenso y disponibilidad de datos, la liquidación es una capa propia: el entorno donde las capas de ejecución verifican pruebas y resuelven disputas.
+Una misma blockchain puede usarse de muchas formas, y solo se habla de settlement ledger cuando es la pieza en la que se apoya ese cierre definitivo. Por ejemplo, en un rollup las transacciones se ejecutan en la capa 2, pero quedan cerradas en la capa 1, que actúa como settlement ledger.
 
-Referencias:
+### Referencias
 
-* [Ethereum como capa de liquidación de los optimistic rollups](https://ethereum.org/developers/docs/scaling/optimistic-rollups/)
-* [Introducción a layer 2 en ethereum.org](https://ethereum.org/layer-2/learn/)
-* [La pila modular, documentación de Celestia](https://celestia.org/learn/intermediates/the-modular-stack/)
+* [Project Orchid Blueprint, de la Autoridad Monetaria de Singapur](https://www.mas.gov.sg/-/media/mas-media-library/development/fintech/project-orchid/orchid-blueprint-final.pdf)
+* [Informe final del DLT Innovation Challenge 2025, del Banco de Inglaterra](https://www.bankofengland.co.uk/research/fintech/dlt-innovation-challenge-2025)
 
 ## Escalabilidad y sidechains
 
