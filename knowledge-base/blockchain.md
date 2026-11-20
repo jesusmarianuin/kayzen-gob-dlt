@@ -111,6 +111,21 @@ Sobre una red blockchain se puede definir una lógica de negocio on-chain: la qu
 
 Todo lo demás es lógica off-chain: se ejecuta fuera de la red, en los sistemas de cada participante, y solo lleva a la cadena lo que tiene que quedar registrado y verificado por todos, como un hash, una evidencia o un cambio de estado.
 
+## Una blockchain también tiene un diseño
+
+Es habitual pensar en una blockchain como en un producto cerrado, cuando en realidad, igual que una base de datos, tiene un diseño. La tecnología resuelve cómo se guarda, se replica y se ordena la información, pero qué se registra y para qué depende del diseño de cada solución, y dos soluciones sobre la misma red pueden no parecerse en nada.
+
+Ese diseño se reparte en varias capas. Los contratos inteligentes fijan qué datos y qué reglas viven en la cadena, como lo haría un esquema con sus tablas y restricciones. Y el software de los nodos también forma parte del diseño, porque decide el consenso, el formato de las transacciones o qué operaciones admite la red.
+
+En Ethereum se ve de forma explícita en sus [propuestas de mejora (EIP)](https://eips.ethereum.org/). Unas cambian el protocolo que ejecutan los nodos y otras, las ERC, estandarizan diseños a nivel de aplicación, como el [ERC-20](https://eips.ethereum.org/EIPS/eip-20), que define la interfaz común de un token.
+
+Según ese diseño, la cadena cumple papeles muy distintos dentro del sistema. Algunos ejemplos habituales son:
+
+* Ser el sistema operacional. La cadena no se limita a registrar lo que ocurre en otros sistemas: las operaciones se ejecutan en ella y su estado es el estado del negocio. Es el enfoque típico de Web3: la lógica vive en contratos inteligentes y todos comparten el mismo estado en la cadena, así que un contrato puede usar a otro dentro de la misma transacción sin pedir permiso ni hacer una integración. A esto se le llama composabilidad, y es lo que permite, por ejemplo, que una aplicación DeFi de préstamos acepte cualquier token que siga el ERC-20. A cambio, todo lo que se ejecuta es público y cada operación tiene un coste.
+* Servir de registro de confianza. La cadena no guarda los datos del negocio, sino lo necesario para confiar en ellos: identificadores de organizaciones, sus claves públicas y la lista de emisores autorizados. Es el enfoque de EBSI. Una universidad emite un título como credencial verificable, el ciudadano lo guarda en su cartera y quien lo recibe consulta en la cadena que esa universidad es un emisor autorizado y que la firma corresponde a su clave. La credencial y los datos personales nunca pasan por la cadena.
+* Liquidar lo que otras capas ejecutan. La cadena principal deja de ejecutar la mayor parte de las transacciones: lo hacen los rollups en una capa 2, que publican en la capa 1 lotes de transacciones con su prueba, y la capa 1 los cierra de forma definitiva como [settlement ledger](#settlement-ledger). Ethereum adoptó este enfoque, centrado en rollups, como su hoja de ruta para escalar.
+* Guardar solo compromisos criptográficos. La cadena guarda únicamente un hash o una raíz de Merkle que resume un conjunto de datos que se mantiene off-chain, o una prueba de conocimiento cero de que un cálculo se hizo correctamente. No revela nada del contenido, pero fija cómo era en ese momento. Más adelante se puede demostrar que un documento formaba parte de ese conjunto o que no ha cambiado, sin haberlo publicado nunca.
+
 ## Confidencialidad, integridad y disponibilidad
 
 Si evaluamos blockchain con los tres requisitos clásicos de seguridad de la información, el resultado no es equilibrado. En integridad y disponibilidad apunta muy alto, pero la confidencialidad choca con su propio diseño.

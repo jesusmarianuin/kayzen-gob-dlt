@@ -13,6 +13,7 @@ En este documentos veremos en diferentes partes:
 
 - [Cuándo es interesante una DLT](when-to-use-dlt.md): condiciones en las que una DLT aporta valor y casos en los que basta una base de datos convencional
 - [Gobernanza de la red](network-governance.md): modelo federado, el nodo como infraestructura propia y compartida, estándares abiertos, resiliencia y economía interna
+- [Lo que una red blockchain no debería hacer](what-a-blockchain-network-should-not-do.md): decisiones que una organización debe evitar al montar la red, como definir sola las reglas, operar todos los nodos igual o concentrar claves y accesos
 - [Coste del gas](gas-cost.md): si el gas debe costar cero, qué se pierde y qué permitiría un coste
 - [Identidad en la red](identity.md): quién firma cada transacción, cómo se une una dirección con un órgano y qué ocurre cuando cambia una clave
 - [Protección de datos en la red](data-protection.md): qué es dato personal en una blockchain, quién responde y qué estrategias permiten escribir en la cadena
