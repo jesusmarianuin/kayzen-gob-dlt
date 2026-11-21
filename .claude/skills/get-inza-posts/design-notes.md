@@ -13,6 +13,7 @@ Sigue el mismo esquema que `scrape-pae-news`: el script busca, el agente registr
 ```plaintext
 .claude/skills/get-inza-posts/
 ├── SKILL.md
+├── README.md
 ├── design-notes.md
 ├── scripts/
 │   └── get_inza_posts.py
@@ -46,7 +47,9 @@ Comportamiento:
 
 ### Log
 
-No hay criterio de interés previo: todo el contenido del sitio se considera de interés y la selección la hace el usuario.
+En modo elegir no hay criterio de interés previo: todo el contenido del sitio se considera de interés y la selección la hace el usuario.
+
+En modo auto, el criterio es la lista de palabras de interés de [README.md](README.md), sacada de [knowledge-base/eIDAS](../../../knowledge-base/eIDAS/README.md) y ordenada de más a menos interés. Los términos marcados con `[a]` dan nivel alto y los marcados con `[b]`, nivel bajo; un post toma el nivel más alto de los términos que trata. Si knowledge-base/eIDAS cambia, la lista se regenera y el usuario la vuelve a marcar.
 
 El `.jsonl` guarda una línea por post encontrado, con:
 

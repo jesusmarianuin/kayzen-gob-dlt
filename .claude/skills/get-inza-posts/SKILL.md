@@ -1,6 +1,6 @@
 ---
 name: get-inza-posts
-description: Buscar posts de inza.blog por año o mes, presentar un log de revisión para que el usuario elija qué incluir (no incluir, bajo interés, alto interés) y redactar los elegidos en knowledge-base/inza.blog/. Usar siempre que se pida bajar, revisar o actualizar posts de inza.blog, aunque no se mencione el script.
+description: Buscar posts de inza.blog por año o mes, presentar un log de revisión para que el usuario elija qué incluir (no incluir, bajo interés, alto interés) o asignar el nivel en modo auto con la lista de palabras de interés de eIDAS, y redactar los elegidos en knowledge-base/inza.blog/. Usar siempre que se pida bajar, revisar o actualizar posts de inza.blog, aunque no se mencione el script.
 ---
 
 # get-inza-posts
@@ -33,21 +33,47 @@ Salida: una línea por post. Cada línea un JSON con:
 
 El script solo busca: no decide qué se incluye ni escribe documentos.
 
+## Modos
+
+La skill tiene dos modos:
+
+- Elegir (por defecto): el usuario marca cada post en el `-review.md`
+- Auto: el agente asigna el nivel con la lista de palabras de interés de [README.md](README.md). Se usa cuando el prompt lo pide ("baja octubre de 2026 en auto")
+
 ## Flujo de trabajo
+
+Pasos comunes:
 
 - Ejecutar el script para el periodo pedido
 - Descartar los posts con `ya_bajado: true` y los que un log anterior de `log/` tenga con `nivel_final: no-incluir`
+
+Modo elegir:
+
 - Guardar el log (ver "Log") con el resto y presentar el `-review.md` al usuario
 - Esperar a que el usuario lo devuelva marcado
 - Volver a ejecutar el script para el mismo periodo con `--words 0` y redactar solo los posts marcados con `[b]` o `[a]`
 - Actualizar `nivel_final` en el `.jsonl` con la marca del usuario
+
+Modo auto:
+
+- Comparar el título, las categorías y el `body` de cada post con los términos de [README.md](README.md). Cuentan los términos marcados con `[a]` o `[b]`; los que siguen en `[ ]` se ignoran
+- Asignar a cada post el nivel más alto entre los términos que trate: `alto` si coincide con alguno en `[a]`, `bajo` si solo coincide con términos en `[b]`, `no-incluir` si no coincide con ninguno. Una mención de pasada no cuenta: el término tiene que ser un tema del post
+- Guardar el log con `nivel_final` ya relleno y el `-review.md` con las marcas asignadas, para que quede constancia
+- Volver a ejecutar el script con `--words 0` y redactar los posts en `bajo` o `alto` sin esperar al usuario
+- Al terminar, presentar al usuario la lista de posts redactados con su nivel y el término que lo decidió
 
 ## Log
 
 Al acabar una pasada, guardar en `.claude/skills/get-inza-posts/log/`:
 
 - `AAAA-MM-DD-<alcance>.jsonl` (por ejemplo, `2026-10-23-month-2026-10.jsonl`): una línea JSON por post con `url`, `title`, `date`, `ya_bajado` y `nivel_final` (`null` hasta que el usuario marque; después `no-incluir`, `bajo` o `alto`)
-- `AAAA-MM-DD-<alcance>-review.md`: una línea por post propuesto, todas en `[ ]`
+- `AAAA-MM-DD-<alcance>-review.md`: una línea por post propuesto, todas en `[ ]` en modo elegir y con la marca asignada en modo auto
+
+El `-review.md` empieza siempre con esta leyenda, seguida de una línea en blanco:
+
+```markdown
+Leyenda: `[ ]` no incluir, `[b]` bajo interés, `[a]` alto interés
+```
 
 Formato de cada línea del `-review.md`:
 
@@ -55,7 +81,7 @@ Formato de cada línea del `-review.md`:
 - [ ] 2026-10-22 — [Cuando la criptografía era un arma: de los 40 bits y el SGC a la criptoagilidad](https://inza.blog/2026/10/22/cuando-la-criptografia-era-un-arma-de-los-40-bits-y-el-sgc-a-la-criptoagilidad/)
 ```
 
-El usuario cambia `[ ]` (no incluir) por `[b]` (bajo interés) o `[a]` (alto interés). No hay criterio de interés previo: el agente no propone niveles.
+En modo elegir, el usuario cambia `[ ]` (no incluir) por `[b]` (bajo interés) o `[a]` (alto interés), y el agente no propone niveles. En modo auto, los niveles salen solo de la lista de [README.md](README.md).
 
 ## Formato del documento
 
