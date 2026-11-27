@@ -1,5 +1,10 @@
 # Estándares generales de código del proyecto
 
+## Parar ante cualquier fallo
+
+- Si algo no va bien, no hay resultados o el resultado no es el esperado, para la tarea en ese mismo momento y avisa al usuario para solucionarlo juntos.
+- Nunca sigas por tu cuenta ni busques alternativas (otras herramientas, otros métodos, el navegador, endpoints, rodeos) sin que el usuario lo autorice de forma explícita.
+
 ## Lectura de contexto del repositorio
 
 - Solo puedes leer los ficheros o directorios que el usuario comparta en el prompt o cuya ruta aparezca explícitamente en él (el fichero abierto en el editor cuenta como compartido). Se puede compartir una ruta de archivo o una ruta de directorio lo que implícitamente es también autorizar a sus ficheros contenidos.
